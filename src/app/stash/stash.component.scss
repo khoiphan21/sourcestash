@@ -1,0 +1,22 @@
+#stash-block{
+    width: 36vw;
+    padding: 1vh 2vw;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    height: 28vh;
+    background: #304269;
+    border-radius: 10px;
+    border: solid 2px darken(#304269,20%);
+    color: white;
+    flex: 1;
+    h2{
+        margin: 0px;
+        margin-bottom: 3vh;
+        padding: 0px;
+    }
+}
+
+#source{
+    display: flex;
+    justify-content: space-between;
+}
