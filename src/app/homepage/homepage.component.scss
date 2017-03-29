@@ -1,0 +1,29 @@
+#main-container{
+    width: 94vw;
+    padding: 0vh 3vw;
+    justify-content: space-between; 
+    text-align: center;
+    color: #555;
+    h1{
+        margin: 0px;
+        padding: 0px;
+    }   
+}
+
+#stashes{
+    display: flex;
+    width: 94vw;
+    background: darkblue;
+}
+
+#inner-stashes{
+    padding: 3vh 3vw;
+    width: 94vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+
+

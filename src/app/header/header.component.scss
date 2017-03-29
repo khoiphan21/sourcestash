@@ -1,0 +1,25 @@
+#header{
+    background: #304269;
+    width: 92vw;
+    padding: 2vh 4vw;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    color: #91BED4;
+    font-size: 24pt;
+    text-shadow: 2px 2px #222; 
+    a{
+        text-decoration: none;
+        color: #91BED4;
+        text-align: center;
+    } 
+    ul{
+        font-size: 16pt;
+        margin: 0px;
+        list-style-type: none;
+        display: flex;
+    }
+    li {
+        padding: 1vh 1vw;
+    }   
+}
