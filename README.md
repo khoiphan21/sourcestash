@@ -8,7 +8,7 @@ These guidelines are for contributors to understand and navigate around the Boar
 ## Terminology Explanation
 Github/Zenhub Term | Agile Mapping | Explanation
 --- | --- | --- 
-Issues | User Stories | The title of each issue is a user story: it is a high-level feature description that helps the developer focus on the business value of the product
+Issues | User Stories | The title of each issue is a user story: it is a high-level feature description that helps the developer focus on the business value of the product. The format of an issue's title is: <br> As a **\<usertype\>**, I want to **\<task\>** so that **\<goal\>**.<br> For example: As a **student**, I want to **store a useful link quickly** so that **I can view it later or share it with my friends**
 Milestones | Sprint | This represents a **fixed** length of time during which all developers and designers agree to produce a certain chunk of work.
 Epics | Epics | They are big user-stories (higher-level, more abstract issues) which focus on the big picture 
 Pipeline | | The columns in the Board (similar to Trello format), that shows the stages of each issue as it progresses through the development cycle
