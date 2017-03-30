@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+# Project Guidelines
+These guidelines are for contributors to understand and navigate around the Board (added via ZenHub Extension).
+
+## Terminology Explanation
+Github/Zenhub Term | Agile Mapping | Explanation
+--- | --- | --- 
+Issues | User Stories | The title of each issue is a user story: it is a high-level feature description that helps the developer focus on the business value of the product
+Milestones | Sprint | This represents a **fixed** length of time during which all developers and designers agree to produce a certain chunk of work.
+Epics | Epics | They are big user-stories (higher-level, more abstract issues) which focus on the big picture 
+Pipeline | | The columns in the Board (similar to Trello format), that shows the stages of each issue as it progresses through the development cycle
+
+# Development Commands
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
