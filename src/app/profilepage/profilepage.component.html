@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<div id ="main-container">
+  <div id="top-container">
+    <h2> My Profile </h2>
+    <table>
+      <tr>
+        <td class="center">
+          Profile Picture
+        </td>
+        <td>
+          <ul class="no-bullet">
+            <li>Username: <p></li>
+            <li>Source Contribution:<p></li>
+            <li>Favourite Stashes:<p></li>
+            <li>Published:<p></li>
+            <li>Liked:<p></li>
+          </ul>
+        </td>
+        <td>
+           Background Information:
+          <ul>
+            <li>Bachelor of Information Technology</li>
+          </ul>
+        </td>
+        <td>
+           Education
+          <ul>
+            <li>University of Queensland</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="center"><button class="edit">Edit</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="bottom-container">
+    <div id ="personal-header">
+      <ul> 
+    <li>
+      <a routerLink="/about-us">Stashes</a>
+    </li>  
+    <li>  
+      <a routerLink="/product">Favourite</a>
+    </li>
+    <li>  
+      <a routerLink="/profilepage">Sources</a>
+    </li> 
+  </ul>
+    </div>
+    <div id = "stashes">
+      <app-stash></app-stash>
+      <app-stash></app-stash>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
+import { ProfilepageComponent } from './profilepage/profilepage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SourcesComponent } from './sources/sources.component';
     HomepageComponent,
     HeaderComponent,
     StashComponent,
-    SourcesComponent
+    SourcesComponent,
+    ProfilepageComponent
   ],
   imports: [
     BrowserModule,
