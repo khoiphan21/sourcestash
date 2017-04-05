@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../account.service';
+import { Account } from '../classes/account';
 
 @Component({
   selector: 'app-profilepage',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profilepage.component.scss']
 })
 export class ProfilepageComponent implements OnInit {
+  userAccount: Account;
 
-  constructor() { }
+  constructor(private accountService: AccountService) {
+  }
 
   ngOnInit() {
+    this.accountService.getUserInformation('user').then(account => {
+      this.userAccount = account;
+    })
   }
 
 }

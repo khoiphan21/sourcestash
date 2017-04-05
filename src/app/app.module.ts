@@ -11,6 +11,7 @@ import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { AccountService } from './account.service';
+import { StashService } from './stash.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { AccountService } from './account.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AccountService],
+  providers: [
+    AccountService,
+    StashService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

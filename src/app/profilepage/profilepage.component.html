@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div id ="main-container">
-  <div id="top-container">
+  <div id="top-container" *ngIf="userAccount">
     <h2> My Profile </h2>
     <table>
       <tr>
@@ -10,7 +10,7 @@
         </td>
         <td>
           <ul class="no-bullet">
-            <li>Username: <p></li>
+            <li>Username: {{userAccount.username}}<p></li>
             <li>Source Contribution:<p></li>
             <li>Favourite Stashes:<p></li>
             <li>Published:<p></li>

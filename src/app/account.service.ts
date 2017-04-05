@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Account } from './classes/account';
 import { Response } from './classes/response';
-import { JOHN } from './data/johnAccount';
+import { JOHN } from './data/mockAccount';
 
 @Injectable()
 /**
@@ -11,7 +11,13 @@ import { JOHN } from './data/johnAccount';
  *   3. Logging in
  */
 export class AccountService {
+  // Flag to check if the user is logged in
+  private isLoggedIn: boolean;
 
+  /**
+   * First check in localstorage to see if there is user information stored 
+   * If so, retrieve it and log the user in
+   */
   constructor() { }
 
   /**
@@ -38,12 +44,30 @@ export class AccountService {
   /**
    * Try to log a user in, and return the response from the server
    * 
+   * Also store the user's login information in localstorage, to automatically 
+   * log them in when they navigate to the page
+   * 
    * @param email the email, and also the id, of the account
    * @param password self explanatory
    */
   login(email: string, password: string): Promise<Response> {
     
     return Promise.resolve(new Response(true, 'All good'));
+  }
+  
+  /**
+   * Check if the user is logged in
+   */
+  checkLoginStatus(): boolean {
+    return this.isLoggedIn;
+  }
+
+  /**
+   * Log the user out. Also clear localstorage to make sure user is not 
+   * auto-logged in the next time they visit the site.
+   */
+  logout() {
+
   }
   
   /**
