@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { AccountService } from './account.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
