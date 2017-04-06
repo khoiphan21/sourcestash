@@ -4,6 +4,8 @@ import { Stash } from './stash';
 export class Account {
     username: string;
     password: string;
+    firstName?: string;
+    lastName?: string;
     profilePictureURL?: string;
     favouriteStashes?: string[]; // the id of the stashes
     publishedStashes?: string[]; // the id of the stashes
