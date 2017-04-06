@@ -19,6 +19,9 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
   this.stashes = ANGULAR2;  
+    this.accountService.testGetUserInfo('1').then(account => {
+      console.log(account);
+    })
   }
 
 }

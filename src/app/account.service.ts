@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Account } from './classes/account';
-import { AppResponse } from './classes/appresponse';
+import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 
 @Injectable()
@@ -18,7 +19,9 @@ export class AccountService {
    * First check in localstorage to see if there is user information stored 
    * If so, retrieve it and log the user in
    */
-  constructor() { }
+  constructor(
+    private http: Http
+  ) { }
 
   /**
    * Create an account based on the given parameters.
@@ -26,7 +29,7 @@ export class AccountService {
    * 
    * @param accountDetails the details of the account
    */
-  createAccount(accountDetails: Account): Promise<Response> {
+  createAccount(accountDetails: Account): Promise<AppResponse> {
     
     return Promise.resolve(null); // STUB METHOD
   }
@@ -36,9 +39,9 @@ export class AccountService {
    * 
    * @param email the email address to be checked
    */
-  checkEmail(email: string): Promise<Response> {
+  checkEmail(email: string): Promise<AppResponse> {
 
-    return Promise.resolve(new Response(true, 'All good'));
+    return Promise.resolve(new AppResponse(true, 'All good'));
   }
 
   /**
@@ -50,9 +53,9 @@ export class AccountService {
    * @param email the email, and also the id, of the account
    * @param password self explanatory
    */
-  login(email: string, password: string): Promise<Response> {
+  login(email: string, password: string): Promise<AppResponse> {
     
-    return Promise.resolve(new Response(true, 'All good'));
+    return Promise.resolve(new AppResponse(true, 'All good'));
   }
   
   /**
@@ -73,11 +76,14 @@ export class AccountService {
   /**
    * 
    * @param id - the id of the user, should be calculated from the email
+   * @return a promise of the acocunt. The promise is rejected if the id doesn
+   *         not exist
    */
   getUserInformation(id: string): Promise<Account> {
     /*
      * If id doesn't exist, will call Promise.reject('message')
      */
+
     
     return Promise.resolve(JOHN);
   }
@@ -89,9 +95,31 @@ export class AccountService {
    * @param id - the id of the user, just for double-checking
    * @param account - the object containing all information to be updated
    */
-  editUserInformation(id: string, account: Account): Promise<Response> {
+  editUserInformation(id: string, account: Account): Promise<AppResponse> {
     
-    return Promise.resolve(new Response(true, 'All good'));
+    return Promise.resolve(new AppResponse(true, 'All good'));
   }
 
+  /**
+   * METHODS FOR TESTING
+   */
+  testGetUserInfo(id: string): Promise<Account> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.get(
+      'http://localhost:8080/user',
+      options
+    ).subscribe(response => {
+      console.log(response.json());
+      return Promise.resolve(response);
+    }, error => {
+      console.log(error);
+    })
+
+    
+    return Promise.resolve(null);
+  }
 }

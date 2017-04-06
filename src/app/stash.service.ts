@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Stash } from './classes/stash';
 import { ANGULAR2 } from './data/mockStash';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class StashService {
 
-  constructor() { }
+  constructor(private http: Http) {
+    
+  }
+
+
 
   /**
    * Create a stash based on the given parameters
