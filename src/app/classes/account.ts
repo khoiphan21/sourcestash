@@ -2,7 +2,7 @@ import { BackgroundInfo } from './backgroundInfo';
 import { Stash } from './stash';
 
 export class Account {
-    username: string;
+    email: string;
     password: string;
     firstName?: string;
     lastName?: string;
@@ -14,8 +14,8 @@ export class Account {
     Education?: string[]; // list of educations
     stashes?: Stash[]; // list of the stashes they own
 
-    constructor(username: string, password: string) {
-        this.username = username;
+    constructor(email: string, password: string) {
+        this.email = email;
         this.password = password;
     }
 }

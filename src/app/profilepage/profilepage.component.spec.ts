@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilepageComponent } from './profilepage.component';
+import { HeaderComponent } from '../header/header.component';
+import { StashComponent } from '../stash/stash.component';
+import { SourcesComponent } from '../sources/sources.component';
+import { AccountService } from '../account.service';
+import { StashService } from '../stash.service';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 describe('ProfilepageComponent', () => {
   let component: ProfilepageComponent;
@@ -8,7 +15,20 @@ describe('ProfilepageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilepageComponent ]
+      declarations: [ 
+        ProfilepageComponent,
+        HeaderComponent,
+        StashComponent,
+        SourcesComponent
+      ],
+      providers: [
+        AccountService,
+        StashService
+      ],
+      imports: [
+        HttpModule,
+        BrowserModule
+      ]
     })
     .compileComponents();
   }));

@@ -1,12 +1,12 @@
 import { Account } from '../classes/account';
 
 export const JOHN: Account = {
-    username: 'john@example.com',
+    email: 'john@example.com',
     password: 'password'
 }
 
 export const WITH_STASHES: Account = {
-    username: 'with-stashes',
+    email: 'with-stashes',
     password: 'password',
     stashes: [
         {
