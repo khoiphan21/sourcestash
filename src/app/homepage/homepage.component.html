@@ -3,11 +3,8 @@
 <div id ="main-container">
   <h1> Top Ranking Stashes</h1>
   <div id="stashes">
-    <div id="inner-stashes">
-      <app-stash></app-stash>
-      <app-stash></app-stash>
-      <app-stash></app-stash>
-      <app-stash></app-stash>
+    <div id="inner-stashes" *ngFor="let stash of stashes">
+      <app-stash [stash]="stash"></app-stash>
     </div>
   </div>
 </div>

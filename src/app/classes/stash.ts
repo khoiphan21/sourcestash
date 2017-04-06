@@ -1,5 +1,10 @@
 export class Stash {
-    id: string;
     title: string;
     description: string;
+    id?: string;
+
+    constructor(title: string, description: string) {
+        this.title = title;
+        this.description = description;
+    }
 }
