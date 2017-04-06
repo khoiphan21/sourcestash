@@ -66,20 +66,11 @@
     color: #304269;
     font-size: 16pt;
     font-weight: bold;
-    padding: 1vh 1vw;
+    padding: 5vh 1vw;
     border-radius: 10px;
     background: white;
-    height: 39vh;
+    height: 31vh;
     width: 26vw;
-}
-
-.toptable{
-        width: 26vw;
-        padding: 2vh 0;
-        height: 22vh;
-    td {
-        border-bottom: #304269 solid 3px;
-    }
 }
 
 .right{
@@ -88,10 +79,11 @@
     width: 13vw;
 }
 
-.bottable{
+#bot-form{
+    margin-top: 5vh;   
        width: 26vw;
        height: 10vh;
-       padding : 3vh 0;
+       display: flex;
     a {
         text-decoration: none;
         color: #304269;
@@ -103,9 +95,8 @@
     }
 }
 
-.smaller{
+#smaller{
     font-size: 14pt;
-    width: 32vw;
 }
 
 #button{
@@ -115,4 +106,6 @@
     background: #f26101;
 }
 
-
+hr{
+    border: #304269 solid 2px;
+}
