@@ -2,7 +2,7 @@ import { Account } from '../classes/account';
 
 export const JOHN: Account = {
     username: 'john@example.com',
-    password: 'password'
+    password: 'password',
 }
 
 export const WITH_STASHES: Account = {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Stash } from '../classes/stash';
+import { StashService } from '../stash.service';
 
 @Component({
   selector: 'app-stash',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stash.component.scss']
 })
 export class StashComponent implements OnInit {
-
-  constructor() { }
+  @Input()
+  stash: Stash;
+  
+  stashes: Stash;
+  constructor(private stashService: StashService) { }
 
   ngOnInit() {
+    this.stashService.getStashInformation('stash').then(stash => {
+      this.stashes = stash;
+    })
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Account } from './classes/account';
-import { Response } from './classes/response';
+import { AppResponse } from './classes/appresponse';
 import { JOHN } from './data/mockAccount';
 
 @Injectable()
