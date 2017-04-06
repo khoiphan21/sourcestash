@@ -1,0 +1,118 @@
+#header{
+    padding: 2vh 4vw;
+    height: 6vh;
+    background: #304269;
+    justify-content: center;
+    text-align: center;
+}
+
+#main-contianer{
+    padding: 10vh 35vw 40vh 35vw;
+    height: 70vh;
+    width: 50vw;
+}
+
+#mid-container{
+    background: #304269;
+    height: 50vh;
+    width: 30vw;
+    border-radius: 10px;
+}
+
+#navigation-bar{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: #304269 solid 2px;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+    }   li {
+        background: #f26101;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 15vw;
+        padding: 1vh 0;
+        font-size: 16pt;
+        border: #304269 solid 2px;
+        a {
+            font-weight: bold;
+            display: block;
+            color: #304269;
+            text-align: center;
+            text-decoration: none;
+            
+        }
+        a:hover:not(.active) {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: white;
+        }
+        .active {
+            background-color: darken(#304269, 20);
+            color: white;
+        }
+    }
+}
+
+#bot-container{
+    padding: 1vh 1vw;
+}
+
+#login-form{
+    color: #304269;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    background: white;
+    height: 39vh;
+    width: 26vw;
+}
+
+.toptable{
+        width: 26vw;
+        padding: 2vh 0;
+        height: 22vh;
+    td {
+        border-bottom: #304269 solid 3px;
+    }
+}
+
+.right{
+    float: right;
+    text-align: right;
+    width: 13vw;
+}
+
+.bottable{
+       width: 26vw;
+       height: 10vh;
+       padding : 3vh 0;
+    a {
+        text-decoration: none;
+        color: #304269;
+        font-size: 20pt;
+    }
+   a:hover:not(.active){
+        background: white;
+        color: white;
+    }
+}
+
+.smaller{
+    font-size: 14pt;
+    width: 32vw;
+}
+
+#button{
+    border-radius: 10px;
+    text-align: center;
+    padding: 2vh 1vw;
+    background: #f26101;
+}
+
+
