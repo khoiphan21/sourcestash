@@ -27,15 +27,6 @@ export class HomepageComponent implements OnInit {
     })
 
 
-    // TESTING FOR CHECKING EMAIL AVAILABILITY
-    this.accountService.checkEmail('john@example.com').subscribe(
-      (response: AppResponse) => {
-        alert(response.message);
-      }, error => {
-        console.log(error);
-      }
-    )
-
     // TESTING FOR ACCOUNT CREATION
     // this.accountService.createAccount(JOHN).subscribe( response => {
     //   console.log(response.message);

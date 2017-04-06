@@ -38,11 +38,6 @@ export class AccountService {
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
-    // if (localStorage.getItem("sourcestashAcount")) {
-    //   this.isLoggedIn = false;
-    // } else {
-    //   this.isLoggedIn = true;
-    // }
   }
 
   /**
