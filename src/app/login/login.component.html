@@ -1,39 +1,40 @@
-<div id = "header">
+<div id="header">
   For the logo
 </div>
 
-<div id = "main-contianer">
-  <div id = "mid-container">
-    <div id = "navigation-bar">
+<div id="main-contianer">
+  <div id="mid-container">
+    <div id="navigation-bar">
       <ul>
         <li><a routerLink="/home">Sign Up</a></li>
         <li><a routerLink="/home">Log In</a></li>
       </ul>
     </div>
-    <div id = "bot-container">
-      <div id = "login-form">
-          <table class = "toptable">
-            <tr>
-              <td>E-MAIL
-              <!--<input class = "right" 
-              [(ngModel)]="account.email"
-              (keyup.enter)="addEmail(newEmail.value); newEmail.value=''"
-              >-->
-              </td>
-            </tr>
-            <tr>
-              <td>PASSWORD</td>
-            </tr>
-          </table>
-          <table class = "bottable">
-            <tr>
-              <td class = "smaller"> By clicking on "Sign Up" you are agreeing on the Terms of Services </td>
-              <td> <a routerLink="/home"><div id ="button">
-                      Signup 
-                    </div></a>
-              </td>
-            </tr>
-          </table>
+    <div id="bot-container">
+      <div id="login-form">
+        <table class="toptable">
+          <tr>
+            <td>E-MAIL
+              <input type="email" class="right" [(ngModel)]="account.email" />
+              <p>You should see email being typed here: {{account.email}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>PASSWORD</td>
+          </tr>
+        </table>
+        <table class="bottable">
+          <tr>
+            <td class="smaller"> By clicking on "Sign Up" you are agreeing on the Terms of Services </td>
+            <td>
+              <a routerLink="/home">
+                <div id="button">
+                  Signup
+                </div>
+              </a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

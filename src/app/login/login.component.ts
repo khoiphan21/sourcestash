@@ -7,21 +7,15 @@ import { Account } from '../classes/account';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  account: Account[];
-
-  addEmail(value){
-    // if (value!=='') {
-    //   this.account.push ({
-    //     email: value,
-    //     password: '1234'
-    //   });
-    // }
-  }
+  account: Account;
 
   constructor() { 
   }
   
   ngOnInit() {
+    // Have to create this empty account object first, otherwise you won't
+    // see anything, since "account.email" will be referencing 'null'
+    this.account = new Account('', '');
   }
 
 }
