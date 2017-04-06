@@ -25,10 +25,42 @@ describe('AccountService', () => {
   /**
    * Tests for logging in
    */
+  it('should successfully login if the details are correct', inject([AccountService], (service: AccountService) => {
+    service.login('john@example.com', 'password').subscribe(
+      response => {
+        expect(response.success).toBeTruthy();
+      }, error => {
+        fail('error should not happen');
+      }
+    )
+  }));
+  it('should throw an error if password is incorrect', inject([AccountService], (service: AccountService) => {
+    service.login('john@example.com', 'passwordd').subscribe(
+      response => fail('an error should occur'),
+      error => expect(error).toBeTruthy()
+    )
+  }))
+  it('should throw an error if the email does not exist', inject([AccountService], (service: AccountService) => {
+    service.login('someemailthatdoesnotexist@mail.com', 'pass').subscribe(
+      response => fail('error should be thrown'),
+      error => expect(error).toBeTruthy()
+    )
+  }))
+
 
   /**
    * Tests for account creation
    */
+  it('should throw an error if the email already exists', inject([AccountService], (service: AccountService) => {
+    service.createAccount({
+      email: 'john@example.com',
+      password: 'whatever'
+    }).subscribe(response => {
+      fail('Expected error to occur');
+    }, error => {
+      // Should get an error. 
+    })
+  }));
 
   /**
    * Tests for checking email
