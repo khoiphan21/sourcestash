@@ -9,13 +9,14 @@ import { Account } from '../classes/account';
 export class LoginComponent implements OnInit {
   account: Account;
 
-  constructor() { 
-  }
-  
-  ngOnInit() {
+  constructor() {
     // Have to create this empty account object first, otherwise you won't
     // see anything, since "account.email" will be referencing 'null'
     this.account = new Account('', '');
+  }
+
+  ngOnInit() {
+
   }
 
 }
