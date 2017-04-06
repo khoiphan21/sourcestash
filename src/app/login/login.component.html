@@ -16,11 +16,13 @@
           <tr>
             <td>E-MAIL
               <input type="email" class="right" [(ngModel)]="account.email" />
-              <p>You should see email being typed here: {{account.email}}</p>
             </td>
           </tr>
           <tr>
-            <td>PASSWORD</td>
+            <td>PASSWORD
+              <input type="password" class="right" [(ngModel)]="account.password" />
+              {{account.password}}
+            </td>
           </tr>
         </table>
         <table class="bottable">
