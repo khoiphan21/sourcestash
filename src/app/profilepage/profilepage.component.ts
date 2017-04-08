@@ -11,7 +11,7 @@ export class ProfilepageComponent implements OnInit {
   userAccount: Account;
   public currentSection: string;
 
-  onClick(name) {
+  changeTab(name) {
     this.currentSection= name;
   }
 
