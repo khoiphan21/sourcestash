@@ -9,8 +9,14 @@ import { Account } from '../classes/account';
 })
 export class ProfilepageComponent implements OnInit {
   userAccount: Account;
+  public currentSection: string;
+
+  onClick(name) {
+    this.currentSection= name;
+  }
 
   constructor(private accountService: AccountService) {
+    this.currentSection = 'Stashes';
   }
 
   ngOnInit() {
