@@ -1,73 +1,81 @@
 <app-header></app-header>
 
 <div id="main-container">
-  <div id="top-container" *ngIf="userAccount">
-    <h2> My Profile </h2>
-    <table>
-      <tr>
-        <td class="center">
-          Profile Picture
-        </td>
-        <td>
-          <ul class="no-bullet">
-            <li>Username: {{userAccount.username}}
-              <p>
-            </li>
-            <li>Source Contribution:
-              <p>
-            </li>
-            <li>Favourite Stashes:
-              <p>
-            </li>
-            <li>Published:
-              <p>
-            </li>
-            <li>Liked:
-              <p>
-            </li>
-          </ul>
-        </td>
-        <td>
-          Background Information:
-          <ul>
-            <li>Bachelor of Information Technology</li>
-          </ul>
-        </td>
-        <td>
-          Education
-          <ul>
-            <li>University of Queensland</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="center"><button class="edit" >Edit</button></td>
-      </tr>
-    </table>
-  </div>
+    <div id="top-container" *ngIf="userAccount">
+        <h2> My Profile </h2>
+        <table>
+            <tr>
+                <td class="center">
+                    Profile Picture
+                </td>
+                <td>
+                    <ul class="no-bullet">
+                        <li>Username: {{userAccount.username}}
+                            <p>
+                        </li>
+                        <li>Source Contribution:
+                            <p>
+                        </li>
+                        <li>Favourite Stashes:
+                            <p>
+                        </li>
+                        <li>Published:
+                            <p>
+                        </li>
+                        <li>Liked:
+                            <p>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    Background Information:
+                    <ul>
+                        <li>Bachelor of Information Technology</li>
+                    </ul>
+                </td>
+                <td>
+                    Education
+                    <ul>
+                        <li>University of Queensland</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="center"><button class="edit">Edit</button></td>
+            </tr>
+        </table>
+    </div>
 
-  <div id="bottom-container">
-    <div id="personal-header">
-      <ul>
-        <li (click)="changeTab('Stashes')">
-          Stashes
-        </li>
-        <li (click)="changeTab('Favourite')">
-          Favourite
-        </li>
-        <li (click)="changeTab('Sources')">
-          <a>Sources</a>
-        </li>
-      </ul>
+    <div id="bottom-container">
+        <div id="personal-header">
+            <ul>
+                <li (click)="changeTab('Stashes')">
+                    Stashes
+                </li>
+                <li (click)="changeTab('Favourite')">
+                    Favourite
+                </li>
+                <li (click)="changeTab('Sources')">
+                    <a>Sources</a>
+                </li>
+            </ul>
+        </div>
+        <div id="stashes" *ngIf="currentSection == 'Stashes'">
+            {{currentSection}}
+            <app-stash></app-stash>
+        </div>
+        <div id="Favourite" *ngIf="currentSection == 'Favourite'">
+            {{currentSection}}
+
+            <app-stash></app-stash>
+            <app-stash></app-stash>
+        </div>
+        <div id="Sources" *ngIf="currentSection == 'Sources'">
+            {{currentSection}}
+
+            <app-stash></app-stash>
+            <app-stash></app-stash>
+            <app-stash></app-stash>
+        </div>
     </div>
-    <div id="stashes" *ngIf="currentSection == 'Stashes'">
-      <app-stash></app-stash>
-    </div>
-    <div id="Favourite" *ngIf="currentSection == 'Favourite'">
-      <app-stash></app-stash>
-    </div>
-    <div id="Sources" *ngIf="currentSection == 'Sources'">
-      <app-stash></app-stash>
-    </div>
-  </div>
 </div>

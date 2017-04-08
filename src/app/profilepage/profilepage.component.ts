@@ -9,14 +9,16 @@ import { Account } from '../classes/account';
 })
 export class ProfilepageComponent implements OnInit {
   userAccount: Account;
-  public currentSection: string;
+  currentSection: string;
 
-  changeTab(name) {
-    this.currentSection= name;
+  changeTab(name: string) {
+    this.currentSection = name;
+    console.log(this.currentSection === 'Favourite');
+
   }
 
   constructor(private accountService: AccountService) {
-    this.currentSection = 'Stashes';
+    // this.currentSection = 'Stashes';
   }
 
   ngOnInit() {
