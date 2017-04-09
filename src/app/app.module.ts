@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Ng2TabComponent } from 'ng2-tab';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     StashComponent,
     SourcesComponent,
     ProfilepageComponent,
-    LoginComponent
+    LoginComponent,
+    Ng2TabComponent
   ],
   imports: [
     BrowserModule,
