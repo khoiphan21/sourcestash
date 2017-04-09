@@ -119,6 +119,10 @@ export class AccountService {
       options
     ).map(response => {
       alert('Login Successful!');
+      
+      // Set the flag that tells the app the user has been logged in
+      this.isLoggedIn = true;
+      
       return new AppResponse(true, 'Login successful');
     }).catch( error => {
       console.log(error);
@@ -130,6 +134,8 @@ export class AccountService {
 
   /**
    * Check if the user is logged in
+   * 
+   * @return a boolean value: True if the user is logged in, False otherwise.
    */
   checkLoginStatus(): boolean {
     return this.isLoggedIn;
