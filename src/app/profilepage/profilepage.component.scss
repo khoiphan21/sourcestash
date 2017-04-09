@@ -49,7 +49,6 @@
     margin-top: 2vh;
     padding-bottom: 1vh;
     width: 94vw;
-    background: #304269;
     border-radius: 5px;
 }
 
@@ -80,21 +79,26 @@
     }   
 }
 
-#stashes{
-    padding: 0vh 2vw;
-    display : flex;
-    justify-content: space-around;
+.tabs{
+    background: #f26101;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    [index].selected{
+        background: #304269;
+        border-top: 2px solid #00BCD4;
+        border-bottom: 1px solid transparent;
+    }
+    [index]{
+        border: transparent solid 5px;
+        border-bottom: 0px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
 }
 
-#Favourite{
-    padding: 0vh 2vw;
-    display : flex;
-    justify-content: space-around;
-}
 
-#Sources{
-    padding: 0vh 2vw;
-    display : flex;
-    justify-content: space-around;
+.tab-contents{
+    border: 0px;
+    background: #304269;
+    padding: 1vh 2vw;
 }
-

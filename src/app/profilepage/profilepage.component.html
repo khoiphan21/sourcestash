@@ -47,35 +47,17 @@
     </div>
 
     <div id="bottom-container">
-        <div id="personal-header">
-            <ul>
-                <li (click)="changeTab('Stashes')">
-                    Stashes
-                </li>
-                <li (click)="changeTab('Favourite')">
-                    Favourite
-                </li>
-                <li (click)="changeTab('Sources')">
-                    <a>Sources</a>
-                </li>
-            </ul>
-        </div>
-        <div id="stashes" *ngIf="currentSection == 'Stashes'">
-            {{currentSection}}
-            <app-stash></app-stash>
-        </div>
-        <div id="Favourite" *ngIf="currentSection == 'Favourite'">
-            {{currentSection}}
-
-            <app-stash></app-stash>
-            <app-stash></app-stash>
-        </div>
-        <div id="Sources" *ngIf="currentSection == 'Sources'">
-            {{currentSection}}
-
-            <app-stash></app-stash>
-            <app-stash></app-stash>
-            <app-stash></app-stash>
-        </div>
+        <ng2-tab selected="stashes" selected-index-class="selected" selected-contents-class="fadeIn animated">
+            <div class="tabs">
+                <div class = "tab" index="stashes">Stashes</div>
+                <div class = "tab" index="favourite">Favourite</div>
+                <div class = "tab" index="sources">Sources</div>
+            </div>
+            <div class="tab-contents">
+                <div contents="stashes"><app-stash></app-stash></div>
+                <div contents="favourite">Favourite</div>
+                <div contents="sources">Sources</div>
+            </div>
+        </ng2-tab>
     </div>
 </div>
