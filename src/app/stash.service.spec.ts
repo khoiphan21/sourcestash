@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Stash } from './classes/stash';
+import { AppResponse } from './classes/response';
 
 describe('StashService', () => {
   beforeEach(() => {
@@ -21,6 +22,38 @@ describe('StashService', () => {
   it('should create a StashService', inject([StashService], (service: StashService) => {
     expect(service).toBeTruthy();
   }));
+
+  /**
+   * Tests for stash creation
+   */
+  it('should create a new stash and successfully delete it', done =>{
+    inject([StashService], (service: StashService) => {
+      let stash: Stash = {
+        stashID: '302221',
+        title: 'Stash #1',
+        description: 'Some Description',
+        authorID: '123456789'
+      };
+      service.createStash(stash).subscribe(
+        (response: AppResponse) => {
+          expect(response.success).toBe(true);
+
+          // Now attempt to delete the stash
+          service.deleteStash(stash).subscribe(
+            response => done(), // successful
+            error => {
+              console.log(error);
+              fail('Error should not occur');
+              done();
+            }
+          )
+        }, error => {
+          fail('Error should not be thrown');
+          done();
+        }
+      )
+    })();
+  })
 
   /**
    * Tests for retrieving stashes
