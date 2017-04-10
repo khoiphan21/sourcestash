@@ -127,7 +127,7 @@ export class AccountService {
       return new AppResponse(true, 'Login successful');
     }).catch( error => {
       console.log(error);
-      alert('login failed');
+      console.log('login failed. error thrown');
       return Observable.throw(error);
     });
 
@@ -165,11 +165,20 @@ export class AccountService {
     return Promise.resolve(JOHN);
   }
 
+  /**
+   * 
+   * 
+   * @param userid - The id of the user whose stashes are to be retrieved
+   */
   getAllStashes(userid: string): Observable<Stash[]> {
 
     return Observable.throw('Error');
   }
 
+  /**
+   * 
+   * @param stashid - The id of the stash to be retrieved
+   */
   getStash(stashid: string): Observable<Stash> {
 
   return Observable.throw('Error');
@@ -207,5 +216,15 @@ export class AccountService {
     ).subscribe(response => {
       console.log(response.status);
     });
+  }
+
+  /**
+   * HELPER METHODS
+   */
+  setupHeaderOptions(options: RequestOptions) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    options = new RequestOptions({headers: headers});
   }
 }

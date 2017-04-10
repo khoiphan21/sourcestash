@@ -26,74 +26,131 @@ describe('AccountService', () => {
   /**
    * Tests for logging in
    */
-  it('should successfully login if the details are correct', inject([AccountService], (service: AccountService) => {
-    service.login('john@example.com', 'password').subscribe(
-      response => {
-        expect(response.success).toBeTruthy();
-      }, error => {
-        fail('error should not happen');
-      }
-    )
-  }));
-  it('should throw an error if password is incorrect', inject([AccountService], (service: AccountService) => {
-    service.login('john@example.com', 'passwordd').subscribe(
-      response => fail('an error should occur'),
-      error => expect(error).toBeTruthy()
-    )
-  }))
-  it('should throw an error if the email does not exist', inject([AccountService], (service: AccountService) => {
-    service.login('someemailthatdoesnotexist@mail.com', 'pass').subscribe(
-      response => fail('error should be thrown'),
-      error => expect(error).toBeTruthy()
-    )
-  }))
+  it('should successfully login if the details are correct', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.login('john@example.com', 'whatever').subscribe(
+        response => {
+          expect(response.success).toBeTruthy();
+          done();
+        }, error => {
+          console.log('failed to log in for testing');
+          fail('login failed');
+          done();
+        }
+      )
+    })();
+  });
+
+  it('should throw an error if password is incorrect', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.login('john@example.com', 'passwordd').subscribe(
+        response => {
+          fail('an error should occur');
+          done();
+        },
+        error => {
+          expect(error).toBeTruthy();
+          done();
+        }
+      )
+    })();
+  });
+  it('should throw an error if the email does not exist', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.login('someemailthatdoesnotexist@mail.com', 'pass').subscribe(
+        response => {
+          fail('error should be thrown')
+          done();
+        },
+        error => {
+          expect(error).toBeTruthy();
+          done();
+        }
+      )
+    })();
+  })
 
 
   /**
    * Tests for account creation
    */
-  it('should throw an error if the email already exists', inject([AccountService], (service: AccountService) => {
-    service.createAccount({
-      email: 'john@example.com',
-      password: 'whatever'
-    }).subscribe(response => {
-      fail('Expected error to occur');
-    }, error => {
-      // Should get an error. 
-    })
-  }));
+  it('should throw an error if the email already exists', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.createAccount({
+        email: 'john@example.com',
+        password: 'whatever'
+      }).subscribe(response => {
+        fail('Expected error to occur');
+        done();
+      }, error => {
+        // Should get an error. 
+        done();
+      })
+    })();
+  });
+  it('should successfully create an account with a new email', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.createAccount({
+        email: 'john@example.com',
+        password: 'password',
+        firstName: 'John',
+        lastName: 'Doe'
+      });
+      done();
+    })();
+  })
 
   /**
    * Tests for checking email
    */
-  it('should return false for an existing email', inject([AccountService], (service: AccountService) => {
-    service.checkEmail('john@example.com').subscribe(
-      (response: AppResponse) => {
-        expect(response.success).toBeFalsy();
-      }, error => {
-        throw error;
-      }
-    );
-  }));
-  it('should return true for an impossible email', inject([AccountService], (service: AccountService) => {
-    service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com').subscribe(
-      (response: AppResponse) => {
-        expect(response.success).toBeTruthy();
-      }, error => {
-        throw error;
-      }
-    )
-  }));
+  it('should return false for an existing email', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.checkEmail('john@example.com').subscribe(
+        (response: AppResponse) => {
+          expect(response.success).toBeFalsy();
+          done();
+        }, error => {
+          fail('Error should not occur.');
+          done();
+        }
+      );
+    })();
+  });
+  it('should return true for an impossible email', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com').subscribe(
+        (response: AppResponse) => {
+          expect(response.success).toBeTruthy();
+          done();
+        }, error => {
+          fail('Error should not occur.');
+          done();
+        }
+      )
+    })();
+  });
 
   /**
    * Tests for retrieving stashes
    */
-  it('should retrive the test stash correctly', inject([AccountService], (service: AccountService) => {
-    let stashID = '200039057';
-    service.getStash(stashID).subscribe(
-      (stash: Stash) => {
-        expect(stash.id).toBe(stashID);
-      }
-    )
-  }));
+  it('should retrieve the test stash correctly', done => {
+    inject([AccountService], (service: AccountService) => {
+      let stashID = '200039057';
+      service.getStash(stashID).subscribe(
+        (stash: Stash) => {
+          expect(stash.id).toBe(stashID);
+        }
+      )
+    })();
+  });
+  it('should retrieve the stashes for a user', done => {
+    inject([AccountService], (service: AccountService) => {
+      let userID = '2296818568';
+      service.getAllStashes(userID).subscribe(
+        (stashes: Stash[]) => {
+          expect(stashes).toBeTruthy();
+        }
+      )
+    })();
+  });
 });

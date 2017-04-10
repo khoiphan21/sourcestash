@@ -24,7 +24,8 @@ export class ProfilepageComponent implements OnInit {
   ngOnInit() {
     this.accountService.getUserInformation('user').then(account => {
       this.userAccount = account;
-    })
+    });
+
   }
 
 }
