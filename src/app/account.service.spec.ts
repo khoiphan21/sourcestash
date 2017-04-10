@@ -33,7 +33,6 @@ describe('AccountService', () => {
           expect(response.success).toBeTruthy();
           done();
         }, error => {
-          console.log('failed to log in for testing');
           fail('login failed');
           done();
         }
@@ -91,11 +90,28 @@ describe('AccountService', () => {
   it('should successfully create an account with a new email', done => {
     inject([AccountService], (service: AccountService) => {
       service.createAccount({
-        email: 'john@example.com',
+        email: 'john5@example.com',
         password: 'password',
         firstName: 'John',
-        lastName: 'Doe'
-      });
+        lastName: 'Doe4'
+      }).subscribe(
+        response => {
+          service.deleteAccount('john5@example.com').subscribe(
+            response => done(),
+            erorr => {
+              fail('should not have an error');
+              done();
+            }
+          );
+        }, error => {
+          service.deleteAccount('john5@example.com').subscribe(
+            response => console.log(response),
+            error => console.log(error)
+          );
+          fail('error should not occur');
+          done();
+        }
+      );
       done();
     })();
   })
@@ -130,27 +146,4 @@ describe('AccountService', () => {
     })();
   });
 
-  /**
-   * Tests for retrieving stashes
-   */
-  it('should retrieve the test stash correctly', done => {
-    inject([AccountService], (service: AccountService) => {
-      let stashID = '200039057';
-      service.getStash(stashID).subscribe(
-        (stash: Stash) => {
-          expect(stash.id).toBe(stashID);
-        }
-      )
-    })();
-  });
-  it('should retrieve the stashes for a user', done => {
-    inject([AccountService], (service: AccountService) => {
-      let userID = '2296818568';
-      service.getAllStashes(userID).subscribe(
-        (stashes: Stash[]) => {
-          expect(stashes).toBeTruthy();
-        }
-      )
-    })();
-  });
 });

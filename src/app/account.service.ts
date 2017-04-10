@@ -67,6 +67,21 @@ export class AccountService {
   }
 
   /**
+   * Delete a user from the database
+   * 
+   * @param email - the email of the user to be deleted
+   */
+  deleteAccount(email: string) {
+    let options: RequestOptions;
+    this.setupHeaderOptions(options);
+
+    return this.http.post(
+      SERVER + '/delete/user/' + email,
+      options
+    );
+  }
+
+  /**
    * Check the email address given to make sure it's not a registered email
    * 
    * @param email the email address to be checked
@@ -120,12 +135,12 @@ export class AccountService {
       options
     ).map(response => {
       alert('Login Successful!');
-      
+
       // Set the flag that tells the app the user has been logged in
       this.isLoggedIn = true;
-      
+
       return new AppResponse(true, 'Login successful');
-    }).catch( error => {
+    }).catch(error => {
       console.log(error);
       console.log('login failed. error thrown');
       return Observable.throw(error);
@@ -165,25 +180,7 @@ export class AccountService {
     return Promise.resolve(JOHN);
   }
 
-  /**
-   * 
-   * 
-   * @param userid - The id of the user whose stashes are to be retrieved
-   */
-  getAllStashes(userid: string): Observable<Stash[]> {
-
-    return Observable.throw('Error');
-  }
-
-  /**
-   * 
-   * @param stashid - The id of the stash to be retrieved
-   */
-  getStash(stashid: string): Observable<Stash> {
-
-  return Observable.throw('Error');
-
-  }
+  
 
   /**
    * Send request to server to edit the user's information, 
@@ -225,6 +222,6 @@ export class AccountService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
-    options = new RequestOptions({headers: headers});
+    options = new RequestOptions({ headers: headers });
   }
 }

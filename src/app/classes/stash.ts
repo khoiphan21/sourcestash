@@ -1,7 +1,7 @@
 export class Stash {
     title: string;
     description: string;
-    id?: string;
+    stashID?: string;
 
     constructor(title: string, description: string) {
         this.title = title;
