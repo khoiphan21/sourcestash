@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppResponse } from './classes/response';
+import { Stash } from './classes/stash';
 
 describe('AccountService', () => {
   beforeEach(() => {
@@ -80,6 +81,18 @@ describe('AccountService', () => {
         expect(response.success).toBeTruthy();
       }, error => {
         throw error;
+      }
+    )
+  }));
+
+  /**
+   * Tests for retrieving stashes
+   */
+  it('should retrive the test stash correctly', inject([AccountService], (service: AccountService) => {
+    let stashID = '200039057';
+    service.getStash(stashID).subscribe(
+      (stash: Stash) => {
+        expect(stash.id).toBe(stashID);
       }
     )
   }));

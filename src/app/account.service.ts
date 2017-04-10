@@ -7,6 +7,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Account } from './classes/account';
 import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
+import { Stash } from './classes/stash';
 
 /**
   * SERVER DEVELOPMENT LINKS
@@ -164,6 +165,17 @@ export class AccountService {
     return Promise.resolve(JOHN);
   }
 
+  getAllStashes(userid: string): Observable<Stash[]> {
+
+    return Observable.throw('Error');
+  }
+
+  getStash(stashid: string): Observable<Stash> {
+
+  return Observable.throw('Error');
+
+  }
+
   /**
    * Send request to server to edit the user's information, 
    * based on the given account details, and return server's response
@@ -195,24 +207,5 @@ export class AccountService {
     ).subscribe(response => {
       console.log(response.status);
     });
-  }
-
-  testGetUserInfo(id: string): Promise<Account> {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers });
-
-    this.http.get(
-      SERVER + '/user',
-      options
-    ).subscribe(response => {
-      return Promise.resolve(response);
-    }, error => {
-      console.log(error);
-    })
-
-
-    return Promise.resolve(null);
   }
 }
