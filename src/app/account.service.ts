@@ -31,7 +31,7 @@ export class AccountService {
   private currentUser: Account;
 
   /**
-   * First check in localstorage to see if there is user information stored 
+   * TODO: First check in localstorage to see if there is user information stored 
    * If so, retrieve it and log the user in
    */
   constructor(
@@ -138,6 +138,10 @@ export class AccountService {
 
       // Set the flag that tells the app the user has been logged in
       this.isLoggedIn = true;
+      this.currentUser = {
+        email: email,
+        password: password
+      };
 
       return new AppResponse(true, 'Login successful');
     }).catch(error => {
@@ -162,16 +166,19 @@ export class AccountService {
    * auto-logged in the next time they visit the site.
    */
   logout() {
-
+    if (this.isLoggedIn) {
+      this.isLoggedIn = false;
+      this.currentUser = null;
+    } 
   }
 
   /**
    * 
-   * @param id - the id of the user, should be calculated from the email
+   * @param email - the email of the user
    * @return a promise of the acocunt. The promise is rejected if the id doesn
    *         not exist
    */
-  getUserInformation(id: string): Promise<Account> {
+  getUserInformation(email: string): Promise<Account> {
     /*
      * If id doesn't exist, will call Promise.reject('message')
      */
