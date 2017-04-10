@@ -12,6 +12,7 @@
         </div>
         <div id="bot-container">
             <div id="login-form">
+                <form action="">
                 E-MAIL <input type="email" class="right" [(ngModel)]="account.email" />
                 <hr>
                 <p>
@@ -23,11 +24,10 @@
                                 By clicking on "Sign Up" you are agreeing on the Terms of Services
                             </div>
                             <a routerLink="/home">
-                                <div id="button">
-                                    Signup
-                                </div>
+                                    <input id = "button" type = "submit" value="Signup">
                             </a>
                         </div>
+                </form>
             </div>
         </div>
     </div>

@@ -14,6 +14,7 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
 import { LoginComponent } from './login/login.component';
+import { Ng2TabComponent } from 'ng2-tab'
 
 @NgModule({
   declarations: [
