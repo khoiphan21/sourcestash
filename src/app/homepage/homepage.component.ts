@@ -22,6 +22,12 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.stashes = ANGULAR2;
+    
+  }
+
+  onSignIn(user) {
+    let profile = user.getBasicProfile();
+    console.log('User profile is: ' + profile.getId());
   }
 
 }

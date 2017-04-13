@@ -13,8 +13,11 @@ import { Stash } from './classes/stash';
   * SERVER DEVELOPMENT LINKS
   */
 const DEVELOPMENT_SERVER: string = 'http://localhost:8080';
+const BETA_SERVER: string = 'https://application-server-dot-source-stash-beta.appspot.com';
 const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
 const SERVER: string = DEVELOPMENT_SERVER;
+
+declare var gapi: any;
 
 
 @Injectable()
@@ -39,6 +42,22 @@ export class AccountService {
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
+
+    gapi.load('auth2', function () {
+      let auth2 = gapi.auth2.init({
+        client_id: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        fetch_basic_profile: false,
+        scope: 'profile'
+      });
+
+      console.log(auth2);
+
+      // Sign the user in, and then retrieve their ID.
+      auth2.signIn().then(function () {
+        console.log(auth2.currentUser.get().getId());
+      });
+    });
+
   }
 
   /**
@@ -54,7 +73,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      SERVER + '/signup',
+      DEVELOPMENT_SERVER + '/signup',
       { account: accountDetails },
       options
     ).map(response => {
@@ -76,7 +95,7 @@ export class AccountService {
     this.setupHeaderOptions(options);
 
     return this.http.post(
-      SERVER + '/delete/user/' + email,
+      DEVELOPMENT_SERVER + '/delete/user/' + email,
       options
     );
   }
@@ -93,7 +112,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      SERVER + '/check-email',
+      DEVELOPMENT_SERVER + '/check-email',
       {
         email: email
       },
@@ -127,7 +146,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      SERVER + '/login',
+      DEVELOPMENT_SERVER + '/login',
       {
         email: email,
         password: password
@@ -169,7 +188,7 @@ export class AccountService {
     if (this.isLoggedIn) {
       this.isLoggedIn = false;
       this.currentUser = null;
-    } 
+    }
   }
 
   /**
@@ -187,7 +206,7 @@ export class AccountService {
     return Promise.resolve(JOHN);
   }
 
-  
+
 
   /**
    * Send request to server to edit the user's information, 
@@ -211,7 +230,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     this.http.post(
-      SERVER + '/login',
+      DEVELOPMENT_SERVER + '/login',
       {
         email: email,
         password: password

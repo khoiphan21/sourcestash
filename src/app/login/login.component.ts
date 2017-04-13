@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
       // The user is logged in. Navigate to "home"
       this.router.navigate(['/home']);
     }
-
   }
 
   login() {
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
    * Sign up for an account. 
    */
   signup() {
-    
+
   }
 
 }

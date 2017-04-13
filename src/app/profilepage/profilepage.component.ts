@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
 import { Account } from '../classes/account';
+import { Ng2TabModule } from 'ng2-tab';
+
 
 @Component({
   selector: 'app-profilepage',
@@ -18,6 +20,7 @@ export class ProfilepageComponent implements OnInit {
       this.userAccount = account;
     });
 
+    
   }
 
 }
