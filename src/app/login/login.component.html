@@ -3,32 +3,31 @@
 </div>
 
 <div id="main-contianer">
-    <div id="mid-container">
-        <div id="navigation-bar">
-            <ul>
-                <li><a (click)="login()">Log In</a></li>
-                <li><a (click)="signup()">Sign Up</a></li>
-            </ul>
-        </div>
-        <div id="bot-container">
-            <div id="login-form">
-                <form action="">
-                E-MAIL <input type="email" class="right" [(ngModel)]="account.email" />
+    <div id="navigation-bar">
+        <ul>
+            <li><a (click)="login()">LOG IN</a></li>
+            <li><a (click)="signup()">SIGN UP</a></li>
+        </ul>
+        <hr class="navbar">
+    </div>
+    <div id="bot-container">
+        <div id="login-form">
+            <form action="" method= "get">
+                E-MAIL<input id ="borderless" type="email" [(ngModel)]="account.email" />
+                <p>
                 <hr>
                 <p>
-                    PASSWORD <input type="password" class="right" [(ngModel)]="account.password" />
+                    PASSWORD<input id ="borderless" type="password" [(ngModel)]="account.password" />
+                    <p>
                     <hr>
                     <p>
                         <div id="bot-form">
-                            <div id="smaller">
-                                By clicking on "Sign Up" you are agreeing on the Terms of Services
+                            <div id="tickbox">
+                                <input type="checkbox" value="remember"> Remember me
                             </div>
-                            <a routerLink="/home">
-                                    <input id = "button" type = "submit" value="Signup">
-                            </a>
+                            <input id="button" type="submit" value="log in" (click)="login()">
                         </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
 </div>
