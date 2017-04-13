@@ -8,15 +8,19 @@
     height: 90vh;
     text-align: center;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 #stash{
     padding: 1vh 1vw;
-    background: #f26101;
+    width: 15vh;
+    height: 15vh;
     display: flex;
     align-items: center;
+    background: #f26101;
     justify-content: center;
+    // background-image: url("assest/images/hexagon.png");
 }
 
 #right-container{
