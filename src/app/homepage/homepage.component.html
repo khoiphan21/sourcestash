@@ -1,10 +1,23 @@
 <app-header></app-header>
 
-<div id ="main-container">
-  <h1> Top Ranking Stashes</h1>
-  <div id="stashes">
-    <div id="inner-stashes" *ngFor="let stash of stashes">
-      <app-stash [stash]="stash"></app-stash>
+<div id="main-container">
+    <h1> Top Ranking Stashes</h1>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+
+    <div id="stashes">
+        <div id="inner-stashes" *ngFor="let stash of stashes">
+            <app-stash [stash]="stash"></app-stash>
+        </div>
     </div>
-  </div>
 </div>

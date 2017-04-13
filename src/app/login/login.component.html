@@ -13,20 +13,20 @@
         <div id="bot-container">
             <div id="login-form">
                 <form action="">
-                E-MAIL <input type="email" class="right" [(ngModel)]="account.email" />
-                <hr>
-                <p>
-                    PASSWORD <input type="password" class="right" [(ngModel)]="account.password" />
+                    E-MAIL <input type="email" name="email" class="right" [(ngModel)]="account.email" />
                     <hr>
                     <p>
-                        <div id="bot-form">
-                            <div id="smaller">
-                                By clicking on "Sign Up" you are agreeing on the Terms of Services
+                        PASSWORD <input type="password" name="password" class="right" [(ngModel)]="account.password" />
+                        <hr>
+                        <p>
+                            <div id="bot-form">
+                                <div id="smaller">
+                                    By clicking on "Sign Up" you are agreeing on the Terms of Services
+                                </div>
+                                <a routerLink="/home">
+                                    <input id="button" type="submit" value="Signup">
+                                </a>
                             </div>
-                            <a routerLink="/home">
-                                    <input id = "button" type = "submit" value="Signup">
-                            </a>
-                        </div>
                 </form>
             </div>
         </div>
