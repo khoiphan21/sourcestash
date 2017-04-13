@@ -13,6 +13,7 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
 import { LoginComponent } from './login/login.component';
+import { StashpageComponent } from './stashpage/stashpage.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     StashComponent,
     SourcesComponent,
     ProfilepageComponent,
-    LoginComponent
+    LoginComponent,
+    StashpageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+#main-container{
+    width: 100vw;
+    display: flex;
+}
+
+#left-container{
+    width: 75vw;
+    height: 90vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#stash{
+    padding: 1vh 1vw;
+    background: #f26101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#right-container{
+    background: #304269;
+    color: #91BED4;
+    width: 25vw;
+    height: 90vh;
+    ul{
+        font-size: 16pt;
+        margin: 0px;
+        list-style-type: none;
+        display: flex;
+        border: 1px solid black;
+    }
+    li {
+        padding: 1vh 0;
+        width: 100vw;
+    }   
+}
