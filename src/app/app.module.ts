@@ -13,6 +13,7 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
 import { LoginComponent } from './login/login.component';
+import { SourceService } from './source.service';
 import { StashpageComponent } from './stashpage/stashpage.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -38,7 +39,8 @@ import { TabsComponent } from './tabs/tabs.component';
   ],
   providers: [
     AccountService,
-    StashService
+    StashService,
+    SourceService
   ],
   bootstrap: [AppComponent]
 })

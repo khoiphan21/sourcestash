@@ -17,8 +17,6 @@ const BETA_SERVER: string = 'https://application-server-dot-source-stash-beta.ap
 const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
 const SERVER: string = DEVELOPMENT_SERVER;
 
-declare var gapi: any;
-
 
 @Injectable()
 /**
@@ -42,21 +40,6 @@ export class AccountService {
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
-
-    gapi.load('auth2', function () {
-      let auth2 = gapi.auth2.init({
-        client_id: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
-        fetch_basic_profile: false,
-        scope: 'profile'
-      });
-
-      console.log(auth2);
-
-      // Sign the user in, and then retrieve their ID.
-      auth2.signIn().then(function () {
-        console.log(auth2.currentUser.get().getId());
-      });
-    });
 
   }
 
