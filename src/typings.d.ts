@@ -6,3 +6,5 @@ interface NodeModule {
 
 export var gapi: any;
 export var auth2: any;
+
+declare module 'Particles';

@@ -14,18 +14,7 @@ import { TabsComponent } from '../tabs/tabs.component';
 export class ProfilepageComponent implements OnInit {
   userAccount: Account;
   tabs: TabComponent[] = [];
-
-  // tabs: Tab[] = [
-  //   {
-  //     tabTitle: 'Tab 1',
-  //     selected: true
-  //   },
-  //   {
-  //     tabTitle: 'Tab 2',
-  //     selected: false
-  //   }
-  // ]
-
+  
   constructor(private accountService: AccountService) {
   }
 
