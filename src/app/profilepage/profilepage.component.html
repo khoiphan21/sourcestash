@@ -47,17 +47,16 @@
     </div>
 
     <div id="bottom-container">
-        <!--<ng2-tab selected="stashes" selected-index-class="selected" selected-contents-class="fadeIn animated">
-            <div class="tabs">
-                <div class = "tab" index="stashes">Stashes</div>
-                <div class = "tab" index="favourite">Favourite</div>
-                <div class = "tab" index="sources">Sources</div>
-            </div>
-            <div class="tab-contents">
-                <div contents="stashes"><app-stash></app-stash></div>
-                <div contents="favourite">Favourite</div>
-                <div contents="sources">Sources</div>
-            </div>
-        </ng2-tab>-->
+        <my-tabs [tabs]="tabs">
+            <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Title 1'">
+                Content 1
+            </my-tab>
+            <my-tab [tabsArray]="tabs"tabTitle="Title 2">
+                Content 2
+            </my-tab>
+            <my-tab [tabsArray]="tabs" [tabTitle]="'Title 3'">
+                Content 3
+            </my-tab>
+        </my-tabs>
     </div>
 </div>
