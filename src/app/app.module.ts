@@ -15,6 +15,8 @@ import { StashService } from './stash.service';
 import { LoginComponent } from './login/login.component';
 import { SourceService } from './source.service';
 import { StashpageComponent } from './stashpage/stashpage.component';
+import { TabComponent } from './tab/tab.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { StashpageComponent } from './stashpage/stashpage.component';
     SourcesComponent,
     ProfilepageComponent,
     LoginComponent,
-    StashpageComponent
+    StashpageComponent,
+    TabComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
