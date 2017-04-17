@@ -1,9 +1,9 @@
-#main-container{
+#main-container {
     width: 100vw;
     display: flex;
 }
 
-#left-container{
+#left-container {
     width: 75vw;
     height: 90vh;
     text-align: center;
@@ -12,23 +12,23 @@
     justify-content: center;
 }
 
-#stash{
+#stash {
     padding: 1vh 1vw;
     width: 15vh;
     height: 15vh;
     display: flex;
     align-items: center;
-    background: #f26101;
     justify-content: center;
-    // background-image: url("assest/images/hexagon.png");
+    background-image: url("/assets/images/hexagon.png");
+    background-size: cover;
 }
 
-#right-container{
+#right-container {
     background: #304269;
     color: #91BED4;
     width: 25vw;
     height: 90vh;
-    ul{
+    ul {
         font-size: 16pt;
         margin: 0px;
         list-style-type: none;
@@ -38,5 +38,5 @@
     li {
         padding: 1vh 0;
         width: 100vw;
-    }   
+    }
 }
