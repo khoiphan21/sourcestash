@@ -33,6 +33,8 @@ export class AccountService {
   private currentUser: Account;
   // Google Javascript Client Library
   private gapi: any;
+  // Google OAuth2 Client
+  private GoogleAuth: any;
 
   /**
    * TODO: First check in localstorage to see if there is user information stored 
@@ -53,10 +55,18 @@ export class AccountService {
         apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
         discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
         clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/userinfo.email'
+        scope: 'https://www.googleapis.com/auth/plus.me'
       }).then(() => {
+        // Get the Oauth2 Client
+        this.GoogleAuth = this.gapi.auth2.getAuthInstance();
+        console.log('GoogleAuth is: ');
+        console.log(this.GoogleAuth);
+
         // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        this.GoogleAuth.isSignedIn.listen(updateSigninStatus);
+
+        // Call the Authorization server
+        this.GoogleAuth.signIn();
 
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
@@ -71,18 +81,20 @@ export class AccountService {
       function handleSignInClick(event) {
         // Ideally the button should only show up after gapi.client.init finishes, so that this
         // handler won't be called before OAuth is initialized.
-        gapi.auth2.getAuthInstance().signIn();
+        this.gapi.auth2.getAuthInstance().signIn();
       }
 
       function handleSignOutClick(event) {
-        gapi.auth2.getAuthInstance().signOut();
+        this.gapi.auth2.getAuthInstance().signOut();
       }
 
       function makeApiCall() {
+        console.log(gapi);
         // Make an API call to the People API, and print the user's given name.
         gapi.client.people.people.get({
-          resourceName: 'people/me'
+          userId: 'me'
         }).then(function (response) {
+          console.log('response from google+: \n' + response);
           console.log('Hello, ' + response.result.names[0].givenName);
         }, function (reason) {
           console.log('Error: ' + reason.result.error.message);
