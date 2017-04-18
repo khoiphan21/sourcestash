@@ -6,9 +6,11 @@ import { HomepageComponent } from '../homepage/homepage.component';
 import { ProfilepageComponent } from '../profilepage/profilepage.component';
 import { LoginComponent } from '../login/login.component';
 import { StashpageComponent } from '../stashpage/stashpage.component';
+import { WelcomepageComponent } from '../welcomepage/welcomepage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomepageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomepageComponent },
   { path: 'stashpage', component: StashpageComponent},
