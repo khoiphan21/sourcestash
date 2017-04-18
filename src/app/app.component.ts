@@ -14,12 +14,11 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   ngOnInit() {
-    console.log(Particles);
     Particles.init({
       selector: '.background',
-      maxParticles: 100,
+      maxParticles: 150,
       connectParticles: true,
-      color: '#ffffff',
+      color: '#304269',
       sizeVariations: 2
     });
   }
