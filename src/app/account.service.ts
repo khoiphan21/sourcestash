@@ -8,7 +8,11 @@ import { Account } from './classes/account';
 import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 import { Stash } from './classes/stash';
-import * as gapiFunction from 'google-client-api';
+// import * as gapiFunction from 'google-client-api';
+
+declare var gapi: any;
+
+var eTag = '%Eh0BEBoFBxcZCRUIFCIlHC4CCg0MCwMTEhEPDgQYBiIMTTd2NWRHUGtyVk09';
 
 /**
   * SERVER DEVELOPMENT LINKS
@@ -17,7 +21,6 @@ const DEVELOPMENT_SERVER: string = 'http://localhost:8080';
 const BETA_SERVER: string = 'https://application-server-dot-source-stash-beta.appspot.com';
 const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
 const SERVER: string = DEVELOPMENT_SERVER;
-
 
 @Injectable()
 /**
@@ -45,11 +48,21 @@ export class AccountService {
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
+    
+    // // Check the scripJS variable
+    // console.log(scriptJS);
+    // // Load google API
+    // scriptJS(['https://apis.google.com/js/api.js'], 'bundle');
+    // scriptJS.ready('bundle', () => {
+    // })
+
+    // Try using google api
+    console.log(gapi);
+    gapi.load('client', start);
 
     // Initiate the google api client library
-    gapiFunction().then(gapi => {
-      this.gapi = gapi;
-      this.gapi.client.init({
+    function start () {
+      gapi.client.init({
         // Initialize the client with API key and People API, and initialize OAuth with an
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
         apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
@@ -58,15 +71,15 @@ export class AccountService {
         scope: 'https://www.googleapis.com/auth/plus.me'
       }).then(() => {
         // Get the Oauth2 Client
-        this.GoogleAuth = this.gapi.auth2.getAuthInstance();
+        var GoogleAuth = gapi.auth2.getAuthInstance();
         console.log('GoogleAuth is: ');
-        console.log(this.GoogleAuth);
+        console.log(GoogleAuth);
 
         // Listen for sign-in state changes.
-        this.GoogleAuth.isSignedIn.listen(updateSigninStatus);
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
         // Call the Authorization server
-        this.GoogleAuth.signIn();
+        GoogleAuth.signIn();
 
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
@@ -92,15 +105,17 @@ export class AccountService {
         console.log(gapi);
         // Make an API call to the People API, and print the user's given name.
         gapi.client.people.people.get({
-          userId: 'me'
+          resourceName: 'people/me'
         }).then(function (response) {
-          console.log('response from google+: \n' + response);
+          console.log('response from google+: \n');
+          console.log(response);
+          console.log('is eTag the same: ' + (eTag == response.result.etag));
           console.log('Hello, ' + response.result.names[0].givenName);
         }, function (reason) {
           console.log('Error: ' + reason.result.error.message);
         });
       }
-    });
+    };
 
   }
 
