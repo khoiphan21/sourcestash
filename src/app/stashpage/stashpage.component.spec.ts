@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StashpageComponent } from './stashpage.component';
+import { HeaderComponent } from '../header/header.component';
 
 describe('StashpageComponent', () => {
   let component: StashpageComponent;
@@ -8,7 +9,10 @@ describe('StashpageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StashpageComponent ]
+      declarations: [
+        StashpageComponent,
+        HeaderComponent
+      ]
     })
     .compileComponents();
   }));

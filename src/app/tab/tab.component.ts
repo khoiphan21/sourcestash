@@ -21,7 +21,7 @@ export class TabComponent implements OnInit {
   @Output()
   addTabToParent = new EventEmitter();
 
-  constructor(private tabsComponent: TabsComponent) {}
+  constructor() {}
   
   ngOnInit() {
     // this.tabsComponent.addTab(this.tab);

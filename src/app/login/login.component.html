@@ -12,20 +12,20 @@
     </div>
     <div id="bot-container">
         <div id="login-form">
-            <form action="" method= "get">
-                E-MAIL<input id ="borderless" type="email" [(ngModel)]="account.email" />
+            <form action="" method="get">
+                E-MAIL<input id="borderless" name="email" type="email" [(ngModel)]="account.email" />
                 <p>
-                <hr>
-                <p>
-                    PASSWORD<input id ="borderless" type="password" [(ngModel)]="account.password" />
-                    <p>
                     <hr>
                     <p>
-                        <div id="bot-form">
-                            <div id="tickbox">
-                                <input type="checkbox" value="remember"> Remember me
-                            </div>
-                            <input id="button" type="submit" value="log in" (click)="login()">
-                        </div>
+                        PASSWORD<input id="borderless" name="password" type="password" [(ngModel)]="account.password" />
+                        <p>
+                            <hr>
+                            <p>
+                                <div id="bot-form">
+                                    <div id="tickbox">
+                                        <input type="checkbox" value="remember"> Remember me
+                                    </div>
+                                    <input id="button" type="submit" value="log in" (click)="login()">
+                                </div>
             </form>
-</div>
+        </div>

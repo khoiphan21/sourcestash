@@ -9,6 +9,8 @@ import { StashService } from '../stash.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2TabComponent } from 'ng2-tab';
+import { TabsComponent } from '../tabs/tabs.component';
+import { TabComponent } from '../tab/tab.component';
 
 describe('ProfilepageComponent', () => {
   let component: ProfilepageComponent;
@@ -21,7 +23,8 @@ describe('ProfilepageComponent', () => {
         HeaderComponent,
         StashComponent,
         SourcesComponent,
-        Ng2TabComponent
+        TabsComponent,
+        TabComponent
       ],
       providers: [
         AccountService,
