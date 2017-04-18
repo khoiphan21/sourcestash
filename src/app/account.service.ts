@@ -8,6 +8,7 @@ import { Account } from './classes/account';
 import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 import { Stash } from './classes/stash';
+import * as gapiFunction from 'google-client-api';
 
 /**
   * SERVER DEVELOPMENT LINKS
@@ -30,6 +31,8 @@ export class AccountService {
   private isLoggedIn: boolean;
   // Current user
   private currentUser: Account;
+  // Google Javascript Client Library
+  private gapi: any;
 
   /**
    * TODO: First check in localstorage to see if there is user information stored 
@@ -41,7 +44,54 @@ export class AccountService {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
 
+    // Initiate the google api client library
+    gapiFunction().then(gapi => {
+      this.gapi = gapi;
+      this.gapi.client.init({
+        // Initialize the client with API key and People API, and initialize OAuth with an
+        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
+        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+        discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/userinfo.email'
+      }).then(() => {
+        // Listen for sign-in state changes.
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+        // Handle the initial sign-in state.
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+      })
+      function updateSigninStatus(isSignedIn) {
+        // When signin status changes, this function is called.
+        // If the signin status is changed to signedIn, we make an API call.
+        if (isSignedIn) {
+          makeApiCall();
+        }
+      }
+      function handleSignInClick(event) {
+        // Ideally the button should only show up after gapi.client.init finishes, so that this
+        // handler won't be called before OAuth is initialized.
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      function handleSignOutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      function makeApiCall() {
+        // Make an API call to the People API, and print the user's given name.
+        gapi.client.people.people.get({
+          resourceName: 'people/me'
+        }).then(function (response) {
+          console.log('Hello, ' + response.result.names[0].givenName);
+        }, function (reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      }
+    });
+
   }
+
 
   /**
    * Create an account based on the given parameters.
@@ -151,7 +201,29 @@ export class AccountService {
       console.log('login failed. error thrown');
       return Observable.throw(error);
     });
+  }
 
+  loginWithGoogle() {
+    console.log('Logging in with Google');
+    let options: RequestOptions;
+    this.setupHeaderOptions(options);
+
+    let URL = DEVELOPMENT_SERVER + '/login/google';
+    console.log(URL);
+
+    return this.http.post(
+      URL,
+      {
+        code: 'ABCDEF'
+      },
+      options
+    ).map(response => {
+      console.log('request sent');
+      console.log('response is: \n' + response);
+    }).catch(error => {
+      console.log('error received: \n' + error);
+      return Observable.throw(error);
+    });
   }
 
   /**
@@ -206,21 +278,15 @@ export class AccountService {
   /**
    * METHODS FOR TESTING
    */
-  testLogin(email: string, password: string) {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers });
+  test() {
+    let options: RequestOptions;
+    this.setupHeaderOptions(options);
 
-    this.http.post(
-      DEVELOPMENT_SERVER + '/login',
-      {
-        email: email,
-        password: password
-      },
+    this.http.get(
+      DEVELOPMENT_SERVER + '/',
       options
     ).subscribe(response => {
-      console.log(response.status);
+      console.log(response.toString());
     });
   }
 

@@ -41,6 +41,13 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  loginGoogle() {
+    this.service.loginWithGoogle().subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+  }
+
   /**
    * Sign up for an account. 
    */
