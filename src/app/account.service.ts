@@ -56,66 +56,6 @@ export class AccountService {
     // scriptJS.ready('bundle', () => {
     // })
 
-    // Try using google api
-    console.log(gapi);
-    gapi.load('client', start);
-
-    // Initiate the google api client library
-    function start () {
-      gapi.client.init({
-        // Initialize the client with API key and People API, and initialize OAuth with an
-        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
-        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
-        discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
-        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/plus.me'
-      }).then(() => {
-        // Get the Oauth2 Client
-        var GoogleAuth = gapi.auth2.getAuthInstance();
-        console.log('GoogleAuth is: ');
-        console.log(GoogleAuth);
-
-        // Listen for sign-in state changes.
-        GoogleAuth.isSignedIn.listen(updateSigninStatus);
-
-        // Call the Authorization server
-        GoogleAuth.signIn();
-
-        // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      })
-      function updateSigninStatus(isSignedIn) {
-        // When signin status changes, this function is called.
-        // If the signin status is changed to signedIn, we make an API call.
-        if (isSignedIn) {
-          makeApiCall();
-        }
-      }
-      function handleSignInClick(event) {
-        // Ideally the button should only show up after gapi.client.init finishes, so that this
-        // handler won't be called before OAuth is initialized.
-        this.gapi.auth2.getAuthInstance().signIn();
-      }
-
-      function handleSignOutClick(event) {
-        this.gapi.auth2.getAuthInstance().signOut();
-      }
-
-      function makeApiCall() {
-        console.log(gapi);
-        // Make an API call to the People API, and print the user's given name.
-        gapi.client.people.people.get({
-          resourceName: 'people/me'
-        }).then(function (response) {
-          console.log('response from google+: \n');
-          console.log(response);
-          console.log('is eTag the same: ' + (eTag == response.result.etag));
-          console.log('Hello, ' + response.result.names[0].givenName);
-        }, function (reason) {
-          console.log('Error: ' + reason.result.error.message);
-        });
-      }
-    };
 
   }
 
@@ -231,6 +171,70 @@ export class AccountService {
   }
 
   loginWithGoogle() {
+
+    // Try using google api
+    console.log(gapi);
+    gapi.load('client', start);
+
+    // Initiate the google api client library
+    function start () {
+      gapi.client.init({
+        // Initialize the client with API key and People API, and initialize OAuth with an
+        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
+        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+        discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/plus.me'
+      }).then(() => {
+        // Get the Oauth2 Client
+        var GoogleAuth = gapi.auth2.getAuthInstance();
+        console.log('GoogleAuth is: ');
+        console.log(GoogleAuth);
+
+        // Listen for sign-in state changes.
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
+
+        // Call the Authorization server
+        GoogleAuth.signIn();
+
+        // Handle the initial sign-in state.
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+      })
+      function updateSigninStatus(isSignedIn) {
+        // When signin status changes, this function is called.
+        // If the signin status is changed to signedIn, we make an API call.
+        if (isSignedIn) {
+          makeApiCall();
+        }
+      }
+      function handleSignInClick(event) {
+        // Ideally the button should only show up after gapi.client.init finishes, so that this
+        // handler won't be called before OAuth is initialized.
+        this.gapi.auth2.getAuthInstance().signIn();
+      }
+
+      function handleSignOutClick(event) {
+        this.gapi.auth2.getAuthInstance().signOut();
+      }
+
+      function makeApiCall() {
+        console.log(gapi);
+        // Make an API call to the People API, and print the user's given name.
+        gapi.client.people.people.get({
+          resourceName: 'people/me'
+        }).then(function (response) {
+          console.log('response from google+: \n');
+          console.log(response);
+          console.log('is eTag the same: ' + (eTag == response.result.etag));
+          console.log('Hello, ' + response.result.names[0].givenName);
+        }, function (reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      }
+    };
+
+
+
     console.log('Logging in with Google');
     let options: RequestOptions;
     this.setupHeaderOptions(options);
