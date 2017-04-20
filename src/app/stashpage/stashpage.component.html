@@ -1,16 +1,22 @@
 <app-header></app-header>
 
 <div id="main-container">
-  <div id="left-container">
-    <div id="stash">
-      Angular 2
+    <div id="left-container">
+        <article *ngFor="let source of sources; let last = last" [id]="source.id" class="source">
+            <span>{{source.title}}</span>
+        </article>
+        <!--<div id="stash" class="source">
+            Angular 2
+        </div>
+        <div id="stash" class="source source-source">
+            Angular 2
+        </div>-->
     </div>
-  </div>
-  <div id="right-container">
-    <ul>
-      <li>
-        Simple Mockup
-      </li>
-    </ul>
-  </div>
+    <div id="right-container">
+        <ul>
+            <li>
+                Simple Mockup
+            </li>
+        </ul>
+    </div>
 </div>

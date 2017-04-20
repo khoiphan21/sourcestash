@@ -2,6 +2,7 @@ import { BackgroundInfo } from './backgroundInfo';
 import { Stash } from './stash';
 
 export class Account {
+    id?: string;
     email: string;
     password: string;
     firstName?: string;

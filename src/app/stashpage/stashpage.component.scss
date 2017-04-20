@@ -12,15 +12,18 @@
     justify-content: center;
 }
 
-#stash {
-    padding: 1vh 1vw;
-    width: 15vh;
-    height: 15vh;
-    display: flex;
+.source {
+    $width: 17vh;
+    $height: 15vh;
+    // padding: 1vh 1vw;
+    width: $width;
+    height: $height;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     background-image: url("/assets/images/hexagon.png");
-    background-size: cover;
+    background-size: $width $height;
+    background-repeat: no-repeat;
 }
 
 #right-container {
