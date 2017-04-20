@@ -1,11 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { GoogleApiService } from './google-api.service';
+import { Http, HttpModule } from '@angular/http';
 
 describe('GoogleApiService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GoogleApiService]
+      providers: [
+        GoogleApiService
+      ],
+      imports: [
+        HttpModule
+      ]
     });
   });
 

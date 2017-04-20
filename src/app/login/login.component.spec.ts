@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { HttpModule } from '@angular/http';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { GoogleApiService } from '../google-api.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,6 +22,7 @@ describe('LoginComponent', () => {
       ],
       providers: [
         AccountService,
+        GoogleApiService,
         { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }
       ]
     })

@@ -8,6 +8,7 @@ import { StashService } from '../stash.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccountService } from '../account.service';
+import { GoogleApiService } from '../google-api.service';
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
@@ -23,7 +24,8 @@ describe('HomepageComponent', () => {
       ],
       providers: [
         StashService,
-        AccountService
+        AccountService,
+        GoogleApiService
       ],
       imports: [
         HttpModule,

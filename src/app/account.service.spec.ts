@@ -6,13 +6,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppResponse } from './classes/response';
 import { Stash } from './classes/stash';
+import { GoogleApiService } from './google-api.service';
 
 
 describe('AccountService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        AccountService
+        AccountService,
+        GoogleApiService
       ],
       imports: [
         HttpModule, BrowserModule, FormsModule
