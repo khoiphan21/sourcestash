@@ -11,4 +11,9 @@ export class Source {
     xPosition: number;
     yPosition: number;
     type: string;
+    // Optional variables
+    hyperlink?: string;
+    description?: string;
+    difficulty?: string;
+    tags?: string[];
 }
