@@ -49,6 +49,9 @@ export class AccountService {
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
+
+    // This is used for testing the server
+    // this.test();
   }
 
 
@@ -242,14 +245,15 @@ export class AccountService {
    * METHODS FOR TESTING
    */
   test() {
+    console.log('testing server');
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
     this.http.get(
-      DEVELOPMENT_SERVER + '/',
+      DEVELOPMENT_SERVER + '/source/abc',
       options
     ).subscribe(response => {
-      console.log(response.toString());
+      console.log(response);
     });
   }
 

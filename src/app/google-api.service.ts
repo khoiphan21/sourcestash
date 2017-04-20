@@ -57,7 +57,6 @@ export class GoogleApiService {
 
   login(): Promise<Account> {
     // Try using google api
-    console.log(gapi);
     gapi.load('client', start);
 
     return globalLoginPromise.promise;
@@ -73,7 +72,6 @@ export class GoogleApiService {
     }
 
     function start() {
-      console.log(globalHttp);
       gapi.client.init({
         // Initialize the client with API key and People API, and initialize OAuth with an
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
@@ -108,13 +106,11 @@ export class GoogleApiService {
     }
 
     function makeApiCall() {
-      console.log(gapi);
       // Make an API call to the People API, and print the user's given name.
       gapi.client.people.people.get({
         resourceName: 'people/me'
       }).then(function (response) {
         // Now make http calls to the server to log in
-        console.log('Logging in with Google');
         let headers = new Headers({
           'Content-Type': 'application/json'
         });
@@ -140,7 +136,6 @@ export class GoogleApiService {
           options
         ).map(response => {
           // TODO: The response should contain the full account of the user
-          console.log('response is: \n' + response);
           globalLoginPromise.resolve(storedAccount);
 
         }).catch(error => {
