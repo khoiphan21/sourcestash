@@ -18,6 +18,7 @@ import { StashpageComponent } from './stashpage/stashpage.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
+import { GoogleApiService } from './google-api.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
   providers: [
     AccountService,
     StashService,
-    SourceService
+    SourceService,
+    GoogleApiService
   ],
   bootstrap: [AppComponent]
 })

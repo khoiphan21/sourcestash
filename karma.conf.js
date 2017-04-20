@@ -17,7 +17,7 @@ module.exports = function(config) {
         },
         files: [
             { pattern: './src/test.ts', watched: false },
-            'https://apis.google.com/js/api.js'
+            './src/assets/libraries/gapi.js'
         ],
         preprocessors: {
             './src/test.ts': ['@angular/cli']

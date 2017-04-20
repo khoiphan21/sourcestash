@@ -9,8 +9,8 @@ import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 import { Stash } from './classes/stash';
 // import * as gapiFunction from 'google-client-api';
+import { GoogleApiService } from './google-api.service';
 
-declare var gapi: any;
 
 var eTag = '%Eh0BEBoFBxcZCRUIFCIlHC4CCg0MCwMTEhEPDgQYBiIMTTd2NWRHUGtyVk09';
 
@@ -44,19 +44,11 @@ export class AccountService {
    * If so, retrieve it and log the user in
    */
   constructor(
-    private http: Http
+    private http: Http,
+    private googleApi: GoogleApiService
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
-    
-    // // Check the scripJS variable
-    // console.log(scriptJS);
-    // // Load google API
-    // scriptJS(['https://apis.google.com/js/api.js'], 'bundle');
-    // scriptJS.ready('bundle', () => {
-    // })
-
-
   }
 
 
@@ -83,6 +75,10 @@ export class AccountService {
       alert(error.text());
       return Observable.throw('Failed to create account');
     });
+  }
+
+  updateAccount(accountDetails: Account): Observable<AppResponse> {
+    return new Observable();
   }
 
   /**
@@ -170,91 +166,17 @@ export class AccountService {
     });
   }
 
-  loginWithGoogle() {
+  loginWithGoogle(): Promise<AppResponse> {
+    // To give the api service a handle of this service
+    this.googleApi.registerAccountService(this);
 
-    // Try using google api
-    console.log(gapi);
-    gapi.load('client', start);
-
-    // Initiate the google api client library
-    function start () {
-      gapi.client.init({
-        // Initialize the client with API key and People API, and initialize OAuth with an
-        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
-        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
-        discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
-        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/plus.me'
-      }).then(() => {
-        // Get the Oauth2 Client
-        var GoogleAuth = gapi.auth2.getAuthInstance();
-        console.log('GoogleAuth is: ');
-        console.log(GoogleAuth);
-
-        // Listen for sign-in state changes.
-        GoogleAuth.isSignedIn.listen(updateSigninStatus);
-
-        // Call the Authorization server
-        GoogleAuth.signIn();
-
-        // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      })
-      function updateSigninStatus(isSignedIn) {
-        // When signin status changes, this function is called.
-        // If the signin status is changed to signedIn, we make an API call.
-        if (isSignedIn) {
-          makeApiCall();
-        }
-      }
-      function handleSignInClick(event) {
-        // Ideally the button should only show up after gapi.client.init finishes, so that this
-        // handler won't be called before OAuth is initialized.
-        this.gapi.auth2.getAuthInstance().signIn();
-      }
-
-      function handleSignOutClick(event) {
-        this.gapi.auth2.getAuthInstance().signOut();
-      }
-
-      function makeApiCall() {
-        console.log(gapi);
-        // Make an API call to the People API, and print the user's given name.
-        gapi.client.people.people.get({
-          resourceName: 'people/me'
-        }).then(function (response) {
-          console.log('response from google+: \n');
-          console.log(response);
-          console.log('is eTag the same: ' + (eTag == response.result.etag));
-          console.log('Hello, ' + response.result.names[0].givenName);
-        }, function (reason) {
-          console.log('Error: ' + reason.result.error.message);
-        });
-      }
-    };
-
-
-
-    console.log('Logging in with Google');
-    let options: RequestOptions;
-    this.setupHeaderOptions(options);
-
-    let URL = DEVELOPMENT_SERVER + '/login/google';
-    console.log(URL);
-
-    return this.http.post(
-      URL,
-      {
-        code: 'ABCDEF'
-      },
-      options
-    ).map(response => {
-      console.log('request sent');
-      console.log('response is: \n' + response);
+    return this.googleApi.login().then(account => {
+      this.updateCurrentUser(account);
+      return new AppResponse(true, 'Logged in successfully');
     }).catch(error => {
-      console.log('error received: \n' + error);
-      return Observable.throw(error);
-    });
+      console.log(error);
+      return new AppResponse(false, 'An error has occurred', error);
+    })
   }
 
   /**
@@ -264,6 +186,16 @@ export class AccountService {
    */
   checkLoginStatus(): boolean {
     return this.isLoggedIn;
+  }
+
+  /**
+   * Update the currently logged in user of the app
+   * 
+   * @param user - The current user that is logged in
+   */
+  updateCurrentUser(user: Account) {
+    this.currentUser = user;
+    this.isLoggedIn = true;
   }
 
   /**

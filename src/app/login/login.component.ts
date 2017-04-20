@@ -42,10 +42,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
-    this.service.loginWithGoogle().subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    );
+    this.service.loginWithGoogle().then((response: AppResponse) => {
+      if (response.success) {
+        this.router.navigate(['/home']);
+      } else {
+        alert('Login failed');
+      }
+    })
   }
 
   /**

@@ -68,8 +68,7 @@ describe('AccountService', () => {
         }
       )
     })();
-  })
-
+  });
 
   /**
    * Tests for account creation
