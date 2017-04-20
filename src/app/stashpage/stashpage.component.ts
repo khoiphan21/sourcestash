@@ -1,23 +1,11 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import * as Draggable from 'draggable';
 import { Source } from '../classes/source';
+import { SourceService } from '../source.service';
+import * as _ from 'underscore';
+import { element } from 'protractor';
 
-export const SOURCES: Source[] = [
-  {
-    stash_id: 'abd',
-    id: '123',
-    title: 'Root Source',
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    stash_id: 'abcd',
-    title: 'Source 1',
-    id: '1234',
-    xPosition: 200,
-    yPosition: 200,
-  }
-]
+
 
 @Component({
   selector: 'app-stashpage',
@@ -29,11 +17,14 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   renderedElements: any;
 
-  constructor() {
-    this.sources = SOURCES;
-  }
+  constructor(
+    private sourceService: SourceService
+  ) { }
 
   ngOnInit() {
+    this.sourceService.getSourcesForStash('test').then(
+      sources => this.sources = sources
+    )
   }
 
   ngAfterContentChecked() {
@@ -45,14 +36,59 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         console.log(elements);
         let options = {
           grid: 10,
-          onDrag: (element, x, y, event) => {
-            console.log("dragged");
-            console.log("x, y: " + x + ", " + y);
+          onDrag: (element, xAbsolute, yAbsolute, event) => {
+            let elementId = element.id;
+
+            _.each(this.sources, source => {
+              if (source.id == elementId) {
+                this.sourceService.updateSourcePosition(elementId, xAbsolute, yAbsolute);
+              }
+            })
           }
         }
 
+        // Change the position of the root source first
+        let rootSource: Source;
+        _.each(this.sources, source => {
+          if (source.type == 'root') {
+            rootSource = source;
+          };
+        });
+        let rootElement = this.findMatchingElement(rootSource, elements);
+        // Update the class of the root element
+        rootElement.classList.add('root');
+        
+        // Now update all sources to draggables
         for (var i = 0; i < elements.length; i++) {
-          new Draggable(elements[i], options);
+          let draggable = new Draggable(elements[i], options);
+          // Check to see which source matches this element
+          _.each(this.sources, source => {
+            if (source.id == elements[i].id) {
+              // Find the relative position stored
+              let storedX = source.xPosition;
+              let storedY = source.yPosition;
+
+              // Find the parent source and get its x, y positions
+              let parentX: number;
+              let parentY: number;
+              if (source.parent_id != null) {
+                // Must not be a root source, retrieve the parent element
+                let parentSource: Source = this.findSource(source.parent_id, this.sources);
+                let parentElement: Element = this.findMatchingElement(parentSource, elements);
+                let rect = parentElement.getBoundingClientRect()
+                parentX = rect.left;
+                parentY = rect.top;
+              }
+
+              // Update final positions
+              let finalX = parentX + storedX;
+              let finalY = parentY + storedY;
+
+              // Update the position
+              draggable.set(finalX, finalY);
+            }
+          })
+
         }
       }
     }
@@ -63,4 +99,33 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   }
 
+  // HELPER FUNCTIONS
+  findMatchingSource(element: Element, sources: Source[]): Source {
+    // Check to see which source matches this element
+    _.each(sources, (source: Source) => {
+      if (source.id == element.id) {
+        return source;
+      }
+    })
+    return null;
+  };
+  findMatchingElement(source: Source, elements: HTMLCollectionOf<Element>): Element {
+    for (var i = 0; i < elements.length; i++) {
+      if (source.id == elements[i].id) {
+        return elements[i];
+      }
+    }
+    return null;
+  }
+  findSource(id: string, sources: Source[]): Source {
+    let returnSource: Source = null;
+    
+    _.each(sources, source => {
+      if (source.id == id) {
+        returnSource = source;
+      }
+    })
+
+    return returnSource;
+  }
 }
