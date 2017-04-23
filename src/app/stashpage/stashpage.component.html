@@ -5,6 +5,7 @@
         <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
             <span>{{source.title}}</span>
         </article>
+        <canvas id = "canvas"> </canvas>
     </div>
     <div id="right-container">
         <ul>

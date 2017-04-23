@@ -87,12 +87,18 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         }
       }
     }
-
-
-
-    // new Draggable(document.getElementById('123'), options);
-
   }
+  
+  // drawCanvas(){
+  //   let canvas = document.getElementById('canvas');
+  //   let ctx = canvas.getContext('2d');
+
+  //   ctx.beginPath();
+  //   ctx.moveTo(75, 50);
+  //   ctx.lineTo(100, 75);
+  //   ctx.lineTo(100, 25);
+  //   ctx.fill();
+  // }
 
   // HELPER FUNCTIONS
   findMatchingSource(element: Element, sources: Source[]): Source {
