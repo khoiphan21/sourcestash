@@ -39,18 +39,28 @@ export class SourceService {
       // Must not be a root source, retrieve the parent element
       let parentSource: Source = this.findSource(source.parent_id, this.sources);
       parentElement = this.findMatchingElement(parentSource, elements);
+
+      // Retrieve the top and left values of the parent
+      let rect = parentElement.getBoundingClientRect()
+      let parentX = rect.left;
+      let parentY = rect.top;
+
+      // Calculate relative position
+      let relativeX = parentX - xAbsolute;
+      let relativeY = parentY - yAbsolute;
+
+      // Now update the source 
+      source.xPosition = relativeX;
+      source.yPosition = relativeY;
+
+      // And now make http call to the server
+
+      console.log('New x and y: ' + relativeX + ', ' + relativeY);
+    } else {
+      // Is a root source... update differently.
     }
 
-    // Retrieve the top and left values of the parent
-    let rect = parentElement.getBoundingClientRect()
-    let parentX = rect.left;
-    let parentY = rect.top;
 
-    // Calculate relative position
-    let relativeX = parentX - xAbsolute;
-    let relativeY = parentY - yAbsolute;
-
-    console.log('New x and y: ' + relativeX + ', ' + relativeY);
 
   }
 
