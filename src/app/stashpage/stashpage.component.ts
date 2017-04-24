@@ -3,7 +3,6 @@ import * as Draggable from 'draggable';
 import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
 import * as _ from 'underscore';
-import { element } from 'protractor';
 
 
 
@@ -46,7 +45,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
 
             _.each(this.sources, source => {
               if (source.id == elementId) {
-                this.sourceService.updateSourcePosition(elementId, xAbsolute, yAbsolute);
+                this.sourceService.updateSourcePosition(elementId, xAbsolute, yAbsolute, elements);
               }
             })
           }
@@ -73,12 +72,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
         // }
 
         // Change the position of the root source first
-        let rootSource: Source;
-        _.each(this.sources, source => {
-          if (source.type == 'root') {
-            rootSource = source;
-          };
-        });
+        let rootSource = this.findRootSource(this.sources);
+
         let rootElement = this.findMatchingElement(rootSource, elements);
         // Update the class of the root element
         rootElement.classList.add('root');
@@ -188,6 +183,15 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
         returnSource = source;
       }
     })
+    return returnSource;
+  }
+  findRootSource(sources: Source[]): Source {
+    let returnSource: Source = null;
+    _.each(this.sources, source => {
+      if (source.type == 'root') {
+        returnSource = source;
+      };
+    });
     return returnSource;
   }
 }
