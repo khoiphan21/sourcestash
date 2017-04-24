@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import * as Draggable from 'draggable';
 import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
@@ -12,10 +12,14 @@ import { element } from 'protractor';
   templateUrl: './stashpage.component.html',
   styleUrls: ['./stashpage.component.scss']
 })
-export class StashpageComponent implements OnInit, AfterContentChecked {
+export class StashpageComponent implements OnInit, AfterContentChecked, AfterViewInit {
   sources: Source[];
 
   renderedElements: any;
+
+  isModalShown: boolean = false;
+
+  @ViewChild("canvas") canvas: ElementRef;
 
   constructor(
     private sourceService: SourceService
@@ -25,6 +29,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.sourceService.getSourcesForStash('test').then(
       sources => this.sources = sources
     )
+
   }
 
   ngAfterContentChecked() {
@@ -47,6 +52,26 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
           }
         }
 
+        //     // Get the modal
+        // let modal = document.getElementById('myModal');
+
+        // // Get the button that opens the modal
+        // let btn = document.getElementById("myBtn");
+        // console.log(btn);
+
+        // // Get the div element (x) that closes the modal
+        // let x = document.getElementById("close");
+
+        // // When the user clicks the button, open the modal 
+        // btn.onclick = function () {
+        //   modal.style.display = "block";
+        // }
+
+        // // When the user clicks on (x), close the modal
+        // x.onclick = function () {
+        //   modal.style.display = "none";
+        // }
+
         // Change the position of the root source first
         let rootSource: Source;
         _.each(this.sources, source => {
@@ -57,7 +82,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         let rootElement = this.findMatchingElement(rootSource, elements);
         // Update the class of the root element
         rootElement.classList.add('root');
-        
+
         // Now update all sources to draggables
         for (var i = 0; i < elements.length; i++) {
           let draggable = new Draggable(elements[i], options);
@@ -87,23 +112,55 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
               // Update the position
               draggable.set(finalX, finalY);
             }
-          })
-
+          });
         }
+
+        // DRAW LINES
+        // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
+        _.each(this.sources, (source: Source) => {
+          let parent: Source = this.findSource(source.parent_id, this.sources);
+
+          if (parent) {
+            // find the actual elements
+            let sourceElement: Element = this.findMatchingElement(source, elements);
+            let parentElement: Element = this.findMatchingElement(parent, elements);
+
+            // find the x and y values
+            let parentX = parentElement.getBoundingClientRect().left;
+            let parentY = parentElement.getBoundingClientRect().top;
+            let sourceX = sourceElement.getBoundingClientRect().left;
+            let sourceY = sourceElement.getBoundingClientRect().top;
+
+            console.log('drawing line');
+            console.log(parentX, parentY, sourceX, sourceY)
+            this.drawCanvas(parentX, parentY, sourceX, sourceY);
+          }
+        });
       }
     }
   }
-  
-  // drawCanvas(){
-  //   let canvas = document.getElementById('canvas');
-  //   let ctx = canvas.getContext('2d');
 
-  //   ctx.beginPath();
-  //   ctx.moveTo(75, 50);
-  //   ctx.lineTo(100, 75);
-  //   ctx.lineTo(100, 25);
-  //   ctx.fill();
-  // }
+  ngAfterViewInit() {
+
+  }
+
+  toggleModal() {
+    this.isModalShown = this.isModalShown ? false : true;
+
+  }
+
+  drawCanvas(rootSourceX: number, rootSourceY: number, sourceX: number, sourceY: number) {
+    let context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
+    let parent: Element = this.canvas.nativeElement.parentElement;
+
+    this.canvas.nativeElement.width = parent.getBoundingClientRect().width;
+    this.canvas.nativeElement.height = parent.getBoundingClientRect().height;
+
+    context.beginPath();
+    context.moveTo(rootSourceX, rootSourceY);
+    context.lineTo(sourceX, sourceY);
+    context.stroke();
+  }
 
   // HELPER FUNCTIONS
   findMatchingSource(element: Element, sources: Source[]): Source {
@@ -125,13 +182,12 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   }
   findSource(id: string, sources: Source[]): Source {
     let returnSource: Source = null;
-    
+
     _.each(sources, source => {
       if (source.id == id) {
         returnSource = source;
       }
     })
-
     return returnSource;
   }
 }

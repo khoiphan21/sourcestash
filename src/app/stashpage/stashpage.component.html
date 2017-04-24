@@ -2,10 +2,23 @@
 
 <div id="main-container">
     <div id="left-container">
-        <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
-            <span>{{source.title}}</span>
-        </article>
-        <canvas id = "canvas"> </canvas>
+        <canvas #canvas id="canvas"></canvas>
+            <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition"
+                class="source">
+                <!--The trigger to open the popup-->
+                <button id="myBtn" (click)="toggleModal()"> <span>{{source.title}}</span></button>
+
+                <!--the popup-->
+                <div *ngIf="isModalShown" id="myModal" class="modal">
+
+                    <!--popup content-->
+                    <div class="modal-content">
+                        <div id="close">&times;</div>
+                        {{source.description}}
+                    </div>
+                </div>
+            </article>
+        
     </div>
     <div id="right-container">
         <ul>
