@@ -19,6 +19,7 @@ import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { GoogleApiService } from './google-api.service';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GoogleApiService } from './google-api.service';
     StashpageComponent,
     TabComponent,
     TabsComponent,
-    WelcomepageComponent
+    WelcomepageComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,62 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80vw;
+}
+
+/* The Close Button */
+#close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #main-container {
     width: 100vw;
     display: flex;
+    #left-container {
+        position: relative;
+        width: 75vw;
+        height: 90vh;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
 }
 
-#left-container {
-    width: 75vw;
-    height: 90vh;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .source {
     $width: 17vh;
