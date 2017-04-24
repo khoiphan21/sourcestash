@@ -14,19 +14,18 @@ import { AccountService } from './account.service';
 import { AppResponse } from './classes/response';
 import { SERVER } from './classes/SERVER';
 
-class Deferred<Source> {
-  promise: Promise<Source>;
-  resolve: (value: Source | PromiseLike<Source>) => void;
+class Deferred<T> {
+  promise: Promise<T>;
+  resolve: (value: T | PromiseLike<T>) => void;
   reject: (reason?: any) => void;
 
   constructor() {
-    this.promise = new Promise<Account>((resolve, reject) => {
+    this.promise = new Promise<T>((resolve, reject) => {
       this.resolve = resolve;
       this.reject = reject;
     })
   }
 }
-
 
 @Injectable()
 export class SourceService {
@@ -42,11 +41,32 @@ export class SourceService {
    * 
    * @param stashId - the stash for which all the sources will be retrieved
    */
-  getSourcesForStash(stashId: string): Promise<Source[]> {
-    // Make a call to the server to add the basic info of the source
+  getSourcesForStash(stash_id: string): Promise<Source[]> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    // The deferred promise
+    let deferred = new Deferred<Source[]>();
+
+    // Make a call to the server to get the array of sources
+    this.http.post(
+      SERVER + '/source/all/' + stash_id,
+      {
+        stash_id: stash_id
+      },
+      options
+    ).subscribe(response => {
+      let sources = response.json();
+      console.log(sources);
+      deferred.resolve(sources);
+    }, error => {
+      deferred.reject(error);
+    })
 
 
-    return Promise.resolve(SOURCES);
+    return deferred.promise;
   }
 
 
@@ -67,17 +87,9 @@ export class SourceService {
    * @param tags - the array of tags that this source should be attributed to
    */
   addNewSource(
-    parent_id: string,
-    stash_id: string,
-    author_id: string,
-    title: string,
-    xPosition: number,
-    yPosition: number,
-    type: string,
-    hyperlink: string,
-    description: string,
-    difficulty: string,
-    tags: string[]
+    parent_id: string, stash_id: string, author_id: string, title: string, xPosition: number,
+    yPosition: number, type: string, hyperlink: string, description: string,
+    difficulty: string, tags: string[]
   ): Promise<Source> {
     let deferred = new Deferred<Source>();
 
@@ -98,19 +110,16 @@ export class SourceService {
           tags: tags
         }
       }
-    ).subscribe(
-      response => {
+    ).subscribe(response => {
+      if (response.status != 201) {
+        deferred.reject('Failed to create a new source');
+      } else {
         console.log(response);
-        console.log('before attempting to call json()');
-        console.log(response.json());
-        console.log('after attempting to call json()');
-
-        return deferred.resolve(response.json());
-      },
-      error => {
-        return deferred.reject(error);
+        deferred.resolve(response.json());
       }
-    );
+    }, error => {
+      deferred.reject(error);
+    });
 
     return deferred.promise;
   }
@@ -157,9 +166,34 @@ export class SourceService {
     } else {
       // Is a root source... update differently.
     }
+  }
 
+  deleteSource(source_id: string): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
 
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+    
+    // MAKE API REQUEST
+    this.http.post(
+      SERVER + '/source/delete/' + source_id,
+      {
+        source_id: source_id
+      },
+      options
+    ).subscribe(response => {
+      if (response.status == 200) {
+        deferred.resolve(new AppResponse(true, 'Deleted Successfully'));
+      } else {
+        deferred.reject(response.text());
+      }
+    }, error => {
+      deferred.reject(error);
+    })
 
+    return deferred.promise;
   }
 
   // HELPER FUNCTIONS
