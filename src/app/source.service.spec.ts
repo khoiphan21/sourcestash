@@ -19,7 +19,7 @@ describe('SourceService', () => {
     });
   });
 
-  it('should ...', inject([SourceService], (service: SourceService) => {
+  it('should create a service.', inject([SourceService], (service: SourceService) => {
     expect(service).toBeTruthy();
   }));
 
