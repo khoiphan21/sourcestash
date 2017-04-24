@@ -29,14 +29,16 @@ describe('StashService', () => {
   it('should create a new stash and successfully delete it', done =>{
     inject([StashService], (service: StashService) => {
       let stash: Stash = {
-        stashID: '302221',
+        stash_id: '302221',
         title: 'Stash #1',
         description: 'Some Description',
-        authorID: '123456789'
+        author_id: '123456789'
       };
       service.createStash(stash).subscribe(
         (response: AppResponse) => {
           expect(response.success).toBe(true);
+
+
 
           // Now attempt to delete the stash
           service.deleteStash(stash).subscribe(
@@ -48,7 +50,9 @@ describe('StashService', () => {
             }
           )
         }, error => {
+          // still attempt to delete the stash anyway
           fail('Error should not be thrown');
+          service.deleteStash(stash)
           done();
         }
       )
@@ -63,7 +67,7 @@ describe('StashService', () => {
       let stashID = '200039057';
       service.getStash(stashID).subscribe(
         (stash: Stash) => {
-          expect(stash.stashID).toBe(stashID);
+          expect(stash.stash_id).toBe(stashID);
           done();
         }
       );

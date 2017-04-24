@@ -1,20 +1,118 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
 import * as _ from 'underscore';
 
 import { Source } from './classes/source';
 import { SOURCES } from './data/mockSources';
+import { AccountService } from './account.service';
+import { AppResponse } from './classes/response';
+import { SERVER } from './classes/SERVER';
+
+class Deferred<Source> {
+  promise: Promise<Source>;
+  resolve: (value: Source | PromiseLike<Source>) => void;
+  reject: (reason?: any) => void;
+
+  constructor() {
+    this.promise = new Promise<Account>((resolve, reject) => {
+      this.resolve = resolve;
+      this.reject = reject;
+    })
+  }
+}
 
 
 @Injectable()
 export class SourceService {
   private sources: Source[];
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService,
+    private http: Http
+  ) { }
 
+  /**
+   * Retrieve all the sources for a certain stash
+   * 
+   * @param stashId - the stash for which all the sources will be retrieved
+   */
   getSourcesForStash(stashId: string): Promise<Source[]> {
-    this.sources = SOURCES;
+    // Make a call to the server to add the basic info of the source
 
-    return Promise.resolve(this.sources);
+
+    return Promise.resolve(SOURCES);
+  }
+
+
+  /**
+   * Add a new source to the remote database. This method will return a source object
+   * with an id generated
+   * 
+   * @param parent_id - The id of this source's parent
+   * @param stash_id - the id of the stash this source belongs to
+   * @param author_id - the id of the user who created this source
+   * @param title - the title of the source
+   * @param xPosition - the relative x position of the source 
+   * @param yPosition - the relative y position of the source
+   * @param type - the type of the source
+   * @param hyperlink - the hyperlink of the source
+   * @param description - the description of the source
+   * @param difficulty - the difficulty of the source
+   * @param tags - the array of tags that this source should be attributed to
+   */
+  addNewSource(
+    parent_id: string,
+    stash_id: string,
+    author_id: string,
+    title: string,
+    xPosition: number,
+    yPosition: number,
+    type: string,
+    hyperlink: string,
+    description: string,
+    difficulty: string,
+    tags: string[]
+  ): Promise<Source> {
+    let deferred = new Deferred<Source>();
+
+    this.http.post(
+      SERVER + '/source/new',
+      {
+        source: {
+          parent_id: parent_id,
+          stash_id: stash_id,
+          author_id: author_id,
+          title: title,
+          xPosition: xPosition,
+          yPosition: yPosition,
+          type: type,
+          hyperlink: hyperlink,
+          description: description,
+          difficulty: difficulty,
+          tags: tags
+        }
+      }
+    ).subscribe(
+      response => {
+        console.log(response);
+        console.log('before attempting to call json()');
+        console.log(response.json());
+        console.log('after attempting to call json()');
+
+        return deferred.resolve(response.json());
+      },
+      error => {
+        return deferred.reject(error);
+      }
+    );
+
+    return deferred.promise;
   }
 
   /**

@@ -10,7 +10,7 @@ export const WITH_STASHES: Account = {
     password: 'password',
     stashes: [
         {
-            stashID: 'stash-1',
+            stash_id: 'stash-1',
             title: 'Stash 1',
             description: 'Stash 1 Description'
         }

@@ -2,6 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StashpageComponent } from './stashpage.component';
 import { HeaderComponent } from '../header/header.component';
+import { SourceService } from '../source.service';
+import { AccountService } from '../account.service';
+import { HttpModule } from '@angular/http';
+import { GoogleApiService } from '../google-api.service';
 
 describe('StashpageComponent', () => {
   let component: StashpageComponent;
@@ -12,6 +16,14 @@ describe('StashpageComponent', () => {
       declarations: [
         StashpageComponent,
         HeaderComponent
+      ], 
+      providers: [
+        SourceService,
+        AccountService,
+        GoogleApiService
+      ],
+      imports: [
+        HttpModule
       ]
     })
     .compileComponents();

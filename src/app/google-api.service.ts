@@ -6,6 +6,7 @@ import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { AccountService } from './account.service';
 import { Account } from './classes/account';
+import { SERVER } from './classes/SERVER';
 
 /**
  * Google API variables
@@ -15,14 +16,6 @@ var globalHttp: Http; // This variable is needed to let gapi access the http ser
 var globalAccountService: AccountService;
 var globalGoogleApiService: GoogleApiService;
 var globalLoginPromise: Deferred<Account>;
-
-/**
-  * SERVER DEVELOPMENT LINKS
-  */
-const DEVELOPMENT_SERVER: string = 'http://localhost:8080';
-const BETA_SERVER: string = 'https://application-server-dot-source-stash-beta.appspot.com';
-const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
-const SERVER: string = DEVELOPMENT_SERVER;
 
 class Deferred<Account> {
   promise: Promise<Account>;
@@ -129,7 +122,7 @@ export class GoogleApiService {
 
         // Send a request to the server to login
         globalHttp.post(
-          DEVELOPMENT_SERVER + '/login/google',
+          SERVER + '/login/google',
           {
             account: account
           },

@@ -9,13 +9,7 @@ import { Stash } from './classes/stash';
 import { ANGULAR2 } from './data/mockStash';
 import { AppResponse } from './classes/response';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
-/**
-  * SERVER DEVELOPMENT LINKS
-  */
-const DEVELOPMENT_SERVER: string = 'http://localhost:8080';
-const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
-const SERVER: string = DEVELOPMENT_SERVER;
+import { SERVER } from './classes/SERVER';
 
 @Injectable()
 export class StashService {
@@ -57,8 +51,8 @@ export class StashService {
    * @param stash - The stash to be deleted
    */
   deleteStash(stash: Stash): Observable<AppResponse> {
-    if (stash.stashID == null) {
-      return Observable.throw('StashID and AuthorID must be present.');
+    if (stash.stash_id == null) {
+      return Observable.throw('StashID must be present.');
     }
 
     let options: RequestOptions;
@@ -127,14 +121,11 @@ export class StashService {
       options
     ).map(response => {
       // Cast the response to a stash
-      let stash: Stash = response.json();
-      console.log(stash);
-
+      let stash = response.json();
       return stash;
     }).catch(error => {
       return Observable.throw(error);
     })
-
   }
 
   /**
