@@ -3,28 +3,53 @@
 <div id="main-container">
     <div id="left-container">
         <canvas #canvas id="canvas"></canvas>
-            <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition"
-                class="source">
-                <!--The trigger to open the popup-->
-                <button id="myBtn" (click)="toggleModal()"> <span>{{source.title}}</span></button>
+        <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition"
+            class="source">
+            <div id="sourceData"> {{source.title}}</div>
+            <app-popup [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>
+        </article>
 
-                <!--the popup-->
-                <div *ngIf="isModalShown" id="myModal" class="modal">
 
-                    <!--popup content-->
-                    <div class="modal-content">
-                        <div id="close">&times;</div>
-                        {{source.description}}
-                    </div>
-                </div>
-            </article>
-        
     </div>
+    <!--For the list containing the stashes and sources-->
     <div id="right-container">
-        <ul>
-            <li>
+        <ul class="top_list">
+            <li class="top_item">
                 Simple Mockup
             </li>
         </ul>
+        <!--For the stash and source creation button-->
+        <div id="bottom">
+            <ul class="bottom_list">
+                <li class="bottom_item">
+                    <button id="myBtn">Description</button>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <!-- the (x) button -->
+                            <div id="close">&times;</div>
+                            <p>create the form inside here</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="bottom_item">
+                     <button id="myBtn">Create Source</button>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <!-- the (x) button -->
+                            <div id="close">&times;</div>
+                            <p>create the form inside here</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

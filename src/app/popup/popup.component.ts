@@ -1,8 +1,4 @@
-import { Component, OnInit, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-// import { overlay };
-// import * as Modal from 'modal';
-// https://www.npmjs.com/package/angular2-modal
-// https://github.com/shlomiassaf/angular2-modal/blob/master/QUICKTHROUGH.md
+import { Component, OnInit, ViewContainerRef, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -11,28 +7,8 @@ import { Component, OnInit, ViewContainerRef, ViewEncapsulation } from '@angular
 })
 export class PopupComponent implements OnInit {
 
-  // constructor(overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-  //   overlay.defaultViewContainer = vcRef;
-  // }
-
-  // onClick() {
-  //   this.modal.alert()
-  //       .size('lg')
-  //       .showClose(true)
-  //       .title('A simple Alert style modal window')
-  //       .body(`
-  //           <h4>Alert is a classic (title/body/footer) 1 button modal window that 
-  //           does not block.</h4>
-  //           <b>Configuration:</b>
-  //           <ul>
-  //               <li>Non blocking (click anywhere outside to dismiss)</li>
-  //               <li>Size large</li>
-  //               <li>Dismissed with default keyboard key (ESC)</li>
-  //               <li>Close wth button click</li>
-  //               <li>HTML content</li>
-  //           </ul>`)
-  //       .open();
-  // }
+  @Input() sourceTitle: string;
+  @Input() sourceDescription: string;
 
   ngOnInit() {
     // Get the modal

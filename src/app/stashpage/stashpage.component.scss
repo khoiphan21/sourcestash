@@ -1,3 +1,85 @@
+#main-container {
+    width: 100vw;
+    display: flex;
+    #left-container {
+        position: relative;
+        width: 80vw;
+        height: 90vh;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .source {
+        }
+        #sourceData{
+        $width: 17vh;
+        $height: 15vh;
+        // padding: 1vh 1vw;
+        width: $width;
+        height: $height;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background-image: url("/assets/images/hexagon.png");
+        background-size: $width $height;
+        background-repeat: no-repeat;
+        }
+    }
+}
+
+#right-container {
+    background: #304269;
+    color: #91BED4;
+    width: 20vw;
+    height: 90vh;
+    // A list of sources and stashes
+    .top_list {
+        font-size: 16pt;
+        margin: 0px;
+        list-style-type: none;
+        display: flex;
+        border: 1px solid black;
+    }
+    .top_item {
+        padding: 1vh 0;
+        width: 100vw;
+    }
+    // A container containing buttons for creating sources and stashes
+    #bottom{
+        position: absolute;
+   	    bottom: 1vh;
+    }
+    .bottom_list {
+        list-style-type: none;
+        width: 20vw;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;  
+        justify-content: space-around;
+    }
+    .bottom_item {
+        display: block;
+        #myBtn{
+        background-color: #333;
+        color: white;
+        text-align: center;
+        border: white solid 1px;
+        width: 9vw;
+        padding: 2vh 0 2vh 0;
+        text-decoration: none;
+        }
+    }
+    
+}
+
+
+// For the popup form
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -34,58 +116,4 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-
-#main-container {
-    width: 100vw;
-    display: flex;
-    #left-container {
-        position: relative;
-        width: 75vw;
-        height: 90vh;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    }
-}
-
-
-
-.source {
-    $width: 17vh;
-    $height: 15vh;
-    // padding: 1vh 1vw;
-    width: $width;
-    height: $height;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    background-image: url("/assets/images/hexagon.png");
-    background-size: $width $height;
-    background-repeat: no-repeat;
-}
-
-#right-container {
-    background: #304269;
-    color: #91BED4;
-    width: 25vw;
-    height: 90vh;
-    ul {
-        font-size: 16pt;
-        margin: 0px;
-        list-style-type: none;
-        display: flex;
-        border: 1px solid black;
-    }
-    li {
-        padding: 1vh 0;
-        width: 100vw;
-    }
 }

@@ -28,7 +28,31 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
     this.sourceService.getSourcesForStash('test').then(
       sources => this.sources = sources
     )
+  // Get the modal
+    let modal = document.getElementById('myModal');
 
+    // Get the button that opens the modal
+    let btn = document.getElementById("myBtn");
+
+    // Get the div element (x) that closes the modal
+    let x = document.getElementById("close");
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on (x), close the modal
+    x.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   }
 
   ngAfterContentChecked() {
@@ -50,27 +74,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
             })
           }
         }
-
-        //     // Get the modal
-        // let modal = document.getElementById('myModal');
-
-        // // Get the button that opens the modal
-        // let btn = document.getElementById("myBtn");
-        // console.log(btn);
-
-        // // Get the div element (x) that closes the modal
-        // let x = document.getElementById("close");
-
-        // // When the user clicks the button, open the modal 
-        // btn.onclick = function () {
-        //   modal.style.display = "block";
-        // }
-
-        // // When the user clicks on (x), close the modal
-        // x.onclick = function () {
-        //   modal.style.display = "none";
-        // }
-
+        
         // Change the position of the root source first
         let rootSource = this.findRootSource(this.sources);
 
@@ -139,10 +143,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
 
   }
 
-  toggleModal() {
-    this.isModalShown = this.isModalShown ? false : true;
-
-  }
+ 
 
   drawCanvas(rootSourceX: number, rootSourceY: number, sourceX: number, sourceY: number) {
     let context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
