@@ -29,34 +29,26 @@ export class StashpageComponent implements OnInit, AfterContentChecked, AfterVie
       sources => this.sources = sources
     )
    // This part is to create a popup section for creating the source and stash
-    // This is the pop function for creating stash 
     // Get the modal
     let stashForm = document.getElementById('stashForm');
+    let modal = document.getElementById('sourceForm');
     // Get the button that opens the modal
     let createStash = document.getElementById("createStash");
+    let btn = document.getElementById("createForm");
     // Get the div element (x) that closes the modal
     let x = document.getElementById("x");
-    // When the user clicks the button, open the modal 
-    createStash.onclick = function () {
-      stashForm.style.display = "block";
-    }
-    // When the user clicks on (x), close the modal
-    x.onclick = function () {
-      stashForm.style.display = "none";
-    }
-    
-    // This is the pop function for creating stash 
-    // Get the modal
-    let modal = document.getElementById('myModal');
-    // Get the button that opens the modal
-    let btn = document.getElementById("myBtn");
-    // Get the div element (x) that closes the modal
     let close = document.getElementById("close");
     // When the user clicks the button, open the modal 
+     createStash.onclick = function () {
+      stashForm.style.display = "block";
+    }
     btn.onclick = function () {
       modal.style.display = "block";
     }
     // When the user clicks on (x), close the modal
+     x.onclick = function () {
+      stashForm.style.display = "none";
+    }
     close.onclick = function () {
       modal.style.display = "none";
     }

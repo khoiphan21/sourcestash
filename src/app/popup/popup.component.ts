@@ -7,13 +7,14 @@ import { Component, OnInit, ViewContainerRef, ViewEncapsulation, Input } from '@
 })
 export class PopupComponent implements OnInit {
 
+  @Input() sourceID: number;
   @Input() sourceTitle: string;
   @Input() sourceDescription: string;
 
   ngOnInit() {
     // Get the modal
     let modal = document.getElementById('myModal');
-
+    // let source = document.getElementById({{sourceID}});
     // Get the button that opens the modal
     let btn = document.getElementById("myBtn");
 

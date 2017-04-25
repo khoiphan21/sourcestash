@@ -65,7 +65,7 @@
     }
     .bottom_item {
         display: block;
-        #createStash, #myBtn{
+        #createStash, #createForm{
         background-color: #333;
         color: white;
         text-align: center;
@@ -79,7 +79,7 @@
 
 
 // For the popup form
-.modal {
+.createForm {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -91,16 +91,17 @@
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /* Modal Content */
+    .createForm-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80vw;
+    }
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80vw;
-}
+
 
 /* The Close Button */
 #close, #x{
