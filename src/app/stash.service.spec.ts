@@ -32,7 +32,7 @@ describe('StashService', () => {
         stash_id: '302221',
         title: 'Stash #1',
         description: 'Some Description',
-        author_id: '123456789'
+        author_id: '3656220637652272'
       };
       service.createStash(stash).subscribe(
         (response: AppResponse) => {

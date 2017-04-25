@@ -59,6 +59,7 @@ export class SourceService {
       options
     ).subscribe(response => {
       let sources = response.json();
+      this.sources = sources;
       console.log(sources);
       deferred.resolve(sources);
     }, error => {
