@@ -1,7 +1,7 @@
 import { Source } from '../classes/source';
 export const SOURCES: Source[] = [
   {
-    id: '123',
+    source_id: '123',
     parent_id: null,
     stash_id: 'abd',
     author_id: '123456',
@@ -11,7 +11,7 @@ export const SOURCES: Source[] = [
     type: 'root'
   },
   {
-    id: '1234',
+    source_id: '1234',
     parent_id: '123',
     stash_id: 'abcd',
     author_id: '123456',
@@ -21,7 +21,7 @@ export const SOURCES: Source[] = [
     type: 'source'
   },
   {
-    id: '12345',
+    source_id: '12345',
     parent_id: '123',
     stash_id: 'abcd',
     author_id: '123456',

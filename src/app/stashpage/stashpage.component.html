@@ -3,22 +3,21 @@
 <div id="main-container">
     <div id="left-container">
         <canvas #canvas id="canvas"></canvas>
-            <article *ngFor="let source of sources; let last = last" [id]="source.id" [style.left]="source.xPosition" [style.top]="source.yPosition"
-                class="source">
-                <!--The trigger to open the popup-->
-                <button id="myBtn" (click)="toggleModal()"> <span>{{source.title}}</span></button>
+        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
+            <!--The trigger to open the popup-->
+            <button id="myBtn" (click)="toggleModal()"> <span>{{source.title}}</span></button>
 
-                <!--the popup-->
-                <div *ngIf="isModalShown" id="myModal" class="modal">
+            <!--the popup-->
+            <div *ngIf="isModalShown" id="myModal" class="modal">
 
-                    <!--popup content-->
-                    <div class="modal-content">
-                        <div id="close">&times;</div>
-                        {{source.description}}
-                    </div>
+                <!--popup content-->
+                <div class="modal-content">
+                    <div id="close">&times;</div>
+                    {{source.description}}
                 </div>
-            </article>
-        
+            </div>
+        </article>
+
     </div>
     <div id="right-container">
         <ul>

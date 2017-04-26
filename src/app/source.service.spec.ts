@@ -25,8 +25,7 @@ describe('SourceService', () => {
 
   it('should successfully retrieve all sources for the test stash', done => {
     inject([SourceService], (service: SourceService) => {
-      let stash_id = 
-      service.getSourcesForStash('200039057').then(sources => {
+      service.getSourcesForStash('2671055').then(sources => {
         expect(sources.length).toBe(2);
         done();
       }).catch(error => {
@@ -35,6 +34,18 @@ describe('SourceService', () => {
       })
 
     })();
+  });
+
+  it('should update the location of a source successfully', done => {
+    inject([SourceService], (service: SourceService) => {
+      service.updateSourcePosition('8013377', 100, 100).then(response => {
+        expect(response.success).toBe(true);
+        done();
+      }).catch(error => {
+        fail('Error occurred when trying to update source position');
+        done();
+      })
+    })();
   })
 
   it('should successfully add a source and then delete it', done => {
@@ -42,7 +53,7 @@ describe('SourceService', () => {
       let source_id = '242267';
       
       service.addNewSource(
-        '',
+        '1947116927',
         '2671055',
         '2296818568',
         'INFS3202',

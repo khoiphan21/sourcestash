@@ -126,47 +126,42 @@ export class SourceService {
   }
 
   /**
-   * Update the 'relative' position of the source. Need to retrieve the position
-   * of the parent source first, to calculate the relative position
+   * Update the given source's position in the database
    * 
-   * @param id - The id of the source
-   * @param xAbsolute - The ON SCREEN (absolute) x position of the source
-   * @param yAbsolute - The ON SCREEN (absolute) y position of the source
-   * @param elements - the list of source elements
+   * @param source_id - the id of the source 
+   * @param xPosition - the relative xPosition of the source
+   * @param yPosition - the relative yPosition of the source
    */
-  updateSourcePosition(id: string, xAbsolute: number, yAbsolute: number, elements: HTMLCollectionOf<Element>) {
-    // Find the source model with the given id
-    let source = this.findSource(id, this.sources);
+  updateSourcePosition(source_id: string, xPosition: number, yPosition: number): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
 
-    //DEBUGGING
-    console.log('Original relative x and y: ' + source.xPosition + ', ' + source.yPosition);
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
 
-    // Find the parent element of the source
-    let parentElement: Element;
-    if (source.parent_id != null) {
-      // Must not be a root source, retrieve the parent element
-      let parentSource: Source = this.findSource(source.parent_id, this.sources);
-      parentElement = this.findMatchingElement(parentSource, elements);
-
-      // Retrieve the top and left values of the parent
-      let rect = parentElement.getBoundingClientRect()
-      let parentX = rect.left;
-      let parentY = rect.top;
-
-      // Calculate relative position
-      let relativeX = parentX - xAbsolute;
-      let relativeY = parentY - yAbsolute;
-
-      // Now update the source 
-      source.xPosition = relativeX;
-      source.yPosition = relativeY;
-
-      // And now make http call to the server
-
-      console.log('New x and y: ' + relativeX + ', ' + relativeY);
-    } else {
-      // Is a root source... update differently.
-    }
+    // Make api request
+    this.http.post(
+      SERVER + '/source/update/position',
+      {
+        coords: {
+          source_id: source_id,
+          xPosition: xPosition,
+          yPosition: yPosition
+        }
+      },
+      options
+    ).subscribe(response => {
+      if (response.status == 200) {
+        deferred.resolve(new AppResponse(true, 'Source position updated successfully'));
+      } else {
+        deferred.reject(new AppResponse(false, 'Source failed to update. Server message: ' + response.text()));
+      }
+    }, error => {
+      deferred.reject(error);
+    })
+    
+    return deferred.promise;
   }
 
   deleteSource(source_id: string): Promise<AppResponse> {
@@ -201,7 +196,7 @@ export class SourceService {
   findMatchingSource(element: Element, sources: Source[]): Source {
     // Check to see which source matches this element
     _.each(sources, (source: Source) => {
-      if (source.id == element.id) {
+      if (source.source_id == element.id) {
         return source;
       }
     })
@@ -209,7 +204,7 @@ export class SourceService {
   };
   findMatchingElement(source: Source, elements: HTMLCollectionOf<Element>): Element {
     for (var i = 0; i < elements.length; i++) {
-      if (source.id == elements[i].id) {
+      if (source.source_id == elements[i].id) {
         return elements[i];
       }
     }
@@ -219,7 +214,7 @@ export class SourceService {
     let returnSource: Source = null;
 
     _.each(sources, source => {
-      if (source.id == id) {
+      if (source.source_id == id) {
         returnSource = source;
       }
     })

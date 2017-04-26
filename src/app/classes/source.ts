@@ -4,7 +4,7 @@
  * Note: xPosition and yPosition are RELATIVE to the parent source
  */
 export class Source {
-    id: string;
+    source_id: string;
     parent_id: string;
     stash_id: string;
     author_id: string;
@@ -32,7 +32,7 @@ export class Source {
         difficulty?: string,
         tags?: string[]
     ) {
-        this.id = id;
+        this.source_id = id;
         this.parent_id = parent_id;
         this.author_id = author_id;
         this.title = title;
