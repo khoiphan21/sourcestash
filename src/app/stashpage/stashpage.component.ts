@@ -172,8 +172,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       let parentY = rect.top;
 
       // Calculate relative position
-      let relativeX = parentX - xAbsolute;
-      let relativeY = parentY - yAbsolute;
+      let relativeX = xAbsolute - parentX;
+      let relativeY = yAbsolute - parentY;
 
       // Now update the source 
       source.xPosition = relativeX;
