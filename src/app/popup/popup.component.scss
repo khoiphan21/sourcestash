@@ -1,12 +1,11 @@
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    padding: 5vh 0vw 5vh 0vw;
+    margin: auto;
+    width: 40vw; /* Full width */
+    height: 30vh; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -16,9 +15,9 @@
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    height: 28vh;
+    padding: 1vh 5vw 1vh 5vw;
     border: 1px solid #888;
-    width: 80vw;
 }
 
 /* The Close Button */

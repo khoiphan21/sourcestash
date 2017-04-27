@@ -3,6 +3,7 @@ import * as Draggable from 'draggable';
 import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
 import * as _ from 'underscore';
+import { element } from 'protractor';
 
 
 
@@ -32,6 +33,30 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         this.sources = sources;
       }
     )
+    // This part is to create a popup section for creating the source and stash
+    // Get the modal
+    let stashForm = document.getElementById('stashForm');
+    let modal = document.getElementById('sourceForm');
+    // Get the button that opens the modal
+    let createStash = document.getElementById("createStash");
+    let btn = document.getElementById("createForm");
+    // Get the div element (x) that closes the modal
+    let x = document.getElementById("x");
+    let close = document.getElementById("close");
+    // When the user clicks the button, open the modal 
+    createStash.onclick = function () {
+      stashForm.style.display = "block";
+    }
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+    // When the user clicks on (x), close the modal
+    x.onclick = function () {
+      stashForm.style.display = "none";
+    }
+    close.onclick = function () {
+      modal.style.display = "none";
+    }
 
   }
 
@@ -42,19 +67,18 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
         if (elements.length != 0) {
           this.renderedElements = elements;
-          console.log(elements);
           let options = {
             grid: 10,
             onDrag: (element, xAbsolute, yAbsolute, event) => {
+              console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
+            },
+            onDragEnd: (element, xAbsolute, yAbsolute, event) => {
               let elementId = element.id;
 
-              _.each(this.sources, source => {
-                if (source.source_id == elementId) {
-                  this.updateSourcePosition(elementId, xAbsolute, yAbsolute, elements);
-                }
-              })
+              let source: Source = this.findMatchingSource(element, this.sources);
+              this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
             }
-          }
+          };
 
           // Change the position of the root source first
           let rootSource = this.findRootSource(this.sources);
@@ -63,8 +87,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
           // Update the class of the root element
           rootElement.classList.add('root');
 
-            // Now update all sources to draggables
-            for(var i = 0; i < elements.length; i++) {
+          // Now update all sources to draggables
+          for (var i = 0; i < elements.length; i++) {
             let draggable = new Draggable(elements[i], options);
             // Check to see which source matches this element
             _.each(this.sources, source => {
@@ -121,12 +145,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         }
       }
     }
-
-  }
-
-  toggleModal() {
-    this.isModalShown = this.isModalShown ? false : true;
-
   }
 
   drawCanvas(rootSourceX: number, rootSourceY: number, sourceX: number, sourceY: number) {
@@ -184,7 +202,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       this.sourceService.updateSourcePosition(source_id, relativeX, relativeY);
 
       console.log('New x and y: ' + relativeX + ', ' + relativeY);
-    } 
+    }
   }
   /**
    * Find a Source model that matches the id of the given element
@@ -192,13 +210,14 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
    * @param sources - the list of sources to look for the source model
    */
   findMatchingSource(element: Element, sources: Source[]): Source {
+    let returnSource: Source = null;
     // Check to see which source matches this element
     _.each(sources, (source: Source) => {
       if (source.source_id == element.id) {
-        return source;
+        returnSource = source;
       }
     })
-    return null;
+    return returnSource;
   };
   findMatchingElement(source: Source, elements: HTMLCollectionOf<Element>): Element {
     for (var i = 0; i < elements.length; i++) {
