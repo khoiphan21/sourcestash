@@ -71,6 +71,10 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
             grid: 10,
             onDrag: (element, xAbsolute, yAbsolute, event) => {
               console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
+              let source = this.findMatchingSource(element, this.sources);
+              let elements = document.getElementsByClassName('source');
+              this.resetCanvas();
+              this.updateLines(elements);
             },
             onDragEnd: (element, xAbsolute, yAbsolute, event) => {
               let elementId = element.id;
@@ -89,7 +93,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
           // Now update all sources to draggables
           for (var i = 0; i < elements.length; i++) {
-            let draggable = new Draggable(elements[i], options);
             // Check to see which source matches this element
             _.each(this.sources, source => {
               if (source.source_id == elements[i].id && source.type != 'root') {
@@ -115,6 +118,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
                 // Update the position if not root
                 if (source.type != 'root') {
+                  let draggable = new Draggable(elements[i], options);
                   draggable.set(finalX, finalY);
                 }
               }
@@ -123,39 +127,54 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
           // DRAW LINES
           // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
-          _.each(this.sources, (source: Source) => {
-            let parent: Source = this.findSource(source.parent_id, this.sources);
-
-            if (parent) {
-              // find the actual elements
-              let sourceElement: Element = this.findMatchingElement(source, elements);
-              let parentElement: Element = this.findMatchingElement(parent, elements);
-
-              // find the x and y values
-              let parentX = parentElement.getBoundingClientRect().left;
-              let parentY = parentElement.getBoundingClientRect().top;
-              let sourceX = sourceElement.getBoundingClientRect().left;
-              let sourceY = sourceElement.getBoundingClientRect().top;
-
-              console.log('drawing line');
-              console.log(parentX, parentY, sourceX, sourceY)
-              this.drawCanvas(parentX, parentY, sourceX, sourceY);
-            }
-          });
+          this.resetCanvas();
+          this.updateLines(elements);
         }
       }
     }
+  }
+
+  resetCanvas() {
+    this.canvas.nativeElement.height = document.body.clientHeight;
+    this.canvas.nativeElement.width = document.body.clientWidth;
+  }
+
+  updateLines(elements: HTMLCollectionOf<Element>) {
+    _.each(this.sources, (source: Source) => {
+      let parent: Source = this.findSource(source.parent_id, this.sources);
+
+      if (parent) {
+        // find the actual elements
+        let sourceElement: Element = this.findMatchingElement(source, elements);
+        let parentElement: Element = this.findMatchingElement(parent, elements);
+
+        // find the x and y values
+        let parentBounds = parentElement.getBoundingClientRect();
+        let sourceBounds = sourceElement.getBoundingClientRect();
+        let parentX = parentBounds.left + parentBounds.width / 2;
+        let parentY = parentBounds.top + parentBounds.height / 2;
+        let sourceX = sourceBounds.left + sourceBounds.width / 2;
+        let sourceY = sourceBounds.top + sourceBounds.height / 2;
+
+        console.log('drawing line');
+        console.log(parentX, parentY, sourceX, sourceY)
+        this.drawCanvas(parentX, parentY, sourceX, sourceY);
+      }
+    });
   }
 
   drawCanvas(rootSourceX: number, rootSourceY: number, sourceX: number, sourceY: number) {
     let context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
     let parent: Element = this.canvas.nativeElement.parentElement;
 
-    this.canvas.nativeElement.width = parent.getBoundingClientRect().width;
-    this.canvas.nativeElement.height = parent.getBoundingClientRect().height;
+    // this.canvas.nativeElement.width = parent.getBoundingClientRect().width;
+    // this.canvas.nativeElement.height = parent.getBoundingClientRect().height;
+
+
 
     context.beginPath();
     context.moveTo(rootSourceX, rootSourceY);
+    context.lineWidth = 3;
     context.lineTo(sourceX, sourceY);
     context.stroke();
   }
