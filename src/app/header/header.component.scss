@@ -1,12 +1,17 @@
+// header
+$headerHeight: 7vh;
+$headerBG: #304269;
+$headerFont: whitesmoke;
+$headerFontSize: 10pt;
+
 #header{
-    background: #304269;
-    width: 92vw;
-    padding: 2vh 4vw;
-    height: 6vh;
+    background: $headerBG;
+    height: $headerHeight;
     display: flex;
-    justify-content: space-between;
-    color: #91BED4;
-    font-size: 24pt;
+    justify-content: flex-end;
+    align-items: center;
+    color: $headerFont;
+    font-size: $headerFontSize;
     text-shadow: 2px 2px #222; 
     a{
         text-decoration: none;
@@ -14,12 +19,12 @@
         text-align: center;
     } 
     ul{
-        font-size: 16pt;
         margin: 0px;
         list-style-type: none;
         display: flex;
     }
     li {
-        padding: 1vh 1vw;
+        cursor: pointer;
+        width: 7vw;
     }   
 }

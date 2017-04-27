@@ -1,62 +1,67 @@
 <app-header></app-header>
 
-<div id="main-container">
-    <div id="top-container" *ngIf="userAccount">
-        <h2> My Profile </h2>
-        <table>
-            <tr>
-                <td class="center">
-                    Profile Picture
-                </td>
-                <td>
-                    <ul class="no-bullet">
-                        <li>Username: {{userAccount.username}}
-                            <p>
-                        </li>
-                        <li>Source Contribution:
-                            <p>
-                        </li>
-                        <li>Favourite Stashes:
-                            <p>
-                        </li>
-                        <li>Published:
-                            <p>
-                        </li>
-                        <li>Liked:
-                            <p>
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    Background Information:
-                    <ul>
-                        <li>Bachelor of Information Technology</li>
-                    </ul>
-                </td>
-                <td>
-                    Education
-                    <ul>
-                        <li>University of Queensland</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td class="center"><button class="edit">Edit</button></td>
-            </tr>
-        </table>
+<div id="mainContainer">
+    <div id="topContainer">
+        <div id="topContainer_content">
+            <div id="topContainer_contentLeft">
+                <img src="/assets/images/hexagon.png" width="150px" height="150px">
+            </div>
+            <div id="topContainer_contentRight" *ngIf="userAccount">
+                <h1> Profile </h1>
+                <ul>
+                    <li>
+                        <span class="bold">Username:</span> {{userAccount.username}}
+                        <p>
+                    </li>
+                    <li>
+                        <span class="bold">Background Information:</span> Bachelor of Information Technology
+                        <p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <span class="bold"> Source Contribution:</span>
+                        <p>
+                    </li>
+                    <li>
+                        <span class="bold">Education:</span> University of Queensland
+                        <p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <span class="bold">Published:</span>
+                        <p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <span class="bold">Liked:</span>
+                        <p>
+                    </li>
+                </ul>
+                <!--<td class="center"><button class="edit">Edit</button></td>-->
+            </div>
+
+        </div>
     </div>
 
-    <div id="bottom-container">
-        <my-tabs [tabs]="tabs">
-            <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Title 1'">
-                Content 1
-            </my-tab>
-            <my-tab [tabsArray]="tabs" tabTitle="Title 2">
-                Content 2
-            </my-tab>
-            <my-tab [tabsArray]="tabs" [tabTitle]="'Title 3'">
-                Content 3
-            </my-tab>
-        </my-tabs>
+    <div id="bottomContainer">
+        <div id="bottomContainer_content">
+            <my-tabs [tabs]="tabs">
+                <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'STASHES'">
+                    Content 1
+                </my-tab>
+                <my-tab [tabsArray]="tabs" tabTitle="SOURCES">
+                    Content 2
+                </my-tab>
+                <my-tab [tabsArray]="tabs" tabTitle="FAVOURITES">
+                    Content 3
+                </my-tab>
+                <my-tab [tabsArray]="tabs" tabTitle="SETTINGS">
+                    Content 4
+                </my-tab>
+            </my-tabs>
+        </div>
     </div>
 </div>

@@ -1,34 +1,21 @@
 <div id="header">
-    For the logo
+    <ul>
+        <li>
+            <a routerLink="/welcome">Welcome</a>
+        </li>
+        <li>
+            <a>Log In</a>
+        </li>
+    </ul>
 </div>
 
-<div id="main-contianer">
-    <div id="navigation-bar">
-        <ul>
-            <li><a (click)="login()">LOG IN</a></li>
-            <li><a (click)="signup()">SIGN UP</a></li>
-        </ul>
-        <hr class="navbar">
-    </div>
-    <div id="bot-container">
-        <div id="login-form">
-            <form action="" method="get">
-                E-MAIL<input id="borderless" name="email" type="email" [(ngModel)]="account.email" />
-                <p>
-                    <hr>
-                    <p>
-                        PASSWORD<input id="borderless" name="password" type="password" [(ngModel)]="account.password" />
-                        <p>
-                            <hr>
-                            <p>
-                                <div id="bot-form">
-                                    <div id="tickbox">
-                                        <input type="checkbox" value="remember"> Remember me
-                                    </div>
-                                    <input id="button" type="submit" value="log in" (click)="login()">
-                                </div>
-            </form>
+<div id="mainContianer">
+    <div id="mainContainer_content">
+        <div id="title">
+            Sign in to your SourceStash Account
         </div>
-        <button (click)="loginGoogle()">Login With Google </button>
+        <div id="loginButton">
+            <button class="button" (click)="loginGoogle()">Sign In With Google </button>
+        </div>
     </div>
 </div>

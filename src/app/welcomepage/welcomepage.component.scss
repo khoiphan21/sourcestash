@@ -61,6 +61,7 @@
                 justify-content: space-between;
             }
             li{
+                cursor: pointer;
                 font-size: 12pt;
                 background-color: #333;
                 color: white;
@@ -108,11 +109,13 @@
                 }
             } 
             #container2_signup{
+                cursor: pointer;
                 padding: 1.5vh 0 1.5vh 0;
-                background: white;
+                background: #333;
+                color: white;
                 width: 10vw;
                 margin: auto;
-                border: #999 solid 1px;
+                border: white solid 1px;
             }
         }
     }
@@ -249,7 +252,6 @@ h1{
 
 .bold{
     font-weight: bold;
-    font-size: 12pt;
 }
 
 .container_title{
