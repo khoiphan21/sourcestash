@@ -1,119 +1,79 @@
+@import '../sass/variables';
+
+// header
+// background: $theme-dark-grey; 
+// height: 7vh;
+// font-size: 10pt
+
+// main container
+$mainContainerHeight: 86vh;
+
 #header{
-    padding: 2vh 4vw;
-    height: 6vh;
-    background: whitesmoke;
-    justify-content: center;
+    background: $theme-dark-grey;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end;
+    height: 7vh;
     text-align: center;
-}
-
-#main-contianer{
-    padding: 10vh 0 40vh 0;
-    height: 70vh;
-    width: 100vw;
-    background: #304269;
-    justify-content: center
-}
-
-#navigation-bar{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: #304269 solid 2px;
-    ul {
+    text-shadow: 2px 2px #222; 
+    a{
+        text-decoration: none;
+        color: $theme-white;
+        
+    } 
+    ul{
+        font-size: 10pt;
+        padding: 0px;
+        margin: 0px;
         list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
         display: flex;
-        justify-content: center;
-    }   li {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        width: 15vw;
-        padding: 1vh 0;
-        font-size: 14pt;
-        border: #304269 solid 2px;
-        a {
-            font-weight: bold;
-            display: block;
-            border-bottom: 1px solid #f26101;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            
-        }
-        a:hover:not(.active) {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            color: #f26101;
-        }
-        .active {
-            background-color: darken(#304269, 20);
-            color: white;
-        }
     }
+    li {
+        padding: 0 1vw;
+        width: 15vw;
+    }   
 }
 
-#bot-container{
-    padding: 1vh 1vw;
+#mainContianer{
+    height: $mainContainerHeight;
+    background: $light-background;
     display: flex;
     justify-content: center;
-}
-
-#login-form{
-    color: white;
-    font-size: 12pt;
-    padding: 5vh 1vw;
-    border-radius: 10px;
-    height: 31vh;
-    width: 26vw;
-}
-
-#borderless{
-    background: transparent;
-    width: 100%;
-    color: white;
-    font-size: 12pt;
-    height: 3vh;
-    border: none;
-}
-#bot-form{
-    margin-top: 5vh;   
-       width: 26vw;
-       display: flex;
-       justify-content: space-around;
-    a {
-        text-decoration: none;
-        color: #304269;
-        font-size: 12pt;
+    #sourcestash-intro-content{
+        padding: 3vh 0;
+        margin-top: 10vh;
+        height: 32vh;
+        width: 40vw;
+        background: $dark-background;
+        text-align: center;
+        p{
+            margin-bottom: 2vh;
+        }
+        #sourcestash-intro-content-title{
+            font-size: 14pt;
+            color: $theme-orange;
+        }
+        #sourcestash-intro-content-details{
+            width: 30vw;
+            margin: auto;
+            font-size: 10pt;
+            color: $theme-white;
+        }
+        #sourcestash-intro-content-button{
+            margin-top: 4vh;
+            .button{
+                cursor: pointer;
+                color: $theme-orange;
+                font-size: 10pt;
+                padding: 2vh 2vw;
+                background: transparent;
+                border: $theme-orange solid 2px;
+            }
+            :hover{
+                border: $theme-orange solid 3px;
+                color: $theme-orange;
+                font-weight: bold;
+            }
+        }
     }
-   a:hover:not(.active){
-        background: white;
-        color: white;
-    }
-}
-
-#tickbox{
-    padding: 1vh 0 0 0;
-    font-size: 12pt;
-    vertical-align: center;
-}
-
-#button{
-    font-size: 13pt;
-    font-weight: bold;
-    text-align: center;
-    color: #f26101;
-    border: #f26101 solid 1px;
-    background: transparent;
-    padding: 0 1vw;
-    height: 5vh;
-}
-
-hr{
-    border: #f26101 solid 1px;
-    margin-top: -2vh;
-}
-
-p{
-    margin-top: 1vh;
 }

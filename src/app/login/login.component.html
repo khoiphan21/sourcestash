@@ -1,34 +1,31 @@
-<div id="header">
-    For the logo
-</div>
-
-<div id="main-contianer">
-    <div id="navigation-bar">
+<section id="header">
+    <article>
         <ul>
-            <li><a (click)="login()">LOG IN</a></li>
-            <li><a (click)="signup()">SIGN UP</a></li>
+            <li>
+                <a routerLink="/welcome">Welcome</a>
+            </li>
+            <li>
+                <a>Log In</a>
+            </li>
         </ul>
-        <hr class="navbar">
-    </div>
-    <div id="bot-container">
-        <div id="login-form">
-            <form action="" method="get">
-                E-MAIL<input id="borderless" name="email" type="email" [(ngModel)]="account.email" />
-                <p>
-                    <hr>
-                    <p>
-                        PASSWORD<input id="borderless" name="password" type="password" [(ngModel)]="account.password" />
-                        <p>
-                            <hr>
-                            <p>
-                                <div id="bot-form">
-                                    <div id="tickbox">
-                                        <input type="checkbox" value="remember"> Remember me
-                                    </div>
-                                    <input id="button" type="submit" value="log in" (click)="login()">
-                                </div>
-            </form>
-        </div>
-        <button (click)="loginGoogle()">Login With Google </button>
-    </div>
-</div>
+    </article>
+</section>
+
+<section id="mainContianer">
+    <section id="sourcestash-intro-content">
+        <article id="sourcestash-intro-content-title">
+            Get Started With SourceStash
+            <p>
+        </article>
+        <article id="sourcestash-intro-content-details">
+            Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam rhoncus scelerisque tempor. Donec massa elit, eleifend
+            at augue sit amet, sodales dapibus ipsum. Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam
+            rhoncus scelerisque tempor. Donec massa elit, eleifend at augue sit amet, sodales dapibus ipsum.
+        </article>
+        <article id="sourcestash-intro-content-button">
+            <button class="button" (click)="loginGoogle()">Sign In With Google </button>
+        </article>
+    </section>
+</section>
+
+<app-footer></app-footer>

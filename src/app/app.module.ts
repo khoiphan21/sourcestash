@@ -20,6 +20,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { GoogleApiService } from './google-api.service';
 import { PopupComponent } from './popup/popup.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PopupComponent } from './popup/popup.component';
     TabComponent,
     TabsComponent,
     WelcomepageComponent,
-    PopupComponent
+    PopupComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -179,10 +179,34 @@ canvas {
     /* Modal Content */
     .createForm-content {
         background-color: #fefefe;
+        height: auto;
         margin: auto;
-        padding: 20px;
+        padding: 3vh 2vw;
         border: 1px solid #888;
-        width: 80vw;
+        width: 25vw;
+        ul{
+        margin: 0px;
+        padding: 0px;   
+        list-style-type: none;
+        }
+        li {
+            font-size: 10pt;
+        }   
+        .form-title-bold{
+            font-weight: bold;
+            font-size: 12pt;
+            color: black;
+        }
+        #create-source-button{
+            border: black solid 1px;
+            background: #888;
+            margin-top: 5vh;
+            font-weight: bold;
+            font-size: 10pt;
+            width: 9vw;
+            text-align: center;
+            padding: 2vh 0;
+        }
     }
 }
 
