@@ -1,21 +1,31 @@
-<div id="header">
-    <ul>
-        <li>
-            <a routerLink="/welcome">Welcome</a>
-        </li>
-        <li>
-            <a>Log In</a>
-        </li>
-    </ul>
-</div>
+<section id="header">
+    <article>
+        <ul>
+            <li>
+                <a routerLink="/welcome">Welcome</a>
+            </li>
+            <li>
+                <a>Log In</a>
+            </li>
+        </ul>
+    </article>
+</section>
 
-<div id="mainContianer">
-    <div id="mainContainer_content">
-        <div id="title">
-            Sign in to your SourceStash Account
-        </div>
-        <div id="loginButton">
+<section id="mainContianer">
+    <section id="sourcestash-intro-content">
+        <article id="sourcestash-intro-content-title">
+            Get Started With SourceStash
+            <p>
+        </article>
+        <article id="sourcestash-intro-content-details">
+            Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam rhoncus scelerisque tempor. Donec massa elit, eleifend
+            at augue sit amet, sodales dapibus ipsum. Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam
+            rhoncus scelerisque tempor. Donec massa elit, eleifend at augue sit amet, sodales dapibus ipsum.
+        </article>
+        <article id="sourcestash-intro-content-button">
             <button class="button" (click)="loginGoogle()">Sign In With Google </button>
-        </div>
-    </div>
-</div>
+        </article>
+    </section>
+</section>
+
+<app-footer></app-footer>

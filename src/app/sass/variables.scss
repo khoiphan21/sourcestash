@@ -1,3 +1,16 @@
+// theme color
+$theme-light-blue: #436697; // rgba(67,102,151,1);
+$theme-orange: #FF812A; // rgba(255,129,42,1);
+$theme-dark-grey: #31313d; // rgba(49,49,61,1);
+$theme-grey: #E0E0E7; // rgba(224,224,231,1);
+$theme-white: #ffffff; // rgba(255,255,255,1);
+
+$dark-background: rgba(49,49,61,0.9);
+$light-background: rgba(224,224,231,0.8);
+
 // main container
-$mainContainerBG: rgba(145,190,212, 0.5);
-$mainContainerHeight: 93vh;
+$mainContainerBG: $light-background;
+$mainContainerHeight: 86vh;
+
+// footer 
+$footerHeight: 7vh;

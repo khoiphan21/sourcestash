@@ -1,0 +1,12 @@
+@import '../sass/variables';
+
+footer{
+    background: $theme-dark-grey;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 7vh;
+    font-size: 7pt;
+}

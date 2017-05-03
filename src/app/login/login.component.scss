@@ -1,28 +1,28 @@
+@import '../sass/variables';
+
 // header
-$headerHeight: 7vh;
-$headerBG: #304269;
-$headerFont: whitesmoke;
-$headerFontSize: 10pt;
+// background: $theme-dark-grey; 
+// height: 7vh;
+// font-size: 10pt
 
 // main container
-$mainContainerBG: rgba(145,190,212, 0.5);
-$mainContainerHeight: 93vh;
+$mainContainerHeight: 86vh;
 
 #header{
+    background: $theme-dark-grey;
     display: flex; 
     align-items: center;
     justify-content: flex-end;
-    height: $headerHeight;
-    background: $headerBG;
+    height: 7vh;
     text-align: center;
     text-shadow: 2px 2px #222; 
     a{
         text-decoration: none;
-        color: $headerFont;
+        color: $theme-white;
         
     } 
     ul{
-        font-size: $headerFontSize;
+        font-size: 10pt;
         padding: 0px;
         margin: 0px;
         list-style-type: none;
@@ -36,28 +36,43 @@ $mainContainerHeight: 93vh;
 
 #mainContianer{
     height: $mainContainerHeight;
-    background: $mainContainerBG;
+    background: $light-background;
     display: flex;
     justify-content: center;
-    #mainContainer_content{
-        padding: 2vh 2vw;
-        margin-top: 7vh;
-        height: 30vh;
+    #sourcestash-intro-content{
+        padding: 3vh 0;
+        margin-top: 10vh;
+        height: 32vh;
         width: 40vw;
-        border: black solid 1px;
-        background: rgba(255,255,255,0.7);
+        background: $dark-background;
         text-align: center;
-        #title{
-            font-size: 20pt;
-            padding: 5vh 0;
+        p{
+            margin-bottom: 2vh;
         }
-        #loginButton{
+        #sourcestash-intro-content-title{
+            font-size: 14pt;
+            color: $theme-orange;
+        }
+        #sourcestash-intro-content-details{
+            width: 30vw;
+            margin: auto;
+            font-size: 10pt;
+            color: $theme-white;
+        }
+        #sourcestash-intro-content-button{
+            margin-top: 4vh;
             .button{
                 cursor: pointer;
-                border: none;
-                font-size: 8pt;
-                padding: 4vh 4vw;
-                background: lightgray;
+                color: $theme-orange;
+                font-size: 10pt;
+                padding: 2vh 2vw;
+                background: transparent;
+                border: $theme-orange solid 2px;
+            }
+            :hover{
+                border: $theme-orange solid 3px;
+                color: $theme-orange;
+                font-weight: bold;
             }
         }
     }
