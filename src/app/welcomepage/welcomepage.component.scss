@@ -36,10 +36,7 @@
 
 #main-container{
     margin-top: 7vh;
-    height: 93vh;
-    overflow: scroll;
-    overflow-x: hidden;
-
+    
     // Container 1
     #video-container{
         background: $theme-grey;
@@ -254,9 +251,9 @@
                 }
                 #submit{
                     border: 1px solid $theme-light-blue;
-                    color: $theme-light-blue;
+                    color: $theme-white;
                     padding: 1.5vh 3vw;
-                    background: transparent;
+                    background: $theme-dark-grey;
                     float: right;
                 }
             }
