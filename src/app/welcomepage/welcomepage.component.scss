@@ -2,36 +2,40 @@
 
 #welcome-header{
     position: fixed;
-    width: 96vw;
+    width: 100vw;
     top: 0;
     background: $theme-dark-grey;
     height: 7vh;
-    padding: 0 2vw;
     display: flex;
     color: $theme-white;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
     font-size: 16pt;
-    #header-left{
-    padding: 1vh 1vw;
-    }
-    #header-right{
-        a{
-            text-decoration: none;
-            text-align: center;
-            color: $theme-white;
-        } 
-        ul{
-            font-size: 10pt;
-            margin: 0px;
-            list-style-type: none;
-            display: flex;
+    #welcome-header-content{
+        width: $header-content-width;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        #header-left{
+
         }
-        li {
-            padding: 1vh 1vw;
-            width: 10vw;
+        #header-right{
+            ul{
+                font-size: 10pt;
+                margin: 0px;
+                list-style-type: none;
+                display: flex;
+            }
+            li {
+                text-align: right;
+                width: 10vw;
+            }   
         }   
-    }   
+        a{
+                text-decoration: none;
+                text-align: right;
+                color: $theme-white;
+            } 
+    }
 }
 
 #main-container{

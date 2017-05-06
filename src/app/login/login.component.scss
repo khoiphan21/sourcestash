@@ -36,7 +36,7 @@ $mainContainerHeight: 86vh;
 
 #mainContianer{
     height: $mainContainerHeight;
-    background: $light-background;
+    background: rgba(224,224,231,0.8);;
     display: flex;
     justify-content: center;
     #sourcestash-intro-content{

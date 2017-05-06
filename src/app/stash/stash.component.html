@@ -1,10 +1,23 @@
-<div id ="stash-block" *ngIf="stashes" >
-    <h2>{{stash.title}}</h2>
+<section id="stash-block" *ngIf="stashes">
+  <article id="stash-title">
+    <!--{{stash.title}}-->
+    Angular 2
+  </article>
+  <article id="stash-sources">
     <div id="source">
       <app-sources></app-sources>
       <app-sources></app-sources>
       <app-sources></app-sources>
-      <app-sources></app-sources>
     </div>
-
-</div>
+  </article>
+  <article id="stash-rating">
+    <ul>
+      <li>
+        Rating:
+      </li>
+       <li>
+        Difficulties: Advanced
+      </li>
+    </ul>
+  </article>
+</section>

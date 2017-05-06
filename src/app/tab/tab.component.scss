@@ -1,6 +1,11 @@
-#content{
-    background: #304269;
-    padding: 1vh 1vw;
-    width: 98vw;
-    height: 58vh;
+@import '../sass/variables';
+
+#tab-content{
+    width: 100vw;
+    height: 49vh;
+    #tab-content-dtl{
+        padding: 1vh 0;
+        margin: auto;
+        width: 61vw;
+    }
 }

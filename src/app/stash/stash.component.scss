@@ -1,18 +1,33 @@
+@import '../sass/variables';
+
 #stash-block{
-    width: 36vw;
-    padding: 1vh 2vw;
-    margin-bottom: 3vh;
-    margin-top: 3vh;
-    height: 28vh;
-    background: #304269;
-    border-radius: 10px;
-    border: solid 2px darken(#304269,20%);
-    color: white;
-    flex: 1;
-    h2{
-        margin: 0px;
-        margin-bottom: 3vh;
-        padding: 0px;
+    width: 20vw;
+    height: 23vh;
+    background: $theme-light-blue;
+    border: solid 2px $theme-orange;
+    color: $theme-white;
+    // flex: 1;
+    #stash-title{
+        display: flex;
+        justify-content: center;
+        font-size: 16pt;
+        padding: 1vh 0;
+    }
+    #stash-sources{
+        padding: 1vh 1vw;
+    }
+    #stash-rating{
+        padding: 1vh 1vw 0 1vw;
+        ul{
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            justify-content: space-between;
+            display: flex;
+        }
+        li{
+            font-size: 10pt;       
+        }   
     }
 }
 
