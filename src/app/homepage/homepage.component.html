@@ -1,11 +1,17 @@
 <app-header></app-header>
 
-<div id="main-container">
-    <h1> Top Ranking Stashes</h1>
+<section id="main-container">
+    <section id="main-container-content">
+        <article id="main-container-title">
+            Top Ranking Stashes
+        </article>
+        
+        <section id="main-container-stashes" >
+            <section id ="main-container-stashes-content" *ngFor="let stash of stashes">
+                <app-stash [stash]="stash"></app-stash>
+            </section>
+        </section>
+    </section>
+</section>
 
-    <div id="stashes">
-        <div id="inner-stashes" *ngFor="let stash of stashes">
-            <app-stash [stash]="stash"></app-stash>
-        </div>
-    </div>
-</div>
+<app-footer></app-footer>
