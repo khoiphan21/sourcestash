@@ -10,23 +10,50 @@
             <!--{{source.source_id}}-->
         </article>
     </section>
+
     <!--For the list containing the stashes and sources-->
     <section id="right-container">
         <section id="right-container-content">
-            <section id="right-container-list">
-                <ul>
-                    <li class="top-item">
-                        Simple Mockup
-                    </li>
-                </ul>
+            <section id="right-container-stash">
+                <article id="right-container-stash-title">
+                    Test Root Source
+                </article>
+
+                <section>
+                    <collapsible-list [type]="'expandable'">
+
+                        <collapsible-list-item>
+                            <collapsible-header id="right-container-stash-subheader">
+                                Item #1
+                            </collapsible-header>
+                            <!--collapsible-body can be multiple using ngFor-->
+                            <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                <p>Item #1 Body</p>
+                            </collapsible-body>
+                        </collapsible-list-item>
+                        <collapsible-list-item>
+                            <collapsible-header id="right-container-stash-subheader">
+                                Item #2
+                            </collapsible-header>
+                            <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                <p>Item #2 Body</p>
+                            </collapsible-body>
+                        </collapsible-list-item>
+                    </collapsible-list>
+                </section>
+
             </section>
+            <!--<section id="right-container-comment">
+                
+            </section>-->
+
             <section id="right-container-sidebar">
-                <article id="right-container-sidebar-stashbtn">
+                <div id="right-container-sidebar-stashbtn">
                     STH
-                </article>
-                <article id="right-container-sidebar-commentbtn">
+                </div>
+                <div id="right-container-sidebar-commentbtn">
                     CMT
-                </article>
+                </div>
             </section>
             <!--For the stash and source creation button-->
             <section id="bottom">

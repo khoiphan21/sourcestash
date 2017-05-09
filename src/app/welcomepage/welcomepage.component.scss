@@ -67,13 +67,13 @@
             text-align: center;
             font-size: 10pt;
             #feature{
-                width: 5vw;
+                width: 10vw;
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
             }
             #contact{
-                width: 5vw;
+                width: 10vw;
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
@@ -85,7 +85,6 @@
     #benefit-container{
         background: $dark-background;
         width: 100vw;
-        height: 41vh;
         padding: 4vh 0 4vh 0;
         color: $theme-white;
         text-align: center;
@@ -133,7 +132,6 @@
     #feature-container{
         background: $light-background;
         width: 100vw;
-        height: 48vh;
         padding: 4vh 0 4vh 0;
         color: black;
         text-align: center;
@@ -174,7 +172,6 @@
     #team-container{
         background: $dark-background;
         width: 100vw;
-        height: 41vh;
         padding: 4vh 0 4vh 0;
         color: $theme-white;
         text-align: center;
@@ -224,7 +221,6 @@
     #contact-container{
         background: $light-background;
         width: 100vw;
-        height: 50vh;
         padding: 4vh 0 8vh 0;
         font-size: 11pt;
         #contact-container-content{
@@ -248,7 +244,9 @@
                 width: 20vw;
                 padding: 0 1vw 0 1vw;
                 input[type=text], select {
+                    margin: 0;
                     width: 20vw;
+                    height: 2vh;
                     padding-top: 1vh;
                     border: 1px solid $theme-light-blue;
                 }
@@ -296,8 +294,5 @@
         }
     }
 }
-
-
-
 
 
