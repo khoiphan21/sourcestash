@@ -36,14 +36,14 @@ $mainContainerHeight: 86vh;
 
 #mainContianer{
     height: $mainContainerHeight;
-    background: $light-background;
+    background: rgba(224,224,231,0.8);;
     display: flex;
     justify-content: center;
     #sourcestash-intro-content{
         padding: 3vh 0;
         margin-top: 10vh;
-        height: 32vh;
         width: 40vw;
+        height: 42vh;
         background: $dark-background;
         text-align: center;
         p{

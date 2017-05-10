@@ -1,67 +1,54 @@
 <app-header></app-header>
 
-<div id="mainContainer">
-    <div id="topContainer">
-        <div id="topContainer_content">
-            <div id="topContainer_contentLeft">
-                <img src="/assets/images/hexagon.png" width="150px" height="150px">
-            </div>
-            <div id="topContainer_contentRight" *ngIf="userAccount">
+<section id="main-container">
+    <section id="top-container">
+        <section id="top-container-content">
+            <article id="top-container-contentleft">
+                <div id="top-container-contentleft-img">
+                    Profile pic
+                </div>
+            </article>
+            <article id="top-container-contentright" *ngIf="userAccount">
                 <h1> Profile </h1>
-                <ul>
-                    <li>
-                        <span class="bold">Username:</span> {{userAccount.username}}
-                        <p>
-                    </li>
-                    <li>
-                        <span class="bold">Background Information:</span> Bachelor of Information Technology
-                        <p>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <span class="bold"> Source Contribution:</span>
-                        <p>
-                    </li>
-                    <li>
-                        <span class="bold">Education:</span> University of Queensland
-                        <p>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <span class="bold">Published:</span>
-                        <p>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <span class="bold">Liked:</span>
-                        <p>
-                    </li>
-                </ul>
-                <!--<td class="center"><button class="edit">Edit</button></td>-->
-            </div>
+                <article id="top-container-contentright-details">
+                    <ul>
+                        <li>
+                            <span class="bold">Username:</span>
+                            <p>
+                                John Doe
+                            {{userAccount.username}}
+                        </li>
+                        <li>
+                            <span class="bold">University:</span>
+                            <p>
+                                University of John Doe
+                            {{userAccount.username}}
+                        </li>
+                        <li>
+                            <span class="bold">Bachelor</span>
+                            <p>
+                                Bachelor of IT
+                            {{userAccount.username}}
+                        </li>
+                    </ul>
+                </article>
+            </article>
 
-        </div>
-    </div>
+        </section>
+    </section>
 
-    <div id="bottomContainer">
-        <div id="bottomContainer_content">
+    <section id="bottom-container">
+        <section id="bottom-container-content">
             <my-tabs [tabs]="tabs">
-                <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'STASHES'">
-                    Content 1
+                <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Stashes'">
+                    <app-stash [stash]="stash"></app-stash>
                 </my-tab>
-                <my-tab [tabsArray]="tabs" tabTitle="SOURCES">
+                <my-tab [tabsArray]="tabs" tabTitle="Settings">
                     Content 2
                 </my-tab>
-                <my-tab [tabsArray]="tabs" tabTitle="FAVOURITES">
-                    Content 3
-                </my-tab>
-                <my-tab [tabsArray]="tabs" tabTitle="SETTINGS">
-                    Content 4
-                </my-tab>
             </my-tabs>
-        </div>
-    </div>
-</div>
+        </section>
+    </section>
+</section>
+
+<app-footer></app-footer>

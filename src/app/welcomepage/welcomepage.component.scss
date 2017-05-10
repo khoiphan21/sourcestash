@@ -2,41 +2,44 @@
 
 #welcome-header{
     position: fixed;
-    width: 96vw;
+    width: 100vw;
     top: 0;
     background: $theme-dark-grey;
     height: 7vh;
-    padding: 0 2vw;
     display: flex;
     color: $theme-white;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
     font-size: 16pt;
-    #header-left{
-    padding: 1vh 1vw;
-    }
-    #header-right{
-        a{
-            text-decoration: none;
-            text-align: center;
-            color: $theme-white;
-        } 
-        ul{
-            font-size: 10pt;
-            margin: 0px;
-            list-style-type: none;
-            display: flex;
+    #welcome-header-content{
+        width: $header-content-width;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        #header-left{
+
         }
-        li {
-            padding: 1vh 1vw;
-            width: 10vw;
+        #header-right{
+            ul{
+                font-size: 10pt;
+                margin: 0px;
+                list-style-type: none;
+                display: flex;
+            }
+            li {
+                text-align: right;
+                width: 10vw;
+            }   
         }   
-    }   
+        a{
+                text-decoration: none;
+                text-align: right;
+                color: $theme-white;
+            } 
+    }
 }
 
 #main-container{
     margin-top: 7vh;
-    
     // Container 1
     #video-container{
         background: $theme-grey;
@@ -64,13 +67,13 @@
             text-align: center;
             font-size: 10pt;
             #feature{
-                width: 5vw;
+                width: 10vw;
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
             }
             #contact{
-                width: 5vw;
+                width: 10vw;
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
@@ -82,7 +85,6 @@
     #benefit-container{
         background: $dark-background;
         width: 100vw;
-        height: 41vh;
         padding: 4vh 0 4vh 0;
         color: $theme-white;
         text-align: center;
@@ -130,7 +132,6 @@
     #feature-container{
         background: $light-background;
         width: 100vw;
-        height: 48vh;
         padding: 4vh 0 4vh 0;
         color: black;
         text-align: center;
@@ -171,7 +172,6 @@
     #team-container{
         background: $dark-background;
         width: 100vw;
-        height: 41vh;
         padding: 4vh 0 4vh 0;
         color: $theme-white;
         text-align: center;
@@ -221,7 +221,6 @@
     #contact-container{
         background: $light-background;
         width: 100vw;
-        height: 50vh;
         padding: 4vh 0 8vh 0;
         font-size: 11pt;
         #contact-container-content{
@@ -245,7 +244,9 @@
                 width: 20vw;
                 padding: 0 1vw 0 1vw;
                 input[type=text], select {
+                    margin: 0;
                     width: 20vw;
+                    height: 2vh;
                     padding-top: 1vh;
                     border: 1px solid $theme-light-blue;
                 }
@@ -293,8 +294,5 @@
         }
     }
 }
-
-
-
 
 

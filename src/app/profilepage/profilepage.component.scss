@@ -6,54 +6,70 @@
 // bottom container
 // height: 65vh;
 
-#mainContainer{
-    height: $mainContainerHeight;
-    background: $mainContainerBG;
+#main-container{
+    height: $main-container-height;
+    background: $main-container-bg;
     color: #91BED4;
 }
 
-#topContainer{
+#top-container{
     color: #304269;
-    height: 28vh;
-    background: rgba(255,255,255, 0.6);
+    height: 24vh;
     display: flex;
     justify-content: center;
-    #topContainer_content{
-        width: 79vw;
+    #top-container-content{
+        width: 61vw;
         display: flex;
         padding: 4vh 0;
         font-size: 11pt;
-       #topContainer_contentLeft{
-           width: 13vw;
-           padding: 0 1vw;
+       #top-container-contentleft{
+           width: 10vw;
+           display: flex;
+           align-items: center;
+           #top-container-contentleft-img{
+               width: 7vw;
+               height: 15vh;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               border: $theme-orange solid 2px;
+               background: $theme-light-blue;
+           }
        }
-       #topContainer_contentRight{
+       #top-container-contentright{
            padding: 0 1vw;
-           
-           ul{
-                margin: 0px;
-                padding: 0px;
-                list-style-type: none;
-                display: flex;
+           #top-container-contentright-details{
+               height: 15vh;
+               display: flex;
+               align-items: center;
+               width: 50vw;
+                 ul{
+                    width: 50vw;
+                    margin: 0px;
+                    padding: 0px;
+                    list-style-type: none;
+                    justify-content: space-between;
+                    display: flex;
             }
-           li{
-                width: 30vw;
-                .bold{
-                    font-size: 12pt;
-                    font-weight: bold;
-                }
-            }   
+                li{
+                    font-size: 10pt;
+                    .bold{
+                        font-size: 12pt;
+                        font-weight: bold;
+                    }
+                }   
+           }
            h1{
-               padding: 0px;
                margin: 0px;
+               color: $theme-orange;
+               font-size: 16pt;
            }
        }
     }
 }
 
 
-#bottomContainer{
-    background: rgba(55,55,55, 0.6);
+#bottom-container{
     display: flex;
     justify-content: center;
 }

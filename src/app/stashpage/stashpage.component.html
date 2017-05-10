@@ -1,80 +1,122 @@
 <app-header></app-header>
 <canvas #canvas id="canvas"></canvas>
 
-<div id="main-container">
-    <div id="left-container">
-
-        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
+<section id="main-container">
+    <section id="left-container">
+        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
+            class="source">
             <div [id]="source.source_id"> {{source.title}}</div>
             <!--<app-popup [sourceID]=source.source_id [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>-->
             <!--{{source.source_id}}-->
         </article>
-    </div>
+    </section>
+
     <!--For the list containing the stashes and sources-->
-    <div id="right-container">
-        <ul class="top_list">
-            <li class="top_item">
-                Simple Mockup
-            </li>
-        </ul>
-        <!--For the stash and source creation button-->
-        <div id="bottom">
-            <ul class="bottom_list">
-                <li class="bottom_item">
-                    <button id="createStash">Create Stash</button>
+    <section id="right-container">
+        <section id="right-container-content">
+            <section id="right-container-stash">
+                <article id="right-container-stash-title">
+                    Test Root Source
+                </article>
 
-                    <!-- The Modal -->
-                    <div id="stashForm" class="createForm">
+                <section>
+                    <collapsible-list [type]="'expandable'">
 
-                        <!-- Modal content -->
-                        <div class="createForm-content">
-                            <!-- the (x) button -->
-                            <div id="x">&times;</div>
-                            <p>create the form inside here</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="bottom_item">
-                    <button id="createForm">Create Source</button>
+                        <collapsible-list-item>
+                            <collapsible-header id="right-container-stash-subheader">
+                                Item #1
+                            </collapsible-header>
+                            <!--collapsible-body can be multiple using ngFor-->
+                            <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                <p>Item #1 Body</p>
+                            </collapsible-body>
+                        </collapsible-list-item>
+                        <collapsible-list-item>
+                            <collapsible-header id="right-container-stash-subheader">
+                                Item #2
+                            </collapsible-header>
+                            <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                <p>Item #2 Body</p>
+                            </collapsible-body>
+                        </collapsible-list-item>
+                    </collapsible-list>
+                </section>
 
-                    <!-- The Modal -->
-                    <div id="sourceForm" class="createForm">
+            </section>
+            <!--<section id="right-container-comment">
+                
+            </section>-->
 
-                        <!-- Modal content -->
-                        <div class="createForm-content">
-                            <!-- the (x) button -->
-                            <div id="close">&times;</div>
-                            <ul>
-                                <li>
-                                    <span class="form-title-bold">Title:<br></span>
-                                    Source 1<p>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                     <span class="form-title-bold">Difficulty:<br></span>
-                                    Intermediate<p>
-                                </li>
-                            </ul>
-                             <ul>
-                                <li>
-                                     <span class="form-title-bold">Tags:<br></span>
-                                    Web Development<p>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                     <span class="form-title-bold">Description<br></span>
-                                    Lorem Ipsum dolor sit amet, consectur adipiscing elit.<p>
-                                </li>
-                            </ul>
-                            <div id = "create-source-button">
-                                Create New Source
+            <section id="right-container-sidebar">
+                <div id="right-container-sidebar-stashbtn">
+                    STH
+                </div>
+                <div id="right-container-sidebar-commentbtn">
+                    CMT
+                </div>
+            </section>
+            <!--For the stash and source creation button-->
+            <section id="bottom">
+                <ul class="bottom_list">
+                    <li class="bottom_item">
+                        <button id="createStash">Create Stash</button>
+
+                        <!-- The Modal -->
+                        <div id="stashForm" class="createForm">
+
+                            <!-- Modal content -->
+                            <div class="createForm-content">
+                                <!-- the (x) button -->
+                                <div id="x">&times;</div>
+                                <p>create the form inside here</p>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+                    </li>
+                    <li class="bottom_item">
+                        <button id="createForm">Create Source</button>
+
+                        <!-- The Modal -->
+                        <div id="sourceForm" class="createForm">
+
+                            <!-- Modal content -->
+                            <div class="createForm-content">
+                                <!-- the (x) button -->
+                                <div id="close">&times;</div>
+                                <ul>
+                                    <li>
+                                        <span class="form-title-bold">Title:<br></span> Source 1
+                                        <p>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <span class="form-title-bold">Difficulty:<br></span> Intermediate
+                                        <p>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <span class="form-title-bold">Tags:<br></span> Web Development
+                                        <p>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <span class="form-title-bold">Description<br></span> Lorem Ipsum dolor sit amet,
+                                        consectur adipiscing elit.
+                                        <p>
+                                    </li>
+                                </ul>
+                                <div id="create-source-button">
+                                    Create New Source
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </section>
+</section>
+
+<app-footer></app-footer>

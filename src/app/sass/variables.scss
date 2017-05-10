@@ -6,11 +6,19 @@ $theme-grey: #E0E0E7; // rgba(224,224,231,1);
 $theme-white: #ffffff; // rgba(255,255,255,1);
 
 $dark-background: rgba(49,49,61,0.9);
-$light-background: rgba(224,224,231,0.8);
+$light-background: rgba(224,224,231,1);
+$light-background-trans: rgba(224,224,231,0.8);
+
+// header
+$header-content-width: 61vw;
+$header-height: 7vh;
+$header-bg: $theme-dark-grey;
+$header-font: $theme-white;
+$header-fontsize: 10pt;
 
 // main container
-$mainContainerBG: $light-background;
-$mainContainerHeight: 86vh;
+$main-container-bg: $light-background-trans;
+$main-container-height: 86vh;
 
 // footer 
-$footerHeight: 7vh;
+$footer-height: 7vh;
