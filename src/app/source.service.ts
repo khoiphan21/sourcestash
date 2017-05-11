@@ -42,6 +42,7 @@ export class SourceService {
    * @param stashId - the stash for which all the sources will be retrieved
    */
   getSourcesForStash(stash_id: string): Promise<Source[]> {
+    console.log(stash_id)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });

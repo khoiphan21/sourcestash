@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomepageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomepageComponent },
-  { path: 'stashpage', component: StashpageComponent},
+  { path: 'stashpage/:stashid', component: StashpageComponent},
   { path: 'profilepage', component: ProfilepageComponent},
   { path: 'addstash', component: AddstashComponent},
 ]

@@ -10,11 +10,13 @@ import { ANGULAR2 } from './data/mockStash';
 import { AppResponse } from './classes/response';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SERVER } from './classes/SERVER';
+import { AccountService } from './account.service';
+import { Account } from './classes/account';
 
 @Injectable()
 export class StashService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private accountService: AccountService) {
 
   }
 
@@ -89,12 +91,14 @@ export class StashService {
    * 
    * @param userEmail - The email of the user whose stashes are to be retrieved
    */
-  getAllStashes(userEmail: string): Observable<Stash[]> {
+  getAllStashes(): Observable<Stash[]> {
+    let user:Account = this.accountService.getCurrentUser();
+
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
     return this.http.get(
-      SERVER + '/stashes/all/' + userEmail,
+      SERVER + '/stashes/all/' + user.email,
       options
     ).map(response => {
       // Attempt to convert the response to the array of stashes

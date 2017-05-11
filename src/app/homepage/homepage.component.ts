@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+
 import { Stash } from '../classes/stash';
 import { ANGULAR2 } from '../data/mockStash';
 import { StashService } from '../stash.service';
@@ -17,17 +19,26 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private stashService: StashService,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
-    this.stashes = ANGULAR2;
+    this.stashService.getAllStashes().subscribe(stashes => {
+      this.stashes = stashes;
+    })
+    // this.stashes = ANGULAR2;
     
   }
 
   onSignIn(user) {
     let profile = user.getBasicProfile();
     console.log('User profile is: ' + profile.getId());
+  }
+
+  navigateToStash(stash_id: string) {
+    this.router.navigate(['/stashpage', stash_id]);
   }
 
 }

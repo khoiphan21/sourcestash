@@ -1,4 +1,7 @@
 import { Component, OnInit, OnChanges, AfterContentChecked, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+
 import * as Draggable from 'draggable';
 import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
@@ -28,46 +31,20 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   @ViewChild("canvas") canvas: ElementRef;
 
   constructor(
-    private sourceService: SourceService
+    private sourceService: SourceService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
     // FOR TESTING PURPOSES
-    this.sourceService.getSourcesForStash('2671055').then(
+    this.route.params.subscribe(params => {
+      this.sourceService.getSourcesForStash(params['stashid']).then(
       (sources: Source[]) => {
         console.log(sources);
         this.sources = sources;
-      }
-    )
-    // This part is to create a popup section for creating the source and stash
-    // Get the modal
-    // let stashForm = document.getElementById('stashForm'); 
-    // let modal = document.getElementById('sourceForm');
-    // // Get the button that opens the modal
-    // let createStash = document.getElementById("createStash");
-    // let btn = document.getElementById("createForm");
-    // // Get the div element (x) that closes the modal
-    // let x = document.getElementById("x");
-    // let close = document.getElementById("close");
-    // // When the user clicks the button, open the modal 
-    // createStash.onclick = function () {
-    //   stashForm.style.display = "block";
-    // }
-    // btn.onclick = function () {
-    //   modal.style.display = "block";
-    // }
-    // // When the user clicks on (x), close the modal
-    // x.onclick = function () {
-    //   stashForm.style.display = "none";
-    // }
-    // close.onclick = function () {
-    //   modal.style.display = "none";
-    // }
-    // window.onclick = function (event) {
-    //   if (event.target == modal) {
-    //     modal.style.display = "none";
-    //   }
-    // }
+      })
+    })
   }
   
 

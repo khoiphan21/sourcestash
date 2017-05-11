@@ -19,5 +19,4 @@ export class StashComponent implements OnInit {
       this.stashes = stash;
     })
   }
-
 }

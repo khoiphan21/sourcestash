@@ -201,6 +201,10 @@ export class AccountService {
     this.isLoggedIn = true;
   }
 
+  getCurrentUser(): Account {
+    return this.currentUser;
+  }
+
   /**
    * Log the user out. Also clear localstorage to make sure user is not 
    * auto-logged in the next time they visit the site.
