@@ -1,0 +1,209 @@
+/*
+ * CONTENT SECTIONS
+ */
+@mixin transparent-card-with-shadow(
+        $width: auto,
+        $height: auto,
+        $padding: 20px 40px,
+        $mobilePadding: 40px 30px,
+        $margin: 30px
+) {
+    width: $width;
+    height: $height;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.7);
+    padding: $padding;
+    margin: $margin;
+    box-sizing: border-box;
+    
+    @include media(mobile-screen) {
+        padding: $mobilePadding;
+    }
+}
+@mixin card-top-title(
+    $titlePosition: else,
+    $width: 250px,
+    $height: 50px,
+    $margin: 0,
+    $horizontalPadding: 0,
+    $verticalPadding: 0,
+    $font-size: 14px, 
+    $color: black,
+    $background-color: grey,
+    $box-shadow: 4px 4px 5px rgba(50, 50, 50, 1),
+    $font-weight: normal,
+    $text-transform: uppercase
+) {
+    position: absolute;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: $font-size;
+    color: $color;
+    background-color: $background-color;
+    box-shadow: $box-shadow;
+    padding: $verticalPadding $horizontalPadding;
+    font-weight: $font-weight;
+    text-transform: $text-transform;
+
+    @include media(mobile-screen) {
+        $adjustedWidth: $width * 2 / 3;
+        $adjustedHeight: $height * 4 / 5;
+        width: $adjustedWidth;
+        height: $adjustedHeight;
+
+        @if $titlePosition == center {
+            transform: translate(-$adjustedWidth / 2 - $horizontalPadding, -$adjustedHeight / 2);
+        }
+    }
+
+    @if $titlePosition == center {
+        top: 0;
+        left: 50%;
+        transform: translate(-$width / 2 - $horizontalPadding, -$height / 2);
+    }
+}
+
+/* 
+ * COMMON ELEMENTS
+ */
+@mixin banner(
+    $width: 100%,
+    $height: auto,
+    $verticalMargin: 0,
+    $horizontalMargin: 10vw,
+    $box-shadow: 0 5px 10px rgb(50, 50, 50),
+    $background-image: none,
+    $background-position: center,
+    $background-size: 100% 100%,
+    $padding: none,
+    $horizontalPadding: 0,
+    $verticalPadding: 0
+) {
+    width: $width;
+    height: $height;
+    margin: $verticalMargin $horizontalMargin;
+    box-shadow: $box-shadow;
+
+    @if $background-image != none {
+        background-image: $background-image;
+        background-position: $background-position;
+        background-size: $background-size;
+    } @else {
+        background-color: rgb(200, 200, 200);
+    }
+
+    @if $padding != none {
+        padding: $padding;
+    } @else {
+        padding: $verticalPadding $horizontalPadding;
+    }
+}
+@mixin button(
+    $width: 13vw,
+    $height: auto,
+    $horizontalPadding: 1vw,
+    $text-align: center,
+    $verticalPadding: 1vw,
+    $padding: none,
+    $background-color: rgb(200, 200, 200),
+    $box-shadow: 0px 2px 0px rgb(62, 62, 62),
+    $border-radius: 5px,
+    $font-size: 1vw,
+    $border: 0px solid black
+) {
+    width: $width;
+    height: $height;
+    background-color: $background-color;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    text-align: $text-align;
+    font-size: $font-size;
+    border: $border;
+
+    @if $padding != none {
+        padding: $padding;
+    } @else {
+        padding: $verticalPadding $horizontalPadding;
+    }
+    
+
+}
+
+/*
+ * MEDIA QUERIES MIXINS 
+ */
+@mixin media($type) {
+    $large-screen-size: "(min-width: 1500px) and (max-width: 2000px)";
+    $medium-screen-size: "(min-width: 1023px) and (max-width: 1500px)";
+    $small-screen-size: "(min-width: 600px) and (max-width: 1023px)";
+    $mobile-screen-size: "(max-width: 600px)";
+
+    @if $type == large-screen {
+        @media #{$large-screen-size} { @content; }
+    } 
+    @else if $type == medium-screen {
+        @media #{$medium-screen-size} { @content; }
+    }
+    @else if $type == small-screen {
+        @media #{$small-screen-size} { @content; }
+    }
+    @else if $type == mobile-screen {
+        @media #{$mobile-screen-size} { @content; }
+    }
+}
+
+/*
+ * COMMON ALIGNMENT STYLING
+ */
+@mixin column-center() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@mixin row-center() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @include media(mobile-screen) {
+        flex-direction: column;
+    }
+}
+@mixin grid($column: none, $row: none) {
+    @if $column != none && $row == none  {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+
+        // Align by the number of columns
+        > .grid-item {
+            width: 100 / $column - 2%;
+        }
+
+    } @else if $column == none && $row != none {
+        // Align by the number of rows
+
+    } @else {
+        // Not sure yet what to do here
+    }
+}
+
+/*
+ * COMMON EFFECTS
+ */
+@mixin transition-basic($speed: 0.3s) {
+    transition: all $speed;
+
+    &:hover {
+        transition: all $speed;
+    }
+}
