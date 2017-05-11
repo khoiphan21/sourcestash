@@ -3,9 +3,22 @@
 
 <section id="main-container">
     <section id="left-container">
+        
+        <!--<div [id]="currentSource.title" class="createForm">-->
+            <!-- Modal content -->
+            <!--<div class="createForm-content">-->
+                 <!--the (x) button -->
+                <!--<div id="close">&times;</div>-->
+                <!--Testing for popups-->
+                <!--<p>{{currentSource.title}}</p>
+                {{currentSource.Description}}-->
+            <!--</div>-->
+        <!--</div>-->
+
         <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
             class="source">
-            <div [id]="source.source_id"> {{source.title}}</div>
+            <button [id]="source.source_id" (click)="selectCurrentSource(source,source.source_id)">{{source.title}}</button>
+
             <!--<app-popup [sourceID]=source.source_id [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>-->
             <!--{{source.source_id}}-->
         </article>

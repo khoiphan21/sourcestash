@@ -15,6 +15,8 @@ import { element } from 'protractor';
 export class StashpageComponent implements OnInit, AfterContentChecked {
   sources: Source[];
 
+  currentSource: Source;
+
   renderedElements: any;
 
   isModalShown: boolean = false;
@@ -264,5 +266,36 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       };
     });
     return returnSource;
+  }
+  showPopupContent(source_id: string, title: string){
+    console.log(source_id);
+    console.log(title);
+    // Get the modal
+    let modal = document.getElementById(title);
+    // let source = document.getElementById({{sourceID}});
+    // Get the button that opens the modal
+    let btn = document.getElementById(source_id);
+    // Get the div element (x) that closes the modal
+    let x = document.getElementById("close");
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+    // When the user clicks on (x), close the modal
+    x.onclick = function () {
+      modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
+
+  selectCurrentSource(source: Source, source_id: string){
+    source = this.currentSource;
+    console.log(source_id);
+    console.log(source.source_id);
   }
 }
