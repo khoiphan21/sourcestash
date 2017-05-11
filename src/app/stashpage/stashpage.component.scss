@@ -19,6 +19,9 @@ canvas {
         display: flex;
         align-items: center;
         justify-content: center;
+        #popups{
+            display: none;
+        }
         canvas {
             position: absolute;
             top: 0;

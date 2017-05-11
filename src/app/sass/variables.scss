@@ -1,3 +1,14 @@
+// mobile size 
+$mobile-detail: "only screen and (max-width: 425px) and (min-width: 320px)";
+// @media #{$mobile-detail} {} = @media only screen and (max-width: 425px) and (min-width: 320px) {}
+
+// tablet size
+$tablet-detail: "only screen and (max-width: 768px) and (min-width: 425px)";
+
+// laptop size
+$laptop-detail: "only screen and (min-width: 1024px)";
+
+
 // theme color
 $theme-light-blue: #436697; // rgba(67,102,151,1);
 $theme-orange: #FF812A; // rgba(255,129,42,1);
