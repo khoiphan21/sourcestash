@@ -136,6 +136,7 @@
 
 /*
  * MEDIA QUERIES MIXINS 
+ * Arguments: large-screen, medium-screen, small-screen, mobile-screen
  */
 @mixin media($type) {
     $large-screen-size: "(min-width: 1500px) and (max-width: 2000px)";

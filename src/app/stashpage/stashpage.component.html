@@ -1,23 +1,23 @@
-<app-header></app-header>
 <canvas #canvas id="canvas"></canvas>
+<app-header></app-header>
 
 <section id="main-container">
     <section id="left-container">
         
-        <!--<div [id]="currentSource.title" class="createForm">-->
+        <div [id]="currentSource.title" class="createForm" *ngIf="currentSource">
             <!-- Modal content -->
-            <!--<div class="createForm-content">-->
+            <div class="createForm-content">
                  <!--the (x) button -->
-                <!--<div id="close">&times;</div>-->
-                <!--Testing for popups-->
-                <!--<p>{{currentSource.title}}</p>
-                {{currentSource.Description}}-->
-            <!--</div>-->
-        <!--</div>-->
+                <div id="close">&times;</div>
+                Testing for popups
+                <p>{{currentSource.title}}</p>
+                {{currentSource.Description}}
+            </div>
+        </div>
 
         <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
             class="source">
-            <button [id]="source.source_id" (click)="selectCurrentSource(source,source.source_id)">{{source.title}}</button>
+            <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
 
             <!--<app-popup [sourceID]=source.source_id [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>-->
             <!--{{source.source_id}}-->
@@ -78,11 +78,8 @@
                         <div id="stashForm" class="createForm">
 
                             <!-- Modal content -->
-                            <div class="createForm-content">
-                                <!-- the (x) button -->
-                                <div id="x">&times;</div>
-                                <p>create the form inside here</p>
-                            </div>
+                            <div id="close">&times;</div>
+                            <app-addstash></app-addstash>
                         </div>
                     </li>
                     <li class="bottom_item">

@@ -59,7 +59,11 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     close.onclick = function () {
       modal.style.display = "none";
     }
-
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   }
 
   ngAfterContentChecked() {
@@ -267,7 +271,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     });
     return returnSource;
   }
-  showPopupContent(source_id: string, title: string){
+  showPopupContent(source_id: string, title: string) {
     console.log(source_id);
     console.log(title);
     // Get the modal
@@ -293,9 +297,13 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  selectCurrentSource(source: Source, source_id: string){
-    source = this.currentSource;
-    console.log(source_id);
-    console.log(source.source_id);
+  selectCurrentSource(source_id: string) {
+    _.each(this.sources, (source: Source) => {
+      if (source.source_id == source_id) {
+        this.currentSource = source;
+        console.log(this.currentSource);
+      }
+    });
+    this.showPopupContent(this.currentSource.source_id, this.currentSource.title);
   }
 }

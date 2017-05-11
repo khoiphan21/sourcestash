@@ -24,6 +24,7 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { GoogleApiService } from './google-api.service';
 import { PopupComponent } from './popup/popup.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddstashComponent } from './addstash/addstash.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FooterComponent } from './footer/footer.component';
     TabsComponent,
     WelcomepageComponent,
     PopupComponent,
-    FooterComponent
+    FooterComponent,
+    AddstashComponent
     ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { ProfilepageComponent } from '../profilepage/profilepage.component';
 import { LoginComponent } from '../login/login.component';
 import { StashpageComponent } from '../stashpage/stashpage.component';
 import { WelcomepageComponent } from '../welcomepage/welcomepage.component';
+import { AddstashComponent } from '../addstash/addstash.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'stashpage', component: StashpageComponent},
   { path: 'profilepage', component: ProfilepageComponent},
+  { path: 'addstash', component: AddstashComponent},
 ]
 
 @NgModule({
