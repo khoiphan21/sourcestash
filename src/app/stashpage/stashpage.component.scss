@@ -1,9 +1,20 @@
 @import '../sass/variables';
-
+@import '../sass/mixins';
 canvas {
     position: absolute;
     top: 0;
     z-index: -1;
+}
+
+section.all-modals {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    @include column-center();
 }
 
 #main-container {
@@ -19,7 +30,7 @@ canvas {
         display: flex;
         align-items: center;
         justify-content: center;
-        #popups{
+        #popups {
             display: none;
         }
         canvas {
@@ -53,21 +64,21 @@ canvas {
     color: $theme-white;
     width: 20vw;
     height: 86vh;
-    #right-container-content{
+    #right-container-content {
         display: flex;
-        #right-container-stash{
+        #right-container-stash {
             border: 1px solid $theme-white;
             border-bottom: none;
             width: 17vw;
             // A list of sources and stashes
-            #right-container-stash-title{
+            #right-container-stash-title {
                 font-size: 14pt;
                 font-weight: bold;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            #right-container-stash-subheader{
+            #right-container-stash-subheader {
                 font-size: 12pt;
                 color: black;
                 display: block;
@@ -78,27 +89,27 @@ canvas {
                 background-color: #fff;
                 border-bottom: 1px solid #ddd;
             }
-            #right-container-stash-content{
+            #right-container-stash-content {
                 font-size: 10pt;
                 overflow: hidden;
                 padding: 0 2vw;
-                p{
+                p {
                     margin: 0;
                     padding: 1vh 0;
                 }
             }
         }
-        #right-container-comment{
+        #right-container-comment {
             border: 1px solid $theme-white;
             border-bottom: none;
             width: 17vw;
         }
-        #right-container-sidebar{
+        #right-container-sidebar {
             width: 3vw;
             height: 86vh;
             background: $theme-dark-grey;
             color: $theme-white;
-            #right-container-sidebar-stashbtn{
+            #right-container-sidebar-stashbtn {
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
@@ -107,11 +118,11 @@ canvas {
                 border-top: 1px solid $theme-white;
                 border-bottom: 1px solid $theme-white;
                 transition: 0.3s;
-                :hover{
+                 :hover {
                     background: white;
                 }
             }
-            #right-container-sidebar-commentbtn{
+            #right-container-sidebar-commentbtn {
                 cursor: pointer;
                 transition: 0.3s;
                 display: flex;
@@ -122,8 +133,6 @@ canvas {
             }
         }
     }
-    
-    
     // A container containing buttons for creating sources and stashes
     #bottom {
         position: absolute;
@@ -153,62 +162,6 @@ canvas {
     }
 }
 
-// For the popup form
-.createForm {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: hidden;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-    /* Modal Content */
-    .createForm-content {
-        background-color: #fefefe;
-        height: auto;
-        margin: auto;
-        padding: 3vh 2vw;
-        border: 1px solid #888;
-        width: 25vw;
-        ul{
-        margin: 0px;
-        padding: 0px;   
-        list-style-type: none;
-        }
-        li {
-            font-size: 10pt;
-        }   
-        .form-title-bold{
-            font-weight: bold;
-            font-size: 12pt;
-            color: black;
-        }
-        #create-source-button{
-            border: black solid 1px;
-            background: #888;
-            margin-top: 5vh;
-            font-weight: bold;
-            font-size: 10pt;
-            width: 9vw;
-            text-align: center;
-            padding: 2vh 0;
-        }
-    }
-}
-
 
 /* The Close Button */
 
@@ -230,10 +183,7 @@ canvas {
 }
 
 // @media only screen and (min-width: 1000px){
-    
 // }
-
-
 // // For the popup container
 // .modal {
 //     display: none;
@@ -257,10 +207,7 @@ canvas {
 //     background-color: rgba(0, 0, 0, 0.4);
 //     /* Black w/ opacity */
 // }
-
-
 // /* Modal Content */
-
 // .modal-content {
 //     background-color: #fefefe;
 //     margin: auto;
@@ -268,22 +215,17 @@ canvas {
 //     border: 1px solid #888;
 //     width: 80vw;
 // }
-
-
 // /* The Close Button */
-
 // #close {
 //     color: #aaaaaa;
 //     float: right;
 //     font-size: 28px;
 //     font-weight: bold;
 // }
-
 // #close:hover,
 // #close:focus {
 //     color: #000;
 //     text-decoration: none;
 //     cursor: pointer;
 // }
-
 // // For the popup container

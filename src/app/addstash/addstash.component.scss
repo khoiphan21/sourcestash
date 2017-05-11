@@ -1,34 +1,44 @@
 @import '../sass/variables';
-
-#main-container{
+@import '../sass/mixins';
+#main-container {
     color: black;
-    width: 100vw;
-    height: 100vh;
-    display: flex; 
+    // width: 100vw;
+    // height: 100vh;
+    display: flex;
     justify-content: center;
-    #main-container-content{
+    #main-container-content {
         background: white;
         border-radius: 10px;
         width: 50vw;
         height: 50vh;
         border: $theme-orange solid 1px;
-        #main-container-content-heading{
+        #main-container-content-heading {
+            @include row-center();
+            justify-content: space-between;
             font-weight: bold;
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
             background: $theme-grey;
             padding: 1vh 2vw;
+            span {
+                @include transition-basic();
+                font-size: 25px;
+                &:hover {
+                    color: white;
+                    cursor: pointer;
+                }
+            }
         }
-        #main-container-content-form{
+        #main-container-content-form {
             padding: 2vh 2vw;
-            .title{
+            .title {
                 background: $theme-grey;
                 border: $theme-orange solid 1px;
                 border-radius: 10px;
                 padding: 1vh 0;
                 height: 2vh;
             }
-            .description{
+            .description {
                 background: $theme-grey;
                 border: $theme-orange solid 1px;
                 border-radius: 10px;
@@ -38,4 +48,3 @@
         }
     }
 }
-

@@ -1,22 +1,17 @@
 <canvas #canvas id="canvas"></canvas>
 <app-header></app-header>
 
+<section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
+    <section class="content" (click)="$event.stopPropagation()">
+        <app-addstash *ngIf="isAddStashShown" (onClose)="hideModal()"></app-addstash>
+        <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource"></app-viewsource>
+        <app-addsource *ngIf="isAddSourceShown"></app-addsource>
+    </section>
+</section>
+
 <section id="main-container">
     <section id="left-container">
-        
-        <div [id]="currentSource.title" class="createForm" *ngIf="currentSource">
-            <!-- Modal content -->
-            <div class="createForm-content">
-                 <!--the (x) button -->
-                <div id="close">&times;</div>
-                Testing for popups
-                <p>{{currentSource.title}}</p>
-                {{currentSource.Description}}
-            </div>
-        </div>
-
-        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
-            class="source">
+        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
             <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
 
             <!--<app-popup [sourceID]=source.source_id [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>-->
@@ -72,56 +67,10 @@
             <section id="bottom">
                 <ul class="bottom_list">
                     <li class="bottom_item">
-                        <button id="createStash">Create Stash</button>
-
-                        <!-- The Modal -->
-                        <div id="stashForm" class="createForm">
-
-                            <!-- Modal content -->
-                            <div id="close">&times;</div>
-                            <app-addstash></app-addstash>
-                        </div>
+                        <button id="createStash" (click)="showModal('addStash')">Create Stash</button>
                     </li>
                     <li class="bottom_item">
-                        <button id="createForm">Create Source</button>
-
-                        <!-- The Modal -->
-                        <div id="sourceForm" class="createForm">
-
-                            <!-- Modal content -->
-                            <div class="createForm-content">
-                                <!-- the (x) button -->
-                                <div id="close">&times;</div>
-                                <ul>
-                                    <li>
-                                        <span class="form-title-bold">Title:<br></span> Source 1
-                                        <p>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <span class="form-title-bold">Difficulty:<br></span> Intermediate
-                                        <p>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <span class="form-title-bold">Tags:<br></span> Web Development
-                                        <p>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <span class="form-title-bold">Description<br></span> Lorem Ipsum dolor sit amet,
-                                        consectur adipiscing elit.
-                                        <p>
-                                    </li>
-                                </ul>
-                                <div id="create-source-button">
-                                    Create New Source
-                                </div>
-                            </div>
-                        </div>
+                        <button id="createForm" (click)="showModal('addSource')">Create Source</button>
                     </li>
                 </ul>
             </section>

@@ -19,7 +19,11 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   renderedElements: any;
 
+  // Variables to control modal items display
   isModalShown: boolean = false;
+  isAddStashShown: boolean = false;
+  isAddSourceShown: boolean = false;
+  isViewSourceShown: boolean = false;
 
   @ViewChild("canvas") canvas: ElementRef;
 
@@ -37,34 +41,35 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     )
     // This part is to create a popup section for creating the source and stash
     // Get the modal
-    let stashForm = document.getElementById('stashForm');
-    let modal = document.getElementById('sourceForm');
-    // Get the button that opens the modal
-    let createStash = document.getElementById("createStash");
-    let btn = document.getElementById("createForm");
-    // Get the div element (x) that closes the modal
-    let x = document.getElementById("x");
-    let close = document.getElementById("close");
-    // When the user clicks the button, open the modal 
-    createStash.onclick = function () {
-      stashForm.style.display = "block";
-    }
-    btn.onclick = function () {
-      modal.style.display = "block";
-    }
-    // When the user clicks on (x), close the modal
-    x.onclick = function () {
-      stashForm.style.display = "none";
-    }
-    close.onclick = function () {
-      modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+    // let stashForm = document.getElementById('stashForm'); 
+    // let modal = document.getElementById('sourceForm');
+    // // Get the button that opens the modal
+    // let createStash = document.getElementById("createStash");
+    // let btn = document.getElementById("createForm");
+    // // Get the div element (x) that closes the modal
+    // let x = document.getElementById("x");
+    // let close = document.getElementById("close");
+    // // When the user clicks the button, open the modal 
+    // createStash.onclick = function () {
+    //   stashForm.style.display = "block";
+    // }
+    // btn.onclick = function () {
+    //   modal.style.display = "block";
+    // }
+    // // When the user clicks on (x), close the modal
+    // x.onclick = function () {
+    //   stashForm.style.display = "none";
+    // }
+    // close.onclick = function () {
+    //   modal.style.display = "none";
+    // }
+    // window.onclick = function (event) {
+    //   if (event.target == modal) {
+    //     modal.style.display = "none";
+    //   }
+    // }
   }
+  
 
   ngAfterContentChecked() {
     if (this.sources) {
@@ -139,6 +144,32 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       }
     }
   }
+  
+  /**
+   * ALL MODAL FUNCTIONS GO HERE
+   */
+  hideModal() {
+    this.isModalShown = false;
+    this.hideAllModals();
+  }
+  showModal(modalType: string) {
+    this.isModalShown = true;
+    this.hideAllModals();
+    // Then selectively show the modals
+    if (modalType == 'addStash') {
+      this.isAddStashShown = true;
+    } else if (modalType == 'addSource') {
+      this.isAddSourceShown = true;
+    } else if (modalType == 'viewSource') {
+      this.isViewSourceShown = true;
+    }
+  }
+  hideAllModals() {
+    this.isAddStashShown = false;
+    this.isAddSourceShown = false;
+    this.isViewSourceShown = false;
+  }
+
 
   resetCanvas() {
     this.canvas.nativeElement.height = document.body.clientHeight;
@@ -304,6 +335,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         console.log(this.currentSource);
       }
     });
-    this.showPopupContent(this.currentSource.source_id, this.currentSource.title);
+    this.showModal("viewSource");
+    // this.showPopupContent(this.currentSource.source_id, this.currentSource.title);
   }
 }

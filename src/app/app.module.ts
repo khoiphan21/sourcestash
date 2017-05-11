@@ -25,6 +25,8 @@ import { GoogleApiService } from './google-api.service';
 import { PopupComponent } from './popup/popup.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddstashComponent } from './addstash/addstash.component';
+import { ViewsourceComponent } from './viewsource/viewsource.component';
+import { AddsourceComponent } from './addsource/addsource.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AddstashComponent } from './addstash/addstash.component';
     WelcomepageComponent,
     PopupComponent,
     FooterComponent,
-    AddstashComponent
+    AddstashComponent,
+    ViewsourceComponent,
+    AddsourceComponent
     ],
   imports: [
     BrowserModule,
