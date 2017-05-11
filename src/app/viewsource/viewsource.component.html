@@ -1,26 +1,30 @@
-<!-- The Modal -->
-<div id="sourceForm" class="createForm">
-
-    <!-- Modal content -->
-    <div class="createForm-content">
-        <!-- the (x) button -->
-        <div id="close">&times;</div>
-        <ul>
-            <li>
-                <span class="form-title-bold">Title:<br>{{source.title}}</span>
-            </li>
-            <li>
-                <span class="form-title-bold">Difficulty:<br> Intermediate </span>
-            </li>
-            <li>
-                <span class="form-title-bold">Tags:<br> Web Development </span>
-            </li>
-            <li>
-                <span class="form-title-bold">Description: <br> {{source.description}}</span>
-            </li>
-        </ul>
-        <div id="create-source-button">
+<section id="main-container">
+    <section id="main-container-content">
+        <article id="main-container-content-heading">
+            <span class="heading">Description</span>
+         <article>
+             <span class="cross">&nabla;</span>
+            <span class="cross" (click)="closePopup()">&times;</span>
+         </article>   
+        </article>
+        <section id="main-container-content-detail">
+            <ul>
+                <li>
+                    <span class="form-title-bold">Title:<br></span><span>{{source.title}}</span>
+                </li>
+                <li>
+                    <span class="form-title-bold">Difficulty:<br></span> <span>Intermediate </span>
+                </li>
+                <li>
+                    <span class="form-title-bold">Tags:<br></span> <span>Web Development </span>
+                </li>
+                <li>
+                    <span class="form-title-bold">Description: <br></span> <span>{{source.description}}</span>
+                </li>
+            </ul>
+        </section>
+        <!--<div id="create-source-button">
             Create New Source
-        </div>
-    </div>
-</div>
+        </div>-->
+    </section>
+</section>

@@ -7,43 +7,62 @@
     display: flex;
     justify-content: center;
     #main-container-content {
+        box-shadow: 1px 7px 30px $theme-dark-grey;
         background: white;
         border-radius: 10px;
         width: 50vw;
-        height: 50vh;
-        border: $theme-orange solid 1px;
         #main-container-content-heading {
             @include row-center();
             justify-content: space-between;
             font-weight: bold;
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
-            background: $theme-grey;
+            background: $theme-dark-grey;
+            color: white;
             padding: 1vh 2vw;
             span {
                 @include transition-basic();
                 font-size: 25px;
                 &:hover {
-                    color: white;
+                    color: $theme-light-blue;
                     cursor: pointer;
                 }
             }
         }
         #main-container-content-form {
             padding: 2vh 2vw;
+            font-weight: bold;
+            font-size: 10pt;
             .title {
+                border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
-                border: $theme-orange solid 1px;
-                border-radius: 10px;
                 padding: 1vh 0;
                 height: 2vh;
+                margin-bottom: 10px;
             }
             .description {
+                border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
-                border: $theme-orange solid 1px;
-                border-radius: 10px;
+                font-weight: normal;
                 padding: 1vh 0;
                 height: 20vh;
+                margin-bottom: 10px;
+            }
+            #create-source-button {
+                margin: auto;
+                border: darken($theme-grey, 10) solid 2px;
+                background: $theme-grey;
+                margin-bottom: 1vh;
+                font-weight: bold;
+                font-size: 10pt;
+                width: 9vw;
+                text-align: center;
+                padding: 2vh 0;
+                @include transition-basic();
+                &:hover{
+                    background: darken($theme-grey, 10);
+                    border: $theme-grey solid 2px;
+                }
             }
         }
     }

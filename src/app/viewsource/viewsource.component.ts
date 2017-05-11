@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Source } from '../classes/source';
 
 @Component({
@@ -10,9 +10,15 @@ export class ViewsourceComponent implements OnInit {
   @Input()
   source: Source;
 
+  @Output() onClose = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  closePopup() {
+    this.onClose.emit();
   }
 
 }

@@ -1,26 +1,40 @@
-<!-- The Modal -->
-<div id="sourceForm" class="createForm">
-
-    <!-- Modal content -->
-    <div class="createForm-content">
-        <!-- the (x) button -->
-        <div id="close">&times;</div>
-        <ul>
-            <li>
-                <span class="form-title-bold">Title:<br>{{source.title}}</span>
-            </li>
-            <li>
-                <span class="form-title-bold">Difficulty:<br> Intermediate </span>
-            </li>
-            <li>
-                <span class="form-title-bold">Tags:<br> Web Development </span>
-            </li>
-            <li>
-                <span class="form-title-bold">Description: <br> {{source.description}}</span>
-            </li>
-        </ul>
+<section id="main-container">
+    <section id="main-container-content">
+        <article id="main-container-content-heading">
+            <span class="heading">Create Source</span>
+            <span class="cross" (click)="closePopup()">&times;</span>
+        </article>
+        <section id="main-container-content-detail">
+            <form>
+                <ul>
+                    <li>
+                        <span class="form-title-bold">Title:<br></span>
+                        <input class="title" type="text" name="title">
+                    </li>
+                    <li>
+                        <span class="form-title-bold">Difficulty:<br></span>
+                        <select class="difficulty" name="difficulty">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span class="form-title-bold">Tags:<br></span>
+                        <select class="tags" name="tags">
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span class="form-title-bold">Description: <br></span>
+                        <textarea class="description" name="description"></textarea>
+                    </li>
+                </ul>
+            </form>
+        </section>
         <div id="create-source-button">
-            Create New Source
+            Create
         </div>
-    </div>
-</div>
+    </section>
+</section>

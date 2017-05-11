@@ -1,11 +1,14 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
 // For the popup form
-.createForm {
+#main-container {
     /* Modal Content */
-    .createForm-content {
-        background-color: #fefefe;
+    #main-container-content {
+        border-radius: 10px;
+        box-shadow: 1px 7px 30px $theme-dark-grey;
+        background-color: $theme-white;
         height: auto;
-        margin: auto;
-        padding: 3vh 2vw;
         border: 1px solid #888;
         width: 25vw;
         ul {
@@ -16,15 +19,40 @@
         li {
             font-size: 10pt;
         }
-        .form-title-bold {
+        #main-container-content-heading {
+            @include row-center();
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            justify-content: space-between;
             font-weight: bold;
-            font-size: 12pt;
-            color: black;
+            color: $theme-white;
+            background: $theme-dark-grey;
+            padding: 1vh 2vw;
+            .heading{
+                font-size: 12pt;
+            }
+            .cross {
+                @include transition-basic();
+                font-size: 25px;
+                &:hover {
+                    color: $theme-light-blue;
+                    cursor: pointer;
+                }
+            }
+        }
+        #main-container-content-detail{
+            padding: 1vh 2vw;
+                .form-title-bold {
+                font-weight: bold;
+                font-size: 12pt;
+                color: black;
+            }
         }
         #create-source-button {
+            margin: auto;
             border: black solid 1px;
             background: #888;
-            margin-top: 5vh;
+            margin-bottom: 1vh;
             font-weight: bold;
             font-size: 10pt;
             width: 9vw;
