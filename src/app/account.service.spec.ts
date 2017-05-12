@@ -160,4 +160,20 @@ describe('AccountService', () => {
     })();
   });
 
+  /** 
+   * Test for retrieving user ID
+   */
+  it('should retrieve the id for a user correctly', done => {
+    inject([AccountService], (service: AccountService) => {
+      service.getUserID('john4@example.com').then(id => {
+        expect(id).toBe('6876777106');
+        done()
+      }).catch(error => {
+        console.log(error);
+        fail('error should not occur');
+        done();
+      })
+    })();
+  });
+
 });

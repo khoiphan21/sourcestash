@@ -16,6 +16,7 @@ import { Stash } from './classes/stash';
 
 // import * as gapiFunction from 'google-client-api';
 import { GoogleApiService } from './google-api.service';
+import { Deferred } from './classes/deferred';
 
 export const LOCAL_STORAGE_KEY = "sourcestash_user";
 
@@ -130,7 +131,46 @@ export class AccountService {
     }).catch(error => {
       return Observable.throw(error);
     })
+  }
 
+  getCurrentUserID(): string {
+    return this.currentUser.id;
+  }
+
+  /**
+   * Get the ID of the user with the given email
+   * 
+   * @param email - the email of the user
+   */
+  getUserID(email: string): Promise<string> {
+    let userID: string;
+
+    let promise = new Deferred<string>();
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    // Make a call to the API for the user id
+    if (this.currentUser) {
+      this.http.post(
+        SERVER + '/user/id',
+        {
+          email: email
+        },
+        options
+      ).subscribe(response => {
+        let data = response.json();
+        promise.resolve('' + data.userID)
+      }, error => {
+        promise.reject(error);
+      });
+    } else {
+      promise.reject('No user is currently logged in');
+    }
+
+    return promise.promise;
   }
 
   /**
