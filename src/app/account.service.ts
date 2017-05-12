@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+// The back-end server
+import { SERVER } from './classes/SERVER';
+
 import { Account } from './classes/account';
 import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 import { Stash } from './classes/stash';
+
 // import * as gapiFunction from 'google-client-api';
 import { GoogleApiService } from './google-api.service';
 
-
-var eTag = '%Eh0BEBoFBxcZCRUIFCIlHC4CCg0MCwMTEhEPDgQYBiIMTTd2NWRHUGtyVk09';
-
-/**
-  * SERVER DEVELOPMENT LINKS
-  */
-const DEVELOPMENT_SERVER: string = 'http://localhost:8080';
-const BETA_SERVER: string = 'https://application-server-dot-source-stash-beta.appspot.com';
-const PRODUCTION_SERVER: string = 'https://application-server-dot-source-stash.appspot.com';
-const SERVER: string = DEVELOPMENT_SERVER;
+export const LOCAL_STORAGE_KEY = "sourcestash_user";
 
 @Injectable()
 /**
@@ -45,13 +42,19 @@ export class AccountService {
    */
   constructor(
     private http: Http,
-    private googleApi: GoogleApiService
+    private googleApi: GoogleApiService,
+    private router: Router
   ) {
     // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
 
-    // This is used for testing the server
-    // this.test();
+    // Check if a user is stored in localStorage
+    let user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (user != null) {
+      this.updateCurrentUser(user);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 
@@ -68,7 +71,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      DEVELOPMENT_SERVER + '/signup',
+      SERVER + '/signup',
       { account: accountDetails },
       options
     ).map(response => {
@@ -94,7 +97,7 @@ export class AccountService {
     this.setupHeaderOptions(options);
 
     return this.http.post(
-      DEVELOPMENT_SERVER + '/delete/user/' + email,
+      SERVER + '/delete/user/' + email,
       options
     );
   }
@@ -111,7 +114,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      DEVELOPMENT_SERVER + '/check-email',
+      SERVER + '/check-email',
       {
         email: email
       },
@@ -145,7 +148,7 @@ export class AccountService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(
-      DEVELOPMENT_SERVER + '/login',
+      SERVER + '/login',
       {
         email: email,
         password: password
@@ -199,6 +202,9 @@ export class AccountService {
   updateCurrentUser(user: Account) {
     this.currentUser = user;
     this.isLoggedIn = true;
+
+    // Store the current user in localStorage
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.currentUser));
   }
 
   getCurrentUser(): Account {
@@ -254,7 +260,7 @@ export class AccountService {
     this.setupHeaderOptions(options);
 
     this.http.get(
-      DEVELOPMENT_SERVER + '/source/abc',
+      SERVER + '/source/abc',
       options
     ).subscribe(response => {
       console.log(response);
