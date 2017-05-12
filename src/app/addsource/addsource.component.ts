@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-addsource',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addsource.component.scss']
 })
 export class AddsourceComponent implements OnInit {
+  
+  @Output() onClose = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  closePopup() {
+    this.onClose.emit();
+  }
 }
