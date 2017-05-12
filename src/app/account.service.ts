@@ -162,7 +162,9 @@ export class AccountService {
         options
       ).subscribe(response => {
         let data = response.json();
-        promise.resolve('' + data.userID)
+        let id = '' + data.userID;
+
+        promise.resolve(id);
       }, error => {
         promise.reject(error);
       });
@@ -200,10 +202,10 @@ export class AccountService {
 
       // Set the flag that tells the app the user has been logged in
       this.isLoggedIn = true;
-      this.currentUser = {
-        email: email,
-        password: password
-      };
+
+      // Update current user details
+      this.currentUser = new Account(email, password);
+      this.getUserID(email).then(id => this.currentUser.id = id);
 
       return new AppResponse(true, 'Login successful');
     }).catch(error => {
@@ -219,6 +221,7 @@ export class AccountService {
 
     return this.googleApi.login().then(account => {
       this.updateCurrentUser(account);
+      this.getUserID(this.currentUser.email).then(id => this.currentUser.id = id);
       return new AppResponse(true, 'Logged in successfully');
     }).catch(error => {
       console.log(error);
@@ -245,7 +248,7 @@ export class AccountService {
     this.isLoggedIn = true;
 
     // Store the current user in localStorage
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.currentUser));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(user));
   }
 
   getCurrentUser(): Account {
@@ -260,6 +263,9 @@ export class AccountService {
     if (this.isLoggedIn) {
       this.isLoggedIn = false;
       this.currentUser = null;
+
+      // clear localStorage
+      localStorage.setItem(LOCAL_STORAGE_KEY, null);
     }
   }
 

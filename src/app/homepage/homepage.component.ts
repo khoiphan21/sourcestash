@@ -31,8 +31,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     this.stashService.getAllStashes().subscribe(stashes => {
       this.stashes = stashes;
-    })
-    // this.stashes = ANGULAR2;
+    });
 
   }
 
@@ -43,6 +42,12 @@ export class HomepageComponent implements OnInit {
 
   navigateToStash(stash_id: string) {
     this.router.navigate(['/stashpage', stash_id]);
+  }
+
+  reloadStashes() {
+    this.stashService.getAllStashes().subscribe(stashes => {
+      this.stashes = stashes;
+    });
   }
 
   /**

@@ -2,7 +2,7 @@
 
 <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
-        <app-addstash *ngIf="isAddStashShown" (onClose)="hideModal()"></app-addstash>
+        <app-addstash *ngIf="isAddStashShown" (onCreated)="reloadStashes()" (onClose)="hideModal()"></app-addstash>
     </section>
 </section>
 

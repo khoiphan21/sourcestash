@@ -32,11 +32,13 @@ export class StashService {
 
     // Update the author_id of the stash to be created
     let userID: string = this.accountService.getCurrentUserID();
+    let updatedStash = stash;
+    updatedStash.author_id = userID;
 
     return this.http.post(
       SERVER + '/stash/new',
       {
-        stash: stash
+        stash: updatedStash
       },
       options
     ).map(response => {

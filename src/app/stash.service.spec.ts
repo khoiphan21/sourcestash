@@ -15,8 +15,8 @@ describe('StashService', () => {
     TestBed.configureTestingModule({
       providers: [
         StashService,
-        AccountService,
         GoogleApiService,
+        AccountService,
         { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
       ],
       imports: [
@@ -33,35 +33,43 @@ describe('StashService', () => {
    * Tests for stash creation
    */
   it('should create a new stash and successfully delete it', done => {
-    inject([StashService], (service: StashService) => {
+    inject([StashService, AccountService], (service: StashService, accountService: AccountService) => {
       let stash: Stash = {
         stash_id: '302221',
         title: 'Stash #1',
-        description: 'Some Description',
-        author_id: '3656220637652272'
+        description: 'Some Description'
       };
-      service.createStash(stash).subscribe(
-        (response: AppResponse) => {
-          expect(response.success).toBe(true);
+      let email = 'john@example.com';
+      let password = 'whatever';
+      accountService.login(email, password).subscribe(() => {
+        // Wait for a few seconds for the app to update user id
+        setTimeout(() => {
+          service.createStash(stash).subscribe(
+            (response: AppResponse) => {
+              expect(response.success).toBe(true);
 
-
-
-          // Now attempt to delete the stash
-          service.deleteStash(stash).subscribe(
-            response => done(), // successful
-            error => {
-              console.log(error);
-              fail('Error should not occur');
+              // Now attempt to delete the stash
+              service.deleteStash(stash).subscribe(
+                response => done(), // successful
+                error => {
+                  console.log(error);
+                  fail('Error should not occur');
+                  done();
+                }
+              )
+            }, error => {
+              // still attempt to delete the stash anyway
+              fail('Error should not be thrown');
+              service.deleteStash(stash)
               done();
             }
           )
-        }, error => {
-          // still attempt to delete the stash anyway
-          fail('Error should not be thrown');
-          service.deleteStash(stash)
-          done();
-        }
-      )
+        }, 2000)
+      }, error => {
+        fail('error trying to login');
+        done();
+      })
+
     })();
   })
 
