@@ -5,9 +5,7 @@
     </article>
     <article id="stash-sources">
         <div id="source">
-            <app-sources></app-sources>
-            <app-sources></app-sources>
-            <app-sources></app-sources>
+            <app-sources *ngFor="let source of sources" [source]="source"></app-sources>
         </div>
     </article>
     <article id="stash-rating">

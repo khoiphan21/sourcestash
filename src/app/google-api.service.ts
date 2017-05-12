@@ -118,6 +118,7 @@ export class GoogleApiService {
         let storedAccount = new Account(account.email, account.social_id);
         storedAccount.firstName = account.firstname;
         storedAccount.lastName = account.lastname;
+        console.log(storedAccount);
 
 
         // Send a request to the server to login
