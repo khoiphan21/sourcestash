@@ -40,7 +40,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.route.params.subscribe(params => {
       this.sourceService.getSourcesForStash(params['stashid']).then(
       (sources: Source[]) => {
-        console.log(sources);
         this.sources = sources;
       })
     })
