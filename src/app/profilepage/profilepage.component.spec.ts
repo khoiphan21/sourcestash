@@ -11,6 +11,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { GoogleApiService } from '../google-api.service';
+import { FooterComponent } from '../footer/footer.component';
+import { Router } from '@angular/router';
+import { SourceService } from '../source.service';
 
 describe('ProfilepageComponent', () => {
   let component: ProfilepageComponent;
@@ -24,12 +27,15 @@ describe('ProfilepageComponent', () => {
         StashComponent,
         SourcesComponent,
         TabsComponent,
-        TabComponent
+        TabComponent,
+        FooterComponent
       ],
       providers: [
         AccountService,
         StashService,
-        GoogleApiService
+        GoogleApiService,
+        SourceService,
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [
         HttpModule,

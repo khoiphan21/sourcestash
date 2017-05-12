@@ -6,6 +6,7 @@ import { AccountService } from '../account.service';
 import { HttpModule } from '@angular/http';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { GoogleApiService } from '../google-api.service';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,7 +15,8 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        LoginComponent
+        LoginComponent,
+        FooterComponent
       ],
       imports: [
         FormsModule,

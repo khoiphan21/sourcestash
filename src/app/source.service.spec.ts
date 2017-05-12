@@ -13,7 +13,7 @@ describe('SourceService', () => {
         SourceService,
         AccountService,
         GoogleApiService,
-        Router
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ], 
       imports: [
         HttpModule
@@ -28,7 +28,7 @@ describe('SourceService', () => {
   it('should successfully retrieve all sources for the test stash', done => {
     inject([SourceService], (service: SourceService) => {
       service.getSourcesForStash('2671055').then(sources => {
-        expect(sources.length).toBe(2);
+        expect(sources.length).toBe(3);
         done();
       }).catch(error => {
         fail('error should not be thrown.');

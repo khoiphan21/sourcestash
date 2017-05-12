@@ -6,12 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Stash } from './classes/stash';
 import { AppResponse } from './classes/response';
+import { Router } from '@angular/router';
+import { AccountService } from './account.service';
+import { GoogleApiService } from './google-api.service';
 
 describe('StashService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        StashService
+        StashService,
+        AccountService,
+        GoogleApiService,
+        { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
       ],
       imports: [
         HttpModule, BrowserModule, FormsModule
@@ -26,7 +32,7 @@ describe('StashService', () => {
   /**
    * Tests for stash creation
    */
-  it('should create a new stash and successfully delete it', done =>{
+  it('should create a new stash and successfully delete it', done => {
     inject([StashService], (service: StashService) => {
       let stash: Stash = {
         stash_id: '302221',
@@ -88,31 +94,21 @@ describe('StashService', () => {
     })();
   });
   it('should return an empty array for a user without a stash', done => {
-    inject([StashService], (service: StashService) => {
+    inject([StashService, AccountService], (service: StashService, accountService: AccountService) => {
+      // Login with the correct user first
       let email = 'john4@example.com';
-      service.getAllStashes().subscribe(
-        (stashes: Stash[]) => {
-          expect(stashes.length).toBe(0);
-          done();
-        }, error => {
-          fail('error should not be thrown');
-          done();
-        }
-      );
-    })();
-  });
-  it('should throw an error if requesting for a nonexistent user', done => {
-    inject([StashService], (service: StashService) => {
-      let email = 'nonexistentuser@impossible.email.com';
-      service.getAllStashes().subscribe(
-        (stashes: Stash[]) => {
-          fail('Error should have been thrown');
-          done();
-        }, error => {
-          // Pass
-          done();
-        }
-      );
+      let password = 'password';
+      accountService.login(email, password).subscribe(() => {
+        service.getAllStashes().subscribe(
+          (stashes: Stash[]) => {
+            expect(stashes.length).toBe(0);
+            done();
+          }, error => {
+            fail('error should not be thrown');
+            done();
+          }
+        );
+      });
     })();
   });
 });

@@ -1,11 +1,11 @@
-<section id="main-container">
+<section id="main-container" *ngIf="source">
     <section id="main-container-content">
         <article id="main-container-content-heading">
             <span class="heading">Description</span>
-         <article>
-             <span class="cross">&nabla;</span>
-            <span class="cross" (click)="closePopup()">&times;</span>
-         </article>   
+            <article>
+                <span class="cross">&nabla;</span>
+                <span class="cross" (click)="closePopup()">&times;</span>
+            </article>
         </article>
         <section id="main-container-content-detail">
             <ul>

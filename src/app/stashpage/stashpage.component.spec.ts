@@ -6,6 +6,20 @@ import { SourceService } from '../source.service';
 import { AccountService } from '../account.service';
 import { HttpModule } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
+import { ViewsourceComponent } from '../viewsource/viewsource.component';
+import { AddstashComponent } from '../addstash/addstash.component';
+import { AddsourceComponent } from '../addsource/addsource.component';
+import { CollapsibleModule } from 'angular2-collapsible';
+import { FooterComponent } from '../footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+let mockRoute = {
+  params: {
+    subscribe: jasmine.createSpy('subscribe')
+  }
+}
 
 describe('StashpageComponent', () => {
   let component: StashpageComponent;
@@ -15,15 +29,24 @@ describe('StashpageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         StashpageComponent,
-        HeaderComponent
+        HeaderComponent,
+        ViewsourceComponent,
+        AddstashComponent,
+        AddsourceComponent,
+        FooterComponent
       ], 
       providers: [
         SourceService,
         AccountService,
-        GoogleApiService
+        GoogleApiService,
+        {provide: ActivatedRoute, useValue: mockRoute},
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [
-        HttpModule
+        HttpModule,
+        CollapsibleModule,
+        FormsModule,
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();

@@ -13,6 +13,12 @@ import { AddstashComponent } from '../addstash/addstash.component';
 import { AddsourceComponent } from '../addsource/addsource.component';
 import { ViewsourceComponent } from '../viewsource/viewsource.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+let mockRouter = {
+  navigate: jasmine.createSpy('navigate')
+}
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
@@ -33,11 +39,13 @@ describe('HomepageComponent', () => {
       providers: [
         StashService,
         AccountService,
-        GoogleApiService
+        GoogleApiService,
+        {provide: Router, useValue: mockRouter}
       ],
       imports: [
         HttpModule,
-        BrowserModule
+        BrowserModule,
+        FormsModule
       ]
     })
     .compileComponents();
