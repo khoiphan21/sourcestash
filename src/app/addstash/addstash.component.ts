@@ -31,13 +31,14 @@ export class AddstashComponent implements OnInit {
     console.log(this.stashTitle, this.stashDescription);
     this.stashService.createStash(new Stash(this.stashTitle, this.stashDescription))
     .subscribe(response => {
-      console.log(response);
+      console.log('successfully created a stash')
+      // Emit event to tell parent to reload the stashes
+      this.onCreated.emit();
     }, error => {
+      alert('Error trying to create a stash. View Log for more details.');
       console.log(error);
-    })
+    });
     
-    // Emit event to tell parent to reload the stashes
-    this.onCreated.emit();
     // Close the popup
     this.closePopup();
   }

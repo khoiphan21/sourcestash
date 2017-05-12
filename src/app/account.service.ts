@@ -221,7 +221,10 @@ export class AccountService {
 
     return this.googleApi.login().then(account => {
       this.updateCurrentUser(account);
-      this.getUserID(this.currentUser.email).then(id => this.currentUser.id = id);
+      this.getUserID(this.currentUser.email).then(id => {
+        this.currentUser.id = id;
+        this.updateCurrentUser(this.currentUser);
+      });
       return new AppResponse(true, 'Logged in successfully');
     }).catch(error => {
       console.log(error);
