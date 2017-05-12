@@ -1,9 +1,16 @@
 <app-header></app-header>
 
+<section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
+    <section class="content" (click)="$event.stopPropagation()">
+        <app-addstash *ngIf="isAddStashShown" (onClose)="hideModal()"></app-addstash>
+    </section>
+</section>
+
 <section id="main-container">
     <section id="main-container-content">
         <article id="main-container-title">
             Top Ranking Stashes
+            <button id="createStash" (click)="showModal('addStash')">Create Stash</button>
         </article>
 
         <section id="main-container-stashes">

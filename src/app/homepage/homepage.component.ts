@@ -17,6 +17,10 @@ import { AppResponse } from '../classes/response';
 export class HomepageComponent implements OnInit {
   stashes: Stash[];
 
+  // Variables to control modal items display
+  isModalShown: boolean = false;
+  isAddStashShown: boolean = false;
+
   constructor(
     private stashService: StashService,
     private accountService: AccountService,
@@ -29,7 +33,7 @@ export class HomepageComponent implements OnInit {
       this.stashes = stashes;
     })
     // this.stashes = ANGULAR2;
-    
+
   }
 
   onSignIn(user) {
@@ -41,4 +45,22 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/stashpage', stash_id]);
   }
 
+  /**
+   * ALL MODAL FUNCTIONS GO HERE
+   */
+  hideModal() {
+    this.isModalShown = false;
+    this.hideAllModals();
+  }
+  showModal(modalType: string) {
+    this.isModalShown = true;
+    this.hideAllModals();
+    // Then selectively show the modals
+    if (modalType == 'addStash') {
+      this.isAddStashShown = true;
+    } 
+  }
+  hideAllModals() {
+    this.isAddStashShown = false;
+  }
 }

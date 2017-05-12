@@ -24,7 +24,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   // Variables to control modal items display
   isModalShown: boolean = false;
-  isAddStashShown: boolean = false;
   isAddSourceShown: boolean = false;
   isViewSourceShown: boolean = false;
 
@@ -132,16 +131,13 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.isModalShown = true;
     this.hideAllModals();
     // Then selectively show the modals
-    if (modalType == 'addStash') {
-      this.isAddStashShown = true;
-    } else if (modalType == 'addSource') {
+    if (modalType == 'addSource') {
       this.isAddSourceShown = true;
     } else if (modalType == 'viewSource') {
       this.isViewSourceShown = true;
     }
   }
   hideAllModals() {
-    this.isAddStashShown = false;
     this.isAddSourceShown = false;
     this.isViewSourceShown = false;
   }

@@ -3,7 +3,6 @@
 
 <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
-        <app-addstash *ngIf="isAddStashShown" (onClose)="hideModal()"></app-addstash>
         <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onClose)="hideModal()"></app-viewsource>
         <app-addsource *ngIf="isAddSourceShown" (onClose)="hideModal()"></app-addsource>
     </section>
@@ -64,16 +63,9 @@
                 </div>
             </section>
             <!--For the stash and source creation button-->
-            <section id="bottom">
-                <ul class="bottom_list">
-                    <li class="bottom_item">
-                        <button id="createStash" (click)="showModal('addStash')">Create Stash</button>
-                    </li>
-                    <li class="bottom_item">
-                        <button id="createForm" (click)="showModal('addSource')">Create Source</button>
-                    </li>
-                </ul>
-            </section>
+            <article id="bottom">
+                <button id="addSource" (click)="showModal('addSource')">Create Source</button>
+            </article>
         </section>
     </section>
 </section>
