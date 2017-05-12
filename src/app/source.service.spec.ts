@@ -4,6 +4,7 @@ import { SourceService } from './source.service';
 import { AccountService } from './account.service';
 import { HttpModule } from '@angular/http';
 import { GoogleApiService } from './google-api.service';
+import { Router } from '@angular/router';
 
 describe('SourceService', () => {
   beforeEach(() => {
@@ -11,7 +12,8 @@ describe('SourceService', () => {
       providers: [
         SourceService,
         AccountService,
-        GoogleApiService
+        GoogleApiService,
+        Router
       ], 
       imports: [
         HttpModule

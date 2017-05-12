@@ -1,20 +1,16 @@
 <section id="main-container">
     <section id="main-container-content">
         <article id="main-container-content-heading">
-            <span>Add a Stash</span><span (click)="closePopup()">&times;</span>
+            <span class="heading-title">New stash</span><span (click)="closePopup()">&times;</span>
         </article>
         <article id="main-container-content-form">
             <form>
-                Title<br>
-                <input class="title" type="text" name="title">
-                <p>
+                <label for="title">Title</label>
+                <input class="title" [(ngModel)]="stashTitle" type="text" name="title">
+                <label for="description">Description</label>
+                <textarea class="description" [(ngModel)]="stashDescription" name="description"></textarea>
 
-                    Description<br>
-                    <textarea class="description" name="description"></textarea>
-
-                    <div id="create-source-button">
-                        Create
-                    </div>
+                <button id="create-source-button" (click)="addStash()">Create</button>
             </form>
         </article>
     </section>

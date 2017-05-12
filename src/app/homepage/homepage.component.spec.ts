@@ -9,6 +9,10 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccountService } from '../account.service';
 import { GoogleApiService } from '../google-api.service';
+import { AddstashComponent } from '../addstash/addstash.component';
+import { AddsourceComponent } from '../addsource/addsource.component';
+import { ViewsourceComponent } from '../viewsource/viewsource.component';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
@@ -20,7 +24,11 @@ describe('HomepageComponent', () => {
         HomepageComponent, 
         HeaderComponent,
         StashComponent,
-        SourcesComponent
+        SourcesComponent,
+        AddstashComponent,
+        AddsourceComponent,
+        ViewsourceComponent,
+        FooterComponent
       ],
       providers: [
         StashService,

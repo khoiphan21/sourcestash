@@ -1,25 +1,37 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AccountService } from './account.service';
+import { AccountService, LOCAL_STORAGE_KEY } from './account.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppResponse } from './classes/response';
 import { Stash } from './classes/stash';
 import { GoogleApiService } from './google-api.service';
+import { Router } from '@angular/router';
 
+let mockRouter = {
+  navigate: jasmine.createSpy('navigate')
+};
 
 describe('AccountService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         AccountService,
-        GoogleApiService
+        GoogleApiService,
+        {provide: Router, useValue: mockRouter}
       ],
       imports: [
         HttpModule, BrowserModule, FormsModule
       ]
     });
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+      email: 'john.doe.april.2017@gmail.com',
+      firstName: 'Dummy',
+      lastName: 'Account',
+      password: '%Eh0BEBoFBxcZCRUIFCIlHC4CCg0MCwMTEhEPDgQYBiIMNGVaejIvSXVNRnc9'
+    }));
   });
 
   it('should create a service successfully', inject([AccountService], (service: AccountService) => {

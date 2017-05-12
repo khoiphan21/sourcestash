@@ -8,7 +8,6 @@ import { AccountService } from '../account.service';
 import { StashService } from '../stash.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { Ng2TabComponent } from 'ng2-tab';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { GoogleApiService } from '../google-api.service';

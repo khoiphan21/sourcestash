@@ -20,7 +20,10 @@
             background: $theme-dark-grey;
             color: white;
             padding: 1vh 2vw;
-            span {
+            span.heading-title {
+                text-transform: uppercase;
+            }
+            span:last-child {
                 @include transition-basic();
                 font-size: 25px;
                 &:hover {
@@ -59,7 +62,7 @@
                 text-align: center;
                 padding: 2vh 0;
                 @include transition-basic();
-                &:hover{
+                &:hover {
                     background: darken($theme-grey, 10);
                     border: $theme-grey solid 2px;
                 }

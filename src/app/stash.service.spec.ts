@@ -76,7 +76,7 @@ describe('StashService', () => {
   it('should retrieve the stashes for a user', done => {
     inject([StashService], (service: StashService) => {
       let email = 'john@example.com';
-      service.getAllStashes(email).subscribe(
+      service.getAllStashes().subscribe(
         (stashes: Stash[]) => {
           expect(stashes).toBeTruthy();
           done();
@@ -90,7 +90,7 @@ describe('StashService', () => {
   it('should return an empty array for a user without a stash', done => {
     inject([StashService], (service: StashService) => {
       let email = 'john4@example.com';
-      service.getAllStashes(email).subscribe(
+      service.getAllStashes().subscribe(
         (stashes: Stash[]) => {
           expect(stashes.length).toBe(0);
           done();
@@ -104,7 +104,7 @@ describe('StashService', () => {
   it('should throw an error if requesting for a nonexistent user', done => {
     inject([StashService], (service: StashService) => {
       let email = 'nonexistentuser@impossible.email.com';
-      service.getAllStashes(email).subscribe(
+      service.getAllStashes().subscribe(
         (stashes: Stash[]) => {
           fail('Error should have been thrown');
           done();
