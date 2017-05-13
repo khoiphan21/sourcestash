@@ -1,5 +1,5 @@
 @import '../sass/variables';
-
+@import '../sass/mixins';
 // top container 
 // height:  28vh;
 
@@ -8,12 +8,11 @@
 
 #main-container{
     height: $main-container-height;
-    background: $main-container-bg;
-    color: #91BED4;
+    background: $light-background-trans;
 }
 
 #top-container{
-    color: #304269;
+    color: $theme-light-blue;
     height: 24vh;
     display: flex;
     justify-content: center;
@@ -22,23 +21,23 @@
         display: flex;
         padding: 4vh 0;
         font-size: 11pt;
-       #top-container-contentleft{
+       #top-container-content-left{
            width: 10vw;
            display: flex;
            align-items: center;
-           #top-container-contentleft-img{
+           #top-container-content-left-img{
                width: 7vw;
                height: 15vh;
                display: flex;
+               color: $theme-dark-grey;
                justify-content: center;
                align-items: center;
-               border: $theme-orange solid 2px;
-               background: $theme-light-blue;
+               border: $theme-light-blue solid 2px;
            }
        }
-       #top-container-contentright{
+       #top-container-content-right{
            padding: 0 1vw;
-           #top-container-contentright-details{
+           #top-container-content-right-details{
                height: 15vh;
                display: flex;
                align-items: center;
@@ -53,7 +52,9 @@
             }
                 li{
                     font-size: 10pt;
+                    color: $theme-dark-grey;
                     .bold{
+                        color: $theme-light-blue;
                         font-size: 12pt;
                         font-weight: bold;
                     }
@@ -61,7 +62,7 @@
            }
            h1{
                margin: 0px;
-               color: $theme-orange;
+               color: $theme-light-blue;
                font-size: 16pt;
            }
        }
@@ -72,5 +73,69 @@
 #bottom-container{
     display: flex;
     justify-content: center;
+    #bottom-container-content{
+        width: 100vw;
+        #bottom-container-content-tab{
+            margin: auto;
+            color: $theme-white;
+            display: flex;
+            justify-content: space-between;
+            height: 7vh;
+            background: $theme-light-blue;
+            width: 61vw;
+            #bottom-container-content-tab-left{
+                display: flex;
+                #bottom-container-content-tab-left-stashes{
+                    cursor: pointer;
+                    height: 7vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 2vw;
+                    transition: 0.3s;
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                        color: $theme-orange;
+                    }
+                }
+                #bottom-container-content-tab-left-settings{
+                    cursor: pointer;
+                    height: 7vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 2vw;
+                    transition: 0.3s;
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                        color: $theme-orange;
+                    }
+                }
+            }
+            #bottom-container-content-tab-right{
+                cursor: pointer;
+                height: 7vh;
+                display: flex;
+                align-items: center;
+                padding: 0 2vw;
+                transition: 0.3s;
+                &:hover{
+                    background: lighten($theme-dark-grey, 10);
+                    color: $theme-orange;
+                }
+            }
+        }
+        #bottom-container-content-detail{
+            margin: auto;
+            width: 61vw;
+            color: black;
+            padding: 1vh 1vw;
+            height: 55vh;
+            #bottom-container-content-detail-stashes{
+            }
+            #bottom-container-content-detail-settings{
+            }
+            #bottom-container-content-detail-create{
+            }
+        }
+    }
 }
 

@@ -3,32 +3,29 @@
 <section id="main-container">
     <section id="top-container">
         <section id="top-container-content">
-            <article id="top-container-contentleft">
-                <div id="top-container-contentleft-img">
+            <article id="top-container-content-left">
+                <div id="top-container-content-left-img">
                     Profile pic
                 </div>
             </article>
-            <article id="top-container-contentright" *ngIf="userAccount">
+            <article id="top-container-content-right" *ngIf="userAccount">
                 <h1> Profile </h1>
-                <article id="top-container-contentright-details">
+                <article id="top-container-content-right-details">
                     <ul>
                         <li>
                             <span class="bold">Username:</span>
                             <p>
-                                John Doe
-                            {{userAccount.username}}
+                                John Doe {{userAccount.username}}
                         </li>
                         <li>
                             <span class="bold">University:</span>
                             <p>
-                                University of John Doe
-                            {{userAccount.username}}
+                                University of John Doe {{userAccount.username}}
                         </li>
                         <li>
                             <span class="bold">Bachelor</span>
                             <p>
-                                Bachelor of IT
-                            {{userAccount.username}}
+                                Bachelor of IT {{userAccount.username}}
                         </li>
                     </ul>
                 </article>
@@ -39,14 +36,38 @@
 
     <section id="bottom-container">
         <section id="bottom-container-content">
-            <my-tabs [tabs]="tabs">
+            <section id="bottom-container-content-tab">
+                <section id="bottom-container-content-tab-left">
+                    <article id="bottom-container-content-tab-left-stashes" (click)="clickTab('clickStash')">
+                        Stashes
+                    </article>
+                    <article id="bottom-container-content-tab-left-settings" (click)="clickTab('clickSetting')">
+                        Settings
+                    </article>
+                </section>
+                <section id="bottom-container-content-tab-right" (click)="clickTab('clickCreate')">
+                    Create
+                </section>
+            </section>
+            <section id="bottom-container-content-detail">
+                <article id="bottom-container-content-detail-stashes" *ngIf="isStashesClicked">
+                    stashes
+                </article>
+                <article id="bottom-container-content-detail-settings" *ngIf="isSettingsClicked">
+                    settings
+                </article>
+                <article id="bottom-container-content-detail-create" *ngIf="isCreateClicked">
+                    create
+                </article>  
+            </section>
+            <!--<my-tabs [tabs]="tabs">
                 <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Stashes'">
                     <app-stash [stash]="stash"></app-stash>
                 </my-tab>
                 <my-tab [tabsArray]="tabs" tabTitle="Settings">
                     Content 2
                 </my-tab>
-            </my-tabs>
+            </my-tabs>-->
         </section>
     </section>
 </section>
