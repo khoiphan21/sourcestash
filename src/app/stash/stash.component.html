@@ -1,4 +1,4 @@
-<section id="stash-block" *ngIf="stashes">
+<section id="main-container" *ngIf="stashes">
     <article id="stash-title">
         {{stash.title}}
         <!--Angular 2-->
@@ -9,13 +9,6 @@
         </div>
     </article>
     <article id="stash-rating">
-        <ul>
-            <li>
-                Rating:
-            </li>
-            <li>
-                Difficulties:
-            </li>
-        </ul>
+        Rating: <span class="ratescore"> 5</span>
     </article>
 </section>

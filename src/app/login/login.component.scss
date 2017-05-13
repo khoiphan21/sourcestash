@@ -19,7 +19,7 @@ $mainContainerHeight: 86vh;
     a{
         text-decoration: none;
         color: $theme-white;
-        
+        text-shadow: 3px 5px 10px $theme-light-blue; 
     } 
     ul{
         font-size: 10pt;
@@ -63,13 +63,14 @@ $mainContainerHeight: 86vh;
             margin-top: 4vh;
             .button{
                 cursor: pointer;
+                box-shadow: 1px 7px 30px $theme-dark-grey;
                 color: $theme-orange;
                 font-size: 10pt;
                 padding: 2vh 2vw;
                 background: transparent;
                 border: $theme-orange solid 2px;
             }
-            :hover{
+            &:hover{
                 border: $theme-orange solid 3px;
                 color: $theme-orange;
                 font-weight: bold;

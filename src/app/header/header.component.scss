@@ -8,7 +8,7 @@
     align-items: center;
     color: $header-font;
     font-size: $header-fontsize;
-    text-shadow: 2px 2px #222; 
+    text-shadow: 3px 5px 10px $theme-light-blue; 
     #header-content{
         width: $header-content-width;
         display: flex;

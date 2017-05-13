@@ -11,6 +11,7 @@
     color: $theme-white;
     justify-content: center;
     font-size: 16pt;
+    text-shadow: 3px 5px 10px $theme-light-blue; 
     @include media(mobile-screen) {
         color: red;
     }
@@ -75,12 +76,14 @@
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
+                box-shadow: 1px 7px 30px $theme-blueberry;
             }
             #contact{
                 width: 10vw;
                 padding: 1.5vh 2vw;
                 background: $theme-dark-grey;
                 color: $theme-white;
+                box-shadow: 1px 7px 30px $theme-blueberry;
             }
         }
     }
@@ -128,6 +131,7 @@
                 width: 10vw;
                 margin: auto;
                 border: $theme-orange solid 2px;
+                box-shadow: 1px 7px 30px $theme-dark-grey;
             }
         }
     }
@@ -260,6 +264,7 @@
                     padding: 1.5vh 3vw;
                     background: $theme-dark-grey;
                     float: right;
+                    box-shadow: 1px 7px 30px $theme-blueberry;
                 }
             }
             #contact-container-details-detail{

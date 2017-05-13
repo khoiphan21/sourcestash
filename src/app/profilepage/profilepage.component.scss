@@ -16,11 +16,15 @@
     height: 24vh;
     display: flex;
     justify-content: center;
+    
     #top-container-content{
         width: 61vw;
         display: flex;
-        padding: 4vh 0;
+        padding: 4vh 1vw;
         font-size: 11pt;
+        box-shadow: 1px 7px 30px $theme-blueberry;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
        #top-container-content-left{
            width: 10vw;
            display: flex;
@@ -33,6 +37,7 @@
                justify-content: center;
                align-items: center;
                border: $theme-light-blue solid 2px;
+               background: $theme-blueberry;
            }
        }
        #top-container-content-right{
@@ -81,11 +86,13 @@
         width: 100vw;
         #bottom-container-content-tab{
             margin: auto;
+            box-shadow: 1px 7px 30px $theme-blueberry;
+            border: $theme-blueberry 1px solid;
             color: $theme-white;
             display: flex;
             justify-content: space-between;
             height: 7vh;
-            background: $theme-blueberry;
+            background: $theme-dark-grey;
             width: 61vw;
             #bottom-container-content-tab-left{
                 display: flex;
@@ -128,11 +135,12 @@
             }
         }
         #bottom-container-content-detail{
+            box-shadow: 1px 7px 30px $theme-blueberry;
             margin: auto;
             width: 61vw;
             color: black;
             padding: 1vh 1vw;
-            height: 55vh;
+            height: 53vh;
             #bottom-container-content-detail-stashes{
             }
             #bottom-container-content-detail-settings{

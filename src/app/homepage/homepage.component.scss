@@ -17,23 +17,46 @@ section.all-modals {
     height: $main-container-height;
     background: $main-container-bg;
     display: flex;
-    justify-content: center; 
+    justify-content: flex-end; 
     text-align: center;
     #main-container-content{
-        width: 80vw;
+        width: 61vw;
         #main-container-title{
+            margin-top: 2vh;
+            text-decoration: underline;
+            // text-shadow: 1px 7px 30px $theme-dark-grey;
+            box-shadow: 1px 7px 30px $theme-blueberry;
             font-size: 16pt;
-            font-weight: bold;
-            color: $theme-light-blue;
+            font-weight: bold;  
+            color: $theme-dark-grey;
             padding: 2vh 0;
+            margin-bottom: 2vh;
         }
         #main-container-stashes{
-            width: 80vw;
+            box-shadow: 1px 7px 30px $theme-blueberry;
+            padding: 2vh 0;
+            height: 72vh;
+            width: 61vw;
             display: flex; 
             justify-content: space-around;
             flex-wrap: wrap;
             #main-container-stashes-content{
                 // margin: 2vh 0 2vh 0; 
+            }
+        }
+    }
+    #main-container-createstash{
+        width: 19.5vw;
+        padding: 2vh 0;
+        #createstash-btn{
+            background: $theme-light-blue;
+            padding: 1vh 1vw;
+            color: white;
+            border: $theme-dark-grey solid 1px;
+            box-shadow: 1px 7px 30px $theme-dark-grey;
+            &:hover{
+                background: $theme-blueberry;
+                color: $theme-orange;
             }
         }
     }
