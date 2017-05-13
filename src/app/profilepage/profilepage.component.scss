@@ -52,7 +52,10 @@
             }
                 li{
                     font-size: 10pt;
-                    color: $theme-dark-grey;
+                    color: darken($theme-orange, 15);
+                    p{
+                        margin-top: 0;
+                    }
                     .bold{
                         color: $theme-light-blue;
                         font-size: 12pt;
@@ -62,7 +65,8 @@
            }
            h1{
                margin: 0px;
-               color: $theme-light-blue;
+               font-weight: bold;
+               color: $theme-dark-grey;
                font-size: 16pt;
            }
        }
@@ -81,7 +85,7 @@
             display: flex;
             justify-content: space-between;
             height: 7vh;
-            background: $theme-light-blue;
+            background: $theme-blueberry;
             width: 61vw;
             #bottom-container-content-tab-left{
                 display: flex;
@@ -93,7 +97,7 @@
                     padding: 0 2vw;
                     transition: 0.3s;
                     &:hover{
-                        background: lighten($theme-dark-grey, 10);
+                        background: darken($theme-blueberry, 5);
                         color: $theme-orange;
                     }
                 }
@@ -105,7 +109,7 @@
                     padding: 0 2vw;
                     transition: 0.3s;
                     &:hover{
-                        background: lighten($theme-dark-grey, 10);
+                        background: darken($theme-blueberry, 5);
                         color: $theme-orange;
                     }
                 }
@@ -118,7 +122,7 @@
                 padding: 0 2vw;
                 transition: 0.3s;
                 &:hover{
-                    background: lighten($theme-dark-grey, 10);
+                    background: darken($theme-blueberry, 5);
                     color: $theme-orange;
                 }
             }
