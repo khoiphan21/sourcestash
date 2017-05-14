@@ -52,7 +52,7 @@ export class AccountService {
     // Check if a user is stored in localStorage
     let user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (user != null) {
-      console.log(user)
+      console.log(user.email)
       this.updateCurrentUser(user);
     } else {
       this.router.navigate(['/login']);

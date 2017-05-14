@@ -1,4 +1,4 @@
-<section id="main-container">
+<section id="main-container" *ngIf="parentSource">
     <section id="main-container-content">
         <article id="main-container-content-heading">
             <span class="heading">Create Source</span>
@@ -9,14 +9,14 @@
                 <ul>
                     <li>
                         <span class="form-title-bold">Title:<br></span>
-                        <input class="title" type="text" name="title">
+                        <input class="title" [(ngModel)]="source.title" type="text" name="title">
                     </li>
                     <li>
                         <span class="form-title-bold">Difficulty:<br></span>
-                        <select class="difficulty" name="difficulty">
-                            <option value="Beginner">Beginner</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
+                        <select class="difficulty" name="difficulty" [(ngModel)]="source.difficulty"> 
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
                         </select>
                     </li>
                     <li>
@@ -28,12 +28,12 @@
                     </li>
                     <li>
                         <span class="form-title-bold">Description: <br></span>
-                        <textarea class="description" name="description"></textarea>
+                        <textarea class="description" [(ngModel)]="source.description" name="description"></textarea>
                     </li>
                 </ul>
             </form>
         </section>
-        <div id="create-source-button">
+        <div id="create-source-button" (click)="addSource()">
             Create
         </div>
     </section>

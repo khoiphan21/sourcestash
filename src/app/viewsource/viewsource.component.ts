@@ -11,6 +11,7 @@ export class ViewsourceComponent implements OnInit {
   source: Source;
 
   @Output() onClose = new EventEmitter<boolean>();
+  @Output() onAddSource = new EventEmitter<Source>();
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class ViewsourceComponent implements OnInit {
   
   closePopup() {
     this.onClose.emit();
+  }
+
+  addSource() {
+    this.onAddSource.emit(this.source);
   }
 
 }

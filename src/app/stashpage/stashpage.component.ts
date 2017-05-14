@@ -142,6 +142,14 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.isViewSourceShown = false;
   }
 
+  onAddSource(source: Source) {
+    // Re-set the value of the current source - this value also is the parent source
+    // for the new source
+    this.currentSource = source;
+    // Close the modal window for view source and open add source
+    this.showModal('addSource');
+  }
+
 
   resetCanvas() {
     this.canvas.nativeElement.height = document.body.clientHeight;
@@ -165,8 +173,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         let sourceX = sourceBounds.left + sourceBounds.width / 2;
         let sourceY = sourceBounds.top + sourceBounds.height / 2;
 
-        console.log('drawing line');
-        console.log(parentX, parentY, sourceX, sourceY)
         this.drawCanvas(parentX, parentY, sourceX, sourceY);
       }
     });
@@ -274,40 +280,13 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     });
     return returnSource;
   }
-  // showPopupContent(source_id: string, title: string) {
-  //   console.log(source_id);
-  //   console.log(title);
-  //   // Get the modal
-  //   let modal = document.getElementById(title);
-  //   // let source = document.getElementById({{sourceID}});
-  //   // Get the button that opens the modal
-  //   let btn = document.getElementById(source_id);
-  //   // Get the div element (x) that closes the modal
-  //   let x = document.getElementById("close");
-  //   // When the user clicks the button, open the modal 
-  //   btn.onclick = function () {
-  //     modal.style.display = "block";
-  //   }
-  //   // When the user clicks on (x), close the modal
-  //   x.onclick = function () {
-  //     modal.style.display = "none";
-  //   }
-  //   // When the user clicks anywhere outside of the modal, close it
-  //   window.onclick = function (event) {
-  //     if (event.target == modal) {
-  //       modal.style.display = "none";
-  //     }
-  //   }
-  // }
 
   selectCurrentSource(source_id: string) {
     _.each(this.sources, (source: Source) => {
       if (source.source_id == source_id) {
         this.currentSource = source;
-        console.log(this.currentSource);
       }
     });
     this.showModal("viewSource");
-    // this.showPopupContent(this.currentSource.source_id, this.currentSource.title);
   }
 }

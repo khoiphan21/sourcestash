@@ -42,7 +42,6 @@ export class SourceService {
    * @param stashId - the stash for which all the sources will be retrieved
    */
   getSourcesForStash(stash_id: string): Promise<Source[]> {
-    console.log(stash_id)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -61,7 +60,6 @@ export class SourceService {
     ).subscribe(response => {
       let sources = response.json();
       this.sources = sources;
-      console.log(sources);
       deferred.resolve(sources);
     }, error => {
       deferred.reject(error);
