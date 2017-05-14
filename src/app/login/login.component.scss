@@ -1,80 +1,161 @@
 @import '../sass/variables';
-
-// header
-// background: $theme-dark-grey; 
-// height: 7vh;
-// font-size: 10pt
+@import '../sass/mixins';
 
 // main container
 $mainContainerHeight: 86vh;
 
-#header{
-    background: $theme-dark-grey;
-    display: flex; 
-    align-items: center;
-    justify-content: flex-end;
-    height: 7vh;
-    text-align: center;
-    text-shadow: 2px 2px #222; 
-    a{
-        text-decoration: none;
-        color: $theme-white;
-        text-shadow: 3px 5px 10px $theme-light-blue; 
-    } 
-    ul{
-        font-size: 10pt;
-        padding: 0px;
-        margin: 0px;
-        list-style-type: none;
+@include media(medium-screen) {
+    #login-header{
+        width: 100vw;
+        background: $theme-dark-grey;
+        height: 7vh;
         display: flex;
+        color: $theme-white;
+        justify-content: center;
+        font-size: 16pt;
+        text-shadow: 3px 5px 10px $theme-light-blue; 
+        #login-header-content{
+            width: $header-content-width;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #login-header-left{
+
+            }
+            #login-header-right{
+                font-size: 10pt;
+            }   
+            a{
+                    text-decoration: none;
+                    text-align: right;
+                    color: $theme-white;
+                } 
+        }
     }
-    li {
-        padding: 0 1vw;
-        width: 15vw;
-    }   
+
+    #mainContianer{
+        height: $mainContainerHeight;
+        background: rgba(224,224,231,0.8);;
+        display: flex;
+        justify-content: center;
+        #sourcestash-intro-content{
+            border-radius: 10px;
+            border: $theme-orange solid 2px;
+            box-shadow: 1px 7px 30px $theme-dark-grey;
+            padding: 3vh 0;
+            margin-top: 10vh;
+            width: 40vw;
+            height: 42vh;
+            background: $dark-background;
+            text-align: center;
+            p{
+                margin-bottom: 2vh;
+            }
+            #sourcestash-intro-content-title{
+                font-size: 14pt;
+                color: $theme-orange;
+            }
+            #sourcestash-intro-content-details{
+                width: 30vw;
+                margin: auto;
+                font-size: 10pt;
+                color: $theme-white;
+            }
+            #sourcestash-intro-content-button{
+                margin-top: 4vh;
+                .button{
+                    cursor: pointer;
+                    box-shadow: 1px 7px 30px $theme-dark-grey;
+                    color: $theme-orange;
+                    font-size: 10pt;
+                    padding: 2vh 2vw;
+                    background: transparent;
+                    border: $theme-orange solid 2px;
+                    transition: 0.3s;
+                    &:hover{
+                        color: $theme-orange;
+                        background: lighten($theme-dark-grey, 5);
+                    }
+                }
+            }
+        }
+    }
 }
 
-#mainContianer{
-    height: $mainContainerHeight;
-    background: rgba(224,224,231,0.8);;
-    display: flex;
-    justify-content: center;
-    #sourcestash-intro-content{
-        padding: 3vh 0;
-        margin-top: 10vh;
-        width: 40vw;
-        height: 42vh;
-        background: $dark-background;
-        text-align: center;
-        p{
-            margin-bottom: 2vh;
+@include media(mobile-screen) {
+    #login-header{
+        width: 100vw;
+        background: $theme-dark-grey;
+        height: 7vh;
+        display: flex;
+        color: $theme-white;
+        font-size: 16pt;
+        text-shadow: 3px 5px 10px $theme-light-blue; 
+        #login-header-content{
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #login-header-left{
+                    padding: 0 10vw;
+                }
+            #login-header-right{
+                font-size: $mobile-font-heading;
+                padding: 0 10vw;
+            }   
+            a{
+                text-decoration: none;
+                text-align: right;
+                color: $theme-white;
+            } 
         }
-        #sourcestash-intro-content-title{
-            font-size: 14pt;
-            color: $theme-orange;
-        }
-        #sourcestash-intro-content-details{
-            width: 30vw;
-            margin: auto;
-            font-size: 10pt;
-            color: $theme-white;
-        }
-        #sourcestash-intro-content-button{
-            margin-top: 4vh;
-            .button{
-                cursor: pointer;
-                box-shadow: 1px 7px 30px $theme-dark-grey;
-                color: $theme-orange;
-                font-size: 10pt;
-                padding: 2vh 2vw;
-                background: transparent;
-                border: $theme-orange solid 2px;
+    }
+
+    #mainContianer{
+        height: $mainContainerHeight;
+        background: $light-background-trans;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #sourcestash-intro-content{
+            border-radius: 10px;
+            border: $theme-orange solid 2px;
+            box-shadow: 1px 7px 30px $theme-dark-grey;
+            padding: 3vh 0; 
+            width: 80vw;
+            background: $dark-background;
+            text-align: center;
+            p{
+                margin-bottom: 2vh;
             }
-            &:hover{
-                border: $theme-orange solid 3px;
+            #sourcestash-intro-content-title{
+                font-size: $mobile-font-title;
                 color: $theme-orange;
-                font-weight: bold;
+            }
+            #sourcestash-intro-content-details{
+                width: 50vw;
+                margin: auto;
+                font-size: $mobile-font-content;
+                color: $theme-white;
+            }
+            #sourcestash-intro-content-button{
+                margin-top: 4vh;
+                .button{
+                    cursor: pointer;
+                    box-shadow: 1px 3px 30px $theme-dark-grey;
+                    color: $theme-orange;
+                    font-size: 10pt;
+                    padding: 2vh 2vw;
+                    background: transparent;
+                    border: $theme-orange solid 2px;
+                }
+                &:hover{
+                    border: $theme-orange solid 3px;
+                    color: $theme-orange;
+                    font-weight: bold;
+                }
             }
         }
     }
 }
+
