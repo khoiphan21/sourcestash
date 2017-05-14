@@ -22,13 +22,13 @@
     <!--For the list containing the stashes and sources-->
     <section id="right-container">
         <section id="right-container-content">
-            <section id="right-container-stash">
+            <section id="right-container-stash" *ngIf="isStashtabClicked">
                 <article id="right-container-stash-title">
                     Test Root Source
                 </article>
 
                 <section>
-                    <collapsible-list [type]="'expandable'">
+                    <collapsible-list style="margin: 0" [type]="'expandable'">
 
                         <collapsible-list-item>
                             <collapsible-header id="right-container-stash-subheader">
@@ -51,15 +51,17 @@
                 </section>
 
             </section>
-            <!--<section id="right-container-comment">
-                
-            </section>-->
+            <section id="right-container-comment" *ngIf="isCommenttabClicked">
+                <article id="right-container-comment-title">
+                    Comment bar
+                </article>
+            </section>
 
             <section id="right-container-sidebar">
-                <div id="right-container-sidebar-stashbtn">
+                <div id="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
                     STH
                 </div>
-                <div id="right-container-sidebar-commentbtn">
+                <div id="right-container-sidebar-commentbtn" (click)="selectTab('commentTab')">
                     CMT
                 </div>
             </section>

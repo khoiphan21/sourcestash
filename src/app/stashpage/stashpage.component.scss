@@ -73,6 +73,7 @@ section.all-modals {
             // A list of sources and stashes
             #right-container-stash-title {
                 font-size: 14pt;
+                height: 5vh;
                 font-weight: bold;
                 display: flex;
                 justify-content: center;
@@ -103,6 +104,15 @@ section.all-modals {
             border: 1px solid $theme-white;
             border-bottom: none;
             width: 17vw;
+             #right-container-comment-title {
+                border-bottom: $theme-white solid 1px;
+                font-size: 14pt;
+                height: 5vh;
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
         #right-container-sidebar {
             width: 3vw;

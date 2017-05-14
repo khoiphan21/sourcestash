@@ -8,15 +8,15 @@
             <form>
                 <ul>
                     <li>
-                        <span class="form-title-bold">Title:<br></span>
+                        <label for="title" class="form-title-bold">Title:<br></label>
                         <input class="title" [(ngModel)]="source.title" type="text" name="title">
                     </li>
                     <li>
-                        <span class="form-title-bold">Hyperlink:<br></span>
+                        <label for="hyperlink" class="form-title-bold">Hyperlink:<br></label>
                         <input class="title" [(ngModel)]="source.hyperlink" type="text" name="hyperlink">
                     </li>
                     <li>
-                        <span class="form-title-bold">Difficulty:<br></span>
+                        <label for="difficulty" class="form-title-bold">Difficulty:<br></label>
                         <select class="difficulty" name="difficulty" [(ngModel)]="source.difficulty"> 
                             <option value="beginner">Beginner</option>
                             <option value="intermediate">Intermediate</option>
@@ -24,11 +24,11 @@
                         </select>
                     </li>
                     <li>
-                        <span class="form-title-bold">Tags:<br></span>
+                        <label for="tags" class="form-title-bold">Tags:<br></label>
                         <input class="tags" name="tags" [(ngModel)]="tagString">
                     </li>
                     <li>
-                        <span class="form-title-bold">Description: <br></span>
+                        <label for="description" class="form-title-bold">Description: <br></label>
                         <textarea class="description" [(ngModel)]="source.description" name="description"></textarea>
                     </li>
                 </ul>

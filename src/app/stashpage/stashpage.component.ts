@@ -27,6 +27,10 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   isAddSourceShown: boolean = false;
   isViewSourceShown: boolean = false;
 
+  // Variables to control tab items display
+  isStashtabClicked: boolean = true;
+  isCommenttabClicked: boolean = false;
+
   @ViewChild("canvas") canvas: ElementRef;
 
   constructor(
@@ -39,12 +43,12 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     // FOR TESTING PURPOSES
     this.route.params.subscribe(params => {
       this.sourceService.getSourcesForStash(params['stashid']).then(
-      (sources: Source[]) => {
-        this.sources = sources;
-      })
+        (sources: Source[]) => {
+          this.sources = sources;
+        })
     })
   }
-  
+
 
   ngAfterContentChecked() {
     if (this.sources) {
@@ -119,7 +123,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       }
     }
   }
-  
+
   /**
    * ALL MODAL FUNCTIONS GO HERE
    */
@@ -155,6 +159,24 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.canvas.nativeElement.height = document.body.clientHeight;
     this.canvas.nativeElement.width = document.body.clientWidth;
   }
+
+
+  /**
+  * ALL TABS FUNCTIONS GO HERE
+  */
+
+  selectTab(tabName: string) {
+    if (tabName == 'stashTab') {
+      this.isStashtabClicked = true;
+      this.isCommenttabClicked = false;
+    } else if (tabName == 'commentTab') {
+      this.isStashtabClicked = false;
+      this.isCommenttabClicked = true;
+    }
+  }
+
+
+
 
   updateLines(elements: HTMLCollectionOf<Element>) {
     _.each(this.sources, (source: Source) => {

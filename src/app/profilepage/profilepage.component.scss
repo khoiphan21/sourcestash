@@ -1,5 +1,5 @@
 @import '../sass/variables';
-
+@import '../sass/mixins';
 // top container 
 // height:  28vh;
 
@@ -8,37 +8,41 @@
 
 #main-container{
     height: $main-container-height;
-    background: $main-container-bg;
-    color: #91BED4;
+    background: $light-background-trans;
 }
 
 #top-container{
-    color: #304269;
+    color: $theme-light-blue;
     height: 24vh;
     display: flex;
     justify-content: center;
+    
     #top-container-content{
         width: 61vw;
         display: flex;
-        padding: 4vh 0;
+        padding: 4vh 1vw;
         font-size: 11pt;
-       #top-container-contentleft{
+        box-shadow: 1px 7px 30px $theme-blueberry;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+       #top-container-content-left{
            width: 10vw;
            display: flex;
            align-items: center;
-           #top-container-contentleft-img{
+           #top-container-content-left-img{
                width: 7vw;
                height: 15vh;
                display: flex;
+               color: $theme-dark-grey;
                justify-content: center;
                align-items: center;
-               border: $theme-orange solid 2px;
-               background: $theme-light-blue;
+               border: $theme-light-blue solid 2px;
+               background: $theme-blueberry;
            }
        }
-       #top-container-contentright{
+       #top-container-content-right{
            padding: 0 1vw;
-           #top-container-contentright-details{
+           #top-container-content-right-details{
                height: 15vh;
                display: flex;
                align-items: center;
@@ -53,7 +57,12 @@
             }
                 li{
                     font-size: 10pt;
+                    color: darken($theme-orange, 15);
+                    p{
+                        margin-top: 0;
+                    }
                     .bold{
+                        color: $theme-light-blue;
                         font-size: 12pt;
                         font-weight: bold;
                     }
@@ -61,7 +70,8 @@
            }
            h1{
                margin: 0px;
-               color: $theme-orange;
+               font-weight: bold;
+               color: $theme-dark-grey;
                font-size: 16pt;
            }
        }
@@ -72,5 +82,72 @@
 #bottom-container{
     display: flex;
     justify-content: center;
+    #bottom-container-content{
+        width: 100vw;
+        #bottom-container-content-tab{
+            margin: auto;
+            box-shadow: 1px 7px 30px $theme-blueberry;
+            border: $theme-blueberry 1px solid;
+            color: $theme-white;
+            display: flex;
+            justify-content: space-between;
+            height: 7vh;
+            background: $theme-dark-grey;
+            width: 61vw;
+            #bottom-container-content-tab-left{
+                display: flex;
+                #bottom-container-content-tab-left-stashes{
+                    cursor: pointer;
+                    height: 7vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 2vw;
+                    transition: 0.3s;
+                    &:hover{
+                        background: darken($theme-blueberry, 5);
+                        color: $theme-orange;
+                    }
+                }
+                #bottom-container-content-tab-left-settings{
+                    cursor: pointer;
+                    height: 7vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 2vw;
+                    transition: 0.3s;
+                    &:hover{
+                        background: darken($theme-blueberry, 5);
+                        color: $theme-orange;
+                    }
+                }
+            }
+            #bottom-container-content-tab-right{
+                cursor: pointer;
+                height: 7vh;
+                display: flex;
+                align-items: center;
+                padding: 0 2vw;
+                transition: 0.3s;
+                &:hover{
+                    background: darken($theme-blueberry, 5);
+                    color: $theme-orange;
+                }
+            }
+        }
+        #bottom-container-content-detail{
+            box-shadow: 1px 7px 30px $theme-blueberry;
+            margin: auto;
+            width: 61vw;
+            color: black;
+            padding: 1vh 1vw;
+            height: 53vh;
+            #bottom-container-content-detail-stashes{
+            }
+            #bottom-container-content-detail-settings{
+            }
+            #bottom-container-content-detail-create{
+            }
+        }
+    }
 }
 
