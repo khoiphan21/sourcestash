@@ -56,7 +56,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
           let options = {
             grid: 10,
             onDrag: (element, xAbsolute, yAbsolute, event) => {
-              console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
+              // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
               let source = this.findMatchingSource(element, this.sources);
               let elements = document.getElementsByClassName('source');
               this.resetCanvas();

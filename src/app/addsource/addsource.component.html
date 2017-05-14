@@ -12,6 +12,10 @@
                         <input class="title" [(ngModel)]="source.title" type="text" name="title">
                     </li>
                     <li>
+                        <span class="form-title-bold">Hyperlink:<br></span>
+                        <input class="title" [(ngModel)]="source.hyperlink" type="text" name="hyperlink">
+                    </li>
+                    <li>
                         <span class="form-title-bold">Difficulty:<br></span>
                         <select class="difficulty" name="difficulty" [(ngModel)]="source.difficulty"> 
                             <option value="beginner">Beginner</option>
@@ -21,10 +25,7 @@
                     </li>
                     <li>
                         <span class="form-title-bold">Tags:<br></span>
-                        <select class="tags" name="tags">
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
-                        </select>
+                        <input class="tags" name="tags" [(ngModel)]="tagString">
                     </li>
                     <li>
                         <span class="form-title-bold">Description: <br></span>

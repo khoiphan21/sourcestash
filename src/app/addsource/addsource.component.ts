@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import * as _ from 'underscore';
+
 import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
 
@@ -23,9 +25,12 @@ export class AddsourceComponent implements OnInit {
     tags: []
   }
 
+  // Model for the tags input
+  tagString: string;
+
   // The parent source that the new source will be attached to
   @Input() parentSource: Source;
-  
+
   @Output() onClose = new EventEmitter<boolean>();
 
   constructor(
@@ -40,16 +45,49 @@ export class AddsourceComponent implements OnInit {
   }
 
   addSource() {
+    let isInputValid: boolean = true;
     // Store the parent source's id and author id
     this.source.parent_id = this.parentSource.source_id;
     this.source.stash_id = this.parentSource.stash_id;
     this.source.author_id = this.parentSource.author_id;
 
+    // Process the tag string
+    this.source.tags = this.processTagString(this.tagString);
+    if (this.source.tags == null) isInputValid = false;
+
     console.log(this.source);
 
-    // Make a request to the server
-
+    // Check if inputs are valid
+    if (isInputValid) {
+      // Make a request to the server
+      this.sourceService.addNewSource(
+        this.source.parent_id,
+        this.source.stash_id,
+        this.source.author_id,
+        this.source.title,
+        this.source.xPosition,
+        this.source.yPosition,
+        this.source.type,
+        this.source.hyperlink,
+        this.source.description,
+        this.source.difficulty,
+        this.source.tags
+      )
+    } else {
+      alert('Inputs not valid!');
+    }
 
     this.closePopup();
+  }
+
+  processTagString(tagString: string): string[] {
+    let tags: string[] = [];
+
+    let rawTags: string[] = tagString.split(',');
+    _.each(rawTags, (tag: string) => {
+      tags.push(tag.trim());
+    })
+
+    return tags;
   }
 }
