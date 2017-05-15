@@ -1,4 +1,4 @@
-<section id="main-container" *ngIf="parentSource">
+<section id="main-container" *ngIf="source">
     <section id="main-container-content">
         <article id="main-container-content-heading">
             <span class="heading">Create Source</span>
@@ -34,8 +34,8 @@
                 </ul>
             </form>
         </section>
-        <div id="create-source-button" (click)="addSource()">
-            Create
+        <div id="create-source-button" (click)="updateSource()">
+            Save
         </div>
     </section>
 </section>

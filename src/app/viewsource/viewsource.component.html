@@ -3,7 +3,7 @@
         <article id="main-container-content-heading">
             <span class="heading">Description</span>
             <article>
-                <span class="cross">&nabla;</span>
+                <span class="cross" (click)="editSource()">&#9998;</span>
                 <span class="cross" (click)="closePopup()">&times;</span>
             </article>
         </article>
@@ -13,17 +13,20 @@
                     <span class="form-title-bold">Title:<br></span><span>{{source.title}}</span>
                 </li>
                 <li>
+                    <span class="form-title-bold">Hyperlink:<br></span><span>{{source.hyperlink}}</span>
+                </li>
+                <li>
                     <span class="form-title-bold">Difficulty:<br></span> <span>Intermediate </span>
                 </li>
                 <li>
-                    <span class="form-title-bold">Tags:<br></span> <span>Web Development </span>
+                    <span class="form-title-bold">Tags:<br></span> <span>{{source.tags}}</span>
                 </li>
                 <li>
                     <span class="form-title-bold">Description: <br></span> <span>{{source.description}}</span>
                 </li>
             </ul>
         </section>
-        <div id="create-source-button">
+        <div id="create-source-button" (click)="addSource()">
             Create New Source
         </div>
     </section>

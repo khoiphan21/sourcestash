@@ -4,10 +4,10 @@
 #main-container {
     /* Modal Content */
     #main-container-content {
-        border-radius: 10px;
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        background-color: $theme-white;
+        border-radius: 10px;
         height: auto;
+        background: $theme-white;
         border: 1px solid #888;
         width: 25vw;
         ul {
@@ -24,8 +24,8 @@
             border-top-left-radius: 10px;
             justify-content: space-between;
             font-weight: bold;
-            color: $theme-white;
             background: $theme-dark-grey;
+            color: $theme-white;
             padding: 1vh 2vw;
             .heading {
                 font-size: 12pt;
@@ -33,7 +33,6 @@
             .cross {
                 @include transition-basic();
                 font-size: 25px;
-                padding: 0 5px;
                 &:hover {
                     color: $theme-light-blue;
                     cursor: pointer;
@@ -44,20 +43,56 @@
             padding: 1vh 2vw;
             .form-title-bold {
                 font-weight: bold;
-                font-size: 12pt;
+                font-size: 10pt;
                 color: black;
+            }
+            select {
+                display: block;
+            }
+            .title {
+                border: darken($theme-grey, 10) solid 2px;
+                background: $theme-grey;
+                padding: 1vh 0;
+                height: 2vh;
+                margin-bottom: 10px;
+            }
+            .difficulty {
+                border: darken($theme-grey, 10) solid 2px;
+                background: $theme-grey;
+                height: 4vh;
+                border-radius: 0px;
+                margin-bottom: 10px;
+            }
+            .tags {
+                border: darken($theme-grey, 10) solid 2px;
+                background: $theme-grey;
+                height: 4vh;
+                border-radius: 0px;
+                margin-bottom: 10px;
+            }
+            .description {
+                border: darken($theme-grey, 10) solid 2px;
+                background: $theme-grey;
+                padding: 1vh 0;
+                height: 20vh;
+                margin-bottom: 10px;
             }
         }
         #create-source-button {
             margin: auto;
-            border: black solid 1px;
-            background: #888;
+            border: darken($theme-grey, 10) solid 2px;
+            background: $theme-grey;
             margin-bottom: 1vh;
             font-weight: bold;
             font-size: 10pt;
             width: 9vw;
             text-align: center;
             padding: 2vh 0;
+            @include transition-basic();
+            &:hover {
+                background: darken($theme-grey, 10);
+                border: $theme-grey solid 2px;
+            }
         }
     }
 }

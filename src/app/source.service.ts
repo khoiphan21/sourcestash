@@ -13,19 +13,7 @@ import { SOURCES } from './data/mockSources';
 import { AccountService } from './account.service';
 import { AppResponse } from './classes/response';
 import { SERVER } from './classes/SERVER';
-
-class Deferred<T> {
-  promise: Promise<T>;
-  resolve: (value: T | PromiseLike<T>) => void;
-  reject: (reason?: any) => void;
-
-  constructor() {
-    this.promise = new Promise<T>((resolve, reject) => {
-      this.resolve = resolve;
-      this.reject = reject;
-    })
-  }
-}
+import { Deferred } from './classes/deferred';
 
 @Injectable()
 export class SourceService {
@@ -42,7 +30,6 @@ export class SourceService {
    * @param stashId - the stash for which all the sources will be retrieved
    */
   getSourcesForStash(stash_id: string): Promise<Source[]> {
-    console.log(stash_id)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -61,7 +48,12 @@ export class SourceService {
     ).subscribe(response => {
       let sources = response.json();
       this.sources = sources;
-      console.log(sources);
+
+      // TODO: Now retrieve the tags of each source
+      _.each(this.sources, (source: Source) => {
+        source.tags = [];
+      })
+
       deferred.resolve(sources);
     }, error => {
       deferred.reject(error);
@@ -124,6 +116,33 @@ export class SourceService {
     });
 
     return deferred.promise;
+  }
+
+  updateSource(source: Source): Promise<AppResponse> {
+    let deferredPromise = new Deferred<AppResponse>();
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post(
+      SERVER + '/source/update',
+      {
+        source: source
+      },
+      options
+    ).subscribe(response => {
+      if (response.status == 200) {
+        deferredPromise.resolve(new AppResponse(true, response.text()))
+      } else {
+        deferredPromise.reject(new AppResponse(false, response.text()));
+      }
+    }, error => {
+      deferredPromise.reject(new AppResponse(false, error, error));
+    })
+    
+    return deferredPromise.promise;
   }
 
   /**

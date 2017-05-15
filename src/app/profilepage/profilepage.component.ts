@@ -4,6 +4,7 @@ import { Account } from '../classes/account';
 import { Tab } from '../interface/tab.interface';
 import { TabComponent } from '../tab/tab.component';
 import { TabsComponent } from '../tabs/tabs.component';
+import { Stash } from '../classes/stash';
 
 
 @Component({
@@ -14,10 +15,12 @@ import { TabsComponent } from '../tabs/tabs.component';
 export class ProfilepageComponent implements OnInit {
   userAccount: Account;
   tabs: TabComponent[] = [];
+
+  stash: Stash;
+  
   isStashesClicked: boolean = true;
   isSettingsClicked: boolean = false;
   isCreateClicked: boolean = false;
-
 
   constructor(private accountService: AccountService) {
   }

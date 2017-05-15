@@ -27,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AddstashComponent } from './addstash/addstash.component';
 import { ViewsourceComponent } from './viewsource/viewsource.component';
 import { AddsourceComponent } from './addsource/addsource.component';
+import { SourceEditComponent } from './source-edit/source-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AddsourceComponent } from './addsource/addsource.component';
     FooterComponent,
     AddstashComponent,
     ViewsourceComponent,
-    AddsourceComponent
+    AddsourceComponent,
+    SourceEditComponent
     ],
   imports: [
     BrowserModule,
