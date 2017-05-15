@@ -1,5 +1,5 @@
 import { Source } from '../classes/source';
-export const SOURCES: Source[] = [
+export const SOURCES = [
   {
     source_id: '123',
     parent_id: null,
