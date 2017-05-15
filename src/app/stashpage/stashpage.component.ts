@@ -24,8 +24,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   renderedElements: any;
 
-  areElementsReady: boolean = true;
-
   // Variables to control modal items display
   isModalShown: boolean = false;
   isAddSourceShown: boolean = false;
@@ -59,10 +57,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.sourceService.getSourcesForStash(this.stash_id).then(
       (sources: Source[]) => {
         this.sources = sources;
-        this.areElementsReady = false;
         setTimeout(() => {
           this.refreshCanvas();
-          this.areElementsReady = true
         }, 1000)
       });
   }

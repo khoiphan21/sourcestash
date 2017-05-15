@@ -27,9 +27,9 @@ section.all-modals {
         width: 80vw;
         height: 90vh;
         text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
+        // align-items: center;
+        // justify-content: center;
         #popups {
             display: none;
         }
@@ -42,6 +42,7 @@ section.all-modals {
             $width: 17vh;
             $height: 15vh;
             // padding: 1vh 1vw;
+            position: absolute;
             width: $width;
             height: $height;
             display: flex !important;
@@ -53,8 +54,8 @@ section.all-modals {
         }
         .root {
             position: relative;
-            left: 50%;
-            top: 50%;
+            left: 50% !important;
+            top: 50% !important;
         }
     }
 }
@@ -104,7 +105,7 @@ section.all-modals {
             border: 1px solid $theme-white;
             border-bottom: none;
             width: 17vw;
-             #right-container-comment-title {
+            #right-container-comment-title {
                 border-bottom: $theme-white solid 1px;
                 font-size: 14pt;
                 height: 5vh;
@@ -147,7 +148,7 @@ section.all-modals {
     #bottom {
         position: absolute;
         bottom: 1vh;
-        #addSource{
+        #addSource {
             background: black;
         }
     }
