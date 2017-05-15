@@ -340,10 +340,18 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       // Find the parent source and get its x, y positions
       let parentX: number;
       let parentY: number;
-      if (currentSource.parent_id != null) {
+      if (currentSource.parent_id != null && currentSource.parent_id != '') {
         // Must not be a root source, retrieve the parent element
-        let parentSource: Source = this.findSource(currentSource.parent_id, this.sources);
-        let parentElement: Element = this.findMatchingElement(parentSource, elements);
+        // let parentSource: Source = this.findSource(currentSource.parent_id, this.sources);
+        // console.log(parentSource)
+        // let parentElement: Element = this.findMatchingElement(parentSource, elements);
+        let parentElement: Element;
+        console.log('finding parent element for: ' + currentSource.parent_id)
+        _.each(elements, element => {
+          if (element.id === currentSource.parent_id) {
+            parentElement = element;
+          }
+        })
         let rect = parentElement.getBoundingClientRect();
         parentX = rect.left;
         parentY = rect.top;
