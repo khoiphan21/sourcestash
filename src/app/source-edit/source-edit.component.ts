@@ -25,10 +25,12 @@ export class SourceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // update the tagstring
-    _.each(this.source.tags, tag => {
-      this.tagString += `${tag}, `
-    })
+    // if (this.source.tags != null) {
+    //   // update the tagstring
+    //   _.each(this.source.tags, tag => {
+    //     this.tagString += `${tag}, `
+    //   })
+    // }
   }
 
   closePopup() {

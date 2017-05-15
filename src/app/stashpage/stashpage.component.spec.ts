@@ -14,6 +14,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SourceEditComponent } from '../source-edit/source-edit.component';
 
 let mockRoute = {
   params: {
@@ -33,7 +34,8 @@ describe('StashpageComponent', () => {
         ViewsourceComponent,
         AddstashComponent,
         AddsourceComponent,
-        FooterComponent
+        FooterComponent,
+        SourceEditComponent
       ], 
       providers: [
         SourceService,
