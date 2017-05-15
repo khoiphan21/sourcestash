@@ -70,22 +70,9 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
     if (elements.length != 0) {
       this.renderedElements = elements;
-      let options = {
-        grid: 10,
-        onDrag: (element, xAbsolute, yAbsolute, event) => {
-          // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
-          let source = this.findMatchingSource(element, this.sources);
-          let elements = document.getElementsByClassName('source');
-          this.resetCanvas();
-          this.updateLines(elements);
-        },
-        onDragEnd: (element, xAbsolute, yAbsolute, event) => {
-          let elementId = element.id;
 
-          let source: Source = this.findMatchingSource(element, this.sources);
-          this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
-        }
-      };
+      let options = {};
+      this.setupDraggableOptions(options, elements);
 
       // Change the position of the root source first
       let rootSource = this.findRootSource(this.sources);
@@ -94,39 +81,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       // Update the class of the root element
       rootElement.classList.add('root');
 
-      // Now update all sources to draggables
-      for (var i = 0; i < elements.length; i++) {
-        // Check to see which source matches this element
-        _.each(this.sources, source => {
-          if (source.source_id == elements[i].id && source.type != 'root') {
-            // Find the relative position stored
-            let storedX = source.xPosition;
-            let storedY = source.yPosition;
-
-            // Find the parent source and get its x, y positions
-            let parentX: number;
-            let parentY: number;
-            if (source.parent_id != null) {
-              // Must not be a root source, retrieve the parent element
-              let parentSource: Source = this.findSource(source.parent_id, this.sources);
-              let parentElement: Element = this.findMatchingElement(parentSource, elements);
-              let rect = parentElement.getBoundingClientRect();
-              parentX = rect.left;
-              parentY = rect.top;
-            }
-
-            // Update final positions
-            let finalX = parentX + storedX;
-            let finalY = parentY + storedY;
-
-            // Update the position if not root
-            if (source.type != 'root') {
-              let draggable = new Draggable(elements[i], options);
-              draggable.set(finalX, finalY);
-            }
-          }
-        });
-      }
+      // Now update all sources to draggables and update their positions
+      this.updateSourcesToDraggables(elements, options);
 
       // DRAW LINES
       // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
@@ -328,6 +284,86 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       };
     });
     return returnSource;
+  }
+  setupDraggableOptions(optionObject: any, elements: HTMLCollectionOf<Element>) {
+    optionObject.grid = 10;
+    optionObject.onDrag = (element, xAbsolute, yAbsolute, event) => {
+      // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
+      let source = this.findMatchingSource(element, this.sources);
+      let elements = document.getElementsByClassName('source');
+      this.resetCanvas();
+      this.updateLines(elements);
+    }
+    optionObject.onDragEnd = (element, xAbsolute, yAbsolute, event) => {
+      let elementId = element.id;
+
+      let source: Source = this.findMatchingSource(element, this.sources);
+      this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
+    }
+  }
+  updateSourcesToDraggables(elements: HTMLCollectionOf<Element>, options: any) {
+    // Add a structure to make sure to render sources from root outward
+    let sourceDictionary = {};
+    let rootSourceID: string;
+    _.each(this.sources, (source: Source) => {
+      if (source.type === 'root') rootSourceID = source.source_id;
+      sourceDictionary[source.source_id] = source.parent_id;
+    });
+    // then delete the root source
+    delete sourceDictionary[rootSourceID];
+
+    while (_.size(sourceDictionary) > 0) {
+      // Find the next source whose element is to be updated
+      let allIDs = _.allKeys(sourceDictionary);
+      // The source whose element will be updated
+      let currentSource: Source;
+      // loop through the sources array
+      _.each(sourceDictionary, (parent_id, source_id) => {
+        // find in the array of all keys to see if the parent_id is in there
+        let sourceKey = _.find(allIDs, ID => {
+          return parent_id === ID;
+        });
+        // Check if sourceKey is undefined
+        if (sourceKey === undefined) {
+          // then this source_id should be the current source
+          currentSource = _.find(this.sources, (source: Source) => {
+            return source.source_id === source_id;
+          });
+        }
+      })
+      console.log('Updating source for: ' + currentSource.source_id);
+      // Update that source's position
+      // Find the relative position stored
+      let storedX = currentSource.xPosition;
+      let storedY = currentSource.yPosition;
+
+      // Find the parent source and get its x, y positions
+      let parentX: number;
+      let parentY: number;
+      if (currentSource.parent_id != null) {
+        // Must not be a root source, retrieve the parent element
+        let parentSource: Source = this.findSource(currentSource.parent_id, this.sources);
+        let parentElement: Element = this.findMatchingElement(parentSource, elements);
+        let rect = parentElement.getBoundingClientRect();
+        parentX = rect.left;
+        parentY = rect.top;
+      }
+
+      // Update final positions
+      let finalX = parentX + storedX;
+      let finalY = parentY + storedY;
+
+      // Update the position if not root
+      if (currentSource.type != 'root') {
+        let matchingElement = this.findMatchingElement(currentSource, elements);
+        let draggable = new Draggable(matchingElement, options);
+        draggable.set(finalX, finalY);
+      }
+
+      // at this point the element has been updated - remove the source from
+      // the dictionary
+      delete sourceDictionary[currentSource.source_id];
+    }
   }
 
   selectCurrentSource(source_id: string) {

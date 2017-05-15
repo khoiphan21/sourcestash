@@ -3,7 +3,6 @@
 canvas {
     position: absolute;
     top: 0;
-    z-index: -1;
 }
 
 section.all-modals {
@@ -54,8 +53,8 @@ section.all-modals {
         }
         .root {
             position: relative;
-            left: 50% !important;
-            top: 50% !important;
+            left: 45% !important;
+            top: 45% !important;
         }
     }
 }
