@@ -1,0 +1,41 @@
+<section id="main-container" *ngIf="source">
+    <section id="main-container-content">
+        <article id="main-container-content-heading">
+            <span class="heading">Create Source</span>
+            <span class="cross" (click)="closePopup()">&times;</span>
+        </article>
+        <section id="main-container-content-detail">
+            <form>
+                <ul>
+                    <li>
+                        <label for="title" class="form-title-bold">Title:<br></label>
+                        <input class="title" [(ngModel)]="source.title" type="text" name="title">
+                    </li>
+                    <li>
+                        <label for="hyperlink" class="form-title-bold">Hyperlink:<br></label>
+                        <input class="title" [(ngModel)]="source.hyperlink" type="text" name="hyperlink">
+                    </li>
+                    <li>
+                        <label for="difficulty" class="form-title-bold">Difficulty:<br></label>
+                        <select class="difficulty" name="difficulty" [(ngModel)]="source.difficulty"> 
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="tags" class="form-title-bold">Tags:<br></label>
+                        <input class="tags" name="tags" [(ngModel)]="tagString">
+                    </li>
+                    <li>
+                        <label for="description" class="form-title-bold">Description: <br></label>
+                        <textarea class="description" [(ngModel)]="source.description" name="description"></textarea>
+                    </li>
+                </ul>
+            </form>
+        </section>
+        <div id="create-source-button" (click)="updateSource()">
+            Save
+        </div>
+    </section>
+</section>

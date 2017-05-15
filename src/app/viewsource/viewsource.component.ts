@@ -12,6 +12,7 @@ export class ViewsourceComponent implements OnInit {
 
   @Output() onClose = new EventEmitter<boolean>();
   @Output() onAddSource = new EventEmitter<Source>();
+  @Output() onEditSource = new EventEmitter<Source>();
 
   constructor() { }
 
@@ -24,6 +25,10 @@ export class ViewsourceComponent implements OnInit {
 
   addSource() {
     this.onAddSource.emit(this.source);
+  }
+
+  editSource() {
+    this.onEditSource.emit(this.source);
   }
 
 }

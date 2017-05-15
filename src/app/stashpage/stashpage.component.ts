@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterContentChecked, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterContentChecked, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
@@ -16,16 +16,21 @@ import { element } from 'protractor';
   styleUrls: ['./stashpage.component.scss']
 })
 export class StashpageComponent implements OnInit, AfterContentChecked {
+  @Input()
   sources: Source[];
+  stash_id: string;
 
   currentSource: Source;
 
   renderedElements: any;
 
+  areElementsReady: boolean = true;
+
   // Variables to control modal items display
   isModalShown: boolean = false;
   isAddSourceShown: boolean = false;
   isViewSourceShown: boolean = false;
+  isEditSourceShown: boolean = false;
 
   // Variables to control tab items display
   isStashtabClicked: boolean = true;
@@ -42,84 +47,102 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
     // FOR TESTING PURPOSES
     this.route.params.subscribe(params => {
-      this.sourceService.getSourcesForStash(params['stashid']).then(
+      this.stash_id = params['stashid'];
+      this.sourceService.getSourcesForStash(this.stash_id).then(
         (sources: Source[]) => {
           this.sources = sources;
         })
     })
   }
 
+  refresh() {
+    this.sourceService.getSourcesForStash(this.stash_id).then(
+      (sources: Source[]) => {
+        this.sources = sources;
+        this.areElementsReady = false;
+        setTimeout(() => {
+          this.refreshCanvas();
+          this.areElementsReady = true
+        }, 1000)
+      });
+  }
+
+  refreshCanvas() {
+    console.log("canvas being refreshed");
+    let elements = document.getElementsByClassName('source');
+    console.log(elements);
+
+    if (elements.length != 0) {
+      this.renderedElements = elements;
+      let options = {
+        grid: 10,
+        onDrag: (element, xAbsolute, yAbsolute, event) => {
+          // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
+          let source = this.findMatchingSource(element, this.sources);
+          let elements = document.getElementsByClassName('source');
+          this.resetCanvas();
+          this.updateLines(elements);
+        },
+        onDragEnd: (element, xAbsolute, yAbsolute, event) => {
+          let elementId = element.id;
+
+          let source: Source = this.findMatchingSource(element, this.sources);
+          this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
+        }
+      };
+
+      // Change the position of the root source first
+      let rootSource = this.findRootSource(this.sources);
+
+      let rootElement: Element = this.findMatchingElement(rootSource, elements);
+      // Update the class of the root element
+      rootElement.classList.add('root');
+
+      // Now update all sources to draggables
+      for (var i = 0; i < elements.length; i++) {
+        // Check to see which source matches this element
+        _.each(this.sources, source => {
+          if (source.source_id == elements[i].id && source.type != 'root') {
+            // Find the relative position stored
+            let storedX = source.xPosition;
+            let storedY = source.yPosition;
+
+            // Find the parent source and get its x, y positions
+            let parentX: number;
+            let parentY: number;
+            if (source.parent_id != null) {
+              // Must not be a root source, retrieve the parent element
+              let parentSource: Source = this.findSource(source.parent_id, this.sources);
+              let parentElement: Element = this.findMatchingElement(parentSource, elements);
+              let rect = parentElement.getBoundingClientRect();
+              parentX = rect.left;
+              parentY = rect.top;
+            }
+
+            // Update final positions
+            let finalX = parentX + storedX;
+            let finalY = parentY + storedY;
+
+            // Update the position if not root
+            if (source.type != 'root') {
+              let draggable = new Draggable(elements[i], options);
+              draggable.set(finalX, finalY);
+            }
+          }
+        });
+      }
+
+      // DRAW LINES
+      // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
+      this.resetCanvas();
+      this.updateLines(elements);
+    }
+  }
 
   ngAfterContentChecked() {
     if (this.sources) {
       if (!this.renderedElements) {
-        let elements = document.getElementsByClassName('source');
-
-        if (elements.length != 0) {
-          this.renderedElements = elements;
-          let options = {
-            grid: 10,
-            onDrag: (element, xAbsolute, yAbsolute, event) => {
-              // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
-              let source = this.findMatchingSource(element, this.sources);
-              let elements = document.getElementsByClassName('source');
-              this.resetCanvas();
-              this.updateLines(elements);
-            },
-            onDragEnd: (element, xAbsolute, yAbsolute, event) => {
-              let elementId = element.id;
-
-              let source: Source = this.findMatchingSource(element, this.sources);
-              this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
-            }
-          };
-
-          // Change the position of the root source first
-          let rootSource = this.findRootSource(this.sources);
-
-          let rootElement: Element = this.findMatchingElement(rootSource, elements);
-          // Update the class of the root element
-          rootElement.classList.add('root');
-
-          // Now update all sources to draggables
-          for (var i = 0; i < elements.length; i++) {
-            // Check to see which source matches this element
-            _.each(this.sources, source => {
-              if (source.source_id == elements[i].id && source.type != 'root') {
-                // Find the relative position stored
-                let storedX = source.xPosition;
-                let storedY = source.yPosition;
-
-                // Find the parent source and get its x, y positions
-                let parentX: number;
-                let parentY: number;
-                if (source.parent_id != null) {
-                  // Must not be a root source, retrieve the parent element
-                  let parentSource: Source = this.findSource(source.parent_id, this.sources);
-                  let parentElement: Element = this.findMatchingElement(parentSource, elements);
-                  let rect = parentElement.getBoundingClientRect();
-                  parentX = rect.left;
-                  parentY = rect.top;
-                }
-
-                // Update final positions
-                let finalX = parentX + storedX;
-                let finalY = parentY + storedY;
-
-                // Update the position if not root
-                if (source.type != 'root') {
-                  let draggable = new Draggable(elements[i], options);
-                  draggable.set(finalX, finalY);
-                }
-              }
-            });
-          }
-
-          // DRAW LINES
-          // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
-          this.resetCanvas();
-          this.updateLines(elements);
-        }
+        this.refreshCanvas();
       }
     }
   }
@@ -139,11 +162,14 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       this.isAddSourceShown = true;
     } else if (modalType == 'viewSource') {
       this.isViewSourceShown = true;
+    } else if (modalType == 'editSource') {
+      this.isEditSourceShown = true;
     }
   }
   hideAllModals() {
     this.isAddSourceShown = false;
     this.isViewSourceShown = false;
+    this.isEditSourceShown = false;
   }
 
   onAddSource(source: Source) {
@@ -152,6 +178,14 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.currentSource = source;
     // Close the modal window for view source and open add source
     this.showModal('addSource');
+  }
+
+  onEditSource(source: Source) {
+    // Re-set the value of the current source - this value also is the parent source
+    // for the new source
+    this.currentSource = source;
+    // Close the modal window for view source and open add source
+    this.showModal('editSource');
   }
 
 
@@ -174,9 +208,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       this.isCommenttabClicked = true;
     }
   }
-
-
-
 
   updateLines(elements: HTMLCollectionOf<Element>) {
     _.each(this.sources, (source: Source) => {

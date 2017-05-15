@@ -3,9 +3,10 @@
 
 <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
-        <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()">
+        <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
         </app-viewsource>
         <app-addsource *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-addsource>
+        <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
     </section>
 </section>
 

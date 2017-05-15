@@ -12,11 +12,10 @@ export class Source {
     xPosition: number;
     yPosition: number;
     type: string;
-    // Optional variables
-    hyperlink?: string;
-    description?: string;
-    difficulty?: string;
-    tags?: string[];
+    hyperlink: string;
+    description: string;
+    difficulty: string;
+    tags: string[];
 
     constructor(
         id: string,
@@ -27,21 +26,22 @@ export class Source {
         xPosition: number,
         yPosition: number,
         type: string,
-        hyperlink?: string,
-        description?: string,
-        difficulty?: string,
-        tags?: string[]
+        hyperlink: string,
+        description: string,
+        difficulty: string,
+        tags: string[]
     ) {
         this.source_id = id;
         this.parent_id = parent_id;
+        this.stash_id = stash_id;
         this.author_id = author_id;
         this.title = title;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.type = type;
-        if (hyperlink) { this.hyperlink = hyperlink };
-        if (description) { this.description = description };
-        if (difficulty) { this.difficulty = difficulty };
-        if (tags) { this.tags = tags };
+        this.hyperlink = hyperlink;
+        this.description = description;
+        this.difficulty = difficulty;
+        this.tags = tags;
     }
 }
