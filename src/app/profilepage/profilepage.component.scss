@@ -22,7 +22,7 @@
         display: flex;
         padding: 4vh 1vw;
         font-size: 11pt;
-        box-shadow: 1px 7px 30px $theme-blueberry;
+        // box-shadow: 1px 7px 30px $theme-blueberry;
         margin-top: 2vh;
         margin-bottom: 2vh;
        #top-container-content-left{
@@ -86,8 +86,8 @@
         width: 100vw;
         #bottom-container-content-tab{
             margin: auto;
-            box-shadow: 1px 7px 30px $theme-blueberry;
-            border: $theme-blueberry 1px solid;
+            border-radius: 10px;
+            // box-shadow: 1px 7px 30px $theme-blueberry;
             color: $theme-white;
             display: flex;
             justify-content: space-between;
@@ -97,6 +97,8 @@
             #bottom-container-content-tab-left{
                 display: flex;
                 #bottom-container-content-tab-left-stashes{
+                    border-bottom-left-radius: 10px;
+                    border-top-left-radius: 10px;
                     cursor: pointer;
                     height: 7vh;
                     display: flex;
@@ -123,6 +125,8 @@
             }
             #bottom-container-content-tab-right{
                 cursor: pointer;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
                 height: 7vh;
                 display: flex;
                 align-items: center;
@@ -135,7 +139,7 @@
             }
         }
         #bottom-container-content-detail{
-            box-shadow: 1px 7px 30px $theme-blueberry;
+            // box-shadow: 1px 7px 30px $theme-blueberry;
             margin: auto;
             width: 61vw;
             color: black;
