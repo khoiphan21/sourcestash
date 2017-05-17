@@ -86,7 +86,16 @@ div.wrapper {
                     justify-content: space-between;
                     align-items: center;
                     span {
-                        padding: 0 20px;
+                        margin: 10px 20px;
+                        &:last-child {
+                            padding: 0 5px;
+                            margin: 0 20px 0 0;
+                            border: 1px solid rgba(0, 0, 0, 0);
+                            &:hover {
+                                border-color: rgba(255, 255, 255, 0.6);
+                                cursor: pointer;
+                            }
+                        }
                     }
                 }
                 #right-container-stash-subheader {
