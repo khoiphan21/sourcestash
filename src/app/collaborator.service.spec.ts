@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CollaboratorService } from './collaborator.service';
+import { HttpModule } from '@angular/http';
 
 describe('CollaboratorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CollaboratorService]
+      providers: [CollaboratorService],
+      imports: [
+        HttpModule
+      ]
     });
   });
 
