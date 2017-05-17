@@ -1,7 +1,8 @@
 @import '../sass/variables';
 
 #main-container{
-    width: 23vw;
+    overflow: hidden;
+    width: 22.3vw;
     height: 26vh;
     border-radius: 10px;
     background: $theme-dark-grey;
@@ -15,11 +16,11 @@
         justify-content: center;
         font-size: 14pt;
         font-weight: bold;
-        color: $theme-light-blue;
+        color: $theme-orange;
         padding: 1vh 0;
     }
     #stash-sources{
-        padding: 1vh 1vw;
+        padding: 1vh 0;
     }
     #stash-rating{
         display: flex;

@@ -23,9 +23,7 @@ section.all-modals {
         width: 61vw;
         #main-container-title{
             margin-top: 2vh;
-            text-decoration: underline;
             // text-shadow: 1px 7px 30px $theme-dark-grey;
-            box-shadow: 1px 7px 30px $theme-blueberry;
             font-size: 16pt;
             font-weight: bold;  
             color: $theme-dark-grey;
@@ -33,7 +31,6 @@ section.all-modals {
             margin-bottom: 2vh;
         }
         #main-container-stashes{
-            box-shadow: 1px 7px 30px $theme-blueberry;
             padding: 2vh 0;
             height: 72vh;
             width: 61vw;
@@ -47,12 +44,13 @@ section.all-modals {
     }
     #main-container-createstash{
         width: 19.5vw;
-        padding: 2vh 0;
+        padding: 4vh 0;
         #createstash-btn{
+            border-radius: 10px;
             background: $theme-light-blue;
             padding: 1vh 1vw;
             color: white;
-            border: $theme-dark-grey solid 1px;
+            border: $theme-white solid 1px;
             box-shadow: 1px 7px 30px $theme-dark-grey;
             &:hover{
                 background: $theme-blueberry;
