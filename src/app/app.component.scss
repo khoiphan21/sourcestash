@@ -1,0 +1,26 @@
+@import 'sass/variables';
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div.canvas-wrapper {
+    .background {
+        position: fixed;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: -1000;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: $main-container-bg;
+        z-index: -999;
+    }
+}

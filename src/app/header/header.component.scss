@@ -1,24 +1,24 @@
 @import '../sass/variables';
-
-#header{
+#header {
     background: $header-bg;
     height: $header-height;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     color: $header-font;
     font-size: $header-fontsize;
-    text-shadow: 3px 5px 10px $theme-light-blue; 
-    #header-content{
+    text-shadow: 3px 5px 10px $theme-light-blue;
+    #header-content {
         width: $header-content-width;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        #header-left{
+        #header-left {
             font-size: 16pt;
         }
-        #header-right{
-            ul{
+        #header-right {
+            ul {
                 margin: 0px;
                 list-style-type: none;
                 display: flex;
@@ -27,14 +27,12 @@
                 cursor: pointer;
                 width: 7vw;
                 text-align: right;
-            }   
+            }
         }
-       
     }
-    a{
+    a {
         text-decoration: none;
         color: $header-font;
         text-align: center;
-    } 
-    
+    }
 }
