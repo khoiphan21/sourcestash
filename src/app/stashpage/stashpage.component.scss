@@ -3,6 +3,7 @@
 canvas {
     position: absolute;
     top: 0;
+    z-index: -1;
 }
 
 section.all-modals {
@@ -76,8 +77,11 @@ section.all-modals {
                 height: 5vh;
                 font-weight: bold;
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
+                span {
+                    padding: 0 20px;
+                }
             }
             #right-container-stash-subheader {
                 font-size: 12pt;

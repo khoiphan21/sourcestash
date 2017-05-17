@@ -11,7 +11,6 @@ export class AddstashComponent implements OnInit {
   stashTitle: string;
   stashDescription: string;
 
-
   @Output() onClose = new EventEmitter<boolean>();
   @Output() onCreated = new EventEmitter<boolean>(); // When a stash is created
 

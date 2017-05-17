@@ -7,6 +7,7 @@ import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
 import * as _ from 'underscore';
 import { element } from 'protractor';
+import { Stash } from '../classes/stash';
 
 
 
@@ -19,6 +20,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   @Input()
   sources: Source[];
   stash_id: string;
+
+  stash: Stash;
 
   currentSource: Source;
 
@@ -49,7 +52,8 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       this.sourceService.getSourcesForStash(this.stash_id).then(
         (sources: Source[]) => {
           this.sources = sources;
-        })
+        });
+      // Retrieve the information of the stash from the server
     })
   }
 
@@ -139,7 +143,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     // Close the modal window for view source and open add source
     this.showModal('editSource');
   }
-
 
   resetCanvas() {
     this.canvas.nativeElement.height = document.body.clientHeight;

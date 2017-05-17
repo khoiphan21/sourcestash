@@ -3,10 +3,13 @@
 
 <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
+        <!--For sources-->
         <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
         </app-viewsource>
         <app-addsource *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-addsource>
         <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
+        <!--For stashes-->
+        <app-stash-edit *ngIf="isEditStashShown && stash" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
     </section>
 </section>
 
@@ -25,7 +28,7 @@
         <section id="right-container-content">
             <section id="right-container-stash" *ngIf="isStashtabClicked">
                 <article id="right-container-stash-title">
-                    Test Root Source
+                    <span>[STASH TITLE]</span><span (click)="editStash()">&#9998;</span>
                 </article>
 
                 <section>

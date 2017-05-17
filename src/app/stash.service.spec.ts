@@ -71,7 +71,9 @@ describe('StashService', () => {
       })
 
     })();
-  })
+  });
+
+
 
   /**
    * Tests for retrieving stashes
