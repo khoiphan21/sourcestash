@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SourceEditComponent } from '../source-edit/source-edit.component';
+import { StashService } from '../stash.service';
+import { StashEditComponent } from '../stash-edit/stash-edit.component';
 
 let mockRoute = {
   params: {
@@ -35,10 +37,12 @@ describe('StashpageComponent', () => {
         AddstashComponent,
         AddsourceComponent,
         FooterComponent,
-        SourceEditComponent
+        SourceEditComponent,
+        StashEditComponent
       ], 
       providers: [
         SourceService,
+        StashService,
         AccountService,
         GoogleApiService,
         {provide: ActivatedRoute, useValue: mockRoute},

@@ -32,19 +32,9 @@ export class StashEditComponent implements OnInit {
 
   editStash() {
     // Make call to API for updating a stash
-
-    
-    // // Make call to API for adding a stash
-    // console.log(this.stashTitle, this.stashDescription);
-    // this.stashService.createStash(new Stash(this.stashTitle, this.stashDescription))
-    //   .subscribe(response => {
-    //     console.log('successfully created a stash')
-    //     // Emit event to tell parent to reload the stashes
-    //     this.onCreated.emit();
-    //   }, error => {
-    //     alert('Error trying to create a stash. View Log for more details.');
-    //     console.log(error);
-    //   });
+    this.stashService.updateStash(this.stash).then(response => {
+      if (!response.success) alert('Failed to update stash.');
+    });
 
     // Close the popup
     this.closePopup();

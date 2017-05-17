@@ -149,23 +149,28 @@ export class StashService {
   }
 
   /**
+   * Get the information of a specific stash.
    * 
    * @param stashID - The id of the stash to be retrieved
    */
-  getStash(stashID: string): Observable<Stash> {
+  getStash(stashID: string): Promise<Stash> {
+    let deferred = new Deferred<Stash>();
+    
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    return this.http.get(
+    this.http.get(
       SERVER + '/stash/' + stashID,
       options
-    ).map(response => {
+    ).subscribe(response => {
       // Cast the response to a stash
       let stash = response.json();
-      return stash;
-    }).catch(error => {
-      return Observable.throw(error);
+      deferred.resolve(stash);
+    }, error => {
+      deferred.reject(error);
     })
+
+    return deferred.promise;
   }
 
   /**

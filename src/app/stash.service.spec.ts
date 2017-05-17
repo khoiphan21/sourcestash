@@ -73,7 +73,32 @@ describe('StashService', () => {
     })();
   });
 
+  /**
+   * Tests for updating a stash
+   */
+  it('should update a stash successfully', done => {
+    inject([StashService], (service: StashService) => {
+      let stashID = '200039057';
+      let user_id = '2296818568';
+      let description: string = '' + (Math.random() * 1000);
+      let stash: Stash = {
+        stash_id: stashID,
+        author_id: user_id,
+        title: 'First Stash',
+        description: description
+      }
+      service.updateStash(stash).then(
+        (response: AppResponse) => {
+          expect(response.success).toBeTruthy();
 
+          return service.getStash(stashID);
+        }
+      ).then((stash: Stash) => {
+        expect(stash.description).toBe(description);
+        done();
+      });
+    })();
+  })
 
   /**
    * Tests for retrieving stashes
@@ -81,7 +106,7 @@ describe('StashService', () => {
   it('should retrieve the test stash correctly', done => {
     inject([StashService], (service: StashService) => {
       let stashID = '200039057';
-      service.getStash(stashID).subscribe(
+      service.getStash(stashID).then(
         (stash: Stash) => {
           expect(stash.stash_id).toBe(stashID);
           done();

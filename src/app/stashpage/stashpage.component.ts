@@ -8,6 +8,7 @@ import { SourceService } from '../source.service';
 import * as _ from 'underscore';
 import { element } from 'protractor';
 import { Stash } from '../classes/stash';
+import { StashService } from '../stash.service';
 
 
 
@@ -32,6 +33,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   isAddSourceShown: boolean = false;
   isViewSourceShown: boolean = false;
   isEditSourceShown: boolean = false;
+  isEditStashShown: boolean = false;
 
   // Variables to control tab items display
   isStashtabClicked: boolean = true;
@@ -41,6 +43,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
 
   constructor(
     private sourceService: SourceService,
+    private stashService: StashService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -54,6 +57,9 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
           this.sources = sources;
         });
       // Retrieve the information of the stash from the server
+      this.stashService.getStash(this.stash_id).then((stash: Stash) => {
+        this.stash = stash;
+      })
     })
   }
 
@@ -68,9 +74,7 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
   }
 
   refreshCanvas() {
-    console.log("canvas being refreshed");
     let elements = document.getElementsByClassName('source');
-    console.log(elements);
 
     if (elements.length != 0) {
       this.renderedElements = elements;
@@ -120,12 +124,15 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
       this.isViewSourceShown = true;
     } else if (modalType == 'editSource') {
       this.isEditSourceShown = true;
+    } else if (modalType == 'editStash') {
+      this.isEditStashShown = true;
     }
   }
   hideAllModals() {
     this.isAddSourceShown = false;
     this.isViewSourceShown = false;
     this.isEditSourceShown = false;
+    this.isEditStashShown = false;
   }
 
   onAddSource(source: Source) {
@@ -142,6 +149,10 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     this.currentSource = source;
     // Close the modal window for view source and open add source
     this.showModal('editSource');
+  }
+
+  onEditStash() {
+    this.showModal('editStash');
   }
 
   resetCanvas() {
@@ -202,7 +213,9 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
     context.stroke();
   }
 
-  // HELPER FUNCTIONS
+  /*******************
+   * HELPER FUNCTIONS
+   ********************/ 
   /**
    * Update the 'relative' position of the source. Need to retrieve the position
    * of the parent source first, to calculate the relative position
@@ -334,7 +347,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
           });
         }
       })
-      console.log('Updating source for: ' + currentSource.source_id);
       // Update that source's position
       // Find the relative position stored
       let storedX = currentSource.xPosition;
@@ -349,7 +361,6 @@ export class StashpageComponent implements OnInit, AfterContentChecked {
         // console.log(parentSource)
         // let parentElement: Element = this.findMatchingElement(parentSource, elements);
         let parentElement: Element;
-        console.log('finding parent element for: ' + currentSource.parent_id)
         _.each(elements, element => {
           if (element.id === currentSource.parent_id) {
             parentElement = element;

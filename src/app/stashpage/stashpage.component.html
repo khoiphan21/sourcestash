@@ -27,8 +27,8 @@
     <section id="right-container">
         <section id="right-container-content">
             <section id="right-container-stash" *ngIf="isStashtabClicked">
-                <article id="right-container-stash-title">
-                    <span>[STASH TITLE]</span><span (click)="editStash()">&#9998;</span>
+                <article id="right-container-stash-title" *ngIf="stash">
+                    <span>{{stash.title}}</span><span (click)="onEditStash()">&#9998;</span>
                 </article>
 
                 <section>
