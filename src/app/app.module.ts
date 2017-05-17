@@ -30,6 +30,7 @@ import { AddsourceComponent } from './addsource/addsource.component';
 import { SourceEditComponent } from './source-edit/source-edit.component';
 import { StashEditComponent } from './stash-edit/stash-edit.component';
 import { StashCreateComponent } from './stash-create/stash-create.component';
+import { CollaboratorService } from './collaborator.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { StashCreateComponent } from './stash-create/stash-create.component';
     AccountService,
     StashService,
     SourceService,
-    GoogleApiService
+    GoogleApiService,
+    CollaboratorService
   ],
   bootstrap: [AppComponent]
 })
