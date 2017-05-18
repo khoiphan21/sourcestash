@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StashpageComponent } from './stashpage.component';
+import { PageStashComponent } from './page-stash.component';
 import { HeaderComponent } from '../header/header.component';
 import { SourceService } from '../source.service';
 import { AccountService } from '../account.service';
@@ -24,14 +24,14 @@ let mockRoute = {
   }
 }
 
-describe('StashpageComponent', () => {
-  let component: StashpageComponent;
-  let fixture: ComponentFixture<StashpageComponent>;
+describe('PageStashComponent', () => {
+  let component: PageStashComponent;
+  let fixture: ComponentFixture<PageStashComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        StashpageComponent,
+        PageStashComponent,
         HeaderComponent,
         ViewsourceComponent,
         StashAddComponent,
@@ -59,7 +59,7 @@ describe('StashpageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StashpageComponent);
+    fixture = TestBed.createComponent(PageStashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

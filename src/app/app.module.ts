@@ -13,9 +13,7 @@ import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
-import { LoginComponent } from './login/login.component';
 import { SourceService } from './source.service';
-import { StashpageComponent } from './stashpage/stashpage.component';
 import { GoogleApiService } from './google-api.service';
 import { FooterComponent } from './footer/footer.component';
 import { ViewsourceComponent } from './viewsource/viewsource.component';
@@ -27,6 +25,8 @@ import { PageHomeComponent } from './page-home/page-home.component';
 import { StashAddComponent } from './stash-add/stash-add.component';
 import { PageProfileComponent } from './page-profile/page-profile.component';
 import { PageWelcomeComponent } from './page-welcome/page-welcome.component';
+import { PageLoginComponent } from './page-login/page-login.component';
+import { PageStashComponent } from './page-stash/page-stash.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,6 @@ import { PageWelcomeComponent } from './page-welcome/page-welcome.component';
     HeaderComponent,
     StashComponent,
     SourcesComponent,
-    LoginComponent,
-    StashpageComponent,
     FooterComponent,
     StashAddComponent,
     ViewsourceComponent,
@@ -46,7 +44,9 @@ import { PageWelcomeComponent } from './page-welcome/page-welcome.component';
     PageHomeComponent,
     StashAddComponent,
     PageProfileComponent,
-    PageWelcomeComponent
+    PageWelcomeComponent,
+    PageLoginComponent,
+    PageStashComponent
     ],
   imports: [
     BrowserModule,

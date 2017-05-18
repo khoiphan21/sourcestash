@@ -11,11 +11,12 @@ import { Stash } from '../classes/stash';
 import { StashService } from '../stash.service';
 
 @Component({
-  selector: 'app-stashpage',
-  templateUrl: './stashpage.component.html',
-  styleUrls: ['./stashpage.component.scss']
+  selector: 'app-page-stash',
+  templateUrl: './page-stash.component.html',
+  styleUrls: ['./page-stash.component.scss']
 })
-export class StashpageComponent implements OnInit, AfterContentChecked {
+export class PageStashComponent implements OnInit {
+
   @Input()
   sources: Source[];
   stash_id: string;

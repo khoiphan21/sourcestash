@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { PageLoginComponent } from './page-login.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { HttpModule } from '@angular/http';
@@ -8,36 +8,35 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { GoogleApiService } from '../google-api.service';
 import { FooterComponent } from '../footer/footer.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('PageLoginComponent', () => {
+  let component: PageLoginComponent;
+  let fixture: ComponentFixture<PageLoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        LoginComponent,
+        PageLoginComponent,
         FooterComponent
-      ],
-      imports: [
-        FormsModule,
-        HttpModule
       ],
       providers: [
         AccountService,
         GoogleApiService,
-        { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
+      ], 
+      imports: [
+        HttpModule
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(PageLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', inject([Router], () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-  }));
+  });
 });

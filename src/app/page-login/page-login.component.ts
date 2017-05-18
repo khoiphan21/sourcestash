@@ -5,11 +5,12 @@ import { AccountService } from '../account.service';
 import { AppResponse } from '../classes/response';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-page-login',
+  templateUrl: './page-login.component.html',
+  styleUrls: ['./page-login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class PageLoginComponent implements OnInit {
+
   account: Account;
 
   constructor(
