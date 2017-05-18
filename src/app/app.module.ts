@@ -18,7 +18,6 @@ import { SourceService } from './source.service';
 import { StashpageComponent } from './stashpage/stashpage.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { GoogleApiService } from './google-api.service';
 import { PopupComponent } from './popup/popup.component';
 import { FooterComponent } from './footer/footer.component';
@@ -31,6 +30,7 @@ import { CollaboratorService } from './collaborator.service';
 import { SourceAddComponent } from './source-add/source-add.component';
 import { PageHomeComponent } from './page-home/page-home.component';
 import { PageProfileComponent } from './page-profile/page-profile.component';
+import { PageWelcomeComponent } from './page-welcome/page-welcome.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { PageProfileComponent } from './page-profile/page-profile.component';
     StashpageComponent,
     TabComponent,
     TabsComponent,
-    WelcomepageComponent,
     PopupComponent,
     FooterComponent,
     AddstashComponent,
@@ -53,7 +52,8 @@ import { PageProfileComponent } from './page-profile/page-profile.component';
     StashCreateComponent,
     SourceAddComponent,
     PageHomeComponent,
-    PageProfileComponent
+    PageProfileComponent,
+    PageWelcomeComponent
     ],
   imports: [
     BrowserModule,
