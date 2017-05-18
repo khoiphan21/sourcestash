@@ -1,16 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WelcomepageComponent } from './welcomepage.component';
+import { PageWelcomeComponent } from './page-welcome.component';
 import { FooterComponent } from '../footer/footer.component';
 
-describe('WelcomepageComponent', () => {
-  let component: WelcomepageComponent;
-  let fixture: ComponentFixture<WelcomepageComponent>;
+describe('PageWelcomeComponent', () => {
+  let component: PageWelcomeComponent;
+  let fixture: ComponentFixture<PageWelcomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ 
-        WelcomepageComponent,
+        PageWelcomeComponent,
         FooterComponent
       ]
     })
@@ -18,7 +18,7 @@ describe('WelcomepageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WelcomepageComponent);
+    fixture = TestBed.createComponent(PageWelcomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,8 +8,6 @@ import { AccountService } from '../account.service';
 import { StashService } from '../stash.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { TabsComponent } from '../tabs/tabs.component';
-import { TabComponent } from '../tab/tab.component';
 import { GoogleApiService } from '../google-api.service';
 import { FooterComponent } from '../footer/footer.component';
 import { Router } from '@angular/router';
@@ -26,8 +24,6 @@ describe('PageProfileComponent', () => {
         HeaderComponent,
         StashComponent,
         SourcesComponent,
-        TabsComponent,
-        TabComponent,
         FooterComponent
       ],
       providers: [
