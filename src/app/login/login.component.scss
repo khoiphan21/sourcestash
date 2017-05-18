@@ -59,24 +59,125 @@ $mainContainerHeight: 86vh;
         }
         #sourcestash-intro-content-button {
             margin-top: 4vh;
+            display: flex;
+            justify-content: center;
             .button {
+                height: 8vh;
                 cursor: pointer;
                 box-shadow: 1px 7px 30px $theme-dark-grey;
                 color: $theme-orange;
                 font-size: 10pt;
-                padding: 2vh 2vw;
-                background: transparent;
-                border: $theme-orange solid 2px;
+                border: $theme-dark-grey solid 2px;
                 transition: 0.3s;
+                display: flex; 
+                align-items: center;
+                background: $theme-white;
+                color: $theme-dark-grey;
                 &:hover {
                     color: $theme-orange;
                     background: lighten($theme-dark-grey, 5);
+                    border: $theme-orange solid 2px;
+                }
+                span{
+                    padding: 0 1vw;
                 }
             }
         }
     }
 }
 
+//
+// tablet screen
+@include media(small-screen) {
+    #login-header {
+        width: 100vw;
+        background: $theme-dark-grey;
+        height: 7vh;
+        display: flex;
+        color: $theme-white;
+        font-size: 16pt;
+        text-shadow: 3px 5px 10px $theme-light-blue;
+        #login-header-content {
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #login-header-left {
+                padding: 0 10vw;
+            }
+            #login-header-right {
+                font-size: $mobile-font-heading;
+                padding: 0 10vw;
+            }
+            a {
+                text-decoration: none;
+                text-align: right;
+                color: $theme-white;
+            }
+        }
+    }
+    #mainContianer {
+        height: $mainContainerHeight;
+        background: $light-background-trans;
+        display: flex;
+        justify-content: center;
+        #sourcestash-intro-content {
+            border-radius: 10px;
+            border: $theme-orange solid 2px;
+            box-shadow: 1px 7px 30px $theme-dark-grey;
+            padding: 3vh 0;
+            width: 60vw;
+            background: $dark-background;
+            text-align: center;
+            margin-top: 10vh;
+            p {
+                margin-bottom: 2vh;
+            }
+            #sourcestash-intro-content-title {
+                font-size: $mobile-font-title;
+                color: $theme-orange;
+            }
+            #sourcestash-intro-content-details {
+                width: 60vw;
+                margin: auto;
+                font-size: $mobile-font-content;
+                color: $theme-white;
+            }
+            #sourcestash-intro-content-button {
+                margin-top: 3vh;
+                .button {
+                    height: 8vh;
+                    padding: 0;
+                    cursor: pointer;
+                    box-shadow: 1px 3px 30px $theme-dark-grey;
+                    display: flex;
+                    align-items: none;
+                    font-size: 10pt;
+                    border: $theme-orange solid 2px;
+                    background: $theme-white;
+                    color: $theme-dark-grey;
+                    border: $theme-grey solid 1px;
+                    &:hover {
+                        border: $theme-orange solid 1px;
+                        color: $theme-orange;
+                        background: lighten($theme-dark-grey, 5);
+                    }
+                }
+                img{
+                    padding: 0;
+                    margin: 0;
+                }
+                span{
+                    padding: 0 1vw;
+                }
+            }
+        }
+    }
+}
+
+
+//
+// mobile screen
 @include media(mobile-screen) {
     #login-header {
         width: 100vw;
@@ -110,7 +211,6 @@ $mainContainerHeight: 86vh;
         background: $light-background-trans;
         display: flex;
         justify-content: center;
-        align-items: center;
         #sourcestash-intro-content {
             border-radius: 10px;
             border: $theme-orange solid 2px;
@@ -119,6 +219,7 @@ $mainContainerHeight: 86vh;
             width: 80vw;
             background: $dark-background;
             text-align: center;
+            margin-top: 10vh;
             p {
                 margin-bottom: 2vh;
             }
@@ -127,26 +228,34 @@ $mainContainerHeight: 86vh;
                 color: $theme-orange;
             }
             #sourcestash-intro-content-details {
-                width: 50vw;
+                width: 70vw;
                 margin: auto;
                 font-size: $mobile-font-content;
                 color: $theme-white;
             }
             #sourcestash-intro-content-button {
-                margin-top: 4vh;
+                margin-top: 10vh;
                 .button {
+                    height: 8vh;
                     cursor: pointer;
                     box-shadow: 1px 3px 30px $theme-dark-grey;
-                    color: $theme-orange;
                     font-size: 10pt;
-                    padding: 2vh 2vw;
-                    background: transparent;
                     border: $theme-orange solid 2px;
+                    background: $theme-white;
+                    color: $theme-dark-grey;
+                    border: $theme-grey solid 1px;
+                    &:hover {
+                        border: $theme-orange solid 1px;
+                        color: $theme-orange;
+                        background: lighten($theme-dark-grey, 5);
+                    }
                 }
-                &:hover {
-                    border: $theme-orange solid 3px;
-                    color: $theme-orange;
-                    font-weight: bold;
+                img{
+                    padding: 0;
+                    margin: 0;
+                }
+                span{
+                    padding: 0 1vw;
                 }
             }
         }

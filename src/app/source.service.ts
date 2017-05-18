@@ -9,7 +9,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import * as _ from 'underscore';
 
 import { Source } from './classes/source';
-import { SOURCES } from './data/mockSources';
+// import { SOURCES } from './data/mockSources';
 import { AccountService } from './account.service';
 import { AppResponse } from './classes/response';
 import { SERVER } from './classes/SERVER';

@@ -60,5 +60,42 @@ section.all-modals {
     }
 }
 
-
+@include media(mobile-screen) {
+    #main-container{
+    width: 100vw;
+    height: $main-container-height;
+    background: $main-container-bg;
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    overflow: scroll;
+        #main-container-content{
+            width: 80vw;
+            #main-container-title{
+                margin-top: 2vh;
+                // text-shadow: 1px 7px 30px $theme-dark-grey;
+                font-size: 16pt;
+                font-weight: bold;  
+                color: $theme-dark-grey;
+                padding: 2vh 0;
+                margin-bottom: 2vh;
+            }
+            #main-container-stashes{
+                margin: auto;
+                padding: 0 0 2vh 0;
+                height: 72vh;
+                width: 61vw;
+                display: flex; 
+                justify-content: space-around;
+                flex-wrap: wrap;
+                #main-container-stashes-content{
+                    // margin: 2vh 0 2vh 0; 
+                }
+            }
+        }
+        #main-container-createstash{
+            display: none;
+        }
+    }
+}
 

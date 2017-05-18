@@ -9,15 +9,26 @@
                     <a routerLink="/home">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/profilepage">Profile</a>
+                    <a routerLink="/welcome">About</a>
                 </li>
                 <li>
-                    <a routerLink="/welcome">About</a>
+                    <a routerLink="/profilepage">Profile</a>
                 </li>
                 <li>
                     <a routerLink="/welcome" (click)="logout()">Log Out</a>
                 </li>
             </ul>
+        </section>
+        <section id="header-mobile-right">
+            <button id="header-mobile-right-btn" (click)="toggleDropdown()">Drop</button>
+            <section id="header-mobile-right-content" *ngIf="isDropdown">
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/welcome">About</a></li>
+                    <li><a routerLink="/profilepage">Profile</a></li>
+                    <li><a routerLink="/welcome" (click)="logout()">Log Out</a></li>
+                </ul>
+            </section>
         </section>
     </section>
 </section>

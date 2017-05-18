@@ -1,4 +1,5 @@
 @import '../sass/variables';
+@import '../sass/mixins';
 
 #main-container{
     overflow: hidden;
@@ -36,4 +37,45 @@
 #source{
     display: flex;
     justify-content: space-between;
+}
+
+@include media(mobile-screen) {
+    #main-container{
+    overflow: hidden;
+    width: 60vw;
+    height: 26vh;
+    border-radius: 10px;
+    background: $theme-dark-grey;
+    border: solid 2px $theme-light-blue;
+    color: $theme-white;
+    box-shadow: 1px 7px 30px $theme-dark-grey;
+    margin-bottom: 3vh;
+    // flex: 1;
+        #stash-title{
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            font-size: 14pt;
+            font-weight: bold;
+            color: $theme-orange;
+            padding: 1vh 0;
+        }
+        #stash-sources{
+            padding: 1vh 0;
+        }
+        #stash-rating{
+            display: flex;
+            justify-content: flex-start;
+            color: $theme-white;
+            padding: 1vh 1vw 0 1vw;
+            .ratescore{
+                padding: 0 1vw;
+            }
+        }
+    }
+
+    #source{
+        display: flex;
+        justify-content: space-between;
+    }
 }
