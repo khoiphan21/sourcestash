@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Source } from '../classes/source';
 
 @Component({
-  selector: 'app-viewsource',
-  templateUrl: './viewsource.component.html',
-  styleUrls: ['./viewsource.component.scss']
+  selector: 'app-source-view',
+  templateUrl: './source-view.component.html',
+  styleUrls: ['./source-view.component.scss']
 })
-export class ViewsourceComponent implements OnInit {
+export class SourceViewComponent implements OnInit {
   @Input()
   source: Source;
 
@@ -18,7 +18,7 @@ export class ViewsourceComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   closePopup() {
     this.onClose.emit();
   }
@@ -30,5 +30,4 @@ export class ViewsourceComponent implements OnInit {
   editSource() {
     this.onEditSource.emit(this.source);
   }
-
 }

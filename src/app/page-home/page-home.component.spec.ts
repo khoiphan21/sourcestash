@@ -9,12 +9,12 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccountService } from '../account.service';
 import { GoogleApiService } from '../google-api.service';
-import { ViewsourceComponent } from '../viewsource/viewsource.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SourceAddComponent } from '../source-add/source-add.component';
 import { StashAddComponent } from '../stash-add/stash-add.component';
+import { SourceViewComponent } from '../source-view/source-view.component';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
@@ -33,7 +33,7 @@ describe('PageHomeComponent', () => {
         SourcesComponent,
         StashAddComponent,
         SourceAddComponent,
-        ViewsourceComponent,
+        SourceViewComponent,
         FooterComponent
       ],
       providers: [

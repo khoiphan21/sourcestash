@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
 import { Account } from '../classes/account';
-import { Tab } from '../interface/tab.interface';
-import { TabComponent } from '../tab/tab.component';
-import { TabsComponent } from '../tabs/tabs.component';
 import { Stash } from '../classes/stash';
 
 @Component({
@@ -13,7 +10,6 @@ import { Stash } from '../classes/stash';
 })
 export class PageProfileComponent implements OnInit {
 userAccount: Account;
-  tabs: TabComponent[] = [];
 
   stash: Stash;
   
