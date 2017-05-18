@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddstashComponent } from './addstash.component';
 import { FormsModule } from '@angular/forms';
 import { StashService } from '../stash.service';
 import { HttpModule } from '@angular/http';
@@ -8,17 +7,19 @@ import { AccountService } from '../account.service';
 import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
 
+import { StashAddComponent } from './stash-add.component';
+
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
 }
 
-describe('AddstashComponent', () => {
-  let component: AddstashComponent;
-  let fixture: ComponentFixture<AddstashComponent>;
+describe('StashAddComponent', () => {
+  let component: StashAddComponent;
+  let fixture: ComponentFixture<StashAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddstashComponent ],
+      declarations: [ StashAddComponent ],
       imports: [
         FormsModule,
         HttpModule
@@ -34,7 +35,7 @@ describe('AddstashComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddstashComponent);
+    fixture = TestBed.createComponent(StashAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

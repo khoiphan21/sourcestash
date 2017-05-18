@@ -2,7 +2,7 @@
 
 <section class="all-modals" [style.display]="isModalShown ? 'flex' : 'none'" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
-        <app-addstash [style.display]="isAddStashShown ? 'flex' : 'none'" (onCreated)="reloadStashes()" (onClose)="hideModal()"></app-addstash>
+        <app-stash-add [style.display]="isAddStashShown ? 'flex' : 'none'" (onCreated)="reloadStashes()" (onClose)="hideModal()"></app-stash-add>
     </section>
 </section>
 

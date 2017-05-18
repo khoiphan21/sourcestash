@@ -6,7 +6,6 @@ import { ProfilepageComponent } from '../profilepage/profilepage.component';
 import { LoginComponent } from '../login/login.component';
 import { StashpageComponent } from '../stashpage/stashpage.component';
 import { WelcomepageComponent } from '../welcomepage/welcomepage.component';
-import { AddstashComponent } from '../addstash/addstash.component';
 import { PageHomeComponent } from '../page-home/page-home.component';
 
 const routes: Routes = [
@@ -15,8 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'home', component: PageHomeComponent },
   { path: 'stashpage/:stashid', component: StashpageComponent},
-  { path: 'profilepage', component: ProfilepageComponent},
-  { path: 'addstash', component: AddstashComponent},
+  { path: 'profilepage', component: ProfilepageComponent}
 ]
 
 @NgModule({

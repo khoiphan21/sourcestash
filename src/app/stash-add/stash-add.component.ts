@@ -3,11 +3,11 @@ import { StashService } from '../stash.service';
 import { Stash } from '../classes/stash';
 
 @Component({
-  selector: 'app-addstash',
-  templateUrl: './addstash.component.html',
-  styleUrls: ['./addstash.component.scss']
+  selector: 'app-stash-add',
+  templateUrl: './stash-add.component.html',
+  styleUrls: ['./stash-add.component.scss']
 })
-export class AddstashComponent implements OnInit {
+export class StashAddComponent implements OnInit {
   stashTitle: string;
   stashDescription: string;
 
@@ -29,15 +29,15 @@ export class AddstashComponent implements OnInit {
     // Make call to API for adding a stash
     console.log(this.stashTitle, this.stashDescription);
     this.stashService.createStash(new Stash(this.stashTitle, this.stashDescription))
-    .subscribe(response => {
-      console.log('successfully created a stash')
-      // Emit event to tell parent to reload the stashes
-      this.onCreated.emit();
-    }, error => {
-      alert('Error trying to create a stash. View Log for more details.');
-      console.log(error);
-    });
-    
+      .subscribe(response => {
+        console.log('successfully created a stash')
+        // Emit event to tell parent to reload the stashes
+        this.onCreated.emit();
+      }, error => {
+        alert('Error trying to create a stash. View Log for more details.');
+        console.log(error);
+      });
+
     // Close the popup
     this.closePopup();
   }

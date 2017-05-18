@@ -23,14 +23,13 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { GoogleApiService } from './google-api.service';
 import { PopupComponent } from './popup/popup.component';
 import { FooterComponent } from './footer/footer.component';
-import { AddstashComponent } from './addstash/addstash.component';
 import { ViewsourceComponent } from './viewsource/viewsource.component';
 import { SourceEditComponent } from './source-edit/source-edit.component';
 import { StashEditComponent } from './stash-edit/stash-edit.component';
-import { StashCreateComponent } from './stash-create/stash-create.component';
 import { CollaboratorService } from './collaborator.service';
 import { SourceAddComponent } from './source-add/source-add.component';
 import { PageHomeComponent } from './page-home/page-home.component';
+import { StashAddComponent } from './stash-add/stash-add.component';
 
 @NgModule({
   declarations: [
@@ -46,14 +45,14 @@ import { PageHomeComponent } from './page-home/page-home.component';
     WelcomepageComponent,
     PopupComponent,
     FooterComponent,
-    AddstashComponent,
+    StashAddComponent,
     ViewsourceComponent,
     SourceAddComponent,
     SourceEditComponent,
     StashEditComponent,
-    StashCreateComponent,
     SourceAddComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    StashAddComponent
     ],
   imports: [
     BrowserModule,
