@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
-import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +30,7 @@ import { StashCreateComponent } from './stash-create/stash-create.component';
 import { CollaboratorService } from './collaborator.service';
 import { SourceAddComponent } from './source-add/source-add.component';
 import { PageHomeComponent } from './page-home/page-home.component';
+import { PageProfileComponent } from './page-profile/page-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { PageHomeComponent } from './page-home/page-home.component';
     HeaderComponent,
     StashComponent,
     SourcesComponent,
-    ProfilepageComponent,
     LoginComponent,
     StashpageComponent,
     TabComponent,
@@ -53,7 +52,8 @@ import { PageHomeComponent } from './page-home/page-home.component';
     StashEditComponent,
     StashCreateComponent,
     SourceAddComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    PageProfileComponent
     ],
   imports: [
     BrowserModule,

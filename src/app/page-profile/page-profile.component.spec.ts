@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilepageComponent } from './profilepage.component';
+import { PageProfileComponent } from './page-profile.component';
 import { HeaderComponent } from '../header/header.component';
 import { StashComponent } from '../stash/stash.component';
 import { SourcesComponent } from '../sources/sources.component';
@@ -15,14 +15,14 @@ import { FooterComponent } from '../footer/footer.component';
 import { Router } from '@angular/router';
 import { SourceService } from '../source.service';
 
-describe('ProfilepageComponent', () => {
-  let component: ProfilepageComponent;
-  let fixture: ComponentFixture<ProfilepageComponent>;
+describe('PageProfileComponent', () => {
+  let component: PageProfileComponent;
+  let fixture: ComponentFixture<PageProfileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ 
-        ProfilepageComponent,
+        PageProfileComponent,
         HeaderComponent,
         StashComponent,
         SourcesComponent,
@@ -46,7 +46,7 @@ describe('ProfilepageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfilepageComponent);
+    fixture = TestBed.createComponent(PageProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
