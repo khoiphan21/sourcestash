@@ -141,7 +141,7 @@ describe('SourceService', () => {
         done();
       })
     })();
-  })
+  }, 10000)
 
   it('should update the location of a source successfully', done => {
     inject([SourceService], (service: SourceService) => {

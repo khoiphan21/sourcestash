@@ -12,6 +12,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SERVER } from './classes/SERVER';
 import { AccountService } from './account.service';
 import { Account } from './classes/account';
+import { Deferred } from './classes/deferred';
 
 @Injectable()
 export class StashService {
@@ -51,6 +52,38 @@ export class StashService {
   }
 
   /**
+   * Update a stash based on the given stash object
+   * 
+   * @param stash - the stash to be updated. Should already by populated 
+   *                with new content
+   */
+  updateStash(stash: Stash): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+
+    if (stash.author_id == null || stash.stash_id == null ||
+      stash.description == null || stash.title == null
+    ) {
+      deferred.reject('Missing parameters from the stash.');
+    } else {
+      let options: RequestOptions;
+      this.setupHeaderOptions(options);
+
+      this.http.post(
+        SERVER + '/stash/update',
+        {
+          stash: stash
+        }
+      ).subscribe(response => {
+        deferred.resolve(new AppResponse(true, response.toString()));
+      }, error => {
+        deferred.reject(new AppResponse(false, error, error));
+      });
+    }
+
+    return deferred.promise;
+  }
+
+  /**
    * Delete a stash. The stashID must be present stash for it to be deleted.
    * 
    * @param stash - The stash to be deleted
@@ -74,11 +107,11 @@ export class StashService {
       response => {
         return new AppResponse(true, 'Stash successfully deleted.');
       }
-    ).catch(
+      ).catch(
       error => {
         return Observable.throw(error);
       }
-    )
+      )
   }
 
   /**
@@ -95,7 +128,7 @@ export class StashService {
    * @param userEmail - The email of the user whose stashes are to be retrieved
    */
   getAllStashes(): Observable<Stash[]> {
-    let user:Account = this.accountService.getCurrentUser();
+    let user: Account = this.accountService.getCurrentUser();
 
     let options: RequestOptions;
     this.setupHeaderOptions(options);
@@ -116,23 +149,28 @@ export class StashService {
   }
 
   /**
+   * Get the information of a specific stash.
    * 
    * @param stashID - The id of the stash to be retrieved
    */
-  getStash(stashID: string): Observable<Stash> {
+  getStash(stashID: string): Promise<Stash> {
+    let deferred = new Deferred<Stash>();
+    
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    return this.http.get(
+    this.http.get(
       SERVER + '/stash/' + stashID,
       options
-    ).map(response => {
+    ).subscribe(response => {
       // Cast the response to a stash
       let stash = response.json();
-      return stash;
-    }).catch(error => {
-      return Observable.throw(error);
+      deferred.resolve(stash);
+    }, error => {
+      deferred.reject(error);
     })
+
+    return deferred.promise;
   }
 
   /**

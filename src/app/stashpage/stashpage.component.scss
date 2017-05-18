@@ -3,32 +3,42 @@
 canvas {
     position: absolute;
     top: 0;
+    z-index: -10;
 }
 
-section.all-modals {
-    position: fixed;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    @include column-center();
+div.wrapper {
+    position: relative;
+    z-index: 1;
+    app-header,
+    app-footer {
+        position: relative;
+        z-index: 10 !important;
+    }
+    section.all-modals {
+        position: fixed;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        @include column-center();
+    }
 }
 
 #main-container {
+    position: relative;
+    z-index: -1;
     width: 100vw;
     height: $main-container-height;
-    background: $main-container-bg;
     display: flex;
     #left-container {
         position: relative;
+        z-index: 1;
         width: 80vw;
         height: 90vh;
         text-align: center;
         display: block;
-        // align-items: center;
-        // justify-content: center;
         #popups {
             display: none;
         }
@@ -40,115 +50,124 @@ section.all-modals {
         .source {
             $width: 17vh;
             $height: 15vh;
-            // padding: 1vh 1vw;
             position: absolute;
             width: $width;
             height: $height;
             display: flex !important;
             align-items: center;
+            z-index: 1;
             justify-content: center;
             background-image: url("/assets/images/hexagon.png");
             background-size: $width $height;
             background-repeat: no-repeat;
         }
         .root {
-            position: relative;
-            left: 45% !important;
-            top: 45% !important;
+            position: relative; // left: 45% !important;
+            // top: 45% !important;
         }
     }
-}
-
-#right-container {
-    background: $theme-dark-grey;
-    color: $theme-white;
-    width: 20vw;
-    height: 86vh;
-    #right-container-content {
-        display: flex;
-        #right-container-stash {
-            border: 1px solid $theme-white;
-            border-bottom: none;
-            width: 17vw;
-            // A list of sources and stashes
-            #right-container-stash-title {
-                font-size: 14pt;
-                height: 5vh;
-                font-weight: bold;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #right-container-stash-subheader {
-                font-size: 12pt;
-                color: black;
-                display: block;
-                cursor: pointer;
-                min-height: 1vh;
-                line-height: 1vh;
-                padding: 1vh 1vw;
-                background-color: #fff;
-                border-bottom: 1px solid #ddd;
-            }
-            #right-container-stash-content {
-                font-size: 10pt;
-                overflow: hidden;
-                padding: 0 2vw;
-                p {
-                    margin: 0;
-                    padding: 1vh 0;
+    #right-container {
+        background: $theme-dark-grey;
+        color: $theme-white;
+        width: 20vw;
+        height: 86vh;
+        z-index: 2;
+        #right-container-content {
+            display: flex;
+            #right-container-stash {
+                border: 1px solid $theme-white;
+                border-bottom: none;
+                width: 17vw; // A list of sources and stashes
+                #right-container-stash-title {
+                    font-size: 14pt;
+                    height: 5vh;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    span {
+                        margin: 10px 20px;
+                        &:last-child {
+                            padding: 0 5px;
+                            margin: 0 20px 0 0;
+                            border: 1px solid rgba(0, 0, 0, 0);
+                            &:hover {
+                                border-color: rgba(255, 255, 255, 0.6);
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                #right-container-stash-subheader {
+                    font-size: 12pt;
+                    color: black;
+                    display: block;
+                    cursor: pointer;
+                    min-height: 1vh;
+                    line-height: 1vh;
+                    padding: 1vh 1vw;
+                    background-color: #fff;
+                    border-bottom: 1px solid #ddd;
+                }
+                #right-container-stash-content {
+                    font-size: 10pt;
+                    overflow: hidden;
+                    padding: 0 2vw;
+                    p {
+                        margin: 0;
+                        padding: 1vh 0;
+                    }
                 }
             }
-        }
-        #right-container-comment {
-            border: 1px solid $theme-white;
-            border-bottom: none;
-            width: 17vw;
-            #right-container-comment-title {
-                border-bottom: $theme-white solid 1px;
-                font-size: 14pt;
-                height: 5vh;
-                font-weight: bold;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-        #right-container-sidebar {
-            width: 3vw;
-            height: 86vh;
-            background: $theme-dark-grey;
-            color: $theme-white;
-            #right-container-sidebar-stashbtn {
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 6vh;
-                border-top: 1px solid $theme-white;
-                border-bottom: 1px solid $theme-white;
-                transition: 0.3s;
-                 :hover {
-                    background: white;
+            #right-container-comment {
+                border: 1px solid $theme-white;
+                border-bottom: none;
+                width: 17vw;
+                #right-container-comment-title {
+                    border-bottom: $theme-white solid 1px;
+                    font-size: 14pt;
+                    height: 5vh;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
-            #right-container-sidebar-commentbtn {
-                cursor: pointer;
-                transition: 0.3s;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 6vh;
-                border-bottom: 1px solid $theme-white;
+            #right-container-sidebar {
+                width: 3vw;
+                height: 86vh;
+                background: $theme-dark-grey;
+                color: $theme-white;
+                #right-container-sidebar-stashbtn {
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 6vh;
+                    border-top: 1px solid $theme-white;
+                    border-bottom: 1px solid $theme-white;
+                    transition: 0.3s;
+                     :hover {
+                        background: white;
+                    }
+                }
+                #right-container-sidebar-commentbtn {
+                    cursor: pointer;
+                    transition: 0.3s;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 6vh;
+                    border-bottom: 1px solid $theme-white;
+                }
             }
-        }
-    }
-    // A container containing buttons for creating sources and stashes
-    #bottom {
-        position: absolute;
-        bottom: 1vh;
-        #addSource {
-            background: black;
+        } // A container containing buttons for creating sources and stashes
+        #bottom {
+            position: absolute;
+            bottom: 1vh;
+            #addSource {
+                background: black;
+            }
         }
     }
 }

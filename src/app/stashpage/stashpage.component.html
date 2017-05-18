@@ -1,73 +1,76 @@
 <canvas #canvas id="canvas"></canvas>
-<app-header></app-header>
+<div class="wrapper">
 
-<section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
-    <section class="content" (click)="$event.stopPropagation()">
-        <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
-        </app-viewsource>
-        <app-addsource *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-addsource>
-        <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
-    </section>
-</section>
+    <app-header></app-header>
 
-<section id="main-container">
-    <section id="left-container">
-        <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
-            <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
-
-            <!--<app-popup [sourceID]=source.source_id [sourceTitle]=source.title [sourceDescription]=source.description></app-popup>-->
-            <!--{{source.source_id}}-->
-        </article>
+    <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
+        <section class="content" (click)="$event.stopPropagation()">
+            <!--For sources-->
+            <app-viewsource *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
+            </app-viewsource>
+            <app-addsource *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-addsource>
+            <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
+            <!--For stashes-->
+            <app-stash-edit *ngIf="isEditStashShown && stash" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
+        </section>
     </section>
 
-    <!--For the list containing the stashes and sources-->
-    <section id="right-container">
-        <section id="right-container-content">
-            <section id="right-container-stash" *ngIf="isStashtabClicked">
-                <article id="right-container-stash-title">
-                    Test Root Source
-                </article>
+    <section id="main-container">
+        <section id="left-container">
+            <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
+                <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
+            </article>
+        </section>
 
-                <section>
-                    <collapsible-list style="margin: 0" [type]="'expandable'">
+        <!--For the list containing the stashes and sources-->
+        <section id="right-container">
+            <section id="right-container-content">
+                <section id="right-container-stash" *ngIf="isStashtabClicked">
+                    <article id="right-container-stash-title" *ngIf="stash">
+                        <span>{{stash.title}}</span><span (click)="onEditStash()">&#9998;</span>
+                    </article>
 
-                        <collapsible-list-item>
-                            <collapsible-header id="right-container-stash-subheader">
-                                Item #1
-                            </collapsible-header>
-                            <!--collapsible-body can be multiple using ngFor-->
-                            <collapsible-body [expanded]="false" id="right-container-stash-content">
-                                <p>Item #1 Body</p>
-                            </collapsible-body>
-                        </collapsible-list-item>
-                        <collapsible-list-item>
-                            <collapsible-header id="right-container-stash-subheader">
-                                Item #2
-                            </collapsible-header>
-                            <collapsible-body [expanded]="false" id="right-container-stash-content">
-                                <p>Item #2 Body</p>
-                            </collapsible-body>
-                        </collapsible-list-item>
-                    </collapsible-list>
+                    <section>
+                        <collapsible-list style="margin: 0" [type]="'expandable'">
+
+                            <collapsible-list-item>
+                                <collapsible-header id="right-container-stash-subheader">
+                                    Item #1
+                                </collapsible-header>
+                                <!--collapsible-body can be multiple using ngFor-->
+                                <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                    <p>Item #1 Body</p>
+                                </collapsible-body>
+                            </collapsible-list-item>
+                            <collapsible-list-item>
+                                <collapsible-header id="right-container-stash-subheader">
+                                    Item #2
+                                </collapsible-header>
+                                <collapsible-body [expanded]="false" id="right-container-stash-content">
+                                    <p>Item #2 Body</p>
+                                </collapsible-body>
+                            </collapsible-list-item>
+                        </collapsible-list>
+                    </section>
+
+                </section>
+                <section id="right-container-comment" *ngIf="isCommenttabClicked">
+                    <article id="right-container-comment-title">
+                        Comment bar
+                    </article>
                 </section>
 
-            </section>
-            <section id="right-container-comment" *ngIf="isCommenttabClicked">
-                <article id="right-container-comment-title">
-                    Comment bar
-                </article>
-            </section>
-
-            <section id="right-container-sidebar">
-                <div id="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
-                    STH
-                </div>
-                <div id="right-container-sidebar-commentbtn" (click)="selectTab('commentTab')">
-                    CMT
-                </div>
+                <section id="right-container-sidebar">
+                    <div id="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
+                        STH
+                    </div>
+                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('commentTab')">
+                        CMT
+                    </div>
+                </section>
             </section>
         </section>
     </section>
-</section>
 
-<app-footer></app-footer>
+    <app-footer></app-footer>
+</div>

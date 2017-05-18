@@ -114,11 +114,12 @@ export class GoogleApiService {
           firstname: response.result.names[0].givenName,
           lastname: response.result.names[0].familyName
         }
+        console.log(response.result)
         // Store the account
         let storedAccount = new Account(account.email, account.social_id);
         storedAccount.firstName = account.firstname;
         storedAccount.lastName = account.lastname;
-        console.log(storedAccount);
+        console.log(account);
 
 
         // Send a request to the server to login
@@ -128,15 +129,15 @@ export class GoogleApiService {
             account: account
           },
           options
-        ).map(response => {
+        ).subscribe(response => {
           // TODO: The response should contain the full account of the user
           globalLoginPromise.resolve(storedAccount);
 
-        }).catch(error => {
+        }, error => {
           console.log('error received: \n' + error);
           globalLoginPromise.reject(error);
           return Observable.throw(error);
-        }).subscribe();
+        });
 
       }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
