@@ -6,14 +6,13 @@ import { TabComponent } from '../tab/tab.component';
 import { TabsComponent } from '../tabs/tabs.component';
 import { Stash } from '../classes/stash';
 
-
 @Component({
-  selector: 'app-profilepage',
-  templateUrl: './profilepage.component.html',
-  styleUrls: ['./profilepage.component.scss'],
+  selector: 'app-page-profile',
+  templateUrl: './page-profile.component.html',
+  styleUrls: ['./page-profile.component.scss']
 })
-export class ProfilepageComponent implements OnInit {
-  userAccount: Account;
+export class PageProfileComponent implements OnInit {
+userAccount: Account;
   tabs: TabComponent[] = [];
 
   stash: Stash;
