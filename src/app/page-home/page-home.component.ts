@@ -10,12 +10,12 @@ import { JOHN } from '../data/mockAccount';
 import { AppResponse } from '../classes/response';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  selector: 'app-page-home',
+  templateUrl: './page-home.component.html',
+  styleUrls: ['./page-home.component.scss']
 })
-export class HomepageComponent implements OnInit {
-  stashes: Stash[];
+export class PageHomeComponent implements OnInit {
+stashes: Stash[];
 
   // Variables to control modal items display
   isModalShown: boolean = false;

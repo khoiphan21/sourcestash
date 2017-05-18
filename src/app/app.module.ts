@@ -8,7 +8,6 @@ import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the modu
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { StashComponent } from './stash/stash.component';
 import { SourcesComponent } from './sources/sources.component';
@@ -31,11 +30,11 @@ import { StashEditComponent } from './stash-edit/stash-edit.component';
 import { StashCreateComponent } from './stash-create/stash-create.component';
 import { CollaboratorService } from './collaborator.service';
 import { SourceAddComponent } from './source-add/source-add.component';
+import { PageHomeComponent } from './page-home/page-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     HeaderComponent,
     StashComponent,
     SourcesComponent,
@@ -53,7 +52,8 @@ import { SourceAddComponent } from './source-add/source-add.component';
     SourceEditComponent,
     StashEditComponent,
     StashCreateComponent,
-    SourceAddComponent
+    SourceAddComponent,
+    PageHomeComponent
     ],
   imports: [
     BrowserModule,

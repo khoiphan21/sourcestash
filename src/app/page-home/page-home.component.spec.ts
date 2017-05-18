@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomepageComponent } from './homepage.component';
+import { PageHomeComponent } from './page-home.component';
 import { HeaderComponent } from '../header/header.component';
 import { StashComponent } from '../stash/stash.component';
 import { SourcesComponent } from '../sources/sources.component';
@@ -20,14 +20,14 @@ let mockRouter = {
   navigate: jasmine.createSpy('navigate')
 }
 
-describe('HomepageComponent', () => {
-  let component: HomepageComponent;
-  let fixture: ComponentFixture<HomepageComponent>;
+describe('PageHomeComponent', () => {
+  let component: PageHomeComponent;
+  let fixture: ComponentFixture<PageHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ 
-        HomepageComponent, 
+        PageHomeComponent, 
         HeaderComponent,
         StashComponent,
         SourcesComponent,
@@ -52,7 +52,7 @@ describe('HomepageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomepageComponent);
+    fixture = TestBed.createComponent(PageHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
