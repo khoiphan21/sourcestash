@@ -24,10 +24,6 @@ export class HeaderComponent implements OnInit {
   toggleDropdown(){
     console.log(this.isDropdown);
     // how to use the ? again 
-    if (this.isDropdown = false){
-      this.isDropdown = true;
-    } else if (this.isDropdown = true) {
-      this.isDropdown = false;
-    }
+    this.isDropdown = this.isDropdown ? false : true;
   }
 }
