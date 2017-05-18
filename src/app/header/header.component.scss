@@ -1,6 +1,8 @@
 @import '../sass/variables';
+@import '../sass/mixins';
 
 #header{
+    z-index: 100;
     background: $header-bg;
     height: $header-height;
     display: flex;
@@ -29,12 +31,87 @@
                 text-align: right;
             }   
         }
-       
+       #header-mobile-right{
+            display: none;
+       }
     }
     a{
         text-decoration: none;
         color: $header-font;
         text-align: center;
     } 
-    
 }
+
+@include media(mobile-screen) {
+    #header{
+        z-index: 100;
+        background: $header-bg;
+        height: $header-height;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $header-font;
+        text-shadow: 3px 5px 10px $theme-light-blue; 
+        #header-content{
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #header-left{
+                padding: 0 10vw;
+                font-size: 16pt;
+            }
+            #header-right{
+                font-size: $mobile-font-heading;
+                display: none;
+                padding: 0 10vw;
+                ul{
+                    margin: 0px;
+                    list-style-type: none;
+                    display: flex;
+                }
+                li {
+                    cursor: pointer;
+                    width: 7vw;
+                    text-align: right;
+                }   
+            }
+            #header-mobile-right{
+                display: block;
+                #header-mobile-right-btn{
+                    height: 7vh;
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 0 2vw;
+                    &:hover{
+                        background: darken($theme-blueberry, 5);
+                        color: $theme-orange;
+                    }
+                }
+                #header-mobile-right-content{
+                    text-align: right;
+                    position: absolute;
+                    background: $theme-dark-grey;
+                    color: $theme-white;
+                    z-index: 101;
+                    ul{
+                        padding: 0;
+                        margin: 0;
+                        width: 100vw;
+                    }
+                    li{
+                        border: $theme-white solid 1px;
+                        padding: 2vh 0 ;
+                    }
+                }
+            }
+        }
+        a{
+            text-decoration: none;
+            color: $header-font;
+            text-align: center;
+        } 
+    } 
+}
+

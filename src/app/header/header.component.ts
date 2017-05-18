@@ -8,6 +8,8 @@ import { AccountService } from '../account.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isDropdown: boolean = false;
+
   constructor(
     private accountService: AccountService
   ) { }
@@ -19,4 +21,13 @@ export class HeaderComponent implements OnInit {
     this.accountService.logout();
   }
 
+  toggleDropdown(){
+    console.log(this.isDropdown);
+    // how to use the ? again 
+    if (this.isDropdown = false){
+      this.isDropdown = true;
+    } else if (this.isDropdown = true) {
+      this.isDropdown = false;
+    }
+  }
 }
