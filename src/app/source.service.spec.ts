@@ -31,7 +31,7 @@ describe('SourceService', () => {
 
   it('should successfully retrieve all sources for the test stash', done => {
     inject([SourceService], (service: SourceService) => {
-      service.getSourcesForStash('2671055').then(sources => {
+      service.getSourcesForStash('2671055').then((sources: Source[]) => {
         expect(sources.length).toBeTruthy();
         done();
       }).catch(error => {

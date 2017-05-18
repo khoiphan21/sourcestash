@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from '../login/login.component';
+
 import { PageHomeComponent } from '../page-home/page-home.component';
 import { PageProfileComponent } from '../page-profile/page-profile.component';
 import { PageWelcomeComponent } from '../page-welcome/page-welcome.component';
+import { PageLoginComponent } from '../page-login/page-login.component';
+import { PageStashComponent } from '../page-stash/page-stash.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: PageWelcomeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: PageLoginComponent},
   { path: 'home', component: PageHomeComponent },
+  { path: 'stashpage/:stashid', component: PageStashComponent},
   { path: 'profilepage', component: PageProfileComponent},
 ]
 
