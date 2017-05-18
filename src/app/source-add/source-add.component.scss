@@ -1,6 +1,5 @@
 @import '../sass/variables';
 @import '../sass/mixins';
-
 // For the popup form
 #main-container {
     /* Modal Content */
@@ -28,7 +27,7 @@
             background: $theme-dark-grey;
             color: $theme-white;
             padding: 1vh 2vw;
-            .heading{
+            .heading {
                 font-size: 12pt;
             }
             .cross {
@@ -40,14 +39,14 @@
                 }
             }
         }
-        #main-container-content-detail{
+        #main-container-content-detail {
             padding: 1vh 2vw;
-                .form-title-bold {
+            .form-title-bold {
                 font-weight: bold;
                 font-size: 10pt;
                 color: black;
             }
-            select{
+            select {
                 display: block;
             }
             .title {
@@ -57,14 +56,14 @@
                 height: 2vh;
                 margin-bottom: 10px;
             }
-            .difficulty{
+            .difficulty {
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
                 height: 4vh;
                 border-radius: 0px;
                 margin-bottom: 10px;
             }
-            .tags{
+            .tags {
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
                 height: 4vh;
@@ -90,7 +89,7 @@
             text-align: center;
             padding: 2vh 0;
             @include transition-basic();
-            &:hover{
+            &:hover {
                 background: darken($theme-grey, 10);
                 border: $theme-grey solid 2px;
             }

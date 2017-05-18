@@ -5,12 +5,12 @@ import { Source } from '../classes/source';
 import { SourceService } from '../source.service';
 
 @Component({
-  selector: 'app-addsource',
-  templateUrl: './addsource.component.html',
-  styleUrls: ['./addsource.component.scss']
+  selector: 'app-source-add',
+  templateUrl: './source-add.component.html',
+  styleUrls: ['./source-add.component.scss']
 })
-export class AddsourceComponent implements OnInit {
-  // Properties of the new source
+export class SourceAddComponent implements OnInit {
+// Properties of the new source
   private source = {
     parent_id: '',
     stash_id: '',
@@ -90,4 +90,5 @@ export class AddsourceComponent implements OnInit {
 
     return tags;
   }
+
 }

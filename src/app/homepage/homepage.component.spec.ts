@@ -10,11 +10,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AccountService } from '../account.service';
 import { GoogleApiService } from '../google-api.service';
 import { AddstashComponent } from '../addstash/addstash.component';
-import { AddsourceComponent } from '../addsource/addsource.component';
 import { ViewsourceComponent } from '../viewsource/viewsource.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SourceAddComponent } from '../source-add/source-add.component';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
@@ -32,7 +32,7 @@ describe('HomepageComponent', () => {
         StashComponent,
         SourcesComponent,
         AddstashComponent,
-        AddsourceComponent,
+        SourceAddComponent,
         ViewsourceComponent,
         FooterComponent
       ],

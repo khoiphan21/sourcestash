@@ -8,7 +8,6 @@ import { HttpModule } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
 import { ViewsourceComponent } from '../viewsource/viewsource.component';
 import { AddstashComponent } from '../addstash/addstash.component';
-import { AddsourceComponent } from '../addsource/addsource.component';
 import { CollapsibleModule } from 'angular2-collapsible';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SourceEditComponent } from '../source-edit/source-edit.component';
 import { StashService } from '../stash.service';
 import { StashEditComponent } from '../stash-edit/stash-edit.component';
+import { SourceAddComponent } from '../source-add/source-add.component';
 
 let mockRoute = {
   params: {
@@ -35,7 +35,7 @@ describe('StashpageComponent', () => {
         HeaderComponent,
         ViewsourceComponent,
         AddstashComponent,
-        AddsourceComponent,
+        SourceAddComponent,
         FooterComponent,
         SourceEditComponent,
         StashEditComponent

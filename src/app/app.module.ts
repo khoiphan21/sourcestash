@@ -26,11 +26,11 @@ import { PopupComponent } from './popup/popup.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddstashComponent } from './addstash/addstash.component';
 import { ViewsourceComponent } from './viewsource/viewsource.component';
-import { AddsourceComponent } from './addsource/addsource.component';
 import { SourceEditComponent } from './source-edit/source-edit.component';
 import { StashEditComponent } from './stash-edit/stash-edit.component';
 import { StashCreateComponent } from './stash-create/stash-create.component';
 import { CollaboratorService } from './collaborator.service';
+import { SourceAddComponent } from './source-add/source-add.component';
 
 @NgModule({
   declarations: [
@@ -49,10 +49,11 @@ import { CollaboratorService } from './collaborator.service';
     FooterComponent,
     AddstashComponent,
     ViewsourceComponent,
-    AddsourceComponent,
+    SourceAddComponent,
     SourceEditComponent,
     StashEditComponent,
-    StashCreateComponent
+    StashCreateComponent,
+    SourceAddComponent
     ],
   imports: [
     BrowserModule,
