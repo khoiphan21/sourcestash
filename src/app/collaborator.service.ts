@@ -16,7 +16,9 @@ export class CollaboratorService {
 
   constructor(
     private http: Http
-  ) { }
+  ) {
+    this.getAllCollaborators('24039641').then(accounts => console.log(accounts));
+  }
 
   /**
    * Update the list of collaborators for a certain stash
@@ -65,8 +67,26 @@ export class CollaboratorService {
         deferred.resolve([]);
       } else {
         // now need to retrieve all user info for each of the collab
+        // map is convenient to return array of promises to use with Promise.all()
+        Promise.all(user_ids.map(user_id => { 
+          // Deferred is needed cuz of stupid Observables
+          let miniDeferred = new Deferred<Account>();
+          // Make the call to the API
+          this.http.post( 
+            SERVER + '/user/info', { user_id: user_id }, options
+          ).subscribe(userInfo => {
+            miniDeferred.resolve(userInfo.json());
+          }, error => {
+            miniDeferred.reject(error);
+          });
+          // Return the promise object
+          return miniDeferred.promise;
+        })).then(accounts => {
+          deferred.resolve(accounts)
+        }).catch(error => {
+          deferred.reject(error);
+        })
       }
-
     }, error => {
       deferred.reject(error);
     });

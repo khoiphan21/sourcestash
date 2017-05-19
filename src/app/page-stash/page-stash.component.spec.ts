@@ -17,6 +17,7 @@ import { StashEditComponent } from '../stash-edit/stash-edit.component';
 import { SourceAddComponent } from '../source-add/source-add.component';
 import { StashAddComponent } from '../stash-add/stash-add.component';
 import { SourceViewComponent } from '../source-view/source-view.component';
+import { CollaboratorService } from '../collaborator.service';
 
 let mockRoute = {
   params: {
@@ -45,6 +46,7 @@ describe('PageStashComponent', () => {
         StashService,
         AccountService,
         GoogleApiService,
+        CollaboratorService
         {provide: ActivatedRoute, useValue: mockRoute},
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],

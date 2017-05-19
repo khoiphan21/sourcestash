@@ -36,7 +36,8 @@
             padding: 2vh 2vw;
             font-weight: bold;
             font-size: 10pt;
-            .title {
+            .title,
+            .description {
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
                 padding: 1vh 0;
@@ -44,12 +45,8 @@
                 margin-bottom: 10px;
             }
             .description {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
                 font-weight: normal;
-                padding: 1vh 0;
                 height: 20vh;
-                margin-bottom: 10px;
             }
             #create-source-button {
                 margin: auto;

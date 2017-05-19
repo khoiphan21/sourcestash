@@ -273,18 +273,29 @@ export class AccountService {
   }
 
   /**
+   * Retrieve the basic information of a user
    * 
-   * @param email - the email of the user
-   * @return a promise of the acocunt. The promise is rejected if the id doesn
+   * @param user_id - the id of the user
+   * @return a promise of the account. The promise is rejected if the id doesn
    *         not exist
    */
-  getUserInformation(email: string): Promise<Account> {
-    /*
-     * If id doesn't exist, will call Promise.reject('message')
-     */
+  getUserInformation(user_id: string): Promise<Account> {
+    let deferred = new Deferred<Account>();
 
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
 
-    return Promise.resolve(JOHN);
+    this.http.post(
+      SERVER + '/user/info', { user_id: user_id }, options
+    ).subscribe(userInfo => {
+      deferred.resolve(userInfo.json());
+    }, error => {
+      deferred.reject(error);
+    });
+
+    return deferred.promise;
   }
 
 

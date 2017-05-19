@@ -9,6 +9,8 @@ import * as _ from 'underscore';
 import { element } from 'protractor';
 import { Stash } from '../classes/stash';
 import { StashService } from '../stash.service';
+import { CollaboratorService } from '../collaborator.service';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-page-stash',
@@ -21,9 +23,13 @@ export class PageStashComponent implements OnInit {
   sources: Source[];
   stash_id: string;
 
+  // Details of the stash
   stash: Stash;
+  collaborators: Account[];
+  owner: Account;
 
   currentSource: Source;
+
 
   renderedElements: any;
 
@@ -43,6 +49,8 @@ export class PageStashComponent implements OnInit {
   constructor(
     private sourceService: SourceService,
     private stashService: StashService,
+    private collaboratorService: CollaboratorService,
+    private accountService: AccountService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -51,6 +59,7 @@ export class PageStashComponent implements OnInit {
     // FOR TESTING PURPOSES
     this.route.params.subscribe(params => {
       this.stash_id = params['stashid'];
+      // Retrieve the sources for the stash
       this.sourceService.getSourcesForStash(this.stash_id).then(
         (sources: Source[]) => {
           this.sources = sources;
@@ -58,7 +67,18 @@ export class PageStashComponent implements OnInit {
       // Retrieve the information of the stash from the server
       this.stashService.getStash(this.stash_id).then((stash: Stash) => {
         this.stash = stash;
-      })
+        // Retrieve the details of the owner of the stash
+        return this.accountService.getUserInformation(stash.author_id);
+      }).then(owner => {
+        this.owner = owner;
+      }).catch(error => {
+        console.log(error);
+      });
+      // Retrieve the list of collaborators for the stash
+      this.collaboratorService.getAllCollaborators(this.stash_id).then(accounts => {
+        this.collaborators = accounts;
+      });
+      
     })
   }
 

@@ -29,6 +29,18 @@
                     <article id="right-container-stash-title" *ngIf="stash">
                         <span>{{stash.title}}</span><span (click)="onEditStash()">&#9998;</span>
                     </article>
+                    <section id="right-container-stash-details">
+                        <article id="stash-details-owner" *ngIf="owner">
+                            <h2>Owner: {{owner.firstname}} {{owner.lastname}}</h2>
+                        </article>
+                        <article id="stash-details-collaborators" *ngIf="collaborators">
+                            <h2>Collaborators: {{collaborators.length}}</h2>
+                            <p *ngFor="let collaborator of collaborators">
+                                <span class="firstname">{{collaborator.firstname}}</span>
+                                <span class="lastname">{{collaborator.lastname}}</span>
+                            </p>
+                        </article>
+                    </section>
 
                     <section>
                         <collapsible-list style="margin: 0" [type]="'expandable'">
