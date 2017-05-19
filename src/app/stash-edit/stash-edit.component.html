@@ -14,10 +14,10 @@
                 <section id="collaborators" *ngIf="collaborators">
                     <label for="collaborators">Collaborators ({{collaborators.length}})</label>
                     <article class="collaborator-list">
-                        <p>
-                            <span class="collaborator" *ngFor="let user of collaborators; let i = index;">
-                            {{user.firstname}} {{user.lastname}}{{i != (collaborators.length - 1) ? ', ' : ''}}
-                        </span>
+                        <p class="collaborator" *ngFor="let user of collaborators; let i = index;">
+                            {{user.firstname}} {{user.lastname}}
+                            <span class="delete" (click)="removeCollaborator(user)">&times;</span>
+                            <span class="comma">{{i != (collaborators.length - 1) ? ', ' : ''}} </span>
                         </p>
                     </article>
                     <article class="input">

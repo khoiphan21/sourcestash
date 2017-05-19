@@ -100,4 +100,14 @@ export class StashEditComponent implements OnInit {
       alert('This user is not yet registered.');
     })
   }
+
+  removeCollaborator(collaborator: Account) {
+    this.collaboratorService.removeCollaborator(
+      this.stash.stash_id, collaborator.user_id
+    ).then(response => {
+      this.closePopup();
+      this.announceUpdate();
+      console.log(response);
+    })
+  }
 }

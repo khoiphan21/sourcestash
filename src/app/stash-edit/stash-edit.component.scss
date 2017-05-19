@@ -48,10 +48,39 @@
             section#collaborators {
                 padding-bottom: 20px;
                 article.collaborator-list {
-                    p {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    p.collaborator {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        color: $theme-blueberry;
+                        height: 30px;
                         margin: 0;
-                        span {
-                            color: $theme-blueberry;
+                        span.delete {
+                            @include transition-basic();
+                            display: none;
+                            margin: 0;
+                            padding: 0 8px;
+                            font-size: 17px;
+                            border-radius: 3px;
+                            text-transform: uppercase;
+                            &:hover {
+                                cursor: pointer;
+                                background-color: gainsboro;
+                                border: $dark-background;
+                            }
+                        }
+                        span.comma {
+                            margin-right: 10px;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                            span.delete {
+                                display: inline;
+                            }
                         }
                     }
                 }

@@ -53,6 +53,32 @@ export class CollaboratorService {
     return deferred.promise;
   }
 
+  removeCollaborator(stash_id: string, collaborator_id: string) {
+    let deferred = new Deferred<AppResponse>();
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    // Make API call
+    this.http.post(
+      SERVER + '/collaborator/remove',
+      { stash_id: stash_id, collaborator_id: collaborator_id },
+      options
+    ).subscribe(response => {
+      if (response.status == 200) {
+        deferred.resolve(new AppResponse(true, 'Successfully removed collaborator'));
+      } else {
+        deferred.resolve(new AppResponse(false, 'Failed to remove collaborator', response));
+      }
+    }, error => {
+        deferred.reject(error);
+    })
+
+    return deferred.promise;
+  }
+
   /**
    * Get all the collaborators for a certain stash
    * 
