@@ -1,8 +1,7 @@
 @import '../sass/variables';
 @import '../sass/mixins';
 #main-container {
-    color: black;
-    // width: 100vw;
+    color: black; // width: 100vw;
     // height: 100vh;
     display: flex;
     justify-content: center;
@@ -36,34 +35,52 @@
             padding: 2vh 2vw;
             font-weight: bold;
             font-size: 10pt;
-            .title,
-            .description {
+            input {
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
-                padding: 1vh 0;
-                height: 2vh;
+                padding: 5px 0;
+                height: 40px;
                 margin-bottom: 10px;
             }
-            .description {
+            textarea.description {
                 font-weight: normal;
                 height: 20vh;
             }
-            #create-source-button {
-                margin: auto;
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
-                margin-bottom: 1vh;
-                font-weight: bold;
-                font-size: 10pt;
-                width: 9vw;
-                text-align: center;
-                padding: 2vh 0;
-                @include transition-basic();
-                &:hover {
-                    background: darken($theme-grey, 10);
-                    border: $theme-grey solid 2px;
+            section#collaborators {
+                article {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    input {
+                        width: 60%;
+                    }
+                    button {
+                        width: 25%;
+                        height: 40px;
+                        background-color: none;
+                    }
                 }
             }
         }
+    }
+}
+
+button {
+    margin: auto;
+    // border: darken($dark-background, 10) solid 2px;
+    background: $dark-background;
+    color: $theme-grey;
+    margin-bottom: 1vh;
+    font-weight: bold;
+    font-size: 10pt;
+    width: 100px;
+    text-align: center;
+    padding: 10px 10px;
+    border-radius: 5px;
+    @include transition-basic();
+    &:hover {
+        background-color: white;
+        border: $dark-background solid 2px;
+        color: $dark-background;
     }
 }

@@ -7,8 +7,17 @@
             <form>
                 <label for="title">Title</label>
                 <input class="title" [(ngModel)]="stash.title" type="text" name="title">
+
                 <label for="description">Description</label>
                 <textarea class="description" [(ngModel)]="stash.description" name="description"></textarea>
+
+                <section id="collaborators" *ngIf="collaborators">
+                    <label for="collaborators">Collaborators: {{collaborators.length}}</label>
+                    <article class="input">
+                        <input type="text" class="add-collaborator" [(ngModel)]="collaboratorEmail" name="collaboratorEmail" placeholder="email@example.com">
+                        <button class="add-collaborator-action" (click)="addCollaborator()">Add Collaborator</button>
+                    </article>
+                </section>
 
                 <button id="create-source-button" (click)="editStash()">Save</button>
             </form>

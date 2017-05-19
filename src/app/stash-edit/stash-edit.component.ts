@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { StashService } from '../stash.service';
 import { Stash } from '../classes/stash';
+import { Account } from '../classes/account';
 
 @Component({
   selector: 'app-stash-edit',
@@ -8,13 +9,15 @@ import { Stash } from '../classes/stash';
   styleUrls: ['./stash-edit.component.scss']
 })
 export class StashEditComponent implements OnInit {
-  stashTitle: string;
-  stashDescription: string;
-
   // The model for this stash
   @Input()
   stash: Stash;
+  // The list of collaborators
+  @Input()
+  collaborators: Account[];
 
+  // Model for the collaborator string
+  collaboratorEmail: string;
 
   @Output() onClose = new EventEmitter<boolean>();
   @Output() onUpdated = new EventEmitter<boolean>(); // When a stash is created
@@ -38,5 +41,9 @@ export class StashEditComponent implements OnInit {
 
     // Close the popup
     this.closePopup();
+  }
+
+  addCollaborator() {
+    console.log(this.collaboratorEmail)
   }
 }

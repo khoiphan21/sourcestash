@@ -11,7 +11,7 @@
             <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-source-add>
             <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
             <!--For stashes-->
-            <app-stash-edit *ngIf="isEditStashShown && stash" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
+            <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
         </section>
     </section>
 
