@@ -66,7 +66,7 @@ describe('SourceService', () => {
         done();
       }).catch((error: AppResponse) => {
         console.log(error);
-        expect(error.error.status).toBe(404);
+        expect(error.error.status).toBe(400);
         done();
       })
 
@@ -108,15 +108,6 @@ describe('SourceService', () => {
         // Try to update the source
         console.log('before updating source');
         return service.updateSource(sourceCopy);
-
-        // Eventually delete that test source 
-        // service.deleteSource(source_id).then(response => {
-        //   expect(response.success).toBeTruthy();
-        //   done();
-        // }).catch(error => {
-        //   fail('Error should not occur when deleting a source');
-        //   done();
-        // });
       }).then((response: AppResponse) => {
         expect(response.success).toBeTruthy();
 
@@ -177,6 +168,7 @@ describe('SourceService', () => {
       ).then(source => {
         console.log(source);
         expect(source).toBeTruthy();
+        expect(source.source_id).toBeTruthy();
 
         // Now attempt to delete the source
         service.deleteSource(source.source_id).then(response => {
