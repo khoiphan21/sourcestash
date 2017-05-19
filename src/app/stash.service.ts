@@ -147,6 +147,32 @@ export class StashService {
       return Observable.throw(error);
     });
   }
+  
+  /**
+   * Get all stashes that this user is a collaborator of
+   */
+  getAllSharedStashes(): Promise<Stash[]> {
+    let deferred = new Deferred<Stash[]>();
+    
+    let options: RequestOptions;
+    this.setupHeaderOptions(options);
+
+    this.http.post(
+      SERVER + '/stash/all/shared',
+      {
+        user_id: this.accountService.getCurrentUser().user_id
+      },
+      options
+    ).subscribe(response => {
+      // Cast the response to a stash
+      let stashes = response.json();
+      deferred.resolve(stashes);
+    }, error => {
+      deferred.reject(error);
+    })
+
+    return deferred.promise;
+  }
 
   /**
    * Get the information of a specific stash.
