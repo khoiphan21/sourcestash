@@ -10,7 +10,7 @@ import { SourceService } from '../source.service';
   styleUrls: ['./source-add.component.scss']
 })
 export class SourceAddComponent implements OnInit {
-// Properties of the new source
+  // Properties of the new source
   private source = {
     parent_id: '',
     stash_id: '',
@@ -83,10 +83,12 @@ export class SourceAddComponent implements OnInit {
   processTagString(tagString: string): string[] {
     let tags: string[] = [];
 
-    let rawTags: string[] = tagString.split(',');
-    _.each(rawTags, (tag: string) => {
-      tags.push(tag.trim());
-    })
+    if (tagString != null) {
+      let rawTags: string[] = tagString.split(',');
+      _.each(rawTags, (tag: string) => {
+        tags.push(tag.trim());
+      })
+    }
 
     return tags;
   }

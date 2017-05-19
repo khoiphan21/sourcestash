@@ -9,7 +9,7 @@
         box-shadow: 1px 7px 30px $theme-dark-grey;
         background: white;
         border-radius: 10px;
-        width: 50vw;
+        width: 500px;
         #main-container-content-heading {
             @include row-center();
             justify-content: space-between;
@@ -38,7 +38,6 @@
             input {
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
-                padding: 5px 0;
                 height: 40px;
                 margin-bottom: 10px;
             }
@@ -47,16 +46,28 @@
                 height: 20vh;
             }
             section#collaborators {
+                padding-bottom: 20px;
+                article.collaborator-list {
+                    p {
+                        margin: 0;
+                        span {
+                            color: $theme-blueberry;
+                        }
+                    }
+                }
                 article {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    width: 100%;
                     input {
-                        width: 60%;
+                        width: 65%;
+                        margin: 0;
                     }
                     button {
                         width: 25%;
-                        height: 40px;
+                        height: 42px;
+                        margin: 0;
                         background-color: none;
                     }
                 }
@@ -65,9 +76,13 @@
     }
 }
 
+label {
+    font-size: 17px;
+    color: $theme-dark-grey;
+}
+
 button {
-    margin: auto;
-    // border: darken($dark-background, 10) solid 2px;
+    margin: auto; // border: darken($dark-background, 10) solid 2px;
     background: $dark-background;
     color: $theme-grey;
     margin-bottom: 1vh;

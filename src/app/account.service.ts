@@ -134,7 +134,7 @@ export class AccountService {
   }
 
   getCurrentUserID(): string {
-    return this.currentUser.id;
+    return this.currentUser.user_id;
   }
 
   /**
@@ -162,7 +162,7 @@ export class AccountService {
         options
       ).subscribe(response => {
         let data = response.json();
-        let id = '' + data.userID;
+        let id = '' + data.user_id;
 
         promise.resolve(id);
       }, error => {
@@ -205,7 +205,7 @@ export class AccountService {
 
       // Update current user details
       this.currentUser = new Account(email, password);
-      this.getUserID(email).then(id => this.currentUser.id = id);
+      this.getUserID(email).then(id => this.currentUser.user_id = id);
 
       return new AppResponse(true, 'Login successful');
     }).catch(error => {
@@ -222,7 +222,7 @@ export class AccountService {
     return this.googleApi.login().then(account => {
       this.updateCurrentUser(account);
       this.getUserID(this.currentUser.email).then(id => {
-        this.currentUser.id = id;
+        this.currentUser.user_id = id;
         this.updateCurrentUser(this.currentUser);
       });
       return new AppResponse(true, 'Logged in successfully');
@@ -298,8 +298,6 @@ export class AccountService {
     return deferred.promise;
   }
 
-
-
   /**
    * Send request to server to edit the user's information, 
    * based on the given account details, and return server's response
@@ -310,22 +308,6 @@ export class AccountService {
   editUserInformation(id: string, account: Account): Promise<AppResponse> {
 
     return Promise.resolve(new AppResponse(true, 'All good'));
-  }
-
-  /**
-   * METHODS FOR TESTING
-   */
-  test() {
-    console.log('testing server');
-    let options: RequestOptions;
-    this.setupHeaderOptions(options);
-
-    this.http.get(
-      SERVER + '/source/abc',
-      options
-    ).subscribe(response => {
-      console.log(response);
-    });
   }
 
   /**

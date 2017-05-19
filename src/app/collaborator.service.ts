@@ -24,10 +24,10 @@ export class CollaboratorService {
    * Update the list of collaborators for a certain stash
    * 
    * @param stash_id - the id of the stash to be updated
-   * @param collaboratorEmails - the email of the collaborators
+   * @param collaboratorIds - the ids of the collaborators
    */
   updateCollaboratorList(stash_id: string,
-    collaboratorEmails: string[]): Promise<AppResponse> {
+    collaboratorIds: string[]): Promise<AppResponse> {
     let deferred = new Deferred<AppResponse>();
 
     let headers = new Headers({
@@ -35,7 +35,20 @@ export class CollaboratorService {
     });
     let options = new RequestOptions({ headers: headers });
 
-    // Get the actual ids of the collaborators from their emails
+    // Make API call
+    this.http.post(
+      SERVER + '/collaborator/update',
+      { stash_id: stash_id, collaborators: collaboratorIds },
+      options
+    ).subscribe(response => {
+      if (response.status == 200) {
+        deferred.resolve(new AppResponse(true, 'Successfully updated collaborator list'));
+      } else {
+        deferred.resolve(new AppResponse(false, 'Failed to update collaborator list', response));
+      }
+    }, error => {
+        deferred.reject(error);
+    })
 
     return deferred.promise;
   }
@@ -68,11 +81,11 @@ export class CollaboratorService {
       } else {
         // now need to retrieve all user info for each of the collab
         // map is convenient to return array of promises to use with Promise.all()
-        Promise.all(user_ids.map(user_id => { 
+        Promise.all(user_ids.map(user_id => {
           // Deferred is needed cuz of stupid Observables
           let miniDeferred = new Deferred<Account>();
           // Make the call to the API
-          this.http.post( 
+          this.http.post(
             SERVER + '/user/info', { user_id: user_id }, options
           ).subscribe(userInfo => {
             miniDeferred.resolve(userInfo.json());

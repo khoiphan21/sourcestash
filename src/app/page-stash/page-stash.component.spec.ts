@@ -46,7 +46,7 @@ describe('PageStashComponent', () => {
         StashService,
         AccountService,
         GoogleApiService,
-        CollaboratorService
+        CollaboratorService,
         {provide: ActivatedRoute, useValue: mockRoute},
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],

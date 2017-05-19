@@ -9,6 +9,7 @@ import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Stash } from '../classes/stash';
+import { CollaboratorService } from '../collaborator.service';
 
 describe('StashEditComponent', () => {
   let component: TestComponentWrapper;
@@ -23,6 +24,7 @@ describe('StashEditComponent', () => {
         StashService,
         AccountService,
         GoogleApiService,
+        CollaboratorService,
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [

@@ -12,10 +12,17 @@
                 <textarea class="description" [(ngModel)]="stash.description" name="description"></textarea>
 
                 <section id="collaborators" *ngIf="collaborators">
-                    <label for="collaborators">Collaborators: {{collaborators.length}}</label>
+                    <label for="collaborators">Collaborators ({{collaborators.length}})</label>
+                    <article class="collaborator-list">
+                        <p>
+                            <span class="collaborator" *ngFor="let user of collaborators; let i = index;">
+                            {{user.firstname}} {{user.lastname}}{{i != (collaborators.length - 1) ? ', ' : ''}}
+                        </span>
+                        </p>
+                    </article>
                     <article class="input">
                         <input type="text" class="add-collaborator" [(ngModel)]="collaboratorEmail" name="collaboratorEmail" placeholder="email@example.com">
-                        <button class="add-collaborator-action" (click)="addCollaborator()">Add Collaborator</button>
+                        <button class="add-collaborator-action" (click)="addCollaborator()">Add</button>
                     </article>
                 </section>
 
