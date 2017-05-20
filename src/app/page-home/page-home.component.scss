@@ -53,6 +53,10 @@ section.all-modals {
                 $width: 12vw,
                 $horizontalPadding: 0
             );
+            border: white solid 2px;
+            color: white;
+            background: $theme-light-blue;
+            transition: 0.3s;
         }
         #createstash-btn-mobile{
             display: none;

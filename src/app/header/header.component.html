@@ -9,9 +9,6 @@
                     <a routerLink="/home">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/welcome">About</a>
-                </li>
-                <li>
                     <a routerLink="/profilepage">Profile</a>
                 </li>
                 <li>
@@ -20,7 +17,7 @@
             </ul>
         </section>
         <section id="header-mobile-right">
-            <button id="header-mobile-right-btn" (click)="toggleDropdown()">Drop</button>
+            <button id="header-mobile-right-btn" (click)="toggleDropdown()">&#9776;</button>
             <section id="header-mobile-right-content" *ngIf="isDropdown">
                 <ul>
                     <li><a routerLink="/home">Home</a></li>

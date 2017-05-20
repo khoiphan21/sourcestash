@@ -129,10 +129,12 @@
             #header-mobile-right{
                 display: block;
                 #header-mobile-right-btn{
+                    background: $theme-dark-grey;
                     height: 7vh;
+                    width: 7vh;
                     cursor: pointer;
                     text-align: center;
-                    padding: 0 2vw;
+                    font-size: 16pt;
                     &:hover{
                         background: darken($theme-blueberry, 5);
                         color: $theme-orange;
