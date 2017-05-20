@@ -103,35 +103,71 @@
         padding: $verticalPadding $horizontalPadding;
     }
 }
+
+/*
+/ button for sourceStash
+*/
+
+
+
+
+// dark grey bg 
+// white font 
+@mixin button-ss-white-small{
+    width: 100px;
+    cursor: pointer;
+    padding: 1.5vh 2vw;
+    background: $theme-dark-grey;
+    color: $theme-white;
+    box-shadow: 1px 7px 30px $theme-blueberry;
+    &:hover{
+        background: lighten($theme-dark-grey, 5);
+    }
+}
+// button from other page
 @mixin button(
-    $width: 13vw,
+    $cursor: pointer,
+    $width: 10vw,
     $height: auto,
-    $horizontalPadding: 1vw,
+    $horizontalPadding: 2vw,
     $text-align: center,
-    $verticalPadding: 1vw,
+    $display: flex,
+    $align-items: center,
+    $justify-content: center,
+    $verticalPadding: 1.5vh,
     $padding: none,
-    $background-color: rgb(200, 200, 200),
-    $box-shadow: 0px 2px 0px rgb(62, 62, 62),
+    $background: #fff,
+    $box-shadow: 1px 7px 30px $theme-blueberry,
+    $color: $theme-white,
     $border-radius: 5px,
+    $transition: 0.3s,
     $font-size: 1vw,
-    $border: 0px solid black
+    $border: 0px solid black,
+    $transition: 0.3s,
+    $hover-background: lighten($theme-dark-grey, 5)
 ) {
+    cursor: $cursor;
     width: $width;
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
     height: $height;
-    background-color: $background-color;
+    background: $background;
+    color: $color;
     box-shadow: $box-shadow;
     border-radius: $border-radius;
     text-align: $text-align;
     font-size: $font-size;
     border: $border;
+    &:hover{
+        background: $hover-background;
+    }
 
     @if $padding != none {
         padding: $padding;
     } @else {
         padding: $verticalPadding $horizontalPadding;
     }
-    
-
 }
 
 /*
@@ -139,10 +175,10 @@
  * Arguments: large-screen, medium-screen, small-screen, mobile-screen
  */
 @mixin media($type) {
-    $large-screen-size: "(min-width: 1500px) and (max-width: 2000px)";
-    $medium-screen-size: "(min-width: 1023px) and (max-width: 1500px)";
-    $small-screen-size: "(min-width: 600px) and (max-width: 1023px)";
-    $mobile-screen-size: "(max-width: 600px)";
+    $large-screen-size: "(min-width: 1100px) and (max-width: 1500px)";
+    $medium-screen-size: "(min-width: 800px) and (max-width: 1100px)";
+    $small-screen-size: "(min-width: 500px) and (max-width: 800px)";
+    $mobile-screen-size: "(max-width: 500px)";
 
     @if $type == large-screen {
         @media #{$large-screen-size} { @content; }

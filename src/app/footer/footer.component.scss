@@ -2,11 +2,13 @@
 
 footer{
     background: $theme-dark-grey;
+    position: fixed;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     height: $footer-height;
+    width: 100vw;
     font-size: 7pt;
 }
