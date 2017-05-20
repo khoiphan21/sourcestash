@@ -62,10 +62,10 @@ describe('CollaboratorService', () => {
         done();
       })
     })();
-  });
+  }, 10000);
   it('should not be able to add an ownwer as a collaborator', done => {
     inject([CollaboratorService], (service: CollaboratorService) => {
-      let testStashID: string = '2671055';
+      let testStashID: string = '24039641';
       let stashOwnerID: string = '3656220637652272'
       service.addCollaborator(testStashID, stashOwnerID).then(response => {
         fail('Expected error to occur');
@@ -82,7 +82,7 @@ describe('CollaboratorService', () => {
    */
   it('should update a list of collaborators', done => {
     inject([CollaboratorService], (service: CollaboratorService) => {
-      let testStashID: string = '2671055';
+      let testStashID: string = '24039641';
       let testUserID: string = '6876777106';
       let originalLength: number;
       service.getAllCollaborators(testStashID).then((collaborators: Account[]) => {
@@ -102,6 +102,10 @@ describe('CollaboratorService', () => {
         return service.getAllCollaborators(testStashID);
       }).then((collaborators: Account[]) => {
         expect(collaborators.length).toEqual(originalLength + 1);
+        // now remove the collaborator from the list
+        return service.removeCollaborator(testStashID, testUserID);
+      }).then(response => {
+        expect(response.success).toBeTruthy();
         done();
       }).catch(error => {
         console.log(error);
@@ -110,6 +114,6 @@ describe('CollaboratorService', () => {
       })
 
     })();
-  });
+  }, 10000);
 
 });
