@@ -15,7 +15,6 @@ section.all-modals {
 #main-container{
     width: 100vw;
     height: $main-container-height;
-    background: $main-container-bg;
     display: flex;
     justify-content: flex-end; 
     text-align: center;
@@ -60,11 +59,64 @@ section.all-modals {
     }
 }
 
+//
+// tablet screen
+@include media(small-screen) {
+    #main-container{
+    width: 100vw;
+    height: $main-container-height;
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    #main-container-content{
+        width: 80vw;
+        #main-container-title{
+            margin-top: 2vh;
+            // text-shadow: 1px 7px 30px $theme-dark-grey;
+            font-size: 16pt;
+            font-weight: bold;  
+            color: $theme-dark-grey;
+            padding: 2vh 0;
+            margin-bottom: 2vh;
+        }
+        #main-container-stashes{
+            padding: 2vh 0;
+            height: 72vh;
+            width: 80vw;
+            display: flex; 
+            justify-content: space-around;
+            flex-wrap: wrap;
+            #main-container-stashes-content{
+                // margin: 2vh 0 2vh 0; 
+            }
+        }
+        }
+        #main-container-createstash{
+            display: none;
+            width: 19.5vw;
+            padding: 4vh 0;
+            #createstash-btn{
+                border-radius: 10px;
+                background: $theme-light-blue;
+                padding: 1vh 1vw;
+                color: white;
+                border: $theme-white solid 1px;
+                box-shadow: 1px 7px 30px $theme-dark-grey;
+                &:hover{
+                    background: $theme-blueberry;
+                    color: $theme-orange;
+                }
+            }
+        }
+    }
+}
+
+//
+// mobile screen
 @include media(mobile-screen) {
     #main-container{
     width: 100vw;
     height: $main-container-height;
-    background: $main-container-bg;
     display: flex;
     justify-content: center; 
     text-align: center;

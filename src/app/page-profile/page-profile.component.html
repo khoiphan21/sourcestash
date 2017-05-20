@@ -8,56 +8,56 @@
                     Profile pic
                 </div>
             </article>
-            <article id="top-container-content-right" *ngIf="userAccount">
+            <article id="top-container-content-right">
                 <h1> Profile </h1>
-                <article id="top-container-content-right-details">
-                    <ul>
-                        <li>
-                            <span class="bold">Username:</span>
-                            <p>
-                                John Doe {{userAccount.username}}
-                        </li>
-                        <li>
-                            <span class="bold">University:</span>
-                            <p>
-                                University of John Doe {{userAccount.username}}
-                        </li>
-                        <li>
-                            <span class="bold">Bachelor:</span>
-                            <p>
-                                Bachelor of IT {{userAccount.username}}
-                        </li>
-                    </ul>
-                </article>
+                <section id="top-container-content-right-tab">
+                    <section id="top-container-content-right-tab-content">
+                        <section id="top-container-content-right-tab-content-profile" (click)="clickTab('clickProfile')">
+                            Profile
+                        </section>
+                        <article id="top-container-content-right-tab-content-stashes" (click)="clickTab('clickStash')">
+                            Stashes
+                        </article>
+                        <article id="top-container-content-right-tab-content-settings" (click)="clickTab('clickSetting')">
+                            Settings
+                        </article>
+                    </section>
+                </section>
             </article>
         </section>
     </section>
 
     <section id="bottom-container">
         <section id="bottom-container-content">
-            <section id="bottom-container-content-tab">
-                <section id="bottom-container-content-tab-left">
-                    <article id="bottom-container-content-tab-left-stashes" (click)="clickTab('clickStash')">
-                        Stashes
-                    </article>
-                    <article id="bottom-container-content-tab-left-settings" (click)="clickTab('clickSetting')">
-                        Settings
-                    </article>
-                </section>
-                <section id="bottom-container-content-tab-right" (click)="clickTab('clickCreate')">
-                    Create
-                </section>
-            </section>
             <section id="bottom-container-content-detail">
+                <article id="bottom-container-content-detail-profile" *ngIf="isProfileClicked">
+                    <!--need to change the id name-->
+                    <article id="top-container-content-right-details" *ngIf="userAccount">
+                        <ul>
+                            <li>
+                                <span class="bold">Username:</span>
+                                <p>
+                                    John Doe {{userAccount.username}}
+                            </li>
+                            <li>
+                                <span class="bold">University:</span>
+                                <p>
+                                    University of John Doe {{userAccount.username}}
+                            </li>
+                            <li>
+                                <span class="bold">Bachelor:</span>
+                                <p>
+                                    Bachelor of IT {{userAccount.username}}
+                            </li>
+                        </ul>
+                    </article>
+                </article>
                 <article id="bottom-container-content-detail-stashes" *ngIf="isStashesClicked">
                     stashes
                 </article>
                 <article id="bottom-container-content-detail-settings" *ngIf="isSettingsClicked">
                     settings
                 </article>
-                <article id="bottom-container-content-detail-create" *ngIf="isCreateClicked">
-                    create
-                </article>  
             </section>
             <!--<my-tabs [tabs]="tabs">
                 <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Stashes'">

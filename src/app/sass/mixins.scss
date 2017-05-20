@@ -103,6 +103,43 @@
         padding: $verticalPadding $horizontalPadding;
     }
 }
+
+/*
+/ button for sourceStash
+*/
+
+
+// dark grey bg
+// orange font
+@mixin button-ss-orange{
+    // width: 10vw;
+    cursor: pointer;
+    padding: 1.5vh 2vw;
+    background: $theme-dark-grey;
+    color: $theme-orange;
+    margin: auto;
+    border: $theme-orange solid 2px;
+    box-shadow: 1px 7px 30px $theme-dark-grey;
+    &:hover{
+        background: lighten($theme-dark-grey, 5);
+    }
+}
+
+// dark grey bg 
+// white font 
+@mixin button-ss-white{
+    // width: 10vw;
+    cursor: pointer;
+    padding: 1.5vh 2vw;
+    background: $theme-dark-grey;
+    color: $theme-white;
+    box-shadow: 1px 7px 30px $theme-blueberry;
+    &:hover{
+        background: lighten($theme-dark-grey, 5);
+    }
+}
+
+// button from other page
 @mixin button(
     $width: 13vw,
     $height: auto,

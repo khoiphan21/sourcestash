@@ -9,13 +9,13 @@ import { Stash } from '../classes/stash';
   styleUrls: ['./page-profile.component.scss']
 })
 export class PageProfileComponent implements OnInit {
-userAccount: Account;
+  userAccount: Account;
 
   stash: Stash;
-  
-  isStashesClicked: boolean = true;
+
+  isStashesClicked: boolean = false;
   isSettingsClicked: boolean = false;
-  isCreateClicked: boolean = false;
+  isProfileClicked: boolean = true;
 
   constructor(private accountService: AccountService) {
   }
@@ -27,19 +27,19 @@ userAccount: Account;
   }
 
   clickTab(tabname: string) {
-    if (tabname == 'clickStash') {
+    if (tabname == 'clickProfile') {
+      this.isStashesClicked = false;
+      this.isSettingsClicked = false;
+      this.isProfileClicked = true;
+    } else if (tabname == 'clickStash') {
       this.isStashesClicked = true;
       this.isSettingsClicked = false;
-      this.isCreateClicked = false;
+      this.isProfileClicked = false;
     } else if (tabname == 'clickSetting') {
       this.isStashesClicked = false;
       this.isSettingsClicked = true;
-      this.isCreateClicked = false;
-    } else if (tabname == 'clickCreate') {
-      this.isStashesClicked = false;
-      this.isSettingsClicked = false;
-      this.isCreateClicked = true;
-    }
+      this.isProfileClicked = false;
+    } 
   }
 
 }

@@ -4,13 +4,12 @@
     width: 12vh;
     height: 12vh;
     padding: 1vh 1vw;
-    margin-left: 1vw;
     border-radius: 10px;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
     background: $theme-blueberry;
     box-shadow: 1px 7px 30px $theme-light-blue;
     color: $theme-white;
     border: $theme-white solid 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
