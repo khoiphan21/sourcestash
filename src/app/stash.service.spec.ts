@@ -41,7 +41,7 @@ describe('StashService', () => {
       };
       let email = 'john@example.com';
       let password = 'whatever';
-      accountService.login(email, password).subscribe(() => {
+      accountService.login(email, password).then(() => {
         // Wait for a few seconds for the app to update user id
         setTimeout(() => {
           service.createStash(stash).subscribe(
@@ -133,7 +133,7 @@ describe('StashService', () => {
       // Login with the correct user first
       let email = 'john4@example.com';
       let password = 'password';
-      accountService.login(email, password).subscribe(() => {
+      accountService.login(email, password).then(() => {
         service.getAllStashes().subscribe(
           (stashes: Stash[]) => {
             expect(stashes.length).toBe(0);
@@ -146,4 +146,22 @@ describe('StashService', () => {
       });
     })();
   });
+  it('should get all shared stashes for a user', done => {
+    inject([StashService, AccountService], (service: StashService, accountService: AccountService) => {
+      // Login with the correct user first
+      let email = 'john4@example.com';
+      let password = 'password';
+      accountService.login(email, password).then(() => {
+        service.getAllSharedStashes().then(
+          (stashes: Stash[]) => {
+            expect(stashes.length).toBeTruthy();
+            done();
+          }, error => {
+            fail('error should not be thrown');
+            done();
+          }
+        );
+      });
+    })();
+  })
 });

@@ -43,7 +43,7 @@ describe('AccountService', () => {
    */
   it('should successfully login if the details are correct', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('john@example.com', 'whatever').subscribe(
+      service.login('john@example.com', 'whatever').then(
         response => {
           expect(response.success).toBeTruthy();
           done();
@@ -57,7 +57,7 @@ describe('AccountService', () => {
 
   it('should throw an error if password is incorrect', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('john@example.com', 'passwordd').subscribe(
+      service.login('john@example.com', 'passwordd').then(
         response => {
           fail('an error should occur');
           done();
@@ -71,7 +71,7 @@ describe('AccountService', () => {
   });
   it('should throw an error if the email does not exist', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('someemailthatdoesnotexist@mail.com', 'pass').subscribe(
+      service.login('someemailthatdoesnotexist@mail.com', 'pass').then(
         response => {
           fail('error should be thrown')
           done();

@@ -157,10 +157,14 @@ export class StashService {
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
+    let user_id = this.accountService.getCurrentUser().user_id;
+
+    console.log(user_id);
+
     this.http.post(
-      SERVER + '/stash/all/shared',
+      SERVER + '/stashes/shared/all',
       {
-        user_id: this.accountService.getCurrentUser().user_id
+        user_id: user_id
       },
       options
     ).subscribe(response => {

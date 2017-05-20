@@ -184,20 +184,22 @@ export class AccountService {
    * @param email the email, and also the id, of the account
    * @param password self explanatory
    */
-  login(email: string, password: string): Observable<AppResponse> {
+  login(email: string, password: string): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/login',
       {
         email: email,
         password: password
       },
       options
-    ).map(response => {
+    ).subscribe(response => {
       alert('Login Successful!');
 
       // Set the flag that tells the app the user has been logged in
@@ -205,14 +207,17 @@ export class AccountService {
 
       // Update current user details
       this.currentUser = new Account(email, password);
-      this.getUserID(email).then(id => this.currentUser.user_id = id);
-
-      return new AppResponse(true, 'Login successful');
-    }).catch(error => {
+      this.getUserID(email).then(id => {
+        this.currentUser.user_id = id;
+        deferred.resolve(new AppResponse(true, 'Logged in successfully'));
+      });
+    }, error => {
       console.log(error);
       console.log('login failed. error thrown');
-      return Observable.throw(error);
+      deferred.reject(error);
     });
+
+    return deferred.promise;
   }
 
   loginWithGoogle(): Promise<AppResponse> {
