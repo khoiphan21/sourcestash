@@ -109,26 +109,12 @@
 */
 
 
-// dark grey bg
-// orange font
-@mixin button-ss-orange{
-    // width: 10vw;
-    cursor: pointer;
-    padding: 1.5vh 2vw;
-    background: $theme-dark-grey;
-    color: $theme-orange;
-    margin: auto;
-    border: $theme-orange solid 2px;
-    box-shadow: 1px 7px 30px $theme-dark-grey;
-    &:hover{
-        background: lighten($theme-dark-grey, 5);
-    }
-}
+
 
 // dark grey bg 
 // white font 
-@mixin button-ss-white{
-    // width: 10vw;
+@mixin button-ss-white-small{
+    width: 100px;
     cursor: pointer;
     padding: 1.5vh 2vw;
     background: $theme-dark-grey;
@@ -138,7 +124,6 @@
         background: lighten($theme-dark-grey, 5);
     }
 }
-
 // button from other page
 @mixin button(
     $width: 13vw,
@@ -176,10 +161,10 @@
  * Arguments: large-screen, medium-screen, small-screen, mobile-screen
  */
 @mixin media($type) {
-    $large-screen-size: "(min-width: 1500px) and (max-width: 2000px)";
-    $medium-screen-size: "(min-width: 1023px) and (max-width: 1500px)";
-    $small-screen-size: "(min-width: 600px) and (max-width: 1023px)";
-    $mobile-screen-size: "(max-width: 600px)";
+    $large-screen-size: "(min-width: 1100px) and (max-width: 1500px)";
+    $medium-screen-size: "(min-width: 800px) and (max-width: 1100px)";
+    $small-screen-size: "(min-width: 500px) and (max-width: 800px)";
+    $mobile-screen-size: "(max-width: 500px)";
 
     @if $type == large-screen {
         @media #{$large-screen-size} { @content; }

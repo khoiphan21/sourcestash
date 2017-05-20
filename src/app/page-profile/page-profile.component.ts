@@ -21,7 +21,8 @@ export class PageProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.accountService.getUserInformation('user').then(account => {
+    let user_id = this.accountService.getCurrentUserID();
+    this.accountService.getUserInformation(user_id).then(account => {
       this.userAccount = account;
     });
   }
