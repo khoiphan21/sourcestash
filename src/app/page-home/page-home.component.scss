@@ -1,6 +1,5 @@
 @import '../sass/variables';
 @import '../sass/mixins';
-
 section.all-modals {
     position: fixed;
     z-index: 1000;
@@ -12,46 +11,46 @@ section.all-modals {
     @include column-center();
 }
 
-#main-container{
+#main-container {
     width: 100vw;
     height: $main-container-height;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     text-align: center;
-    #main-container-content{
+    #main-container-content {
         width: 61vw;
-        #main-container-title{
+        .main-container-title {
             margin-top: 2vh;
             // text-shadow: 1px 7px 30px $theme-dark-grey;
             font-size: 16pt;
-            font-weight: bold;  
+            font-weight: bold;
             color: $theme-dark-grey;
             padding: 2vh 0;
             margin-bottom: 2vh;
         }
-        #main-container-stashes{
+        .main-container-stashes {
             padding: 2vh 0;
             height: 72vh;
             width: 61vw;
-            display: flex; 
+            display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            #main-container-stashes-content{
+            .main-container-stashes-content {
                 // margin: 2vh 0 2vh 0; 
             }
         }
     }
-    #main-container-createstash{
+    #main-container-createstash {
         width: 19.5vw;
         padding: 4vh 0;
-        #createstash-btn{
+        #createstash-btn {
             border-radius: 10px;
             background: $theme-light-blue;
             padding: 1vh 1vw;
             color: white;
             border: $theme-white solid 1px;
             box-shadow: 1px 7px 30px $theme-dark-grey;
-            &:hover{
+            &:hover {
                 background: $theme-blueberry;
                 color: $theme-orange;
             }
@@ -62,47 +61,47 @@ section.all-modals {
 //
 // tablet screen
 @include media(small-screen) {
-    #main-container{
-    width: 100vw;
-    height: $main-container-height;
-    display: flex;
-    justify-content: center; 
-    text-align: center;
-    #main-container-content{
-        width: 80vw;
-        #main-container-title{
-            margin-top: 2vh;
-            // text-shadow: 1px 7px 30px $theme-dark-grey;
-            font-size: 16pt;
-            font-weight: bold;  
-            color: $theme-dark-grey;
-            padding: 2vh 0;
-            margin-bottom: 2vh;
-        }
-        #main-container-stashes{
-            padding: 2vh 0;
-            height: 72vh;
+    #main-container {
+        width: 100vw;
+        height: $main-container-height;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        #main-container-content {
             width: 80vw;
-            display: flex; 
-            justify-content: space-around;
-            flex-wrap: wrap;
-            #main-container-stashes-content{
-                // margin: 2vh 0 2vh 0; 
+            #main-container-title {
+                margin-top: 2vh;
+                // text-shadow: 1px 7px 30px $theme-dark-grey;
+                font-size: 16pt;
+                font-weight: bold;
+                color: $theme-dark-grey;
+                padding: 2vh 0;
+                margin-bottom: 2vh;
+            }
+            #main-container-stashes {
+                padding: 2vh 0;
+                height: 72vh;
+                width: 80vw;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                #main-container-stashes-content {
+                    // margin: 2vh 0 2vh 0; 
+                }
             }
         }
-        }
-        #main-container-createstash{
+        #main-container-createstash {
             display: none;
             width: 19.5vw;
             padding: 4vh 0;
-            #createstash-btn{
+            #createstash-btn {
                 border-radius: 10px;
                 background: $theme-light-blue;
                 padding: 1vh 1vw;
                 color: white;
                 border: $theme-white solid 1px;
                 box-shadow: 1px 7px 30px $theme-dark-grey;
-                &:hover{
+                &:hover {
                     background: $theme-blueberry;
                     color: $theme-orange;
                 }
@@ -114,40 +113,39 @@ section.all-modals {
 //
 // mobile screen
 @include media(mobile-screen) {
-    #main-container{
-    width: 100vw;
-    height: $main-container-height;
-    display: flex;
-    justify-content: center; 
-    text-align: center;
-    overflow: scroll;
-        #main-container-content{
+    #main-container {
+        width: 100vw;
+        height: $main-container-height;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        overflow: scroll;
+        #main-container-content {
             width: 80vw;
-            #main-container-title{
+            #main-container-title {
                 margin-top: 2vh;
                 // text-shadow: 1px 7px 30px $theme-dark-grey;
                 font-size: 16pt;
-                font-weight: bold;  
+                font-weight: bold;
                 color: $theme-dark-grey;
                 padding: 2vh 0;
                 margin-bottom: 2vh;
             }
-            #main-container-stashes{
+            #main-container-stashes {
                 margin: auto;
                 padding: 0 0 2vh 0;
                 height: 72vh;
                 width: 61vw;
-                display: flex; 
+                display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                #main-container-stashes-content{
+                #main-container-stashes-content {
                     // margin: 2vh 0 2vh 0; 
                 }
             }
         }
-        #main-container-createstash{
+        #main-container-createstash {
             display: none;
         }
     }
 }
-

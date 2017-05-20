@@ -22,7 +22,6 @@ import { AccountService } from '../account.service';
 })
 export class PageStashComponent implements OnInit {
 
-  @Input()
   sources: Source[];
   stash_id: string;
 
