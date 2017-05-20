@@ -12,13 +12,13 @@ section.all-modals {
     @include column-center();
 }
 
-#main-container {
+.main-container {
     width: 100vw;
     height: $main-container-height;
     display: flex;
     justify-content: flex-end;
     text-align: center;
-    #main-container-content {
+    .main-container-content {
         width: 62vw;
         .main-container-title {
             margin-top: 2vh;
@@ -41,23 +41,20 @@ section.all-modals {
             }
         }
     }
-    #main-container-createstash {
+    .main-container-createstash {
         width: 19vw;
         padding: 4vh 0;
         display: flex;
         justify-content: center;
         height: 15vh;
-        #createstash-btn{
-            @include button-ss-dark(
-                $width: 12vw,
-                $horizontalPadding: 0
-            );
+        .createstash-btn {
+            @include button-ss-dark( $width: 12vw, $horizontalPadding: 0);
             border: white solid 2px;
             color: white;
             background: $theme-light-blue;
             transition: 0.3s;
         }
-        #createstash-btn-mobile {
+        .createstash-btn-mobile {
             display: none;
         }
     }
@@ -66,13 +63,14 @@ section.all-modals {
 //
 // tablet screen
 @include media(small-screen) {
-    #main-container {
+    .main-container {
         width: 100vw;
         height: $main-container-height;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         text-align: center;
-        #main-container-content {
+        overflow-x: hidden;
+        .main-container-content {
             width: 80vw;
             .main-container-title {
                 margin-top: 2vh;
@@ -90,22 +88,25 @@ section.all-modals {
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                #main-container-stashes-content {
+                .main-container-stashes-content {
                     // margin: 2vh 0 2vh 0; 
                 }
             }
         }
-        #main-container-createstash {
+        .main-container-createstash {
+            position: fixed;
+            top: 9vh;
+            right: 5vw;
             width: 10vw;
             padding: 4vh 0;
             display: flex;
             justify-content: center;
             height: 15vh;
-            #createstash-btn {
+            .createstash-btn {
                 @include button-ss-dark( $width: 12vw, $verticalPadding: 0);
                 display: none;
             }
-            #createstash-btn-mobile {
+            .createstash-btn-mobile {
                 @include button-ss-dark( $width: 7vw, $height: 7vw, $verticalPadding: 0, $horizontalPadding: 0, $font-size: 16pt);
                 color: $theme-white;
                 background: $theme-light-blue;
@@ -119,16 +120,16 @@ section.all-modals {
 //
 // mobile screen
 @include media(mobile-screen) {
-    #main-container {
+    .main-container {
         width: 100vw;
         height: $main-container-height;
         display: flex;
         justify-content: center;
         text-align: center;
         overflow: scroll;
-        #main-container-content {
+        .main-container-content {
             width: 80vw;
-            #main-container-title {
+            .main-container-title {
                 margin-top: 2vh;
                 // text-shadow: 1px 7px 30px $theme-dark-grey;
                 font-size: 16pt;
@@ -137,7 +138,7 @@ section.all-modals {
                 padding: 2vh 0;
                 margin-bottom: 2vh;
             }
-            #main-container-stashes {
+            .main-container-stashes {
                 margin: auto;
                 padding: 0 0 2vh 0;
                 height: 72vh;
@@ -145,22 +146,22 @@ section.all-modals {
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                #main-container-stashes-content {
+                .main-container-stashes-content {
                     // margin: 2vh 0 2vh 0; 
                 }
             }
         }
-        #main-container-createstash {
+        .main-container-createstash {
             width: 8vw;
             padding: 4vh 0;
             display: flex;
             justify-content: center;
             height: 15vh;
-            #createstash-btn {
+            .createstash-btn {
                 @include button-ss-dark( $width: 12vw, $verticalPadding: 0);
                 display: none;
             }
-            #createstash-btn-mobile {
+            .createstash-btn-mobile {
                 @include button-ss-dark( $width: 8vw, $height: 8vw, $verticalPadding: 0, $horizontalPadding: 0, $font-size: 16pt);
                 color: $theme-white;
                 background: $theme-light-blue;

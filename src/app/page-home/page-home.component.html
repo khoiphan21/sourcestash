@@ -6,13 +6,13 @@
     </section>
 </section>
 
-<section id="main-container">
-    <section id="main-container-content">
+<section class="main-container">
+    <section class="main-container-content">
         <article class="main-container-title">
             My Stashes
         </article>
         <section class="main-container-stashes">
-            <section id="main-container-stashes-content" *ngFor="let stash of stashes">
+            <section class="main-container-stashes-content" *ngFor="let stash of stashes">
                 <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
             </section>
         </section>
@@ -27,9 +27,9 @@
             </section>
         </section>
     </section>
-    <article id="main-container-createstash">
-        <button id="createstash-btn" (click)="showModal('addStash')">Create Stash</button>
-        <button id="createstash-btn-mobile" (click)="showModal('addStash')">&#10010;</button>
+    <article class="main-container-createstash">
+        <button class="createstash-btn" (click)="showModal('addStash')">Create Stash</button>
+        <button class="createstash-btn-mobile" (click)="showModal('addStash')"><span>&#10010;</span></button>
     </article>
 </section>
 
