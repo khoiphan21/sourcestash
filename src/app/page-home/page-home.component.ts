@@ -8,6 +8,7 @@ import { AccountService } from '../account.service';
 import { Account } from '../classes/account';
 import { JOHN } from '../data/mockAccount';
 import { AppResponse } from '../classes/response';
+import { CollaboratorService } from '../collaborator.service';
 
 @Component({
   selector: 'app-page-home',
@@ -15,7 +16,9 @@ import { AppResponse } from '../classes/response';
   styleUrls: ['./page-home.component.scss']
 })
 export class PageHomeComponent implements OnInit {
-stashes: Stash[];
+  // Models for the UI
+  stashes: Stash[];
+  sharedStashes: Stash[];
 
   // Variables to control modal items display
   isModalShown: boolean = false;
@@ -32,7 +35,9 @@ stashes: Stash[];
     this.stashService.getAllStashes().subscribe(stashes => {
       this.stashes = stashes;
     });
-
+    this.stashService.getAllSharedStashes().then(sharedStashes => {
+      this.sharedStashes = sharedStashes;
+    })
   }
 
   onSignIn(user) {

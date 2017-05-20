@@ -154,7 +154,7 @@ describe('StashService', () => {
       accountService.login(email, password).then(() => {
         service.getAllSharedStashes().then(
           (stashes: Stash[]) => {
-            expect(stashes.length).toBeTruthy();
+            expect(stashes).toBeTruthy();
             done();
           }, error => {
             fail('error should not be thrown');

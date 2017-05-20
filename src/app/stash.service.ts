@@ -144,30 +144,33 @@ export class StashService {
       return Observable.throw(error);
     });
   }
-  
+
   /**
    * Get all stashes that this user is a collaborator of
    */
   getAllSharedStashes(): Promise<Stash[]> {
     let deferred = new Deferred<Stash[]>();
-    
+
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    let user_id = this.accountService.getCurrentUser().user_id;
+    let user: Account = this.accountService.getCurrentUser();
 
-    this.http.post(
-      SERVER + '/stashes/shared/all',
-      {
-        user_id: user_id
-      },
-      options
-    ).subscribe(response => {
-      // Cast the response to a stash
-      let stashes = response.json();
-      deferred.resolve(stashes);
-    }, error => {
-      deferred.reject(error);
+    // Now retrieve the user id from the server
+    this.accountService.getUserID(user.email).then(user_id => {
+      this.http.post(
+        SERVER + '/stashes/shared/all',
+        {
+          user_id: user_id
+        },
+        options
+      ).subscribe(response => {
+        // Cast the response to a stash
+        let stashes = response.json();
+        deferred.resolve(stashes);
+      }, error => {
+        deferred.reject(error);
+      })
     })
 
     return deferred.promise;
@@ -180,7 +183,7 @@ export class StashService {
    */
   getStash(stashID: string): Promise<Stash> {
     let deferred = new Deferred<Stash>();
-    
+
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
