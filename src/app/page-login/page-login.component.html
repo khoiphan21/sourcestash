@@ -1,29 +1,27 @@
-<section id="login-header">
-  <section id="login-header-content">
-    <article id="login-header-left">
-      SourceStash
-    </article>
-    <article id="login-header-right">
-      <div><a routerLink="/welcome">Welcome</a></div>
-    </article>
-  </section>
+<section class="login-header">
+    <section class="login-header-content">
+        <article class="login-header-left">
+            SourceStash
+        </article>
+        <article class="login-header-right">
+            <div><a routerLink="/welcome">Welcome</a></div>
+        </article>
+    </section>
 </section>
 
-<section id="mainContianer">
-    <section id="sourcestash-intro-content">
-        <article id="sourcestash-intro-content-title">
-            Get Started With SourceStash
-            <p>
+<section class="mainContainer">
+    <section class="sourcestash-intro-content">
+        <article class="sourcestash-intro-content-title">
+            <span>Get Started With SourceStash</span>
         </article>
-        <article id="sourcestash-intro-content-details">
-            Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam rhoncus scelerisque tempor. Donec massa elit, eleifend
-            at augue sit amet, sodales dapibus ipsum. Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam
-            rhoncus scelerisque tempor. Donec massa elit, eleifend at augue sit amet, sodales dapibus ipsum.
+        <article class="sourcestash-intro-content-details">
+            Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam rhoncus scelerisque tempor. Donec massa elit, eleifend at augue sit amet, sodales dapibus ipsum. Vivamus consequat laoreet nisi, non dictum arcu biben- dum eu. Aliquam rhoncus scelerisque
+            tempor. Donec massa elit, eleifend at augue sit amet, sodales dapibus ipsum.
         </article>
-        <article id="sourcestash-intro-content-button">
-            <button class="button" (click)="loginGoogle()">
-                <span><img src="/assets/images/google.png" width="50px" height="50px"></span>
-                <span  style="margin-bottom: 5px">Sign in with Google</span>
+        <article class="sourcestash-intro-content-button">
+            <button (click)="loginGoogle()">
+                <img src="/assets/images/google.png" width="50px" height="50px">
+                <span>Sign in with Google</span>
             </button>
         </article>
     </section>

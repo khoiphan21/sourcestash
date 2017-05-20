@@ -1,70 +1,32 @@
 @import 'mixins';
 @import 'variables';
+
 /*
 / button for sourceStash
 */
-@mixin button-ss-light(
-    $width: 10vw,
-    $height: auto,
-    $verticalPadding: 1.5vh,
-    $horizontalPadding: 2vw,
-    $padding: none,
-    $font-size: 1vw
-) {
-    @include button(
-        $width: $width,
-        $height: $height,
-        $verticalPadding: $verticalPadding,
-        $horizontalPadding: $horizontalPadding,
-        $padding: $padding,
-        $background: $theme-dark-grey,
-        $box-shadow: 1px 7px 30px $theme-blueberry,
-        $color: $theme-white,
-        $border-radius: 5px,
-        $transition: 0.3s,
-        $font-size: $font-size,
-        $border: 0px solid black
-    );
-    &:hover{
+
+@mixin button-ss-light( $width: 10vw, $height: auto, $verticalPadding: 1.5vh, $horizontalPadding: 2vw, $padding: none, $font-size: 1vw) {
+    @include button( $width: $width, $height: $height, $verticalPadding: $verticalPadding, $horizontalPadding: $horizontalPadding, $padding: $padding, $background: $theme-dark-grey, $box-shadow: none, $color: $theme-white, $border-radius: 5px, $transition: 0.3s, $font-size: $font-size, $border: 0px solid black);
+    &:hover {
         background: lighten($theme-dark-grey, 5);
     }
-
-    @if $padding != none {
+    @if $padding !=none {
         padding: $padding;
-    } @else {
+    }
+    @else {
         padding: $verticalPadding $horizontalPadding;
     }
 }
 
-@mixin button-ss-dark(
-    $width: 10vw,
-    $height: auto,
-    $verticalPadding: 1.5vh,
-    $horizontalPadding: 2vw,
-    $padding: none,
-    $font-size: 1vw
-) {
-    @include button(
-        $width: $width,
-        $height: $height,
-        $verticalPadding: $verticalPadding,
-        $horizontalPadding: $horizontalPadding,
-        $padding: $padding,
-        $background: $theme-dark-grey,
-        $box-shadow: 1px 7px 30px $theme-blueberry,
-        $color: $theme-white,
-        $border-radius: 5px,
-        $transition: 0.3s,
-        $font-size: $font-size,
-        $border: 2px solid $theme-orange
-    );
-    &:hover{
+@mixin button-ss-dark( $width: 10vw, $height: auto, $verticalPadding: 1.5vh, $horizontalPadding: 2vw, $padding: none, $font-size: 1vw) {
+    @include button( $width: $width, $height: $height, $verticalPadding: $verticalPadding, $horizontalPadding: $horizontalPadding, $padding: $padding, $background: $theme-dark-grey, $box-shadow: none, $color: $theme-white, $border-radius: 5px, $transition: 0.3s, $font-size: $font-size, $border: 2px solid $theme-orange);
+    &:hover {
         background: lighten($theme-dark-grey, 5);
     }
-
-    @if $padding != none {
+    @if $padding !=none {
         padding: $padding;
-    } @else {
+    }
+    @else {
         padding: $verticalPadding $horizontalPadding;
     }
 }

@@ -1,10 +1,9 @@
 @import '../sass/variables';
 @import '../sass/mixins';
 @import '../sass/globalStyles';
-
 // main container
 $mainContainerHeight: 86vh;
-#login-header {
+.login-header {
     width: 100vw;
     background: $theme-dark-grey;
     height: 7vh;
@@ -13,13 +12,13 @@ $mainContainerHeight: 86vh;
     justify-content: center;
     font-size: 16pt;
     text-shadow: 3px 5px 10px $theme-light-blue;
-    #login-header-content {
+    .login-header-content {
         width: $header-content-width;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        #login-header-left {}
-        #login-header-right {
+        .login-header-left {}
+        .login-header-right {
             font-size: 10pt;
         }
         a {
@@ -30,50 +29,65 @@ $mainContainerHeight: 86vh;
     }
 }
 
-#mainContianer {
-    height: $mainContainerHeight;
-    background: rgba(224, 224, 231, 0.8);
-    ;
+app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+}
+
+.mainContainer {
     display: flex;
     justify-content: center;
-    #sourcestash-intro-content {
-        border-radius: 10px;
-        border: $theme-orange solid 2px;
-        box-shadow: 1px 7px 30px $theme-dark-grey;
-        padding: 3vh 0;
+    .sourcestash-intro-content {
+        @include column-center();
+        border-radius: 5px;
+        // border: $theme-orange solid 2px;
+        box-shadow: 0px 0px 20px $theme-dark-grey;
+        padding: 3vh 3vh;
         margin-top: 10vh;
         width: 40vw;
-        height: 42vh;
         background: $dark-background;
         text-align: center;
-        p {
-            margin-bottom: 2vh;
-        }
-        #sourcestash-intro-content-title {
+        .sourcestash-intro-content-title {
             font-size: 14pt;
             color: $theme-orange;
         }
-        #sourcestash-intro-content-details {
+        .sourcestash-intro-content-details {
+            margin: 3vh 0;
             width: 30vw;
-            margin: auto;
             font-size: 10pt;
             color: $theme-white;
         }
-        #sourcestash-intro-content-button {
-            margin-top: 4vh;
-            display: flex;
-            justify-content: center;
-            .button {
-                @include button-ss-dark(
-                    $width: 15vw,
-                    $padding: 0,
-                    $height: 8vh
-                );
+        .sourcestash-intro-content-button {
+            width: 50%;
+            margin: 3vh 0;
+            @include column-center();
+            button {
+                @include row-center();
+                @include button-ss-dark( $width: 40vw, $padding: 0, $height: 7vh, $font-size: 8pt);
+                width: 100%;
+                padding: 0 1vw;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: nowrap;
                 transition: 0.3s;
                 background: white;
                 border: $theme-grey solid 2px;
                 color: black;
-                span{
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.8);
+                }
+                img {
+                    width: 6vh;
+                    height: 6vh;
+                    padding: 0;
+                    margin: 0;
+                }
+                span {
+                    margin: 0;
+                    font-size: 12px;
                 }
             }
         }
@@ -83,7 +97,7 @@ $mainContainerHeight: 86vh;
 //
 // tablet screen
 @include media(small-screen) {
-    #login-header {
+    .login-header {
         width: 100vw;
         background: $theme-dark-grey;
         height: 7vh;
@@ -91,15 +105,15 @@ $mainContainerHeight: 86vh;
         color: $theme-white;
         font-size: 16pt;
         text-shadow: 3px 5px 10px $theme-light-blue;
-        #login-header-content {
+        .login-header-content {
             width: 100vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #login-header-left {
+            .login-header-left {
                 padding: 0 10vw;
             }
-            #login-header-right {
+            .login-header-right {
                 font-size: $mobile-font-heading;
                 padding: 0 10vw;
             }
@@ -110,15 +124,16 @@ $mainContainerHeight: 86vh;
             }
         }
     }
-    #mainContianer {
-        height: $mainContainerHeight;
+    .mainContainer {
         background: $light-background-trans;
         display: flex;
         justify-content: center;
-        #sourcestash-intro-content {
+        .sourcestash-intro-content {
+            @include column-center();
+            height: 55%;
             border-radius: 10px;
             border: $theme-orange solid 2px;
-            box-shadow: 1px 7px 30px $theme-dark-grey;
+            box-shadow: 1px 7px 15px $theme-dark-grey;
             padding: 3vh 0;
             width: 60vw;
             background: $dark-background;
@@ -127,49 +142,55 @@ $mainContainerHeight: 86vh;
             p {
                 margin-bottom: 2vh;
             }
-            #sourcestash-intro-content-title {
+            .sourcestash-intro-content-title {
                 font-size: $mobile-font-title;
                 color: $theme-orange;
             }
-            #sourcestash-intro-content-details {
+            .sourcestash-intro-content-details {
+                padding: 3vh 5vw;
                 width: 60vw;
                 margin: auto;
                 font-size: $mobile-font-content;
                 color: $theme-white;
             }
-            #sourcestash-intro-content-button {
-                margin-top: 3vh;
+            .sourcestash-intro-content-button {
                 margin-left: auto;
                 margin-right: auto;
-                .button{
-                    @include button-ss-dark(
-                        $width: 28vw,
-                        $padding: 0,
-                        $height: 8vh,
-                        $font-size: $mobile-font-content
-                    );
+                button {
+                    @include button-ss-dark( $width: 28vw, $padding: 0, $height: 6vh, $font-size: 8pt);
+                    width: 100%;
+                    padding: 0 7vw;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: nowrap;
                     transition: 0.3s;
                     background: white;
                     border: $theme-grey solid 2px;
                     color: black;
-                }
-                img{
-                    padding: 0;
-                    margin: 0;
-                }
-                span{
-                    padding: 0 1vw;
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.8);
+                    }
+                    img {
+                        width: 6vh;
+                        height: 6vh;
+                        padding: 0;
+                        margin: 0;
+                    }
+                    span {
+                        margin: 0;
+                        font-size: 12px;
+                    }
                 }
             }
         }
     }
 }
 
-
 //
 // mobile screen
 @include media(mobile-screen) {
-    #login-header {
+    .login-header {
         width: 100vw;
         background: $theme-dark-grey;
         height: 7vh;
@@ -177,15 +198,15 @@ $mainContainerHeight: 86vh;
         color: $theme-white;
         font-size: 16pt;
         text-shadow: 3px 5px 10px $theme-light-blue;
-        #login-header-content {
+        .login-header-content {
             width: 100vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #login-header-left {
+            .login-header-left {
                 padding: 0 10vw;
             }
-            #login-header-right {
+            .login-header-right {
                 font-size: $mobile-font-heading;
                 padding: 0 10vw;
             }
@@ -196,53 +217,63 @@ $mainContainerHeight: 86vh;
             }
         }
     }
-    #mainContianer {
-        height: $mainContainerHeight;
+    .mainContainer {
+        // height: $mainContainerHeight;
         background: $light-background-trans;
         display: flex;
         justify-content: center;
-        #sourcestash-intro-content {
+        .sourcestash-intro-content {
+            @include column-center();
+            height: 90%;
             border-radius: 10px;
             border: $theme-orange solid 2px;
             box-shadow: 1px 7px 30px $theme-dark-grey;
-            padding: 3vh 0;
             width: 80vw;
             background: $dark-background;
             text-align: center;
-            margin-top: 10vh;
+            margin-top: 5vh;
             p {
                 margin-bottom: 2vh;
             }
-            #sourcestash-intro-content-title {
+            .sourcestash-intro-content-title {
+                padding: 5%;
                 font-size: $mobile-font-title;
                 color: $theme-orange;
             }
-            #sourcestash-intro-content-details {
+            .sourcestash-intro-content-details {
                 width: 70vw;
                 margin: auto;
                 font-size: $mobile-font-content;
                 color: $theme-white;
             }
-            #sourcestash-intro-content-button {
-                margin-top: 10vh;
-                .button{
-                    @include button-ss-dark(
-                        $width: 40vw,
-                        $padding: 0,
-                        $height: 8vh,
-                        $font-size: 8pt
-                    );
+            .sourcestash-intro-content-button {
+                width: 80%;
+                margin: 3vh 0;
+                button {
+                    @include button-ss-dark( $width: 40vw, $padding: 0, $height: 8vh, $font-size: 8pt);
+                    width: 100%;
+                    padding: 0 7vw;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: nowrap;
                     transition: 0.3s;
                     background: white;
                     border: $theme-grey solid 2px;
                     color: black;
-                }
-                img{
-                    padding: 0;
-                    margin: 0;
-                }
-                span{
-                    padding: 0 1vw;
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.8);
+                    }
+                    img {
+                        width: 7vh;
+                        height: 7vh;
+                        padding: 0;
+                        margin: 0;
+                    }
+                    span {
+                        margin: 0;
+                        font-size: 12px;
+                    }
                 }
             }
         }
