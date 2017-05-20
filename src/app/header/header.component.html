@@ -1,7 +1,7 @@
 <section id="header">
     <section id="header-content">
         <section id="header-left">
-            SourceStash
+            <a routerLink="/home">SourceStash</a>
         </section>
         <section id="header-right">
             <ul>
@@ -24,7 +24,6 @@
             <section id="header-mobile-right-content" *ngIf="isDropdown">
                 <ul>
                     <li><a routerLink="/home">Home</a></li>
-                    <li><a routerLink="/welcome">About</a></li>
                     <li><a routerLink="/profilepage">Profile</a></li>
                     <li><a routerLink="/welcome" (click)="logout()">Logout</a></li>
                 </ul>

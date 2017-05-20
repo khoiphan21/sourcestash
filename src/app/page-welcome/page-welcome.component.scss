@@ -55,15 +55,14 @@
             display: flex;
             justify-content: space-around;
             margin-top: 109px;
-            // width: 30vw;
-            width: 307px;
+            width: 32vw;
             text-align: center;
             font-size: 10pt;
             #feature {
-                @include button-ss-white-small;
+                @include button-ss-light();
             }
             #contact {
-                @include button-ss-white-small;
+                @include button-ss-light();
             }
         }
     } // Container 2
@@ -108,7 +107,11 @@
                 }
             }
             #benefit-container-login-button {
-                @include button-ss-orange-small
+                margin: auto;
+                @include button-ss-dark();
+                a{
+                    color: white;
+                }
             }
         }
     } // Container 3
@@ -249,12 +252,14 @@
                 select {
                     margin: 0;
                     width: 225px;
+                    background: $theme-light-blue;
+                    color: $theme-white;
                     // height: 2vh;
                     height: 24px;
                     border: 1px solid $theme-light-blue;
                 }
                 #submit {
-                    @include button-ss-white-small;
+                    @include button-ss-light();
                 }
             }
             #contact-container-details-detail {
@@ -339,15 +344,22 @@
             display: flex;
             justify-content: space-around;
             margin-top: 109px;
-            // width: 30vw;
-            width: 307px;
+            width: 50vw;
             text-align: center;
             font-size: 10pt;
             #feature {
-                @include button-ss-white-small;
+                @include button-ss-light(
+                    $padding: 1vh 1vw,
+                    $width: 15vw, 
+                    $font-size: $mobile-font-content
+                );
             }
             #contact {
-                @include button-ss-white-small;
+                @include button-ss-light(
+                    $padding: 1vh 1vw,
+                    $width: 15vw, 
+                    $font-size: $mobile-font-content
+                );
             }
         }
     } // Container 2
@@ -392,7 +404,15 @@
                 }
             }
             #benefit-container-login-button {
-                @include button-ss-orange-small
+                margin: auto;
+                 @include button-ss-dark(
+                    $padding: 1vh 1vw,
+                    $width: 15vw, 
+                    $font-size: $mobile-font-content
+                );
+                a{
+                    color: white;
+                }
             }
         }
     } // Container 3
@@ -538,7 +558,11 @@
                     border: 1px solid $theme-light-blue;
                 }
                 #submit {
-                    @include button-ss-white-small;
+                    @include button-ss-light(
+                        $padding: 1vh 1vw,
+                        $width: 15vw, 
+                        $font-size: $mobile-font-content
+                    );
                 }
             }
             #contact-container-details-detail {
@@ -632,7 +656,7 @@
                 font-size: 11pt;
                 text-align: center;
                 margin: auto;
-                padding: 15vh 0 0 0;
+                padding: 30vh 0 0 0;
             }
             #video-container-buttons {
                 margin: auto;
@@ -643,18 +667,18 @@
                 text-align: center;
                 font-size: 9pt;
                 #feature {
-                    width: 20vw;
-                    padding: 1.5vh 2vw;
-                    background: $theme-dark-grey;
-                    color: $theme-white;
-                    box-shadow: 1px 7px 30px $theme-blueberry;
+                    @include button-ss-light(
+                        $padding: 1vh 1vw,
+                        $width: 20vw, 
+                        $font-size: $mobile-font-content
+                    );
                 }
                 #contact {
-                    width: 20vw;
-                    padding: 1.5vh 2vw;
-                    background: $theme-dark-grey;
-                    color: $theme-white;
-                    box-shadow: 1px 7px 30px $theme-blueberry;
+                    @include button-ss-light(
+                        $padding: 1vh 1vw,
+                        $width: 20vw, 
+                        $font-size: $mobile-font-content
+                    );
                 }
             }
         } // Container 2
@@ -685,7 +709,7 @@
                     flex-direction: column;
                     margin-bottom: 3vh;
                     #benefit-container-details-content {
-                        width: 50vw;
+                        width: 80vw;
                         margin: auto;
                         display: flex;
                         justify-content: center;
@@ -701,16 +725,13 @@
                         padding: 0px;
                     }
                 }
-                #benefit-container-login {
-                    display: flex;
-                    text-align: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    color: $theme-orange;
-                    width: 30vw;
+                #benefit-container-login-button {
                     margin: auto;
-                    border: $theme-orange solid 2px;
-                    box-shadow: 1px 7px 30px $theme-dark-grey;
+                    @include button-ss-dark(
+                        $padding: 1vh 1vw,
+                        $width: 20vw, 
+                        $font-size: $mobile-font-content
+                    );
                 }
             }
         } // Container 3
@@ -746,12 +767,12 @@
                     color: $theme-light-blue;
                 }
                 #feature-container-details-side-content {
-                    width: 50vw;
+                    width: 80vw;
                     padding: 2vh 0;
                 }
                 #feature-container-details-center-content {
                     display: none;
-                    width: 38vw;
+                    width: 80vw;
                 }
             }
         } // Container 4
@@ -781,7 +802,7 @@
                     flex-direction: column;
                     align-items: center;
                     #team-container-details-content {
-                        width: 50vw;
+                        width: 80vw;
                         font-weight: 200;
                         padding: 2vh 0;
                     }
@@ -841,17 +862,17 @@
                         border: 1px solid $theme-light-blue;
                     }
                     #submit {
-                        border: 1px solid $theme-light-blue;
-                        color: $theme-white;
-                        padding: 1.5vh 3vw;
-                        background: $theme-dark-grey;
-                        margin: auto;
-                        box-shadow: 1px 7px 30px $theme-blueberry;
+                        @include button-ss-light(
+                            $padding: 1vh 1vw,
+                            $width: 20vw, 
+                            $font-size: $mobile-font-content
+                        );
                     }
                 }
                 #contact-container-details-detail {
                     order: 1;
-                    text-align: center;
+                    display: flex;
+                    justify-content: center;
                     width: 50vw;
                     padding: 2vh 1vw 2vh 1vw;
                     ul {

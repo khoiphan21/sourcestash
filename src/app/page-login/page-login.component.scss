@@ -1,5 +1,7 @@
 @import '../sass/variables';
 @import '../sass/mixins';
+@import '../sass/globalStyles';
+
 // main container
 $mainContainerHeight: 86vh;
 #login-header {
@@ -62,24 +64,16 @@ $mainContainerHeight: 86vh;
             display: flex;
             justify-content: center;
             .button {
-                height: 8vh;
-                cursor: pointer;
-                box-shadow: 1px 7px 30px $theme-dark-grey;
-                color: $theme-orange;
-                font-size: 10pt;
-                border: $theme-dark-grey solid 2px;
+                @include button-ss-dark(
+                    $width: 15vw,
+                    $padding: 0,
+                    $height: 8vh
+                );
                 transition: 0.3s;
-                display: flex; 
-                align-items: center;
-                background: $theme-white;
-                color: $theme-dark-grey;
-                &:hover {
-                    color: $theme-orange;
-                    background: lighten($theme-dark-grey, 5);
-                    border: $theme-orange solid 2px;
-                }
+                background: white;
+                border: $theme-grey solid 2px;
+                color: black;
                 span{
-                    padding: 0 1vw;
                 }
             }
         }
@@ -145,23 +139,19 @@ $mainContainerHeight: 86vh;
             }
             #sourcestash-intro-content-button {
                 margin-top: 3vh;
-                .button {
-                    height: 8vh;
-                    padding: 0;
-                    cursor: pointer;
-                    box-shadow: 1px 3px 30px $theme-dark-grey;
-                    display: flex;
-                    align-items: none;
-                    font-size: 10pt;
-                    border: $theme-orange solid 2px;
-                    background: $theme-white;
-                    color: $theme-dark-grey;
-                    border: $theme-grey solid 1px;
-                    &:hover {
-                        border: $theme-orange solid 1px;
-                        color: $theme-orange;
-                        background: lighten($theme-dark-grey, 5);
-                    }
+                margin-left: auto;
+                margin-right: auto;
+                .button{
+                    @include button-ss-dark(
+                        $width: 28vw,
+                        $padding: 0,
+                        $height: 8vh,
+                        $font-size: $mobile-font-content
+                    );
+                    transition: 0.3s;
+                    background: white;
+                    border: $theme-grey solid 2px;
+                    color: black;
                 }
                 img{
                     padding: 0;
@@ -235,20 +225,17 @@ $mainContainerHeight: 86vh;
             }
             #sourcestash-intro-content-button {
                 margin-top: 10vh;
-                .button {
-                    height: 8vh;
-                    cursor: pointer;
-                    box-shadow: 1px 3px 30px $theme-dark-grey;
-                    font-size: 10pt;
-                    border: $theme-orange solid 2px;
-                    background: $theme-white;
-                    color: $theme-dark-grey;
-                    border: $theme-grey solid 1px;
-                    &:hover {
-                        border: $theme-orange solid 1px;
-                        color: $theme-orange;
-                        background: lighten($theme-dark-grey, 5);
-                    }
+                .button{
+                    @include button-ss-dark(
+                        $width: 40vw,
+                        $padding: 0,
+                        $height: 8vh,
+                        $font-size: 8pt
+                    );
+                    transition: 0.3s;
+                    background: white;
+                    border: $theme-grey solid 2px;
+                    color: black;
                 }
                 img{
                     padding: 0;
