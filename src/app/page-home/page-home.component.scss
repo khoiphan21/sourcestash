@@ -1,5 +1,6 @@
 @import '../sass/variables';
 @import '../sass/mixins';
+@import '../sass/globalStyles';
 
 section.all-modals {
     position: fixed;
@@ -19,7 +20,7 @@ section.all-modals {
     justify-content: flex-end; 
     text-align: center;
     #main-container-content{
-        width: 61vw;
+        width: 62vw;
         #main-container-title{
             margin-top: 2vh;
             // text-shadow: 1px 7px 30px $theme-dark-grey;
@@ -32,7 +33,7 @@ section.all-modals {
         #main-container-stashes{
             padding: 2vh 0;
             height: 72vh;
-            width: 61vw;
+            width: 62vw;
             display: flex; 
             justify-content: space-around;
             flex-wrap: wrap;
@@ -42,19 +43,19 @@ section.all-modals {
         }
     }
     #main-container-createstash{
-        width: 19.5vw;
+        width: 19vw;
         padding: 4vh 0;
+        display: flex;
+        justify-content: center;
+        height: 15vh;
         #createstash-btn{
-            border-radius: 10px;
-            background: $theme-light-blue;
-            padding: 1vh 1vw;
-            color: white;
-            border: $theme-white solid 1px;
-            box-shadow: 1px 7px 30px $theme-dark-grey;
-            &:hover{
-                background: $theme-blueberry;
-                color: $theme-orange;
-            }
+            @include button-ss-dark(
+                $width: 12vw,
+                $horizontalPadding: 0
+            );
+        }
+        #createstash-btn-mobile{
+            display: none;
         }
     }
 }
@@ -66,7 +67,7 @@ section.all-modals {
     width: 100vw;
     height: $main-container-height;
     display: flex;
-    justify-content: center; 
+    justify-content: flex-end; 
     text-align: center;
     #main-container-content{
         width: 80vw;
@@ -92,20 +93,30 @@ section.all-modals {
         }
         }
         #main-container-createstash{
-            display: none;
-            width: 19.5vw;
+            width: 10vw;
             padding: 4vh 0;
+            display: flex;
+            justify-content: center;
+            height: 15vh;
             #createstash-btn{
-                border-radius: 10px;
+                @include button-ss-dark(
+                    $width: 12vw,
+                    $verticalPadding: 0
+                );
+                display: none;
+            }
+            #createstash-btn-mobile{
+                @include button-ss-dark(
+                    $width: 7vw,
+                    $height: 7vw,
+                    $verticalPadding: 0,
+                    $horizontalPadding: 0,
+                    $font-size: 16pt
+                );
+                color: $theme-white;
                 background: $theme-light-blue;
-                padding: 1vh 1vw;
-                color: white;
-                border: $theme-white solid 1px;
-                box-shadow: 1px 7px 30px $theme-dark-grey;
-                &:hover{
-                    background: $theme-blueberry;
-                    color: $theme-orange;
-                }
+                border: white solid 2px;
+                display: flex;
             }
         }
     }
@@ -146,7 +157,31 @@ section.all-modals {
             }
         }
         #main-container-createstash{
-            display: none;
+            width: 8vw;
+            padding: 4vh 0;
+            display: flex;
+            justify-content: center;
+            height: 15vh;
+            #createstash-btn{
+                @include button-ss-dark(
+                    $width: 12vw,
+                    $verticalPadding: 0
+                );
+                display: none;
+            }
+            #createstash-btn-mobile{
+                @include button-ss-dark(
+                    $width: 8vw,
+                    $height: 8vw,
+                    $verticalPadding: 0,
+                    $horizontalPadding: 0,
+                    $font-size: 16pt
+                );
+                color: $theme-white;
+                background: $theme-light-blue;
+                border: white solid 2px;
+                display: flex;
+            }
         }
     }
 }
