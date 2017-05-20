@@ -314,9 +314,6 @@ export class PageStashComponent implements OnInit {
     // Find the source model with the given id
     let source = this.findSource(source_id, this.sources);
 
-    //DEBUGGING
-    console.log('Original relative x and y: ' + source.xPosition + ', ' + source.yPosition);
-
     // Find the parent element of the source
     let parentElement: Element;
     if (source.parent_id != null) {
@@ -340,8 +337,6 @@ export class PageStashComponent implements OnInit {
       // And now send the information to the service to update the source's position
       // NOTE: THIS MAY CAUSE SERVER TO BE UN-SYNCED
       this.sourceService.updateSourcePosition(source_id, relativeX, relativeY);
-
-      console.log('New x and y: ' + relativeX + ', ' + relativeY);
     }
   }
   /**
@@ -389,7 +384,6 @@ export class PageStashComponent implements OnInit {
   setupDraggableOptions(optionObject: any, elements: HTMLCollectionOf<Element>) {
     optionObject.grid = 10;
     optionObject.onDrag = (element, xAbsolute, yAbsolute, event) => {
-      // console.log(`Updating element: ${element.id} - (${xAbsolute}, ${yAbsolute}`);
       let source = this.findMatchingSource(element, this.sources);
       let elements = document.getElementsByClassName('source');
       this.resetCanvas();
@@ -444,9 +438,6 @@ export class PageStashComponent implements OnInit {
       let parentY: number;
       if (currentSource.parent_id != null && currentSource.parent_id != '') {
         // Must not be a root source, retrieve the parent element
-        // let parentSource: Source = this.findSource(currentSource.parent_id, this.sources);
-        // console.log(parentSource)
-        // let parentElement: Element = this.findMatchingElement(parentSource, elements);
         let parentElement: Element;
         _.each(elements, element => {
           if (element.id === currentSource.parent_id) {

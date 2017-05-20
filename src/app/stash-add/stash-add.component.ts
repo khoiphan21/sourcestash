@@ -30,7 +30,6 @@ export class StashAddComponent implements OnInit {
     console.log(this.stashTitle, this.stashDescription);
     this.stashService.createStash(new Stash(this.stashTitle, this.stashDescription))
       .subscribe(response => {
-        console.log('successfully created a stash')
         // Emit event to tell parent to reload the stashes
         this.onCreated.emit();
       }, error => {

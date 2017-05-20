@@ -6,18 +6,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
+import * as _ from 'underscore';
+
 import { Account } from './classes/account';
 import { Deferred } from './classes/deferred';
 import { SERVER } from './classes/SERVER';
 import { AppResponse } from './classes/response';
+import { StashService } from './stash.service';
+import { Stash } from './classes/stash';
 
 @Injectable()
 export class CollaboratorService {
 
   constructor(
-    private http: Http
+    private http: Http,
+    private stashService: StashService
   ) {
-    this.getAllCollaborators('24039641').then(accounts => console.log(accounts));
   }
 
   /**
@@ -74,6 +78,45 @@ export class CollaboratorService {
       }
     }, error => {
         deferred.reject(error);
+    })
+
+    return deferred.promise;
+  }
+
+  addCollaborator(stash_id: string, collaborator_id: string): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+    
+    let collaboratorIDDictionary = {};
+
+    // First check if the collaborator is the owner of the stash
+    this.stashService.getStash(stash_id).then((stash: Stash) => {
+      if (stash.author_id === collaborator_id) {
+        deferred.reject('This user is already the owner of the stash.');
+      } else {
+        return this.getAllCollaborators(stash_id);
+      }
+    }).then((collaborators: Account[]) => {
+      _.each(collaborators, (collaborator: Account) => {
+        collaboratorIDDictionary[collaborator.user_id] = true;
+      });
+      // Now check if the collaborator already exists
+      if (collaboratorIDDictionary[collaborator_id] == true) {
+        deferred.reject('This user is already a collaborator!');
+      } else {
+        collaboratorIDDictionary[collaborator_id] = true;
+        // Get the array of collaborator ids
+        let collaboratorIDs = _.allKeys(collaboratorIDDictionary);
+        // Make call to API to update the list
+        return this.updateCollaboratorList(stash_id, collaboratorIDs)
+      }
+    }).then((response: AppResponse) => {
+      if (response.success) {
+        deferred.resolve(response);
+      } else {
+        deferred.reject(response);
+      }
+    }).catch(error => {
+      deferred.reject(error);
     })
 
     return deferred.promise;

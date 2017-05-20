@@ -96,8 +96,6 @@ export class StashService {
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    console.log('deleting stash');
-
     return this.http.post(
       SERVER + '/stash/delete',
       {
@@ -139,7 +137,6 @@ export class StashService {
     ).map(response => {
       // Attempt to convert the response to the array of stashes
       let stashes: Stash[] = response.json();
-      console.log(stashes);
 
       return stashes;
     }).catch(error => {
@@ -158,8 +155,6 @@ export class StashService {
     this.setupHeaderOptions(options);
 
     let user_id = this.accountService.getCurrentUser().user_id;
-
-    console.log(user_id);
 
     this.http.post(
       SERVER + '/stashes/shared/all',

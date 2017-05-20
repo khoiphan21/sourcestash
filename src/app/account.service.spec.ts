@@ -118,10 +118,7 @@ describe('AccountService', () => {
             }
           );
         }, error => {
-          service.deleteAccount('john5@example.com').subscribe(
-            response => console.log(response),
-            error => console.log(error)
-          );
+          service.deleteAccount('john5@example.com').subscribe();
           fail('error should not occur');
           done();
         }

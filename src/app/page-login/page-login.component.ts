@@ -30,8 +30,7 @@ export class PageLoginComponent implements OnInit {
   }
 
   login() {
-    console.log('Logging in with: ' + this.account.email + ' and ' + this.account.password);
-    this.service.login(this.account.email, this.account.password).subscribe(
+    this.service.login(this.account.email, this.account.password).then(
       (result: AppResponse) => {
         if (result.success) {
           this.router.navigate(['/home']);

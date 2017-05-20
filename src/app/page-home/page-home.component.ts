@@ -37,7 +37,6 @@ stashes: Stash[];
 
   onSignIn(user) {
     let profile = user.getBasicProfile();
-    console.log('User profile is: ' + profile.getId());
   }
 
   navigateToStash(stash_id: string) {

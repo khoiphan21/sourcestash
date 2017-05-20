@@ -65,7 +65,6 @@ describe('SourceService', () => {
         fail('error should have occurred');
         done();
       }).catch((error: AppResponse) => {
-        console.log(error);
         expect(error.error.status).toBe(400);
         done();
       })
@@ -98,7 +97,6 @@ describe('SourceService', () => {
         source.xPosition, source.yPosition, source.type, source.hyperlink,
         source.description, source.difficulty, source.tags
       ).then(databaseSource => {
-        console.log(databaseSource);
         // update the source id
         source.source_id = databaseSource.source_id;
         sourceCopy.source_id = databaseSource.source_id;
@@ -106,23 +104,19 @@ describe('SourceService', () => {
         expect(databaseSource).toBeTruthy();
 
         // Try to update the source
-        console.log('before updating source');
         return service.updateSource(sourceCopy);
       }).then((response: AppResponse) => {
         expect(response.success).toBeTruthy();
 
         // Now try to retrieve the source and check details
-        console.log('before attempting to get all sources');
         return service.getSourcesForStash(stash_id)
       }).then((sources: Source[]) => {
         _.each(sources, (databaseSource: Source) => {
           if (databaseSource.source_id === sourceCopy.source_id) {
-            console.log('matching source found');
             expect(databaseSource.description).toBe(sourceCopy.description);
           }
         });
         
-        console.log('before deleting source');
         return service.deleteSource(sourceCopy.source_id);
       }).then((response: AppResponse) => {
         expect(response.success).toBeTruthy();
@@ -166,7 +160,6 @@ describe('SourceService', () => {
           'tag 2'
         ]
       ).then(source => {
-        console.log(source);
         expect(source).toBeTruthy();
         expect(source.source_id).toBeTruthy();
 

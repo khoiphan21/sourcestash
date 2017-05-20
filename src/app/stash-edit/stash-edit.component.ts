@@ -79,7 +79,6 @@ export class StashEditComponent implements OnInit {
           this.stash.stash_id, collaboratorIds
         ).then(response => {
           if (response.success) {
-            console.log('Added a collaborator successfully!');
             this.accountService.getUserInformation(user_id).then(userAccount => {
               this.collaborators.push(userAccount);
             })
@@ -94,8 +93,6 @@ export class StashEditComponent implements OnInit {
           alert('Unknown error received.');
         })
       }
-
-      console.log(_.allKeys(collaboratorIdDictionary));
     }).catch(error => {
       alert('This user is not yet registered.');
     })
