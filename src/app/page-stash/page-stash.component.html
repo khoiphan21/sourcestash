@@ -27,7 +27,9 @@
             <section id="right-container-content">
                 <section id="right-container-stash" *ngIf="isStashtabClicked">
                     <article id="right-container-stash-title" *ngIf="stash">
-                        <span>{{stash.title}}</span><span (click)="onEditStash()">&#9998;</span>
+                        <span>{{stash.title}}</span><span (click)="onEditStash()">
+                            <img src="./assets/images/Edit2.png" width="30px" height="30px">
+                        </span>
                     </article>
                     <section id="right-container-stash-details">
                         <article id="stash-details-owner" *ngIf="owner">
@@ -66,18 +68,26 @@
                     </section>
 
                 </section>
-                <section id="right-container-comment" *ngIf="isCommenttabClicked">
-                    <article id="right-container-comment-title">
-                        Comment bar
+                <section id="right-container-source" *ngIf="isSourceTabClicked">
+                    <article id="right-container-source-title">
+                        source bar
+                    </article>
+                </section>
+                <section id="right-container-collaborate" *ngIf="isCollaborateTabClicked">
+                    <article id="right-container-collaborate-title">
+                        collaborate bar
                     </article>
                 </section>
 
                 <section id="right-container-sidebar">
                     <div id="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
-                        STH
+                        <img src="./assets/images/Stash2.png" width="30px" height="30px">
                     </div>
-                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('commentTab')">
-                        CMT
+                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('sourceTab')">
+                        <img src="./assets/images/Comments2.png" width="30px" height="30px">
+                    </div>
+                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('collaborateTab')">
+                        <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
                     </div>
                 </section>
             </section>

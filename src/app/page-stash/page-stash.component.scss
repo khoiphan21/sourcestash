@@ -130,11 +130,25 @@ div.wrapper {
                     }
                 }
             }
-            #right-container-comment {
+            #right-container-source {
                 border: 1px solid $theme-white;
                 border-bottom: none;
                 width: 17vw;
-                #right-container-comment-title {
+                #right-container-source-title {
+                    border-bottom: $theme-white solid 1px;
+                    font-size: 14pt;
+                    height: 5vh;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            #right-container-collaborate {
+                border: 1px solid $theme-white;
+                border-bottom: none;
+                width: 17vw;
+                #right-container-collaborate-title {
                     border-bottom: $theme-white solid 1px;
                     font-size: 14pt;
                     height: 5vh;
@@ -158,9 +172,6 @@ div.wrapper {
                     border-top: 1px solid $theme-white;
                     border-bottom: 1px solid $theme-white;
                     transition: 0.3s;
-                     :hover {
-                        background: white;
-                    }
                 }
                 #right-container-sidebar-commentbtn {
                     cursor: pointer;

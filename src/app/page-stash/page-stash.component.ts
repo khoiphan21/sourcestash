@@ -44,7 +44,8 @@ export class PageStashComponent implements OnInit {
 
   // Variables to control tab items display
   isStashtabClicked: boolean = true;
-  isCommenttabClicked: boolean = false;
+  isSourceTabClicked: boolean = false;
+  isCollaborateTabClicked: boolean = false;
 
   @ViewChild("canvas") canvas: ElementRef;
 
@@ -250,10 +251,16 @@ export class PageStashComponent implements OnInit {
   selectTab(tabName: string) {
     if (tabName == 'stashTab') {
       this.isStashtabClicked = true;
-      this.isCommenttabClicked = false;
-    } else if (tabName == 'commentTab') {
+      this.isSourceTabClicked = false;
+      this.isCollaborateTabClicked = false;
+    } else if (tabName == 'sourceTab') {
       this.isStashtabClicked = false;
-      this.isCommenttabClicked = true;
+      this.isSourceTabClicked = true;
+      this.isCollaborateTabClicked = false;
+    }  else if (tabName == 'collaborateTab') {
+      this.isStashtabClicked = false;
+      this.isSourceTabClicked = false;
+      this.isCollaborateTabClicked = true;
     }
   }
 
