@@ -71,7 +71,7 @@
                 }
                 li {
                     cursor: pointer;
-                    width: 7vw;
+                    width: 10vw;
                     text-align: right;
                 }
             }
@@ -150,9 +150,10 @@
                     ul{
                         padding: 0;
                         margin: 0;
-                        width: 100vw;
+                        width: 40vw;
                     }
                     li{
+                        text-align: left;
                         border: $theme-white solid 1px;
                         padding: 2vh 2vw ;
                     }

@@ -1,9 +1,11 @@
 @import '../sass/variables';
 @import '../sass/mixins';
+@import '../sass/globalStyles';
 // For the popup form
 #main-container {
     /* Modal Content */
     #main-container-content {
+        @include column-center;
         box-shadow: 1px 7px 30px $theme-dark-grey;
         border-radius: 10px;
         height: auto;
@@ -20,6 +22,7 @@
         }
         #main-container-content-heading {
             @include row-center();
+            width: 100%;
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
             justify-content: space-between;
@@ -40,6 +43,7 @@
             }
         }
         #main-container-content-detail {
+            width: 100%;
             padding: 1vh 2vw;
             .form-title-bold {
                 font-weight: bold;
@@ -79,20 +83,22 @@
             }
         }
         #create-source-button {
-            margin: auto;
-            border: darken($theme-grey, 10) solid 2px;
-            background: $theme-grey;
+            @include button-ss-light();
             margin-bottom: 1vh;
-            font-weight: bold;
-            font-size: 10pt;
-            width: 9vw;
-            text-align: center;
-            padding: 2vh 0;
-            @include transition-basic();
-            &:hover {
-                background: darken($theme-grey, 10);
-                border: $theme-grey solid 2px;
-            }
+            // margin: auto;
+            // border: darken($theme-grey, 10) solid 2px;
+            // background: $theme-grey;
+            // margin-bottom: 1vh;
+            // font-weight: bold;
+            // font-size: 10pt;
+            // width: 9vw;
+            // text-align: center;
+            // padding: 2vh 0;
+            // @include transition-basic();
+            // &:hover {
+            //     background: darken($theme-grey, 10);
+            //     border: $theme-grey solid 2px;
+            // }
         }
     }
 }

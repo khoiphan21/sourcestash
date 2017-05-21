@@ -39,8 +39,9 @@ section.all-modals {
         font-size: 16pt;
         font-weight: bold;
         color: $theme-dark-grey;
+        width: 62vw;
+        text-align: left;
         padding: 2vh 0;
-        margin-bottom: 2vh;
     }
     .main-container-stashes {
         width: 62vw;
@@ -86,27 +87,30 @@ section.all-modals {
         text-align: center;
         overflow-x: hidden;
         .main-container-title {
-            margin-top: 2vh; // text-shadow: 1px 7px 30px $theme-dark-grey;
             font-size: 16pt;
             font-weight: bold;
+            width: 80vw;
+            text-align: left;
             color: $theme-dark-grey;
             padding: 2vh 0;
-            margin-bottom: 2vh;
         }
         .main-container-stashes {
-            padding: 2vh 0;
             width: 80vw;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
             .main-container-stashes-content {
-                // margin: 2vh 0 2vh 0; 
+                width: 47%;
+                margin-bottom: 5vh;
+                app-stash {
+                    width: 100%;
+                }
             }
         }
         .main-container-createstash {
             position: fixed;
-            top: 9vh;
-            right: 5vw;
+            top: 4vh;
+            right: 1vw;
             width: 10vw;
             padding: 4vh 0;
             display: flex;
@@ -136,12 +140,12 @@ section.all-modals {
         justify-content: center;
         text-align: center; // overflow-y: scroll;
         .main-container-title {
-            margin-top: 2vh; // text-shadow: 1px 7px 30px $theme-dark-grey;
             font-size: 16pt;
             font-weight: bold;
             color: $theme-dark-grey;
+            width: 80vw;
+            text-align: left;
             padding: 2vh 0;
-            margin-bottom: 2vh;
         }
         .main-container-stashes {
             @include column-center();
@@ -156,8 +160,8 @@ section.all-modals {
         }
         .main-container-createstash {
             position: fixed;
-            right: 8vw;
-            top: 7vh;
+            right: 2vw;
+            top: 4vh;
             width: 10vw;
             padding: 4vh 0;
             display: flex;

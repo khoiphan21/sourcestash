@@ -3,6 +3,8 @@
 #main-container {
     overflow: hidden;
     border-radius: 10px;
+    height: 100%;
+    padding: 2vh 0;
     background: $theme-dark-grey;
     border: solid 2px $theme-light-blue;
     color: $theme-white;
@@ -14,7 +16,7 @@
         font-size: 14pt;
         font-weight: bold;
         color: $theme-orange;
-        padding: 1vh 0;
+        padding: 0 0 1vh 0;
     }
     #stash-sources {
         padding: 1vh 0;
@@ -40,8 +42,8 @@
 @include media(small-screen) {
     #main-container {
         overflow: hidden;
-        width: 35vw;
-        height: 26vh;
+        height: 100%;
+        padding: 2vh 0;
         border-radius: 10px;
         background: $theme-dark-grey;
         border: solid 2px $theme-light-blue;
@@ -55,7 +57,7 @@
             font-size: 14pt;
             font-weight: bold;
             color: $theme-orange;
-            padding: 1vh 0;
+            padding: 0 0 1vh 0;
         }
         #stash-sources {
             padding: 1vh 0;
@@ -81,14 +83,14 @@
 @include media(mobile-screen) {
     #main-container {
         overflow: hidden;
-        width: 60vw;
-        height: 26vh;
+        height: 100%;
+        width: 100%;
+        padding: 2vh 0;
         border-radius: 10px;
         background: $theme-dark-grey;
         border: solid 2px $theme-light-blue;
         color: $theme-white;
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        margin-bottom: 3vh;
         // flex: 1;
         #stash-title {
             cursor: pointer;
@@ -97,7 +99,7 @@
             font-size: 14pt;
             font-weight: bold;
             color: $theme-orange;
-            padding: 1vh 0;
+            padding: 0 0 1vh 0;
         }
         #stash-sources {
             padding: 1vh 0;
@@ -106,9 +108,9 @@
             display: flex;
             justify-content: flex-start;
             color: $theme-white;
-            padding: 1vh 1vw 0 1vw;
+            padding: 1vh 2vw 0 2vw;
             .ratescore {
-                padding: 0 1vw;
+                padding: 0 2vw;
             }
         }
     }

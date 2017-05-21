@@ -1,72 +1,82 @@
 <app-header></app-header>
 
-<section id="main-container">
-    <section id="top-container">
-        <section id="top-container-content">
-            <article id="top-container-content-left">
-                <div id="top-container-content-left-img">
+<section class="main-container">
+    <section class="top-container">
+        <section class="top-container-content">
+            <article class="top-container-content-left">
+                <div class="top-container-content-left-img">
                     Profile pic
                 </div>
             </article>
-            <article id="top-container-content-right">
+            <article class="top-container-content-right">
                 <h1> John Doe</h1>
-                <section id="top-container-content-right-tab">
-                    <section id="top-container-content-right-tab-content">
-                        <section id="top-container-content-right-tab-content-profile" (click)="clickTab('clickProfile')">
-                            Profile
-                        </section>
-                        <article id="top-container-content-right-tab-content-stashes" (click)="clickTab('clickStash')">
-                            Stashes
-                        </article>
-                        <article id="top-container-content-right-tab-content-settings" (click)="clickTab('clickSetting')">
-                            Settings
-                        </article>
+                <section class="top-container-content-right-tab">
+                    <section class="top-container-content-right-tab-profile" (click)="clickTab('clickProfile')">
+                        Profile
                     </section>
+                    <article class="top-container-content-right-tab-stashes" (click)="clickTab('clickStash')">
+                        Stashes
+                    </article>
+                    <!--<article class="top-container-content-right-tab-settings" (click)="clickTab('clickSetting')">
+                        Settings
+                    </article>-->
                 </section>
             </article>
         </section>
     </section>
 
-    <section id="bottom-container">
-        <section id="bottom-container-content">
-            <section id="bottom-container-content-detail">
-                <article id="bottom-container-content-detail-profile" *ngIf="isProfileClicked">
-                    <!--need to change the id name-->
-                    <article id="top-container-content-right-details" *ngIf="userAccount">
+    <section class="bottom-container">
+        <section class="bottom-container-detail">
+            <section class="bottom-container-detail-profile" *ngIf="isProfileClicked">
+                <!--need to change the class name-->
+                <section class="bottom-container-detail-profile-data" *ngIf="userAccount">
+                    <section class="bottom-container-detail-profile-data-left">
                         <ul>
                             <li>
-                                <span class="bold">Username:</span>
-                                <p>
-                                    {{userAccount.username}}
+                                <ul class="data">
+                                    <li><span>Stashes:</span></li>
+                                    <li><span>3</span></li>
+                                </ul>
                             </li>
                             <li>
-                                <span class="bold">University:</span>
-                                <p>
-                                    {{userAccount.username}}
+                                <ul class="data">
+                                    <li><span>Likes:</span></li>
+                                    <li><span>10</span></li>
+                                </ul>
                             </li>
                             <li>
-                                <span class="bold">Bachelor:</span>
-                                <p>
-                                    {{userAccount.username}}
+                                <ul class="data">
+                                    <li><span>Collaborators:</span></li>
+                                    <li><span>30</span></li>
+                                </ul>
                             </li>
                         </ul>
-                    </article>
-                </article>
-                <article id="bottom-container-content-detail-stashes" *ngIf="isStashesClicked">
-                    stashes
-                </article>
-                <article id="bottom-container-content-detail-settings" *ngIf="isSettingsClicked">
-                    settings
-                </article>
+                    </section>
+
+                    <section class="bottom-container-detail-profile-data-right">
+                        <ul>
+                            <li>
+                                <p>
+                                <span>University:</span><br>
+                                <span class="bold">JohnDoe Uni {{userAccount.username}}</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                <span>Studying:</span><br>
+                                <span class="bold">JohnDoe Bachelor {{userAccount.username}}</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
             </section>
-            <!--<my-tabs [tabs]="tabs">
-                <my-tab [selected]="true" [tabsArray]="tabs" [tabTitle]="'Stashes'">
-                    <app-stash [stash]="stash"></app-stash>
-                </my-tab>
-                <my-tab [tabsArray]="tabs" tabTitle="Settings">
-                    Content 2
-                </my-tab>
-            </my-tabs>-->
+            <article class="bottom-container-detail-stashes" *ngIf="isStashesClicked">
+                stashes
+            </article>
+            <!--<article class="bottom-container-detail-settings" *ngIf="isSettingsClicked">
+                settings
+            </article>-->
         </section>
     </section>
 </section>
