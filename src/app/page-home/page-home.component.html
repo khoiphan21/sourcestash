@@ -9,28 +9,31 @@
     </section>
 
     <section class="main-container">
-        <article class="main-container-title">
-            My Stashes
-        </article>
-        <section class="main-container-stashes">
-            <section class="main-container-stashes-content" *ngFor="let stash of stashes">
-                <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
-            </section>
-        </section>
-        <section class="main-container-stashes" *ngIf="sharedStashes">
+        <section class="main-container-content">
             <article class="main-container-title">
-                Shared With Me
+                My Stashes
             </article>
             <section class="main-container-stashes">
-                <section class="main-container-stashes-content" *ngFor="let stash of sharedStashes">
+                <section class="main-container-stashes-content" *ngFor="let stash of stashes">
                     <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
                 </section>
             </section>
+            <section class="main-container-stashes" *ngIf="sharedStashes">
+                <article class="main-container-title">
+                    Shared With Me
+                </article>
+                <section class="main-container-stashes">
+                    <section class="main-container-stashes-content" *ngFor="let stash of sharedStashes">
+                        <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
+                    </section>
+                </section>
+            </section>
+            <article class="main-container-createstash">
+                <button class="createstash-btn" (click)="showModal('addStash')">Create Stash</button>
+                <button class="createstash-btn-mobile" (click)="showModal('addStash')"><span>&#10010;</span></button>
+            </article>
         </section>
-        <article class="main-container-createstash">
-            <button class="createstash-btn" (click)="showModal('addStash')">Create Stash</button>
-            <button class="createstash-btn-mobile" (click)="showModal('addStash')"><span>&#10010;</span></button>
-        </article>
+
     </section>
 
     <app-footer></app-footer>

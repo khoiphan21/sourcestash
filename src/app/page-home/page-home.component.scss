@@ -31,28 +31,31 @@ section.all-modals {
 }
 
 .main-container {
-    @include column-center();
+    min-height: 86vh;
     margin-top: 7vh;
     position: relative;
     width: 100vw;
-    .main-container-title {
+    .main-container-content{
+        @include column-center();
+        .main-container-title {
         font-size: 16pt;
         font-weight: bold;
         color: $theme-dark-grey;
         width: 62vw;
         text-align: left;
         padding: 2vh 0;
-    }
-    .main-container-stashes {
-        width: 62vw;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        .main-container-stashes-content {
-            width: 47%;
-            margin-bottom: 5vh;
-            app-stash {
-                width: 100%;
+        }
+        .main-container-stashes {
+            width: 62vw;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .main-container-stashes-content {
+                width: 47%;
+                margin-bottom: 5vh;
+                app-stash {
+                    width: 100%;
+                }
             }
         }
     }
@@ -82,31 +85,32 @@ section.all-modals {
 @include media(small-screen) {
     .main-container {
         width: 100vw;
-        display: flex;
-        justify-content: center;
-        text-align: center;
         overflow-x: hidden;
-        .main-container-title {
+        .main-container-content{
+            @include column-center();
+            .main-container-title {
             font-size: 16pt;
             font-weight: bold;
             width: 80vw;
             text-align: left;
             color: $theme-dark-grey;
             padding: 2vh 0;
-        }
-        .main-container-stashes {
-            width: 80vw;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            .main-container-stashes-content {
-                width: 47%;
-                margin-bottom: 5vh;
-                app-stash {
-                    width: 100%;
+            }
+            .main-container-stashes {
+                width: 80vw;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                .main-container-stashes-content {
+                    width: 47%;
+                    margin-bottom: 5vh;
+                    app-stash {
+                        width: 100%;
+                    }
                 }
             }
         }
+        
         .main-container-createstash {
             position: fixed;
             top: 4vh;
@@ -136,28 +140,29 @@ section.all-modals {
 @include media(mobile-screen) {
     .main-container {
         width: 100vw;
-        display: flex;
-        justify-content: center;
-        text-align: center; // overflow-y: scroll;
-        .main-container-title {
+        .main-container-content{
+            @include column-center();
+            .main-container-title {
             font-size: 16pt;
             font-weight: bold;
             color: $theme-dark-grey;
             width: 80vw;
             text-align: left;
             padding: 2vh 0;
-        }
-        .main-container-stashes {
-            @include column-center();
-            width: 80vw;
-            .main-container-stashes-content {
+            }
+            .main-container-stashes {
                 @include column-center();
-                width: 100%;
-                app-stash {
+                width: 80vw;
+                .main-container-stashes-content {
                     @include column-center();
+                    width: 100%;
+                    app-stash {
+                        @include column-center();
+                    }
                 }
             }
         }
+        
         .main-container-createstash {
             position: fixed;
             right: 2vw;

@@ -1,6 +1,18 @@
 @import '../sass/variables';
 @import '../sass/mixins';
 
+section.all-modals {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    @include column-center();
+}
+
 #header {
     background: $header-bg;
     height: $header-height;
@@ -92,6 +104,10 @@
 //
 // mobile version
 @include media(mobile-screen) {
+    section.all-modals{
+        display: flex;
+    }
+
     #header{
         z-index: 100;
         background: $header-bg;
@@ -128,6 +144,7 @@
             }
             #header-mobile-right{
                 display: block;
+                z-index: 100;
                 #header-mobile-right-btn{
                     background: $theme-dark-grey;
                     height: 7vh;

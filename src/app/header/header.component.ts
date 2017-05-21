@@ -9,6 +9,7 @@ import { AccountService } from '../account.service';
 export class HeaderComponent implements OnInit {
 
   isDropdown: boolean = false;
+  isModalShown: boolean = false;
 
   constructor(
     private accountService: AccountService
@@ -22,7 +23,21 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleDropdown(){
-    // how to use the ? again 
     this.isDropdown = this.isDropdown ? false : true;
+    if (this.isDropdown = true){
+      this.isModalShown = true;
+    } else{
+      this.isModalShown = false;
+    }
+  }
+
+  hideModal() {
+    this.isModalShown = false;
+    this.hideAllModals();
+  }
+
+  hideAllModals(){
+    this.isModalShown = false;
+    this.isDropdown = false;
   }
 }

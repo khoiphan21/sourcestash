@@ -1,3 +1,6 @@
+<section class="all-modals" (click)="hideModal()" *ngIf="isModalShown">
+</section>
+
 <section id="header">
     <section id="header-content">
         <section id="header-left">
@@ -20,9 +23,15 @@
             <button id="header-mobile-right-btn" (click)="toggleDropdown()">&#9776;</button>
             <section id="header-mobile-right-content" *ngIf="isDropdown">
                 <ul>
-                   <a routerLink="/home"> <li>Home</li></a>
-                   <a routerLink="/profilepage"><li>Profile</li></a>
-                   <a routerLink="/welcome" (click)="logout()"> <li>Logout</li></a>
+                    <a routerLink="/home">
+                        <li>Home</li>
+                    </a>
+                    <a routerLink="/profilepage">
+                        <li>Profile</li>
+                    </a>
+                    <a routerLink="/welcome" (click)="logout()">
+                        <li>Logout</li>
+                    </a>
                 </ul>
             </section>
         </section>

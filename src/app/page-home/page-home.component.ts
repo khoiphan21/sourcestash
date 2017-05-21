@@ -23,6 +23,7 @@ export class PageHomeComponent implements OnInit {
   // Variables to control modal items display
   isModalShown: boolean = false;
   isAddStashShown: boolean = false;
+  isMenuShown: boolean = false;
 
   constructor(
     private stashService: StashService,
@@ -67,9 +68,12 @@ export class PageHomeComponent implements OnInit {
     // Then selectively show the modals
     if (modalType == 'addStash') {
       this.isAddStashShown = true;
-    } 
+    } else if (modalType == 'clickMenu'){
+      this.isMenuShown = true;
+    }
   }
   hideAllModals() {
     this.isAddStashShown = false;
+    this.isMenuShown = false;
   }
 }

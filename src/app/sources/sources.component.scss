@@ -1,11 +1,12 @@
 @import '../sass/variables.scss';
 @import '../sass/mixins.scss';
 
-#source{
+.source{
     width: 12vh;
     height: 12vh;
     padding: 1vh 1vw;
     border-radius: 10px;
+    text-align: center;
     display: flex; 
     justify-content: space-around;
     align-items: center;
@@ -13,4 +14,10 @@
     box-shadow: 1px 7px 30px $theme-light-blue;
     color: $theme-white;
     border: $theme-white solid 1px;
+}
+
+// 
+// mobile screen
+@include media(mobile-screen){
+    background: black;
 }
