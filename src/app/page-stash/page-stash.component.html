@@ -6,18 +6,21 @@
     <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
         <section class="content" (click)="$event.stopPropagation()">
             <!--For sources-->
-            <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
+            <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)"
+                (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
             </app-source-view>
             <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-source-add>
             <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
             <!--For stashes-->
-            <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
+            <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()"
+                (onClose)="hideModal()"></app-stash-edit>
         </section>
     </section>
 
     <section class="main-container">
         <section id="left-container">
-            <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
+            <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
+                class="source">
                 <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
             </article>
         </section>
@@ -51,6 +54,14 @@
                                 <span class="lastname">{{collaborator.lastname}}</span>
                             </p>
                         </article>
+                    </section>
+                    <section class="right-container-stash-chat">
+                        <article class="right-container-stash-chat-title">
+                            Chatroom
+                        </article>
+                        <section class="right-container-stash-chatroom">
+                            Coming Soon
+                        </section>
                     </section>
                 </section>
                 <section class="right-container-source" *ngIf="isSourceTabClicked">

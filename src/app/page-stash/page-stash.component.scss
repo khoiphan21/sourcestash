@@ -118,6 +118,7 @@ div.wrapper {
                     // }
                 }
                 .right-container-stash-details {
+                    height: 35%;
                     article {
                         h2 {
                             font-size: 15px;
@@ -126,6 +127,28 @@ div.wrapper {
                         p {
                             margin: 10px 40px;
                         }
+                    }
+                }
+                .right-container-stash-chat{
+                    height: 55%;
+                    .right-container-stash-chat-title{
+                        background: $theme-dark-grey;
+                        font-size: 14pt;
+                        height: 10%;
+                        font-weight: bold;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 2vw;
+                        border-bottom: white solid 1px;
+                        border-top: white solid 1px;
+                    }
+                    .right-container-stash-chatroom{
+                        height: 90%;
+                        font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }
@@ -554,6 +577,27 @@ div.wrapper {
                             p {
                                 margin: 10px 40px;
                             }
+                        }
+                    }
+                    .right-container-stash-chat{
+                        height: 48%;
+                        .right-container-stash-chat-title{
+                            background: $theme-dark-grey;
+                            font-size: 14pt;
+                            height: 5vh;
+                            font-weight: bold;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 0 2vw;
+                            border-bottom: white solid 1px;
+                            border-top: white solid 1px;
+                        }
+                        .right-container-stash-chatroom{
+                            font-weight: bold;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
                     }
                 }
