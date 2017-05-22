@@ -26,7 +26,7 @@ div.wrapper {
     }
 }
 
-#main-container {
+.main-container {
     position: relative;
     z-index: -1;
     width: 100vw;
@@ -39,7 +39,7 @@ div.wrapper {
         height: 90vh;
         text-align: center;
         display: block;
-        #popups {
+        .popups {
             display: none;
         }
         canvas {
@@ -66,19 +66,19 @@ div.wrapper {
             // top: 45% !important;
         }
     }
-    #right-container {
+    .right-container {
         background: $theme-dark-grey;
         color: $theme-white;
         width: 20vw;
         height: 86vh;
         z-index: 2;
-        #right-container-content {
+        .right-container-content {
             display: flex;
-            #right-container-stash {
+            .right-container-stash {
                 border: 1px solid $theme-white;
                 border-bottom: none;
                 width: 17vw; // A list of sources and stashes
-                #right-container-stash-title {
+                .right-container-stash-title {
                     font-size: 14pt;
                     height: 5vh;
                     font-weight: bold;
@@ -98,7 +98,7 @@ div.wrapper {
                         }
                     }
                 }
-                #right-container-stash-details {
+                .right-container-stash-details {
                     article {
                         h2 {
                             font-size: 17px;
@@ -109,7 +109,7 @@ div.wrapper {
                         }
                     }
                 }
-                #right-container-stash-subheader {
+                .right-container-stash-subheader {
                     font-size: 12pt;
                     color: black;
                     display: block;
@@ -120,7 +120,7 @@ div.wrapper {
                     background-color: #fff;
                     border-bottom: 1px solid #ddd;
                 }
-                #right-container-stash-content {
+                .right-container-stash-content {
                     font-size: 10pt;
                     overflow: hidden;
                     padding: 0 2vw;
@@ -130,11 +130,11 @@ div.wrapper {
                     }
                 }
             }
-            #right-container-source {
+            .right-container-source {
                 border: 1px solid $theme-white;
                 border-bottom: none;
                 width: 17vw;
-                #right-container-source-title {
+                .right-container-source-title {
                     border-bottom: $theme-white solid 1px;
                     font-size: 14pt;
                     height: 5vh;
@@ -144,11 +144,11 @@ div.wrapper {
                     align-items: center;
                 }
             }
-            #right-container-collaborate {
+            .right-container-collaborate {
                 border: 1px solid $theme-white;
                 border-bottom: none;
                 width: 17vw;
-                #right-container-collaborate-title {
+                .right-container-collaborate-title {
                     border-bottom: $theme-white solid 1px;
                     font-size: 14pt;
                     height: 5vh;
@@ -158,12 +158,12 @@ div.wrapper {
                     align-items: center;
                 }
             }
-            #right-container-sidebar {
+            .right-container-sidebar {
                 width: 3vw;
                 height: 86vh;
                 background: $theme-dark-grey;
                 color: $theme-white;
-                #right-container-sidebar-stashbtn {
+                .right-container-sidebar-stashbtn {
                     cursor: pointer;
                     display: flex;
                     justify-content: center;
@@ -173,7 +173,7 @@ div.wrapper {
                     border-bottom: 1px solid $theme-white;
                     transition: 0.3s;
                 }
-                #right-container-sidebar-commentbtn {
+                .right-container-sidebar-commentbtn {
                     cursor: pointer;
                     transition: 0.3s;
                     display: flex;
@@ -184,10 +184,10 @@ div.wrapper {
                 }
             }
         } // A container containing buttons for creating sources and stashes
-        #bottom {
+        .bottom {
             position: absolute;
             bottom: 1vh;
-            #addSource {
+            .addSource {
                 background: black;
             }
         }

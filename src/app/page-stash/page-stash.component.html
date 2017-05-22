@@ -15,7 +15,7 @@
         </section>
     </section>
 
-    <section id="main-container">
+    <section class="main-container">
         <section id="left-container">
             <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition" class="source">
                 <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
@@ -23,19 +23,19 @@
         </section>
 
         <!--For the list containing the stashes and sources-->
-        <section id="right-container">
-            <section id="right-container-content">
-                <section id="right-container-stash" *ngIf="isStashtabClicked">
-                    <article id="right-container-stash-title" *ngIf="stash">
+        <section class="right-container">
+            <section class="right-container-content">
+                <section class="right-container-stash" *ngIf="isStashtabClicked">
+                    <article class="right-container-stash-title" *ngIf="stash">
                         <span>{{stash.title}}</span><span (click)="onEditStash()">
                             <img src="./assets/images/Edit2.png" width="30px" height="30px">
                         </span>
                     </article>
-                    <section id="right-container-stash-details">
-                        <article id="stash-details-owner" *ngIf="owner">
+                    <section class="right-container-stash-details">
+                        <article class="stash-details-owner" *ngIf="owner">
                             <h2>Owner: {{owner.firstname}} {{owner.lastname}}</h2>
                         </article>
-                        <article id="stash-details-collaborators" *ngIf="collaborators">
+                        <article class="stash-details-collaborators" *ngIf="collaborators">
                             <h2>Collaborators: {{collaborators.length}}</h2>
                             <p *ngFor="let collaborator of collaborators">
                                 <span class="firstname">{{collaborator.firstname}}</span>
@@ -47,46 +47,40 @@
                     <section>
                         <collapsible-list style="margin: 0" [type]="'expandable'">
 
-                            <collapsible-list-item>
-                                <collapsible-header id="right-container-stash-subheader">
-                                    Item #1
+                            <collapsible-list-item *ngFor="let source of sources">
+                                <collapsible-header class="right-container-stash-subheader">
+                                    {{source.title}}
                                 </collapsible-header>
                                 <!--collapsible-body can be multiple using ngFor-->
-                                <collapsible-body [expanded]="false" id="right-container-stash-content">
-                                    <p>Item #1 Body</p>
+                                <collapsible-body [expanded]="false" class="right-container-stash-content">
+                                    <p>Link: {{source.hyperlink}}</p>
+                                    <p>Description: {{source.description}}</p>
                                 </collapsible-body>
                             </collapsible-list-item>
-                            <collapsible-list-item>
-                                <collapsible-header id="right-container-stash-subheader">
-                                    Item #2
-                                </collapsible-header>
-                                <collapsible-body [expanded]="false" id="right-container-stash-content">
-                                    <p>Item #2 Body</p>
-                                </collapsible-body>
-                            </collapsible-list-item>
+
                         </collapsible-list>
                     </section>
 
                 </section>
-                <section id="right-container-source" *ngIf="isSourceTabClicked">
-                    <article id="right-container-source-title">
+                <section class="right-container-source" *ngIf="isSourceTabClicked">
+                    <article class="right-container-source-title">
                         source bar
                     </article>
                 </section>
-                <section id="right-container-collaborate" *ngIf="isCollaborateTabClicked">
-                    <article id="right-container-collaborate-title">
+                <section class="right-container-collaborate" *ngIf="isCollaborateTabClicked">
+                    <article class="right-container-collaborate-title">
                         collaborate bar
                     </article>
                 </section>
 
-                <section id="right-container-sidebar">
-                    <div id="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
+                <section class="right-container-sidebar">
+                    <div class="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
                         <img src="./assets/images/Stash2.png" width="30px" height="30px">
                     </div>
-                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('sourceTab')">
+                    <div class="right-container-sidebar-commentbtn" (click)="selectTab('sourceTab')">
                         <img src="./assets/images/Comments2.png" width="30px" height="30px">
                     </div>
-                    <div id="right-container-sidebar-commentbtn" (click)="selectTab('collaborateTab')">
+                    <div class="right-container-sidebar-commentbtn" (click)="selectTab('collaborateTab')">
                         <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
                     </div>
                 </section>
