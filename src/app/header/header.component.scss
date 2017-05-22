@@ -32,15 +32,21 @@ section.all-modals {
             font-size: 16pt;
         }
         #header-right {
-            ul {
-                margin: 0px;
-                list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a{
+                padding: 0 3vw;
+                height: 7vh;
                 display: flex;
-            }
-            li {
-                cursor: pointer;
-                width: 7vw;
-                text-align: right;
+                align-items: center;
+                transition: 0.3s;
+                &:focus{
+                    background: lighten($theme-dark-grey, 10);
+                }
+                &:hover{
+                    background: lighten($theme-dark-grey, 10);
+                }
             }
         }
        #header-mobile-right{
