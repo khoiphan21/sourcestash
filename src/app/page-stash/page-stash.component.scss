@@ -72,36 +72,47 @@ div.wrapper {
         width: 20vw;
         height: 86vh;
         z-index: 2;
+        .bold{
+            font-weight: bold;
+            color: $theme-grey;
+        }
         .right-container-content {
             display: flex;
             .right-container-stash {
                 border: 1px solid $theme-white;
-                border-bottom: none;
                 width: 17vw; // A list of sources and stashes
+                background: lighten($theme-dark-grey, 10);
                 .right-container-stash-title {
+                    background: $theme-dark-grey;
                     font-size: 14pt;
                     height: 5vh;
                     font-weight: bold;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    span {
-                        margin: 10px 20px;
-                        &:last-child {
-                            padding: 0 5px;
-                            margin: 0 20px 0 0;
-                            border: 1px solid rgba(0, 0, 0, 0);
-                            &:hover {
-                                border-color: rgba(255, 255, 255, 0.6);
-                                cursor: pointer;
-                            }
+                    padding: 0 2vw;
+                    border-bottom: white solid 1px;
+                    img{
+                        cursor: pointer;
+                        &:hover {
+                            border-color: rgba(255, 255, 255, 0.6);
+                            cursor: pointer;
                         }
                     }
+                    // span {
+                    //     margin: 10px 20px;
+                    //     &:last-child {
+                    //         padding: 0 5px;
+                    //         margin: 0 20px 0 0;
+                    //         border: 1px solid rgba(0, 0, 0, 0);
+                    //         
+                    //     }
+                    // }
                 }
                 .right-container-stash-details {
                     article {
                         h2 {
-                            font-size: 17px;
+                            font-size: 15px;
                             margin: 20px;
                         }
                         p {
@@ -109,52 +120,59 @@ div.wrapper {
                         }
                     }
                 }
-                .right-container-stash-subheader {
-                    font-size: 12pt;
-                    color: black;
-                    display: block;
-                    cursor: pointer;
-                    min-height: 1vh;
-                    line-height: 1vh;
-                    padding: 1vh 1vw;
-                    background-color: #fff;
-                    border-bottom: 1px solid #ddd;
-                }
-                .right-container-stash-content {
-                    font-size: 10pt;
-                    overflow: hidden;
+            }
+            .right-container-source {
+                background: lighten($theme-dark-grey,10);
+                border: 1px solid $theme-white;
+                width: 17vw;
+                .right-container-source-title {
+                    background: $theme-dark-grey;
+                    border-bottom: $theme-white solid 1px;
+                    font-size: 14pt;
+                    height: 5vh;
+                    font-weight: bold;
+                    display: flex;
                     padding: 0 2vw;
-                    p {
-                        margin: 0;
-                        padding: 1vh 0;
+                    align-items: center;
+                }
+                .right-container-source-list{
+                    .right-container-stash-subheader {
+                        display: flex;
+                        justify-content: flex-start;
+                        overflow: hidden;
+                        align-items: center;
+                        font-size: 10pt;
+                        color: black;
+                        display: block;
+                        cursor: pointer;
+                        height: 1vh;
+                        background-color: #fff;
+                        border-bottom: 1px solid #ddd;
+                        padding: 0 2vw;
+                    }
+                    .right-container-stash-content {
+                        font-size: 10pt;
+                        overflow: hidden;
+                        padding: 0 2vw;
+                        p {
+                            margin: 0;
+                            padding: 1vh 0;
+                        }
                     }
                 }
             }
-            .right-container-source {
-                border: 1px solid $theme-white;
-                border-bottom: none;
-                width: 17vw;
-                .right-container-source-title {
-                    border-bottom: $theme-white solid 1px;
-                    font-size: 14pt;
-                    height: 5vh;
-                    font-weight: bold;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
             .right-container-collaborate {
+                background: lighten($theme-dark-grey,10);
                 border: 1px solid $theme-white;
-                border-bottom: none;
                 width: 17vw;
                 .right-container-collaborate-title {
+                    background: $theme-dark-grey;
                     border-bottom: $theme-white solid 1px;
                     font-size: 14pt;
                     height: 5vh;
                     font-weight: bold;
                     display: flex;
-                    justify-content: center;
+                    padding: 0 2vw;
                     align-items: center;
                 }
             }
@@ -163,6 +181,7 @@ div.wrapper {
                 height: 86vh;
                 background: $theme-dark-grey;
                 color: $theme-white;
+                border: white solid 1px;
                 .right-container-sidebar-stashbtn {
                     cursor: pointer;
                     display: flex;
@@ -172,6 +191,9 @@ div.wrapper {
                     border-top: 1px solid $theme-white;
                     border-bottom: 1px solid $theme-white;
                     transition: 0.3s;
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                    }
                 }
                 .right-container-sidebar-commentbtn {
                     cursor: pointer;
@@ -181,6 +203,21 @@ div.wrapper {
                     align-items: center;
                     height: 6vh;
                     border-bottom: 1px solid $theme-white;
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                    }
+                }
+                .right-container-sidebar-collaboratebtn{
+                    cursor: pointer;
+                    transition: 0.3s;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 6vh;
+                    border-bottom: 1px solid $theme-white;
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                    }
                 }
             }
         } // A container containing buttons for creating sources and stashes
