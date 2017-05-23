@@ -272,6 +272,9 @@ export class AccountService {
 
       // clear localStorage
       localStorage.setItem(LOCAL_STORAGE_KEY, null);
+
+      // Officially signout from google
+      this.googleApi.logout();
     }
   }
 

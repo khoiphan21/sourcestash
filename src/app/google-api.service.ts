@@ -40,23 +40,39 @@ export class GoogleApiService {
     globalHttp = http;
     globalGoogleApiService = this;
 
-    // Setup the deferred object
-    globalLoginPromise = new Deferred<Account>();
+    
   }
 
   registerAccountService(service: AccountService) {
     this.accountService = service;
   }
 
+  logout() {
+    gapi.client.init({
+      // Initialize the client with API key and People API, and initialize OAuth with an
+      // OAuth 2.0 client ID and scopes (space delimited string) to request access.
+      apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+      discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+      clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+      scope: 'https://www.googleapis.com/auth/plus.me'
+    }).then(() => {
+      gapi.auth2.getAuthInstance().signOut();
+
+    })
+  }
+
   login(): Promise<Account> {
     // Try using google api
     gapi.load('client', start);
+    // Setup the deferred object
+    globalLoginPromise = new Deferred<Account>();
 
     return globalLoginPromise.promise;
 
 
 
     function updateSigninStatus(isSignedIn) {
+
       // When signin status changes, this function is called.
       // If the signin status is changed to signedIn, we make an API call.
       if (isSignedIn) {
@@ -76,15 +92,19 @@ export class GoogleApiService {
         // Get the Oauth2 Client
         var GoogleAuth = gapi.auth2.getAuthInstance();
 
+        // Signout first
+        GoogleAuth.signOut();
+
         // Listen for sign-in state changes.
         GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
-        // Call the Authorization server
-        GoogleAuth.signIn();
-
         // Handle the initial sign-in state.
-        if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
+        if (GoogleAuth.isSignedIn.get()) {
+          console.log('googleauth.issignedin is true');
           makeApiCall();
+        } else {
+          // Call the Authorization server
+          GoogleAuth.signIn();
         }
       })
     }
