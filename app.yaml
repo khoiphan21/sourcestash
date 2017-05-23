@@ -6,10 +6,12 @@ threadsafe: yes
 handlers:
 
 - url: /(.*\.(gif|png|jpg|css|js)(|\.map))$
+  secure: always
   static_files: dist/\1
   upload: dist/(.*)(|\.map)
 
 - url: /(.*)
+  secure: always
   static_files: dist/index.html
   upload: dist/index.html
 
