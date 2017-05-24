@@ -2,6 +2,7 @@
 @import '../sass/mixins';
 
 section.all-modals {
+    overflow: hidden;
     display: none;
     position: fixed;
     z-index: 10;
@@ -35,8 +36,8 @@ section.all-modals {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            a{
-                padding: 0 3vw;
+            #header-right-home{
+                padding: 0 2vw;
                 height: 7vh;
                 display: flex;
                 align-items: center;
@@ -48,6 +49,48 @@ section.all-modals {
                     background: lighten($theme-dark-grey, 10);
                 }
             }
+            #header-right-profile{
+                padding: 0 3vw;
+                height: 7vh;
+                display: flex;
+                align-items: center;
+            }
+            .header-right-dropdown-container{
+                #header-right-logout{
+                    padding: 0 1vw;
+                    height: 7vh;
+                    display: flex;
+                    align-items: center;
+                    transition: 0.3s;
+                    &:focus{
+                        background: lighten($theme-dark-grey, 10);
+                    }
+                    &:hover{
+                        background: lighten($theme-dark-grey, 10);
+                    }
+                }
+                .header-right-profile-dropdown{
+                    position: absolute;
+                    background: $theme-dark-grey;
+                    color: $theme-white;
+                    z-index: 101;
+                    ul{
+                        padding: 0;
+                        margin: 0;
+                        width: 20vw;
+                    }
+                    li{
+                        text-align: right;
+                        border: $theme-white solid 1px;
+                        padding: 2vh 2vw ;
+                        transition: 0.3s;
+                        &:hover{
+                            background: lighten($theme-dark-grey, 10);
+                        }
+                    }
+                }
+            }
+            
         }
        #header-mobile-right{
             display: none;
@@ -166,6 +209,7 @@ section.all-modals {
                 #header-mobile-right-content{
                     text-align: right;
                     position: absolute;
+                    // right: -425px;
                     right: 0px;
                     background: $theme-dark-grey;
                     color: $theme-white;

@@ -7,12 +7,26 @@
             <a routerLink="/home">SourceStash</a>
         </section>
         <section id="header-right">
-            <a id="home" routerLink="/home">Home</a>
-            <a id="profile" routerLink="/profilepage">Profile</a>
-            <a id="welcome" routerLink="/welcome" (click)="logout()">Logout</a>
+            <article id="header-right-profile" *ngIf="currentAccount">Hi: {{currentAccount.firstName}}</article>
+            <a id="header-right-home" routerLink="/home">Home</a>
+            <section class="header-right-dropdown-container">
+                <article id="header-right-logout" (click)="logout()" (click)="toggleProfileDropdown()">
+                    <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
+                </article>
+                <article class="header-right-profile-dropdown" *ngIf="isProfileDropdown">
+                    <ul>
+                        <a class="profile" routerLink="/profilepage">
+                            <li>Profile</li>
+                        </a>
+                        <a class="logout" routerLink="/welcome" (click)="logout()">
+                            <li>Logout</li>
+                        </a>
+                    </ul>
+                </article>
+            </section>
         </section>
         <section id="header-mobile-right">
-            <button id="header-mobile-right-btn" (click)="toggleDropdown()">&#9776;</button>
+            <button id="header-mobile-right-btn" (click)="isDropdown = !isDropdown" (click)="isModalShown = !isModalShown">&#9776;</button>
             <section id="header-mobile-right-content" *ngIf="isDropdown">
                 <ul>
                     <a routerLink="/home">
