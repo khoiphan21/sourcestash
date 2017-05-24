@@ -20,6 +20,17 @@ $mainContainerHeight: 86vh;
         .login-header-left {}
         .login-header-right {
             font-size: 10pt;
+            .login-header-right-welcome{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 7vh;
+                padding: 0 2vw;
+                transition: 0.3s;
+                &:hover{    
+                    background: lighten($theme-dark-grey, 10);
+                }
+            }
         }
         a {
             text-decoration: none;
@@ -116,6 +127,17 @@ app-footer {
             .login-header-right {
                 font-size: $mobile-font-heading;
                 padding: 0 10vw;
+                .login-header-right-welcome{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 7vh;
+                    padding: 0 2vw;
+                    transition: 0.3s;
+                    &:hover{    
+                        background: lighten($theme-dark-grey, 10);
+                    }
+                }
             }
             a {
                 text-decoration: none;
