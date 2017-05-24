@@ -159,7 +159,7 @@ app-footer {
                 button {
                     @include button-ss-dark( $width: 28vw, $padding: 0, $height: 6vh, $font-size: 8pt);
                     width: 100%;
-                    padding: 0 7vw;
+                    padding: 0 4vw;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -252,11 +252,12 @@ app-footer {
                 button {
                     @include button-ss-dark( $width: 40vw, $padding: 0, $height: 8vh, $font-size: 8pt);
                     width: 100%;
-                    padding: 0 7vw;
+                    padding: 0 3vw;
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: space-around;
                     align-items: center;
                     flex-wrap: nowrap;
+                    flex-direction: row;
                     transition: 0.3s;
                     background: white;
                     border: $theme-grey solid 2px;
@@ -265,14 +266,13 @@ app-footer {
                         background-color: rgba(255, 255, 255, 0.8);
                     }
                     img {
-                        width: 7vh;
-                        height: 7vh;
+                        // width: 7vh;
+                        // height: 7vh;
                         padding: 0;
                         margin: 0;
                     }
                     span {
                         margin: 0;
-                        font-size: 12px;
                     }
                 }
             }
