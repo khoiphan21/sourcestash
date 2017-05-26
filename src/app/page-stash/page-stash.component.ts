@@ -46,6 +46,9 @@ export class PageStashComponent implements OnInit {
   isStashtabClicked: boolean = true;
   isSourceTabClicked: boolean = false;
   isCollaborateTabClicked: boolean = false;
+  isStashTabCollapse: boolean = false;
+  isSourceTabCollapse: boolean = false;
+  isCollaborateTabCollapse: boolean = false;
 
   @ViewChild("canvas") canvas: ElementRef;
 
@@ -217,7 +220,49 @@ export class PageStashComponent implements OnInit {
     this.isEditSourceShown = false;
     this.isEditStashShown = false;
   }
+  
+  /**
+  * ALL TABS FUNCTIONS GO HERE
+  */
 
+  selectTab(tabName: string) {
+    if (tabName == 'stashTab') {
+      this.isStashtabClicked = true;
+      this.isSourceTabClicked = false;
+      this.isCollaborateTabClicked = false;
+    } else if (tabName == 'sourceTab') {
+      this.isStashtabClicked = false;
+      this.isSourceTabClicked = true;
+      this.isCollaborateTabClicked = false;
+    } else if (tabName == 'collaborateTab') {
+      this.isStashtabClicked = false;
+      this.isSourceTabClicked = false;
+      this.isCollaborateTabClicked = true;
+    }
+  }
+
+  collapse(tabName: string) {
+    if (tabName == 'stashTab' && this.isStashtabClicked == true) {
+      document.getElementById('right-container-stash').setAttribute("class", "collapse");
+      document.getElementById('right-container-stash').removeAttribute("right-container-stash");
+      this.isStashtabClicked = false;
+    } else if (tabName == 'stashTab' && this.isStashtabClicked == false){
+      document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
+      document.getElementById('right-container-stash').removeAttribute("collapse");
+      this.isStashtabClicked = true;
+    }
+  }
+
+  // collapse() {
+  //   if (this.isStashTabCollapse == true && this.isStashtabClicked == true) {
+  //     document.getElementById('right-container-stash').setAttribute("class", "collapse");
+  //     document.getElementById('right-container-stash').removeAttribute("right-container-stash");
+  //   } else{
+  //     document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
+  //     document.getElementById('right-container-stash').removeAttribute("collapse");
+  //   }
+  // }
+  
   onAddSource(source: Source) {
     // Re-set the value of the current source - this value also is the parent source
     // for the new source
@@ -241,27 +286,6 @@ export class PageStashComponent implements OnInit {
   resetCanvas() {
     this.canvas.nativeElement.height = document.body.clientHeight;
     this.canvas.nativeElement.width = document.body.clientWidth;
-  }
-
-
-  /**
-  * ALL TABS FUNCTIONS GO HERE
-  */
-
-  selectTab(tabName: string) {
-    if (tabName == 'stashTab') {
-      this.isStashtabClicked = true;
-      this.isSourceTabClicked = false;
-      this.isCollaborateTabClicked = false;
-    } else if (tabName == 'sourceTab') {
-      this.isStashtabClicked = false;
-      this.isSourceTabClicked = true;
-      this.isCollaborateTabClicked = false;
-    }  else if (tabName == 'collaborateTab') {
-      this.isStashtabClicked = false;
-      this.isSourceTabClicked = false;
-      this.isCollaborateTabClicked = true;
-    }
   }
 
   updateLines(elements: HTMLCollectionOf<Element>) {
@@ -480,4 +504,16 @@ export class PageStashComponent implements OnInit {
     });
     this.showModal("viewSource");
   }
+
+  // sourceDifferentiate(){
+  //   _.each(this.sources, (source: Source) =>{
+  //     if(source.difficulty === 'beginner'){
+  //       document.getElementById('sources').setAttribute("class","beginner");
+  //     } else if(source.difficulty === 'advanced'){
+        
+  //     } else if(source.difficulty === 'intermediate'){
+        
+  //     }
+  //   }); 
+  // }
 }

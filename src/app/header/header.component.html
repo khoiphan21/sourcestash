@@ -6,6 +6,10 @@
         <section id="header-left">
             <a routerLink="/home">SourceStash</a>
         </section>
+        <!--<a id="home" routerLink="/home">Home</a>
+        <a id="profile" routerLink="/profilepage">Profile</a>
+        <a id="welcome" routerLink="/welcome" (click)="logout()">Logout</a>-->
+
         <section id="header-right">
             <article id="header-right-profile" *ngIf="currentAccount">Hi: {{currentAccount.firstName}}</article>
             <a id="header-right-home" routerLink="/home">Home</a>

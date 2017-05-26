@@ -20,7 +20,9 @@
     <section class="main-container">
         <section id="left-container">
             <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
-                class="source">
+                class="source"
+                >
+                <!--ng-class="{'beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}"-->
                 <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
             </article>
         </section>
@@ -28,7 +30,7 @@
         <!--For the list containing the stashes and sources-->
         <section class="right-container">
             <section class="right-container-content">
-                <section class="right-container-stash" *ngIf="isStashtabClicked">
+                <section id="right-container-stash" class="right-container-stash" *ngIf="isStashtabClicked">
                     <article class="right-container-stash-title" *ngIf="stash">
                         <span>Stash</span>
                         <span (click)="onEditStash()">
@@ -77,7 +79,7 @@
                                 </collapsible-header>
                                 <!--collapsible-body can be multiple using ngFor-->
                                 <collapsible-body [expanded]="false" class="right-container-stash-content">
-                                    <p>Link:<br> {{source.hyperlink}}</p>
+                                    <p>Link:<br> <a href={{source.hyperlink}} target="_blank">{{source.hyperlink}}</a></p>
                                     <p>Description:<br> {{source.description}}</p>
                                 </collapsible-body>
                             </collapsible-list-item>
@@ -92,13 +94,14 @@
                 </section>
 
                 <section class="right-container-sidebar">
-                    <div class="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')">
+                    <div class="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')" (click)="collapse('stashTab')">
+                        <!--<div class="right-container-sidebar-stashbtn" (click)="selectTab('stashTab')" (click)="isStashTabCollapse = !isStashTabCollapse">-->
                         <img src="./assets/images/Stash2.png" width="30px" height="30px">
                     </div>
-                    <div class="right-container-sidebar-commentbtn" (click)="selectTab('sourceTab')">
+                    <div class="right-container-sidebar-commentbtn" (click)="selectTab('sourceTab')" (click)="collapse('sourceTab')">
                         <img src="./assets/images/Comments2.png" width="30px" height="30px">
                     </div>
-                    <div class="right-container-sidebar-collaboratebtn" (click)="selectTab('collaborateTab')">
+                    <div class="right-container-sidebar-collaboratebtn" (click)="selectTab('collaborateTab')" (click)="collapse('collaborateTab')">
                         <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
                     </div>
                 </section>

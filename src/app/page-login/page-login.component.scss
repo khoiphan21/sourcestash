@@ -154,7 +154,6 @@ app-footer {
             @include column-center();
             height: 55%;
             border-radius: 10px;
-            border: $theme-orange solid 2px;
             box-shadow: 1px 7px 15px $theme-dark-grey;
             padding: 3vh 0;
             width: 60vw;
@@ -248,7 +247,6 @@ app-footer {
             @include column-center();
             height: 90%;
             border-radius: 10px;
-            border: $theme-orange solid 2px;
             box-shadow: 1px 7px 30px $theme-dark-grey;
             width: 80vw;
             background: $dark-background;

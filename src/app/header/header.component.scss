@@ -208,7 +208,7 @@ section.all-modals {
                 }
                 #header-mobile-right-content{
                     text-align: right;
-                    position: absolute;
+                    position: fixed;
                     // right: -425px;
                     right: 0px;
                     background: $theme-dark-grey;

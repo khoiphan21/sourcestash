@@ -73,7 +73,6 @@ div.wrapper {
         }
     }
     .right-container {
-        background: $theme-dark-grey;
         color: $theme-white;
         width: 20vw;
         height: 86vh;
@@ -85,6 +84,7 @@ div.wrapper {
         .right-container-content {
             display: flex;
             .right-container-stash {
+                transition: width 1s;
                 overflow-y: scroll;
                 border: 1px solid $theme-white;
                 width: 17vw; // A list of sources and stashes
@@ -153,6 +153,7 @@ div.wrapper {
                 }
             }
             .right-container-source {
+                transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey,10);
                 border: 1px solid $theme-white;
@@ -191,10 +192,15 @@ div.wrapper {
                             margin: 0;
                             padding: 1vh 0;
                         }
+                        a{
+                            color: white;
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
             .right-container-collaborate {
+                transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey,10);
                 border: 1px solid $theme-white;
@@ -212,6 +218,8 @@ div.wrapper {
                 }
             }
             .right-container-sidebar {
+                position: absolute;
+                right: 0;
                 width: 3vw;
                 height: 86vh;
                 background: $theme-dark-grey;
@@ -267,6 +275,61 @@ div.wrapper {
 }
 
 //
+// additional style for ts
+.collapse{
+    transition: width 1s;
+    display: none;
+}
+
+.beginner{
+    background: black;
+    $width: 17vh;
+    $height: 15vh;
+    position: absolute;
+    width: $width;
+    height: $height;
+    display: flex !important;
+    align-items: center;
+    z-index: 1;
+    justify-content: center;
+    background-image: url("/assets/images/hexagon.png");
+    background-size: $width $height;
+    background-repeat: no-repeat;
+}
+
+.advanced{
+    background: red;
+    $width: 17vh;
+    $height: 15vh;
+    position: absolute;
+    width: $width;
+    height: $height;
+    display: flex !important;
+    align-items: center;
+    z-index: 1;
+    justify-content: center;
+    background-image: url("/assets/images/hexagon.png");
+    background-size: $width $height;
+    background-repeat: no-repeat;
+}
+
+.intermediate{
+    background: blue;
+    $width: 17vh;
+    $height: 15vh;
+    position: absolute;
+    width: $width;
+    height: $height;
+    display: flex !important;
+    align-items: center;
+    z-index: 1;
+    justify-content: center;
+    background-image: url("/assets/images/hexagon.png");
+    background-size: $width $height;
+    background-repeat: no-repeat;
+}
+
+//
 // tablet screen
 @include media(small-screen){
     .main-container {
@@ -312,7 +375,6 @@ div.wrapper {
             }
         }
         .right-container {
-            background: $theme-dark-grey;
             color: $theme-white;
             width: 30vw;
             height: 86vh;
@@ -479,10 +541,10 @@ div.wrapper {
 
 
 //
-// tablet screen
+// mobile screen
 @include media(mobile-screen){
     .main-container {
-        overflow: hidden;
+        // overflow: hidden;
         position: relative;
         z-index: -1;
         width: 100vw;
@@ -662,6 +724,7 @@ div.wrapper {
                 .right-container-sidebar {
                     display: flex;
                     height: auto;
+                    position: relative;
                     order: 1;
                     width: 100%;
                     background: $theme-dark-grey;
