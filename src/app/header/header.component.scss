@@ -13,7 +13,7 @@ section.all-modals {
     @include column-center();
 }
 
-#header {
+.header {
     background: $header-bg;
     height: $header-height;
     z-index: 1000;
@@ -23,32 +23,29 @@ section.all-modals {
     color: $header-font;
     font-size: $header-fontsize;
     text-shadow: 3px 5px 10px $theme-light-blue;
-    #header-content {
+    .header-content {
         width: $header-content-width;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        #header-left {
+        .header-left {
             font-size: 16pt;
         }
-        #header-right {
+        .header-right {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #header-right-home {
+            .header-right-home, .header-right-login, .header-right-welcome {
                 padding: 0 2vw;
                 height: 7vh;
                 display: flex;
                 align-items: center;
                 transition: 0.3s;
-                &:focus {
-                    background: lighten($theme-dark-grey, 10);
-                }
                 &:hover {
                     background: lighten($theme-dark-grey, 10);
                 }
             }
-            #header-right-profile {
+            .header-right-profile {
                 padding: 0 3vw;
                 height: 7vh;
                 display: flex;
@@ -57,7 +54,7 @@ section.all-modals {
             }
             .header-right-dropdown-container {
                 cursor: pointer;
-                #header-right-logout {
+                .header-right-logout {
                     padding: 0 1vw;
                     height: 7vh;
                     display: flex;
@@ -94,7 +91,7 @@ section.all-modals {
                 }
             }
         }
-        #header-mobile-right {
+        .header-mobile-right {
             display: none;
         }
     }
@@ -108,7 +105,7 @@ section.all-modals {
 //
 // tablet version
 @include media(small-screen) {
-    #header {
+    .header {
         background: $header-bg;
         height: $header-height;
         z-index: 1000;
@@ -118,15 +115,15 @@ section.all-modals {
         color: $header-font;
         font-size: $header-fontsize;
         text-shadow: 3px 5px 10px $theme-light-blue;
-        #header-content {
+        .header-content {
             width: $tablet-header-content-width;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #header-left {
+            .header-left {
                 font-size: 16pt;
             }
-            #header-right {
+            .header-right {
                 ul {
                     margin: 0px;
                     list-style-type: none;
@@ -138,7 +135,7 @@ section.all-modals {
                     text-align: right;
                 }
             }
-            #header-mobile-right {
+            .header-mobile-right {
                 display: none;
             }
         }
@@ -156,7 +153,7 @@ section.all-modals {
     section.all-modals {
         display: flex;
     }
-    #header {
+    .header {
         z-index: 100;
         background: $header-bg;
         height: $header-height;
@@ -166,34 +163,22 @@ section.all-modals {
         align-items: center;
         color: $header-font;
         text-shadow: 3px 5px 10px $theme-light-blue;
-        #header-content {
+        .header-content {
             width: 100vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #header-left {
+            .header-left {
                 padding: 0 10vw;
                 font-size: 16pt;
             }
-            #header-right {
-                font-size: $mobile-font-heading;
+            .header-right {
                 display: none;
-                padding: 0 10vw;
-                ul {
-                    margin: 0px;
-                    list-style-type: none;
-                    display: flex;
-                }
-                li {
-                    cursor: pointer;
-                    width: 7vw;
-                    text-align: right;
-                }
             }
-            #header-mobile-right {
+            .header-mobile-right {
                 display: block;
                 z-index: 100;
-                #header-mobile-right-btn {
+                .header-mobile-right-btn {
                     background: $theme-dark-grey;
                     height: 7vh;
                     width: 7vh;
@@ -205,7 +190,7 @@ section.all-modals {
                         color: $theme-orange;
                     }
                 }
-                #header-mobile-right-content {
+                .header-mobile-right-content {
                     text-align: right;
                     position: fixed; // right: -425px;
                     right: 0px;

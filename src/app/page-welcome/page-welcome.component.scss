@@ -2,46 +2,6 @@
 @import '../sass/mixins';
 @import '../sass/globalStyles';
 
-#welcome-header {
-    position: fixed;
-    width: 100vw;
-    top: 0;
-    background: $theme-dark-grey;
-    height: 7vh;
-    display: flex;
-    color: $theme-white;
-    justify-content: center;
-    font-size: 16pt;
-    text-shadow: 3px 5px 10px $theme-light-blue;
-    #welcome-header-content {
-        width: $header-content-width;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        #header-left {
-
-        }
-        #header-right {
-            font-size: 10pt;
-            #header-right-login{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 7vh;
-                padding: 0 2vw;
-                transition: 0.3s;
-                &:hover{    
-                    background: lighten($theme-dark-grey, 10);
-                }
-            }
-        }
-        a {
-            text-decoration: none;
-            text-align: right;
-            color: $theme-white;
-        }
-    }
-}
 
 #main-container {
     // Container 1
@@ -320,22 +280,6 @@
 //
 // tablet screen
 @include media(small-screen) {
-    #welcome-header {
-        justify-content: center;
-        #welcome-header-content {
-            width: 80vw;
-            #header-left {
-            }
-            #header-right {
-                font-size: $mobile-font-heading;
-            }
-            a {
-                text-decoration: none;
-                text-align: right;
-                color: $theme-white;
-            }
-        }
-    }
     #main-container {
     // Container 1
     #video-container {
@@ -628,36 +572,6 @@
 // 
 // mobile screen
 @include media(mobile-screen) {
-    #welcome-header {
-        position: fixed;
-        width: 100vw;
-        top: 0;
-        background: $theme-dark-grey;
-        height: 7vh;
-        display: flex;
-        color: $theme-white;
-        justify-content: space-between;
-        font-size: 16pt;
-        text-shadow: 3px 5px 10px $theme-light-blue;
-        #welcome-header-content {
-            width: 100vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            #header-left {
-                padding: 0 10vw;
-            }
-            #header-right {
-                font-size: $mobile-font-heading;
-                padding: 0 10vw;
-            }
-            a {
-                text-decoration: none;
-                text-align: right;
-                color: $theme-white;
-            }
-        }
-    }
     #main-container {
         // Container 1
         #video-container {

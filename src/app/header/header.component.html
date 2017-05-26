@@ -1,20 +1,25 @@
 <section class="all-modals" (click)="hideModal()" *ngIf="isModalShown">
 </section>
 
-<section id="header">
-  <section id="header-content">
-    <section id="header-left">
+<section class="header">
+  <section class="header-content">
+    <section class="header-left">
       <a routerLink="/home">SourceStash</a>
     </section>
-    <!--<a id="home" routerLink="/home">Home</a>
-        <a id="profile" routerLink="/profilepage">Profile</a>
-        <a id="welcome" routerLink="/welcome" (click)="logout()">Logout</a>-->
+    
+    <!--For the logged out version-->
+    <section class="header-right" *ngIf="!isUserLoggedIn">
+      <a class="header-right-login" routerLink="/login">Log in</a>
+      <a class="header-right-welcome" routerLink="/welcome">About us</a>
+    </section>
 
-    <section id="header-right">
-      <article id="header-right-profile" *ngIf="currentAccount">Hi, {{currentAccount.firstName}}</article>
-      <a id="header-right-home" routerLink="/home">Home</a>
+    <!--For the logged in version-->
+    <section class="header-right" *ngIf="isUserLoggedIn">
+      <article class="header-right-profile" *ngIf="currentAccount">Hi, {{currentAccount.firstName}}</article>
+      <a class="header-right-home" routerLink="/home">Home</a>
+      <a class="header-right-welcome" routerLink="/welcome">About us</a>
       <section class="header-right-dropdown-container">
-        <article id="header-right-logout" (click)="toggleProfileDropdown()">
+        <article class="header-right-logout" (click)="toggleProfileDropdown()">
           <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
         </article>
         <article class="header-right-profile-dropdown" *ngIf="isProfileDropdown">
@@ -22,19 +27,40 @@
             <a class="profile" routerLink="/profilepage">
               <li>Profile</li>
             </a>
-            <a class="logout" routerLink="/welcome" (click)="logout()">
+            <a class="logout" routerLink="/login" (click)="logout()">
               <li>Logout</li>
             </a>
           </ul>
         </article>
       </section>
     </section>
-    <section id="header-mobile-right">
-      <button id="header-mobile-right-btn" (click)="isDropdown = !isDropdown" (click)="isModalShown = !isModalShown">&#9776;</button>
-      <section id="header-mobile-right-content" *ngIf="isDropdown">
+
+
+    <!--For the mobile version (logged out)-->
+    <section class="header-mobile-right" *ngIf="!isUserLoggedIn">
+      <button class="header-mobile-right-btn" (click)="isDropdown = !isDropdown" (click)="isModalShown = !isModalShown">&#9776;</button>
+      <section class="header-mobile-right-content" *ngIf="isDropdown">
+        <ul>
+          <a routerLink="/login">
+            <li>Log in</li>
+          </a>
+          <a routerLink="/welcome">
+            <li>About us</li>
+          </a>
+        </ul>
+      </section>
+    </section>
+
+    <!--For the mobile version (logged in)-->
+    <section class="header-mobile-right" *ngIf="isUserLoggedIn">
+      <button class="header-mobile-right-btn" (click)="isDropdown = !isDropdown" (click)="isModalShown = !isModalShown">&#9776;</button>
+      <section class="header-mobile-right-content" *ngIf="isDropdown">
         <ul>
           <a routerLink="/home">
             <li>Home</li>
+          </a>
+          <a routerLink="/welcome">
+            <li>About us</li>
           </a>
           <a routerLink="/profilepage">
             <li>Profile</li>

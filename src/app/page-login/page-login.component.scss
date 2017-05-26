@@ -108,44 +108,6 @@ app-footer {
 //
 // tablet screen
 @include media(small-screen) {
-    .login-header {
-        width: 100vw;
-        background: $theme-dark-grey;
-        height: 7vh;
-        display: flex;
-        color: $theme-white;
-        font-size: 16pt;
-        text-shadow: 3px 5px 10px $theme-light-blue;
-        .login-header-content {
-            width: 100vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .login-header-left {
-                padding: 0 10vw;
-            }
-            .login-header-right {
-                font-size: $mobile-font-heading;
-                padding: 0 10vw;
-                .login-header-right-welcome{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    height: 7vh;
-                    padding: 0 2vw;
-                    transition: 0.3s;
-                    &:hover{    
-                        background: lighten($theme-dark-grey, 10);
-                    }
-                }
-            }
-            a {
-                text-decoration: none;
-                text-align: right;
-                color: $theme-white;
-            }
-        }
-    }
     .mainContainer {
         background: $light-background-trans;
         display: flex;
@@ -211,33 +173,6 @@ app-footer {
 //
 // mobile screen
 @include media(mobile-screen) {
-    .login-header {
-        width: 100vw;
-        background: $theme-dark-grey;
-        height: 7vh;
-        display: flex;
-        color: $theme-white;
-        font-size: 16pt;
-        text-shadow: 3px 5px 10px $theme-light-blue;
-        .login-header-content {
-            width: 100vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .login-header-left {
-                padding: 0 10vw;
-            }
-            .login-header-right {
-                font-size: $mobile-font-heading;
-                padding: 0 10vw;
-            }
-            a {
-                text-decoration: none;
-                text-align: right;
-                color: $theme-white;
-            }
-        }
-    }
     .mainContainer {
         // height: $mainContainerHeight;
         background: $light-background-trans;
