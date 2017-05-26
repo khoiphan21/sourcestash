@@ -45,6 +45,7 @@ export class PageStashComponent implements OnInit {
   isStashTabShown: boolean = true;
   isSourceTabShown: boolean = false;
   isCollaboratorTabShown: boolean = false;
+  isGraphTabShown: boolean = false;
 
   @ViewChild("canvas") canvas: ElementRef;
 
@@ -216,13 +217,13 @@ export class PageStashComponent implements OnInit {
     this.isEditSourceShown = false;
     this.isEditStashShown = false;
   }
-  
+
   /**
   * ALL TABS FUNCTIONS GO HERE
   */
   selectTab(tabName: string) {
     if (tabName == 'stashTab') {
-      if (this.isStashTabShown) this.hideAllTabs(); 
+      if (this.isStashTabShown) this.hideAllTabs();
       else this.showTab(tabName);
     } else if (tabName == 'sourceTab') {
       if (this.isSourceTabShown) this.hideAllTabs();
@@ -248,7 +249,16 @@ export class PageStashComponent implements OnInit {
     this.isCollaboratorTabShown = false;
   }
 
-  
+  toggleGraphTab() {
+    this.isGraphTabShown = this.isGraphTabShown ? false : true;
+    if (this.isGraphTabShown == true) {
+      this.isStashTabShown = true;
+    } else {
+      this.hideAllTabs();
+    }
+  }
+
+
   onAddSource(source: Source) {
     // Re-set the value of the current source - this value also is the parent source
     // for the new source
@@ -496,9 +506,9 @@ export class PageStashComponent implements OnInit {
   //     if(source.difficulty === 'beginner'){
   //       document.getElementById('sources').setAttribute("class","beginner");
   //     } else if(source.difficulty === 'advanced'){
-        
+
   //     } else if(source.difficulty === 'intermediate'){
-        
+
   //     }
   //   }); 
   // }

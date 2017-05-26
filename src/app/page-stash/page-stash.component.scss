@@ -237,29 +237,8 @@ div.wrapper {
                         background: lighten($theme-dark-grey, 10);
                     }
                 }
-                .right-container-sidebar-commentbtn {
-                    cursor: pointer;
-                    transition: 0.3s;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 6vh;
-                    border-bottom: 1px solid $theme-white;
-                    &:hover {
-                        background: lighten($theme-dark-grey, 10);
-                    }
-                }
-                .right-container-sidebar-collaboratebtn {
-                    cursor: pointer;
-                    transition: 0.3s;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 6vh;
-                    border-bottom: 1px solid $theme-white;
-                    &:hover {
-                        background: lighten($theme-dark-grey, 10);
-                    }
+                .right-container-sidebar-mobile-graph {
+                    display: none;
                 }
             }
         } // A container containing buttons for creating sources and stashes
@@ -451,7 +430,9 @@ div.wrapper {
                         &:hover {
                             background: lighten($theme-dark-grey, 10);
                         }
-                        &:last-child {}
+                        .right-container-sidebar-mobile-graph {
+                            display: none;
+                        }
                     }
                 }
             } // A container containing buttons for creating sources and stashes
@@ -477,8 +458,7 @@ div.wrapper {
         height: $main-container-height;
         display: flex;
         #left-container {
-            display: none;
-            position: relative;
+            position: absolute;
             z-index: 1;
             width: 80vw;
             height: $main-container-height;
@@ -511,7 +491,6 @@ div.wrapper {
             }
         }
         .right-container {
-            background: $theme-dark-grey;
             color: $theme-white;
             width: 100%;
             height: 86vh;
@@ -655,7 +634,7 @@ div.wrapper {
                     height: 8.5vh;
                     background: $theme-dark-grey;
                     color: $theme-white;
-                    .right-container-sidebar-btn {
+                    .right-container-sidebar-btn, .right-container-sidebar-mobile-graph {
                         border: none;
                         cursor: pointer;
                         display: flex;
