@@ -21,8 +21,9 @@
         <section id="left-container">
             <article *ngFor="let source of sources; let last = last" [id]="source.source_id" [style.left]="source.xPosition" [style.top]="source.yPosition"
                 class="source"
+                [ngClass]="{'beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}"
                 >
-                <!--ng-class="{'beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}"-->
+                
                 <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
             </article>
         </section>

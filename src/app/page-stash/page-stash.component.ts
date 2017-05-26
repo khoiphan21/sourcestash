@@ -243,25 +243,17 @@ export class PageStashComponent implements OnInit {
 
   collapse(tabName: string) {
     if (tabName == 'stashTab' && this.isStashtabClicked == true) {
-      document.getElementById('right-container-stash').setAttribute("class", "collapse");
-      document.getElementById('right-container-stash').removeAttribute("right-container-stash");
+      let container = document.getElementById('right-container-stash');
+      console.log(container);
+      // container.setAttribute("class", "collapse");
+      // document.getElementById('right-container-stash').removeAttribute("right-container-stash");
       this.isStashtabClicked = false;
     } else if (tabName == 'stashTab' && this.isStashtabClicked == false){
-      document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
-      document.getElementById('right-container-stash').removeAttribute("collapse");
+      // document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
+      // document.getElementById('right-container-stash').removeAttribute("collapse");
       this.isStashtabClicked = true;
     }
   }
-
-  // collapse() {
-  //   if (this.isStashTabCollapse == true && this.isStashtabClicked == true) {
-  //     document.getElementById('right-container-stash').setAttribute("class", "collapse");
-  //     document.getElementById('right-container-stash').removeAttribute("right-container-stash");
-  //   } else{
-  //     document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
-  //     document.getElementById('right-container-stash').removeAttribute("collapse");
-  //   }
-  // }
   
   onAddSource(source: Source) {
     // Re-set the value of the current source - this value also is the parent source
