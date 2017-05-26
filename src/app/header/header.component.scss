@@ -1,6 +1,5 @@
 @import '../sass/variables';
 @import '../sass/mixins';
-
 section.all-modals {
     overflow: hidden;
     display: none;
@@ -36,71 +35,74 @@ section.all-modals {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #header-right-home{
+            #header-right-home {
                 padding: 0 2vw;
                 height: 7vh;
                 display: flex;
                 align-items: center;
                 transition: 0.3s;
-                &:focus{
+                &:focus {
                     background: lighten($theme-dark-grey, 10);
                 }
-                &:hover{
+                &:hover {
                     background: lighten($theme-dark-grey, 10);
                 }
             }
-            #header-right-profile{
+            #header-right-profile {
                 padding: 0 3vw;
                 height: 7vh;
                 display: flex;
                 align-items: center;
+                cursor: pointer;
             }
-            .header-right-dropdown-container{
-                #header-right-logout{
+            .header-right-dropdown-container {
+                cursor: pointer;
+                #header-right-logout {
                     padding: 0 1vw;
                     height: 7vh;
                     display: flex;
                     align-items: center;
                     transition: 0.3s;
-                    &:focus{
+                    &:focus {
                         background: lighten($theme-dark-grey, 10);
                     }
-                    &:hover{
+                    &:hover {
                         background: lighten($theme-dark-grey, 10);
                     }
                 }
-                .header-right-profile-dropdown{
+                .header-right-profile-dropdown {
                     position: absolute;
                     background: $theme-dark-grey;
                     color: $theme-white;
                     z-index: 101;
-                    ul{
+                    cursor: pointer;
+                    ul {
+                        left: -200px;
                         padding: 0;
                         margin: 0;
-                        width: 20vw;
+                        width: 15vw;
                     }
-                    li{
+                    li {
                         text-align: right;
                         border: $theme-white solid 1px;
-                        padding: 2vh 2vw ;
+                        padding: 2vh 2vw;
                         transition: 0.3s;
-                        &:hover{
+                        &:hover {
                             background: lighten($theme-dark-grey, 10);
                         }
                     }
                 }
             }
-            
         }
-       #header-mobile-right{
+        #header-mobile-right {
             display: none;
-       }
+        }
     }
     a {
         text-decoration: none;
         color: $header-font;
         text-align: center;
-    } 
+    }
 }
 
 //
@@ -136,28 +138,25 @@ section.all-modals {
                     text-align: right;
                 }
             }
-            #header-mobile-right{
-                    display: none;
+            #header-mobile-right {
+                display: none;
             }
         }
         a {
             text-decoration: none;
             color: $header-font;
             text-align: center;
-        } 
+        }
     }
 }
-
-
 
 //
 // mobile version
 @include media(mobile-screen) {
-    section.all-modals{
+    section.all-modals {
         display: flex;
     }
-
-    #header{
+    #header {
         z-index: 100;
         background: $header-bg;
         height: $header-height;
@@ -166,21 +165,21 @@ section.all-modals {
         justify-content: center;
         align-items: center;
         color: $header-font;
-        text-shadow: 3px 5px 10px $theme-light-blue; 
-        #header-content{
+        text-shadow: 3px 5px 10px $theme-light-blue;
+        #header-content {
             width: 100vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            #header-left{
+            #header-left {
                 padding: 0 10vw;
                 font-size: 16pt;
             }
-            #header-right{
+            #header-right {
                 font-size: $mobile-font-heading;
                 display: none;
                 padding: 0 10vw;
-                ul{
+                ul {
                     margin: 0px;
                     list-style-type: none;
                     display: flex;
@@ -189,48 +188,47 @@ section.all-modals {
                     cursor: pointer;
                     width: 7vw;
                     text-align: right;
-                }   
+                }
             }
-            #header-mobile-right{
+            #header-mobile-right {
                 display: block;
                 z-index: 100;
-                #header-mobile-right-btn{
+                #header-mobile-right-btn {
                     background: $theme-dark-grey;
                     height: 7vh;
                     width: 7vh;
                     cursor: pointer;
                     text-align: center;
                     font-size: 16pt;
-                    &:hover{
+                    &:hover {
                         background: darken($theme-blueberry, 5);
                         color: $theme-orange;
                     }
                 }
-                #header-mobile-right-content{
+                #header-mobile-right-content {
                     text-align: right;
-                    position: fixed;
-                    // right: -425px;
+                    position: fixed; // right: -425px;
                     right: 0px;
                     background: $theme-dark-grey;
                     color: $theme-white;
                     z-index: 101;
-                    ul{
+                    ul {
                         padding: 0;
                         margin: 0;
                         width: 40vw;
                     }
-                    li{
+                    li {
                         text-align: left;
                         border: $theme-white solid 1px;
-                        padding: 2vh 2vw ;
+                        padding: 2vh 2vw;
                     }
                 }
             }
         }
-        a{
+        a {
             text-decoration: none;
             color: $header-font;
             text-align: center;
-        } 
-    } 
+        }
+    }
 }

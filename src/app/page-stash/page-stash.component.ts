@@ -32,7 +32,6 @@ export class PageStashComponent implements OnInit {
 
   currentSource: Source;
 
-
   renderedElements: any;
 
   // Variables to control modal items display
@@ -43,12 +42,9 @@ export class PageStashComponent implements OnInit {
   isEditStashShown: boolean = false;
 
   // Variables to control tab items display
-  isStashtabClicked: boolean = true;
-  isSourceTabClicked: boolean = false;
-  isCollaborateTabClicked: boolean = false;
-  isStashTabCollapse: boolean = false;
-  isSourceTabCollapse: boolean = false;
-  isCollaborateTabCollapse: boolean = false;
+  isStashTabShown: boolean = true;
+  isSourceTabShown: boolean = false;
+  isCollaboratorTabShown: boolean = false;
 
   @ViewChild("canvas") canvas: ElementRef;
 
@@ -64,12 +60,12 @@ export class PageStashComponent implements OnInit {
 
   ngOnInit() {
     // FOR TESTING PURPOSES
-    this.route.params.subscribe(params => {
+    this.route.params.map(params => {
       this.stash_id = params['stashid'];
 
       // Refresh everything
       this.refresh();
-    })
+    }).subscribe();
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -224,36 +220,34 @@ export class PageStashComponent implements OnInit {
   /**
   * ALL TABS FUNCTIONS GO HERE
   */
-
   selectTab(tabName: string) {
     if (tabName == 'stashTab') {
-      this.isStashtabClicked = true;
-      this.isSourceTabClicked = false;
-      this.isCollaborateTabClicked = false;
+      if (this.isStashTabShown) this.hideAllTabs(); 
+      else this.showTab(tabName);
     } else if (tabName == 'sourceTab') {
-      this.isStashtabClicked = false;
-      this.isSourceTabClicked = true;
-      this.isCollaborateTabClicked = false;
+      if (this.isSourceTabShown) this.hideAllTabs();
+      else this.showTab(tabName);
     } else if (tabName == 'collaborateTab') {
-      this.isStashtabClicked = false;
-      this.isSourceTabClicked = false;
-      this.isCollaborateTabClicked = true;
+      if (this.isCollaboratorTabShown) this.hideAllTabs();
+      else this.showTab(tabName);
     }
+  }
+  showTab(tabName: string) {
+    this.hideAllTabs();
+    if (tabName == 'stashTab') {
+      this.isStashTabShown = true;
+    } else if (tabName == 'sourceTab') {
+      this.isSourceTabShown = true;
+    } else if (tabName == 'collaborateTab') {
+      this.isCollaboratorTabShown = true;
+    }
+  }
+  hideAllTabs() {
+    this.isStashTabShown = false;
+    this.isSourceTabShown = false;
+    this.isCollaboratorTabShown = false;
   }
 
-  collapse(tabName: string) {
-    if (tabName == 'stashTab' && this.isStashtabClicked == true) {
-      let container = document.getElementById('right-container-stash');
-      console.log(container);
-      // container.setAttribute("class", "collapse");
-      // document.getElementById('right-container-stash').removeAttribute("right-container-stash");
-      this.isStashtabClicked = false;
-    } else if (tabName == 'stashTab' && this.isStashtabClicked == false){
-      // document.getElementById('right-container-stash').setAttribute("class", "right-container-stash");
-      // document.getElementById('right-container-stash').removeAttribute("collapse");
-      this.isStashtabClicked = true;
-    }
-  }
   
   onAddSource(source: Source) {
     // Re-set the value of the current source - this value also is the parent source

@@ -40,7 +40,7 @@ export class GoogleApiService {
     globalHttp = http;
     globalGoogleApiService = this;
 
-    
+
   }
 
   registerAccountService(service: AccountService) {
@@ -48,17 +48,19 @@ export class GoogleApiService {
   }
 
   logout() {
-    gapi.client.init({
-      // Initialize the client with API key and People API, and initialize OAuth with an
-      // OAuth 2.0 client ID and scopes (space delimited string) to request access.
-      apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
-      discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
-      clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
-      scope: 'https://www.googleapis.com/auth/plus.me'
-    }).then(() => {
+    gapi.load('client', finallyLogout)
+    function finallyLogout() {
+      gapi.client.init({
+        // Initialize the client with API key and People API, and initialize OAuth with an
+        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
+        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+        discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/plus.me'
+      }).then(() => {
       gapi.auth2.getAuthInstance().signOut();
-
-    })
+      });
+    }
   }
 
   login(): Promise<Account> {

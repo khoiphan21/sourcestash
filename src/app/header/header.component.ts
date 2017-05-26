@@ -21,10 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isUserLoggedIn = this.accountService.checkLoginStatus();
-    if(this.isUserLoggedIn = true){
+    if(this.isUserLoggedIn == true){
       this.currentAccount = this.accountService.getCurrentUser();
-      // console.log('yes');
-      // console.log(this.currentAccount.firstName);
     }
   }
 
@@ -35,15 +33,6 @@ export class HeaderComponent implements OnInit {
   toggleProfileDropdown(){
     this.isProfileDropdown = this.isProfileDropdown ? false : true;
   }
-
-  // toggleDropdown(){
-  //   this.isDropdown = this.isDropdown ? false : true;
-  //   if (this.isDropdown = true){
-  //     this.isModalShown = true;
-  //   } else{
-  //     this.isModalShown = false;
-  //   }
-  // }
 
   hideModal() {
     this.isModalShown = false;
