@@ -54,7 +54,7 @@ export class AccountService {
     if (user != null) {
       this.updateCurrentUser(user);
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/welcome']);
     }
   }
 
