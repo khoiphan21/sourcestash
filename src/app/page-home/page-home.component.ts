@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
+import * as _ from 'underscore';
+
 import { Stash } from '../classes/stash';
 import { ANGULAR2 } from '../data/mockStash';
 import { StashService } from '../stash.service';
@@ -17,7 +19,7 @@ import { CollaboratorService } from '../collaborator.service';
 })
 export class PageHomeComponent implements OnInit {
   // Models for the UI
-  stashes: Stash[];
+  stashes: Stash[] = null;
   sharedStashes: Stash[];
 
   // Variables to control modal items display
@@ -33,12 +35,7 @@ export class PageHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stashService.getAllStashes().then(stashes => {
-      this.stashes = stashes;
-    });
-    this.stashService.getAllSharedStashes().then(sharedStashes => {
-      this.sharedStashes = sharedStashes;
-    })
+    this.reloadStashes();
   }
 
   onSignIn(user) {
@@ -50,8 +47,15 @@ export class PageHomeComponent implements OnInit {
   }
 
   reloadStashes() {
-    this.stashService.getAllStashes().then(stashes => {
+    this.stashService.getAllStashes().then((stashes: Stash[]) => {
       this.stashes = stashes;
+
+      return this.stashService.getAllSharedStashes();
+    }).then(sharedStashes => {
+      this.sharedStashes = sharedStashes;
+    }).catch(error => {
+      alert('error received');
+      console.log(error);
     });
   }
 
@@ -68,7 +72,7 @@ export class PageHomeComponent implements OnInit {
     // Then selectively show the modals
     if (modalType == 'addStash') {
       this.isAddStashShown = true;
-    } else if (modalType == 'clickMenu'){
+    } else if (modalType == 'clickMenu') {
       this.isMenuShown = true;
     }
   }

@@ -1,14 +1,14 @@
-<section id="main-container" *ngIf="stashes">
-    <article id="stash-title">
-        {{stash.title}}
-        <!--Angular 2-->
-    </article>
-    <article id="stash-sources">
-        <div id="source">
-            <app-sources *ngFor="let source of sources; let i = index" [style.display]="i < 3 ? 'block' : 'none'" [source]="source"></app-sources>
-        </div>
-    </article>
-    <article id="stash-rating">
-        Rating: <span class="ratescore"> 5</span>
-    </article>
+<section id="main-container" *ngIf="stash">
+  <article id="stash-title">
+    {{stash.title}}
+    <!--Angular 2-->
+  </article>
+  <article id="stash-sources">
+    <div id="source">
+      <app-sources *ngFor="let source of sources; let i = index" [style.display]="i < 3 ? 'block' : 'none'" [source]="source"></app-sources>
+    </div>
+  </article>
+  <article id="stash-rating">
+    Rating: <span class="ratescore"> 5</span>
+  </article>
 </section>
