@@ -46,19 +46,19 @@ export class SourceService {
       },
       options
     ).subscribe(response => {
-      let sources = response.json();
-      this.sources = sources;
-
-      // TODO: Now retrieve the tags of each source
-      _.each(this.sources, (source: Source) => {
-        source.tags = [];
+      let sources: Source[] = response.json();
+      
+      // Now retrieve all the tags for the sources
+      Promise.all(sources.map((source: Source) => {
+        // Call helper function
+        return this.getTagsForSource(source);
+      })).then((sources: Source[]) => {
+        this.sources = sources;
+        deferred.resolve(sources);
       })
-
-      deferred.resolve(sources);
     }, error => {
       deferred.reject(error);
-    })
-
+    });
 
     return deferred.promise;
   }
@@ -114,6 +114,31 @@ export class SourceService {
     }, error => {
       deferred.reject(error);
     });
+
+    return deferred.promise;
+  }
+
+  getTagsForSource(source: Source): Promise<Source> {
+    let deferred = new Deferred<Source>();
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post(
+      SERVER + '/tags/forsource',
+      {
+        source_id: source.source_id
+      },
+      options
+    ).subscribe(response => {
+      let tags: string[] = response.json();
+      source.tags = tags;
+      deferred.resolve(source);
+    }, error => {
+      deferred.reject(error);
+    })
 
     return deferred.promise;
   }

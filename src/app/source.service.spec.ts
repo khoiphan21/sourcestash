@@ -9,6 +9,7 @@ import { Source } from './classes/source';
 import { AppResponse } from './classes/response';
 
 import * as _ from 'underscore';
+import { PageProfileComponent } from './page-profile/page-profile.component';
 
 describe('SourceService', () => {
   beforeEach(() => {
@@ -33,6 +34,12 @@ describe('SourceService', () => {
     inject([SourceService], (service: SourceService) => {
       service.getSourcesForStash('2671055').then((sources: Source[]) => {
         expect(sources.length).toBeTruthy();
+
+        // If length if more than 0, check tags
+        if (sources.length > 0) {
+          expect(sources[0].tags.length).toBeTruthy();
+        }
+        
         done();
       }).catch(error => {
         fail('error should not be thrown.');
@@ -40,7 +47,7 @@ describe('SourceService', () => {
       })
 
     })();
-  });
+  }, 10000);
 
   it('should not be able to update a non-existing source', done => {
     inject([SourceService], (service: SourceService) => {
@@ -70,7 +77,7 @@ describe('SourceService', () => {
       })
 
     })();
-  })
+  }, 10000);
 
   it('should update a source correctly', done => {
     inject([SourceService], (service: SourceService) => {
@@ -126,7 +133,7 @@ describe('SourceService', () => {
         done();
       })
     })();
-  }, 10000)
+  }, 10000);
 
   it('should update the location of a source successfully', done => {
     inject([SourceService], (service: SourceService) => {
@@ -138,7 +145,7 @@ describe('SourceService', () => {
         done();
       })
     })();
-  })
+  }, 10000);
 
   it('should successfully add a source and then delete it', done => {
     inject([SourceService], (service: SourceService) => {
@@ -180,5 +187,22 @@ describe('SourceService', () => {
       })
 
     })();
-  })
+  }, 10000);
+
+  it('should retrieve tags for a source', done => {
+    inject([SourceService], (service: SourceService) => {
+      let source_id = '242267';
+      let mockSource: Source = new Source(
+        source_id, '', '', '', '', 0, 0, '', '', '', '', null
+      );
+      service.getTagsForSource(mockSource).then(newSource => {
+        expect(newSource.tags.length).toBeTruthy();
+        done();
+      }).catch(error => {
+        fail('error should not occur');
+        done();
+      });
+    })();
+  }, 10000);
+
 });

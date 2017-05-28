@@ -69,6 +69,15 @@ export class PageStashComponent implements OnInit {
     }).subscribe();
   }
 
+  ngAfterContentChecked() {
+
+    if (this.sources) {
+      if (!this.renderedElements) {
+        this.refreshCanvas();
+      }
+    }
+  }
+
   @HostListener('window:keydown', ['$event'])
   keyboardInput(event: KeyboardEvent) {
     switch (event.key) {
@@ -179,14 +188,6 @@ export class PageStashComponent implements OnInit {
       // DRAW LINES
       // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
       this.updateLines(elements);
-    }
-  }
-
-  ngAfterContentChecked() {
-    if (this.sources) {
-      if (!this.renderedElements) {
-        this.refreshCanvas();
-      }
     }
   }
 
