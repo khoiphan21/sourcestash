@@ -32,6 +32,11 @@ export class CollaboratorService {
    */
   updateCollaboratorList(stash_id: string,
     collaboratorIds: string[]): Promise<AppResponse> {
+    // Check for null args
+    if (this.checkForNull([stash_id, collaboratorIds])) {
+      return Promise.reject('Null arguments received');
+    }
+
     let deferred = new Deferred<AppResponse>();
 
     let headers = new Headers({
@@ -58,6 +63,11 @@ export class CollaboratorService {
   }
 
   removeCollaborator(stash_id: string, collaborator_id: string) {
+    // Check for null args
+    if (this.checkForNull([stash_id, collaborator_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferred = new Deferred<AppResponse>();
 
     let headers = new Headers({
@@ -84,6 +94,11 @@ export class CollaboratorService {
   }
 
   addCollaborator(stash_id: string, collaborator_id: string): Promise<AppResponse> {
+    // Check for null args
+    if (this.checkForNull([stash_id, collaborator_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<AppResponse>();
     
     let collaboratorIDDictionary = {};
@@ -128,6 +143,11 @@ export class CollaboratorService {
    * @param stash_id - the stash to retrieve all collaborators for
    */
   getAllCollaborators(stash_id: string): Promise<Account[]> {
+    // Check for null args
+    if (this.checkForNull([stash_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<Account[]>();
 
     let headers = new Headers({
@@ -174,6 +194,27 @@ export class CollaboratorService {
     });
 
     return deferred.promise;
+  }
+
+  /*****************
+   * HELPER METHODS
+   ****************/
+  /**
+   * Check the arguments to see if any is null.
+   * 
+   * @param args - the array of arguments to be checked
+   * @return true if any of the argument is null, false otherwise
+   */
+  checkForNull(args: any[]): boolean {
+    let flag: boolean = false;
+
+    _.each(args, arg => {
+      if (arg == null) {
+        flag = true;
+      }
+    })
+
+    return flag;
   }
 
 }

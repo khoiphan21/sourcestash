@@ -30,6 +30,11 @@ export class SourceService {
    * @param stashId - the stash for which all the sources will be retrieved
    */
   getSourcesForStash(stash_id: string): Promise<Source[]> {
+    // Check for null args
+    if (this.checkForNull([stash_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -47,7 +52,7 @@ export class SourceService {
       options
     ).subscribe(response => {
       let sources: Source[] = response.json();
-      
+
       // Now retrieve all the tags for the sources
       Promise.all(sources.map((source: Source) => {
         // Call helper function
@@ -85,6 +90,14 @@ export class SourceService {
     yPosition: number, type: string, hyperlink: string, description: string,
     difficulty: string, tags: string[]
   ): Promise<Source> {
+    // Check for null args
+    if (this.checkForNull([
+      parent_id, stash_id, author_id, title, xPosition, yPosition,
+      type, hyperlink, description, difficulty
+    ])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferred = new Deferred<Source>();
 
     this.http.post(
@@ -118,6 +131,11 @@ export class SourceService {
   }
 
   getTagsForSource(source: Source): Promise<Source> {
+    // Check for null args
+    if (this.checkForNull([source.source_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferred = new Deferred<Source>();
 
     let headers = new Headers({
@@ -143,6 +161,11 @@ export class SourceService {
   }
 
   updateSource(source: Source): Promise<AppResponse> {
+    // Check for null args
+    if (this.checkForNull([source])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferredPromise = new Deferred<AppResponse>();
 
     let headers = new Headers({
@@ -165,7 +188,7 @@ export class SourceService {
     }, error => {
       deferredPromise.reject(new AppResponse(false, error, error));
     })
-    
+
     return deferredPromise.promise;
   }
 
@@ -177,6 +200,11 @@ export class SourceService {
    * @param yPosition - the relative yPosition of the source
    */
   updateSourcePosition(source_id: string, xPosition: number, yPosition: number): Promise<AppResponse> {
+    // Check for null args
+    if (this.checkForNull([source_id, xPosition, yPosition])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<AppResponse>();
 
     let headers = new Headers({
@@ -204,18 +232,23 @@ export class SourceService {
     }, error => {
       deferred.reject(error);
     })
-    
+
     return deferred.promise;
   }
 
   deleteSource(source_id: string): Promise<AppResponse> {
+    // Check for null args
+    if (this.checkForNull([source_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<AppResponse>();
 
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
-    
+
     // MAKE API REQUEST
     this.http.post(
       SERVER + '/source/delete/' + source_id,
@@ -236,7 +269,26 @@ export class SourceService {
     return deferred.promise;
   }
 
-  // HELPER FUNCTIONS
+  /*****************
+    * HELPER METHODS
+    *****************/
+  /**
+   * Check the arguments to see if any is null.
+   * 
+   * @param args - the array of arguments to be checked
+   * @return true if any of the argument is null, false otherwise
+   */
+  checkForNull(args: any[]): boolean {
+    let flag: boolean = false;
+
+    _.each(args, arg => {
+      if (arg == null) {
+        flag = true;
+      }
+    })
+
+    return flag;
+  }
   findMatchingSource(element: Element, sources: Source[]): Source {
     // Check to see which source matches this element
     _.each(sources, (source: Source) => {

@@ -33,7 +33,7 @@ export class PageHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stashService.getAllStashes().subscribe(stashes => {
+    this.stashService.getAllStashes().then(stashes => {
       this.stashes = stashes;
     });
     this.stashService.getAllSharedStashes().then(sharedStashes => {
@@ -50,7 +50,7 @@ export class PageHomeComponent implements OnInit {
   }
 
   reloadStashes() {
-    this.stashService.getAllStashes().subscribe(stashes => {
+    this.stashService.getAllStashes().then(stashes => {
       this.stashes = stashes;
     });
   }

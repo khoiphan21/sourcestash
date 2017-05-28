@@ -14,20 +14,15 @@ export class StashComponent implements OnInit {
   stash: Stash;
 
   sources: Source[];
-  
-  stashes: Stash;
+
   constructor(
     private stashService: StashService,
     private sourceService: SourceService
   ) { }
 
   ngOnInit() {
-    this.stashService.getStashInformation('stash').then(stash => {
-      this.stashes = stash;
-    }).then(() => {
-      this.sourceService.getSourcesForStash(this.stash.stash_id).then(sources => {
-        this.sources = sources;
-      });
+    this.sourceService.getSourcesForStash(this.stash.stash_id).then(sources => {
+      this.sources = sources;
     });
   }
 }

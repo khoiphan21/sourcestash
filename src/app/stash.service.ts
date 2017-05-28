@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import * as _ from 'underscore';
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
@@ -27,7 +29,14 @@ export class StashService {
    * 
    * @param stash - the details of the stash (including title and description)
    */
-  createStash(stash: Stash): Observable<AppResponse> {
+  createStash(stash: Stash): Promise<AppResponse> {
+    // Check for null arguments
+    if (this.checkForNull([stash.author_id, stash.title, stash.description])) {
+      return Promise.reject('Null arguments received.');
+    }
+
+    let deferred = new Deferred<AppResponse>();
+
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
@@ -36,19 +45,19 @@ export class StashService {
     let updatedStash = stash;
     updatedStash.author_id = userID;
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/stash/new',
       {
         stash: updatedStash
       },
       options
-    ).map(response => {
-      return new AppResponse(true, 'Stash created successfully.');
-    }).catch(error => {
-      console.log('error creating a stash');
-      console.log(error);
-      return Observable.throw(error);
+    ).subscribe(response => {
+      deferred.resolve(new AppResponse(true, 'Stash created successfully.'));
+    }, error => {
+      deferred.reject('Error creating a stash');
     });
+
+    return deferred.promise;
   }
 
   /**
@@ -58,6 +67,13 @@ export class StashService {
    *                with new content
    */
   updateStash(stash: Stash): Promise<AppResponse> {
+    // Check for null arguments
+    if (this.checkForNull([
+      stash.author_id, stash.stash_id, stash.title, stash.description
+    ])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferred = new Deferred<AppResponse>();
 
     if (stash.author_id == null || stash.stash_id == null ||
@@ -88,36 +104,29 @@ export class StashService {
    * 
    * @param stash - The stash to be deleted
    */
-  deleteStash(stash: Stash): Observable<AppResponse> {
-    if (stash.stash_id == null) {
-      return Observable.throw('StashID must be present.');
+  deleteStash(stash: Stash): Promise<AppResponse> {
+    // Check for null arguments
+    if (this.checkForNull([stash.stash_id, stash.title, stash.description])) {
+      return Promise.reject('Null arguments received.');
     }
+
+    let deferred = new Deferred<AppResponse>();
 
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/stash/delete',
       {
         stash: stash
       }
-    ).map(
-      response => {
-        return new AppResponse(true, 'Stash successfully deleted.');
-      }
-      ).catch(
-      error => {
-        return Observable.throw(error);
-      }
-      )
-  }
+    ).subscribe(response => {
+      deferred.resolve(new AppResponse(true, 'Stash successfully deleted.'));
+    }, error => {
+      deferred.reject(error);
+    })
 
-  /**
-   * 
-   * @param title  the title of the stash
-   */
-  getStashInformation(title: string): Promise<Stash> {
-    return Promise.resolve(ANGULAR2[0]);
+    return deferred.promise;
   }
 
   /**
@@ -125,24 +134,27 @@ export class StashService {
    * 
    * @param userEmail - The email of the user whose stashes are to be retrieved
    */
-  getAllStashes(): Observable<Stash[]> {
+  getAllStashes(): Promise<Stash[]> {
     let user: Account = this.accountService.getCurrentUser();
+
+    let deferred = new Deferred<Stash[]>();
 
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    return this.http.get(
+    this.http.get(
       SERVER + '/stashes/all/' + user.email,
       options
-    ).map(response => {
+    ).subscribe(response => {
       // Attempt to convert the response to the array of stashes
       let stashes: Stash[] = response.json();
 
-      return stashes;
-    }).catch(error => {
-      console.log(error);
-      return Observable.throw(error);
+      deferred.resolve(stashes);
+    }, error => {
+      deferred.reject(error);
     });
+
+    return deferred.promise;
   }
 
   /**
@@ -201,9 +213,26 @@ export class StashService {
     return deferred.promise;
   }
 
+  /******************
+    * HELPER METHODS
+    *****************/
   /**
-   * HELPER METHODS
+   * Check the arguments to see if any is null.
+   * 
+   * @param args - the array of arguments to be checked
+   * @return true if any of the argument is null, false otherwise
    */
+  checkForNull(args: any[]): boolean {
+    let flag: boolean = false;
+
+    _.each(args, arg => {
+      if (arg == null) {
+        flag = true;
+      }
+    })
+
+    return flag;
+  }
   setupHeaderOptions(options: RequestOptions) {
     let headers = new Headers({
       'Content-Type': 'application/json'
