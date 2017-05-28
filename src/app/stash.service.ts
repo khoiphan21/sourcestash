@@ -100,7 +100,7 @@ export class StashService {
   }
 
   /**
-   * Delete a stash. The stashID must be present stash for it to be deleted.
+   * Delete a stash. The stash_id must be present stash for it to be deleted.
    * 
    * @param stash - The stash to be deleted
    */
@@ -137,6 +137,11 @@ export class StashService {
   getAllStashes(): Promise<Stash[]> {
     let user: Account = this.accountService.getCurrentUser();
 
+    // Check for null arguments
+    if (this.checkForNull([user.email])) {
+      return Promise.reject('Null arguments received.');
+    }
+
     let deferred = new Deferred<Stash[]>();
 
     let options: RequestOptions;
@@ -161,12 +166,17 @@ export class StashService {
    * Get all stashes that this user is a collaborator of
    */
   getAllSharedStashes(): Promise<Stash[]> {
+    let user: Account = this.accountService.getCurrentUser();
+
+    // Check for null arguments
+    if (this.checkForNull([user.email])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<Stash[]>();
 
     let options: RequestOptions;
     this.setupHeaderOptions(options);
-
-    let user: Account = this.accountService.getCurrentUser();
 
     // Now retrieve the user id from the server
     this.accountService.getUserID(user.email).then(user_id => {
@@ -191,16 +201,21 @@ export class StashService {
   /**
    * Get the information of a specific stash.
    * 
-   * @param stashID - The id of the stash to be retrieved
+   * @param stash_id - The id of the stash to be retrieved
    */
-  getStash(stashID: string): Promise<Stash> {
+  getStash(stash_id: string): Promise<Stash> {
+    // Check for null arguments
+    if (this.checkForNull([stash_id])) {
+      return Promise.reject('Null arguments received.');
+    }
+    
     let deferred = new Deferred<Stash>();
 
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
     this.http.get(
-      SERVER + '/stash/' + stashID,
+      SERVER + '/stash/' + stash_id,
       options
     ).subscribe(response => {
       // Cast the response to a stash
