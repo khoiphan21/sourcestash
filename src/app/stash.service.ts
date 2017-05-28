@@ -30,11 +30,6 @@ export class StashService {
    * @param stash - the details of the stash (including title and description)
    */
   createStash(stash: Stash): Promise<AppResponse> {
-    // Check for null arguments
-    if (this.checkForNull([stash.author_id, stash.title, stash.description])) {
-      return Promise.reject('Null arguments received.');
-    }
-
     let deferred = new Deferred<AppResponse>();
 
     let options: RequestOptions;
@@ -44,6 +39,11 @@ export class StashService {
     let userID: string = this.accountService.getCurrentUserID();
     let updatedStash = stash;
     updatedStash.author_id = userID;
+
+    // Check for null arguments
+    if (this.checkForNull([updatedStash.author_id, updatedStash.title, updatedStash.description])) {
+      return Promise.reject('Null arguments received.');
+    }
 
     this.http.post(
       SERVER + '/stash/new',
