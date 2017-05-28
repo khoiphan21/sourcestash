@@ -25,12 +25,15 @@ export class SourceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // if (this.source.tags != null) {
-    //   // update the tagstring
-    //   _.each(this.source.tags, tag => {
-    //     this.tagString += `${tag}, `
-    //   })
-    // }
+    if (this.source.tags != null) {
+      // update the tagstring
+      _.each(this.source.tags, tag => {
+        this.tagString += `${tag}, `
+      });
+
+      // Trim the last 2 characters
+      this.tagString = this.tagString.slice(0, -2);
+    }
   }
 
   closePopup() {
@@ -38,6 +41,9 @@ export class SourceEditComponent implements OnInit {
   }
 
   updateSource() {
+    // Process the tagstring to an array
+    this.source.tags = this.processTagString(this.tagString);
+    
     this.sourceService.updateSource(this.source).then((response: AppResponse) => {
       if (response.success) {
         this.onUpdate.emit();
