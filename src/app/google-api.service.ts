@@ -102,7 +102,6 @@ export class GoogleApiService {
 
         // Handle the initial sign-in state.
         if (GoogleAuth.isSignedIn.get()) {
-          console.log('googleauth.issignedin is true');
           makeApiCall();
         } else {
           // Call the Authorization server

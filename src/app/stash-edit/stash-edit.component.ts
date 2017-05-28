@@ -104,7 +104,6 @@ export class StashEditComponent implements OnInit {
     ).then(response => {
       this.closePopup();
       this.announceUpdate();
-      console.log(response);
     })
   }
 }

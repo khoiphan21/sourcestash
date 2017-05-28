@@ -55,8 +55,6 @@ export class SourceAddComponent implements OnInit {
     this.source.tags = this.processTagString(this.tagString);
     if (this.source.tags == null) isInputValid = false;
 
-    console.log(this.source);
-
     // Check if inputs are valid
     if (isInputValid) {
       // Make a request to the server

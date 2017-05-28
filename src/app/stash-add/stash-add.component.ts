@@ -27,7 +27,6 @@ export class StashAddComponent implements OnInit {
 
   addStash() {
     // Make call to API for adding a stash
-    console.log(this.stashTitle, this.stashDescription);
     this.stashService.createStash(new Stash(this.stashTitle, this.stashDescription))
       .subscribe(response => {
         // Emit event to tell parent to reload the stashes

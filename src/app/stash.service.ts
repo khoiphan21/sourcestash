@@ -43,9 +43,9 @@ export class StashService {
       },
       options
     ).map(response => {
-      console.log(response);
       return new AppResponse(true, 'Stash created successfully.');
     }).catch(error => {
+      console.log('error creating a stash');
       console.log(error);
       return Observable.throw(error);
     });

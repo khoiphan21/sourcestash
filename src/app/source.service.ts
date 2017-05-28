@@ -108,7 +108,6 @@ export class SourceService {
       if (response.status != 201) {
         deferred.reject('Failed to create a new source');
       } else {
-        console.log(response);
         deferred.resolve(response.json());
       }
     }, error => {
