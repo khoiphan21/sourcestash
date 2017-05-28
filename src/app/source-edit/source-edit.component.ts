@@ -11,11 +11,15 @@ import { AppResponse } from '../classes/response';
   styleUrls: ['./source-edit.component.scss']
 })
 export class SourceEditComponent implements OnInit {
-  // Model for the tags input
-  tagString: string = "";
-
   // The parent source that the new source will be attached to
   @Input() source: Source;
+  
+  // Model for the form
+  title: string;
+  hyperlink: string;
+  difficulty: string;
+  tagString: string = "";
+  description: string;
 
   @Output() onClose = new EventEmitter<boolean>();
   @Output() onUpdate = new EventEmitter<boolean>();
@@ -25,6 +29,12 @@ export class SourceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Setup the model of the form
+    this.title = this.source.title.toString();
+    this.hyperlink = this.source.hyperlink.toString();
+    this.difficulty = this.source.difficulty.toString();
+    this.description = this.source.description.toString();
+    
     if (this.source.tags != null) {
       // update the tagstring
       _.each(this.source.tags, tag => {
@@ -41,12 +51,17 @@ export class SourceEditComponent implements OnInit {
   }
 
   updateSource() {
+    // Transfer the values from the form model to the main model
+    this.source.title = this.title;
+    this.source.hyperlink = this.hyperlink;
+    this.source.difficulty = this.difficulty;
+    this.source.description = this.description;
     // Process the tagstring to an array
     this.source.tags = this.processTagString(this.tagString);
     
     this.sourceService.updateSource(this.source).then((response: AppResponse) => {
       if (response.success) {
-        this.onUpdate.emit();
+        // this.onUpdate.emit();
       } else {
         alert('Failed to update source!');
       }

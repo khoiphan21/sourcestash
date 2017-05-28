@@ -64,7 +64,7 @@
           <section class="right-container-source-list">
             <collapsible-list style="margin: 0" [type]="'expandable'">
 
-              <collapsible-list-item *ngFor="let source of sources">
+              <collapsible-list-item *ngFor="let source of sources" [style.display]="source.type == 'root' ? 'none' : 'block'">
                 <collapsible-header class="right-container-stash-subheader">
                   {{source.title}}
                 </collapsible-header>

@@ -136,9 +136,13 @@ export class PageStashComponent implements OnInit {
     this.sourceService.getSourcesForStash(this.stash_id).then(sources => {
       // Retrieve the sources for the stash
       this.sources = sources;
+      this.resetCanvas();
+
+      // Wait a bit before updating source positions and lines
+      // FIX THIS BUG
       setTimeout(() => {
         this.refreshCanvas();
-      }, 1000)
+      }, 500)
     })
     // Retrieve the information of the stash from the server
     this.stashService.getStash(this.stash_id).then((stash: Stash) => {
