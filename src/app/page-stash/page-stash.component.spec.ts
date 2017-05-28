@@ -21,7 +21,12 @@ import { CollaboratorService } from '../collaborator.service';
 
 let mockRoute = {
   params: {
-    subscribe: jasmine.createSpy('subscribe')
+    subscribe: jasmine.createSpy('subscribe'),
+    map: function() {
+      return {
+        subscribe: jasmine.createSpy('subscribe')
+      }
+    }
   }
 }
 
@@ -39,7 +44,8 @@ describe('PageStashComponent', () => {
         SourceAddComponent,
         FooterComponent,
         SourceEditComponent,
-        StashEditComponent
+        StashEditComponent,
+        HeaderComponent
       ], 
       providers: [
         SourceService,

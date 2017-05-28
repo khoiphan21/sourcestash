@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { GoogleApiService } from '../google-api.service';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 describe('PageLoginComponent', () => {
   let component: PageLoginComponent;
@@ -16,7 +17,8 @@ describe('PageLoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         PageLoginComponent,
-        FooterComponent
+        FooterComponent,
+        HeaderComponent
       ],
       providers: [
         AccountService,
