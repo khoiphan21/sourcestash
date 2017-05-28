@@ -7,14 +7,20 @@ import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Stash } from '../classes/stash';
+import { Source } from '../classes/source';
 
 describe('SourceEditComponent', () => {
-  let component: SourceEditComponent;
-  let fixture: ComponentFixture<SourceEditComponent>;
+  let component: SourceEditWrapper;
+  let fixture: ComponentFixture<SourceEditWrapper>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SourceEditComponent ],
+      declarations: [ 
+        SourceEditComponent,
+        SourceEditWrapper
+      ],
       providers: [
         SourceService,
         AccountService,
@@ -24,13 +30,14 @@ describe('SourceEditComponent', () => {
       imports: [
         FormsModule,
         HttpModule
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SourceEditComponent);
+    fixture = TestBed.createComponent(SourceEditWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -39,3 +46,20 @@ describe('SourceEditComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+/**
+ * This is to create a wrapper component, that will pass in some inputs for the 
+ * component being tested
+ */
+@Component({
+  selector: 'source-edit-wrapper',
+  template: '<app-source-edit [source]="source"></app-source-edit>'
+})
+class SourceEditWrapper {
+  source: Source = new Source(
+    '','','','','',0,0,'','','','',[
+      'tag1', 'tag2'
+    ]
+  );
+}
+

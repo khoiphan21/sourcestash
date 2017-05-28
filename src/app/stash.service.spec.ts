@@ -44,12 +44,12 @@ describe('StashService', () => {
       accountService.login(email, password).then(() => {
         // Wait for a few seconds for the app to update user id
         setTimeout(() => {
-          service.createStash(stash).subscribe(
+          service.createStash(stash).then(
             (response: AppResponse) => {
               expect(response.success).toBe(true);
 
               // Now attempt to delete the stash
-              service.deleteStash(stash).subscribe(
+              service.deleteStash(stash).then(
                 response => done(), // successful
                 error => {
                   console.log(error);
@@ -117,7 +117,7 @@ describe('StashService', () => {
   it('should retrieve the stashes for a user', done => {
     inject([StashService], (service: StashService) => {
       let email = 'john@example.com';
-      service.getAllStashes().subscribe(
+      service.getAllStashes().then(
         (stashes: Stash[]) => {
           expect(stashes).toBeTruthy();
           done();
@@ -134,7 +134,7 @@ describe('StashService', () => {
       let email = 'john4@example.com';
       let password = 'password';
       accountService.login(email, password).then(() => {
-        service.getAllStashes().subscribe(
+        service.getAllStashes().then(
           (stashes: Stash[]) => {
             expect(stashes.length).toBe(0);
             done();
