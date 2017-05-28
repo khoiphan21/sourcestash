@@ -9,7 +9,7 @@ import * as _ from 'underscore';
   styleUrls: ['./source-view.component.scss']
 })
 export class SourceViewComponent implements OnInit {
-  tagString: string;
+  tagString: string = '';
 
   @Input()
   source: Source;
