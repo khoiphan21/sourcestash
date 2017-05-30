@@ -45,6 +45,7 @@ section.all-modals {
         .main-container-title {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
             font-size: 16pt;
             font-weight: bold;
             color: $theme-dark-grey;
@@ -55,8 +56,19 @@ section.all-modals {
             border-bottom: 1px solid $theme-font-dark-grey;
             margin-bottom: 5vh;
             span:last-child {
+                @include transition-basic();
+                padding: 1vh 2vw;
+                border: 1px solid $theme-font-dark-grey;
                 font-weight: 300;
                 background-color: rgba(0, 0, 0, 0);
+                &:hover {
+                    cursor: pointer;
+                    background: $theme-font-dark-grey;
+                    color: $theme-white;
+                }
+                span {
+                    margin: 0 0.5vw;
+                }
             }
         }
         .main-container-stashes {
