@@ -3,18 +3,15 @@
 @import '../sass/globalStyles';
 
 
-#main-container {
+.main-container {
     // Container 1
-    #video-container {
-        background: $theme-grey;
+    .video-container {
         width: 100%;
         height: 544px;
-        background: $light-background;
         .bold {
             font-weight: bold;
-            color: $theme-light-blue;
         }
-        #video-container-content {
+        .video-container-content {
             display: block;
             width: 700px;
             font-size: 16pt;
@@ -22,7 +19,7 @@
             margin: auto;
             padding: 210px 0 0 0;
         }
-        #video-container-buttons {
+        .video-container-buttons {
             margin: auto;
             display: flex;
             justify-content: space-around;
@@ -30,23 +27,23 @@
             width: 32vw;
             text-align: center;
             font-size: 10pt;
-            #feature {
+            .feature {
                 transition: 0.3s;
                 @include button-ss-light();
             }
-            #contact {
+            .contact {
                 transition: 0.3s;
                 @include button-ss-light();
             }
         }
     } // Container 2
-    #benefit-container {
+    .benefit-container {
         background: $dark-background;
         width: 100vw;
         padding: 34px 0 34px 0;
         color: $theme-white;
         text-align: center;
-        #benefit-container-content {
+        .benefit-container-content {
             // width: 55vw
             width: 563px;
             font-size: 11pt;
@@ -56,7 +53,7 @@
                 color: $theme-orange;
                 font-size: 20pt;
             }
-            #benefit-container-details {
+            .benefit-container-details {
                 font-size: 10pt;
                 font-weight: 300;
                 margin: auto;
@@ -68,7 +65,7 @@
                 justify-content: space-between;
                 // margin-botto: 3vh
                 margin-bottom: 25px;
-                #benefit-container-details-content {
+                .benefit-container-details-content {
                     width: 143px;
                 }
                 .benefit-container-largetFont {
@@ -80,7 +77,7 @@
                     padding: 0px;
                 }
             }
-            #benefit-container-login-button {
+            .benefit-container-login-button {
                 margin: auto;
                 transition: 0.3s;
                 @include button-ss-dark();
@@ -90,14 +87,14 @@
             }
         }
     } // Container 3
-    #feature-container {
+    .feature-container {
         background: $light-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
         padding: 34px 0 34px 0;
         color: black;
         text-align: center;
-        #feature-container-content {
+        .feature-container-content {
             // width: 65vw;
             width: 665px;
             margin: auto;
@@ -108,7 +105,7 @@
                 font-size: 20pt;
             }
         }
-        #feature-container-details {
+        .feature-container-details {
             font-size: 10pt;
             font-weight: 300;
             margin: auto;
@@ -124,25 +121,25 @@
                 font-size: 11pt;
                 color: $theme-light-blue;
             }
-            #feature-container-details-side-content {
+            .feature-container-details-side-content {
                 // width: 12vw;
                 width: 123px;
                 font-size: 10pt;
             }
-            #feature-container-details-center-content {
+            .feature-container-details-center-content {
                 // width: 38vw;
                 width: 400px;
             }
         }
     } // Container 4
-    #team-container {
+    .team-container {
         background: $dark-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
         padding: 34px 0 34px 0;
         color: $theme-white;
         text-align: center;
-        #team-container-content {
+        .team-container-content {
             // width: 55vw;
             width: 563px;
             font-size: 11pt;
@@ -152,7 +149,7 @@
                 color: $theme-orange;
                 font-size: 20pt;
             }
-            #team-container-details {
+            .team-container-details {
                 font-size: 10pt;
                 font-weight: 300;
                 margin-left: auto;
@@ -164,7 +161,7 @@
                 padding: 25px 0 0 0;
                 display: flex;
                 justify-content: space-between;
-                #team-container-details-content {
+                .team-container-details-content {
                     // width: 16vw;
                     width: 164px;
                     font-weight: 200;
@@ -190,7 +187,7 @@
             }
         }
     } // Container 5
-    #contact-container {
+    .contact-container {
         background: $light-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
@@ -199,7 +196,7 @@
         display: flex;
             justify-content: center;
             flex-direction: column;
-        #contact-container-content {
+        .contact-container-content {
             // width: 65vw;
             width: 666px;
             margin: auto;
@@ -210,7 +207,7 @@
                 font-size: 20pt;
             }
         }
-        #contact-container-details {
+        .contact-container-details {
             font-size: 10pt;
             display: flex;
             justify-content: space-between;
@@ -218,7 +215,7 @@
             width: 550px;
             // padding: 1vh 0 0 0;
             padding: 10px 0 0 0;
-            #contact-container-details-form {
+            .contact-container-details-form {
                 text-align: left;
                 width: 250px;
                 // padding: 0 1vw 0 1vw;
@@ -233,12 +230,12 @@
                     height: 24px;
                     border: 1px solid $theme-light-blue;
                 }
-                #submit {
+                .submit {
                     transition: 0.3s;
                     @include button-ss-light();
                 }
             }
-            #contact-container-details-detail {
+            .contact-container-details-detail {
                 text-align: center;
                 // width: 23vw;
                 width: 240px;
@@ -253,10 +250,10 @@
                 li {
                     text-decoration: none;
                 }
-                #left {
+                .left {
                     text-align: left;
                 }
-                #right {
+                .right {
                     text-align: right;
                 }
                 .contact-container-details-detail-left {
@@ -280,9 +277,9 @@
 //
 // tablet screen
 @include media(small-screen) {
-    #main-container {
+    .main-container {
     // Container 1
-    #video-container {
+    .video-container {
         background: $theme-grey;
         width: 100%;
         height: 544px;
@@ -291,7 +288,7 @@
             font-weight: bold;
             color: $theme-light-blue;
         }
-        #video-container-content {
+        .video-container-content {
             display: block;
             width: 460px;
             font-size: 16pt;
@@ -299,7 +296,7 @@
             margin: auto;
             padding: 210px 0 0 0;
         }
-        #video-container-buttons {
+        .video-container-buttons {
             margin: auto;
             display: flex;
             justify-content: space-around;
@@ -307,7 +304,7 @@
             width: 50vw;
             text-align: center;
             font-size: 10pt;
-            #feature {
+            .feature {
                 transition: 0.3s;
                 @include button-ss-light(
                     $padding: 1vh 1vw,
@@ -315,7 +312,7 @@
                     $font-size: $mobile-font-content
                 );
             }
-            #contact {
+            .contact {
                 transition: 0.3s;
                 @include button-ss-light(
                     $padding: 1vh 1vw,
@@ -325,13 +322,13 @@
             }
         }
     } // Container 2
-    #benefit-container {
+    .benefit-container {
         background: $dark-background;
         width: 100vw;
         padding: 34px 0 34px 0;
         color: $theme-white;
         text-align: center;
-        #benefit-container-content {
+        .benefit-container-content {
             // width: 55vw
             width: 563px;
             font-size: 11pt;
@@ -341,7 +338,7 @@
                 color: $theme-orange;
                 font-size: 20pt;
             }
-            #benefit-container-details {
+            .benefit-container-details {
                 font-size: 10pt;
                 font-weight: 300;
                 margin: auto;
@@ -353,7 +350,7 @@
                 justify-content: space-between;
                 // margin-botto: 3vh
                 margin-bottom: 25px;
-                #benefit-container-details-content {
+                .benefit-container-details-content {
                     width: 143px;
                 }
                 .benefit-container-largetFont {
@@ -365,7 +362,7 @@
                     padding: 0px;
                 }
             }
-            #benefit-container-login-button {
+            .benefit-container-login-button {
                 margin: auto;
                 transition: 0.3s;
                  @include button-ss-dark(
@@ -379,14 +376,14 @@
             }
         }
     } // Container 3
-    #feature-container {
+    .feature-container {
         background: $light-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
         padding: 34px 0 34px 0;
         color: black;
         text-align: center;
-        #feature-container-content {
+        .feature-container-content {
             // width: 65vw;
             width: 665px;
             margin: auto;
@@ -397,7 +394,7 @@
                 font-size: 20pt;
             }
         }
-        #feature-container-details {
+        .feature-container-details {
             font-size: 10pt;
             font-weight: 300;
             margin: auto;
@@ -413,25 +410,25 @@
                 font-size: 11pt;
                 color: $theme-light-blue;
             }
-            #feature-container-details-side-content {
+            .feature-container-details-side-content {
                 // width: 12vw;
                 width: 123px;
                 font-size: 10pt;
             }
-            #feature-container-details-center-content {
+            .feature-container-details-center-content {
                 // width: 38vw;
                 width: 400px;
             }
         }
     } // Container 4
-    #team-container {
+    .team-container {
         background: $dark-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
         padding: 34px 0 34px 0;
         color: $theme-white;
         text-align: center;
-        #team-container-content {
+        .team-container-content {
             // width: 55vw;
             width: 563px;
             font-size: 11pt;
@@ -441,7 +438,7 @@
                 color: $theme-orange;
                 font-size: 20pt;
             }
-            #team-container-details {
+            .team-container-details {
                 font-size: 10pt;
                 font-weight: 300;
                 margin-left: auto;
@@ -453,7 +450,7 @@
                 padding: 25px 0 0 0;
                 display: flex;
                 justify-content: space-between;
-                #team-container-details-content {
+                .team-container-details-content {
                     // width: 16vw;
                     width: 164px;
                     font-weight: 200;
@@ -479,7 +476,7 @@
             }
         }
     } // Container 5
-    #contact-container {
+    .contact-container {
         background: $light-background;
         width: 100vw;
         // padding: 4vh 0 4vh 0;
@@ -488,7 +485,7 @@
         display: flex;
             justify-content: center;
             flex-direction: column;
-        #contact-container-content {
+        .contact-container-content {
             // width: 65vw;
             width: 666px;
             margin: auto;
@@ -499,7 +496,7 @@
                 font-size: 20pt;
             }
         }
-        #contact-container-details {
+        .contact-container-details {
             font-size: 10pt;
             display: flex;
             justify-content: space-between;
@@ -507,7 +504,7 @@
             width: 550px;
             // padding: 1vh 0 0 0;
             padding: 10px 0 0 0;
-            #contact-container-details-form {
+            .contact-container-details-form {
                 text-align: left;
                 width: 250px;
                 // padding: 0 1vw 0 1vw;
@@ -520,7 +517,7 @@
                     height: 24px;
                     border: 1px solid $theme-light-blue;
                 }
-                #submit {
+                .submit {
                     transition: 0.3s;
                     @include button-ss-light(
                         $padding: 1vh 1vw,
@@ -529,7 +526,7 @@
                     );
                 }
             }
-            #contact-container-details-detail {
+            .contact-container-details-detail {
                 text-align: center;
                 // width: 23vw;
                 width: 240px;
@@ -544,10 +541,10 @@
                 li {
                     text-decoration: none;
                 }
-                #left {
+                .left {
                     text-align: left;
                 }
-                #right {
+                .right {
                     text-align: right;
                 }
                 .contact-container-details-detail-left {
@@ -572,9 +569,9 @@
 // 
 // mobile screen
 @include media(mobile-screen) {
-    #main-container {
+    .main-container {
         // Container 1
-        #video-container {
+        .video-container {
             background: $theme-grey;
             width: 100vw;
             background: $light-background;
@@ -584,7 +581,7 @@
                 color: $theme-light-blue;
                 font-size: $mobile-font-heading;
             }
-            #video-container-content {
+            .video-container-content {
                 display: block;
                 width: 80vw;
                 font-size: 11pt;
@@ -592,7 +589,7 @@
                 margin: auto;
                 padding: 30vh 0 0 0;
             }
-            #video-container-buttons {
+            .video-container-buttons {
                 margin: auto;
                 display: flex;
                 width: 61vw;
@@ -600,14 +597,14 @@
                 margin-top: 10vh;
                 text-align: center;
                 font-size: 9pt;
-                #feature {
+                .feature {
                     @include button-ss-light(
                         $padding: 1vh 1vw,
                         $width: 20vw, 
                         $font-size: $mobile-font-content
                     );
                 }
-                #contact {
+                .contact {
                     @include button-ss-light(
                         $padding: 1vh 1vw,
                         $width: 20vw, 
@@ -616,13 +613,13 @@
                 }
             }
         } // Container 2
-        #benefit-container {
+        .benefit-container {
             background: $dark-background;
             width: 100vw;
             padding: 4vh 0;
             color: $theme-white;
             text-align: center;
-            #benefit-container-content {
+            .benefit-container-content {
                 width: 80vw;
                 font-size: $mobile-font-content;
                 margin: auto;
@@ -632,7 +629,7 @@
                     font-size: $mobile-font-title;
                     font-weight: bold;
                 }
-                #benefit-container-details {
+                .benefit-container-details {
                     font-size: $mobile-font-content;
                     font-weight: 300;
                     margin: auto;
@@ -642,7 +639,7 @@
                     justify-content: center;
                     flex-direction: column;
                     margin-bottom: 3vh;
-                    #benefit-container-details-content {
+                    .benefit-container-details-content {
                         width: 80vw;
                         margin: auto;
                         display: flex;
@@ -659,7 +656,7 @@
                         padding: 0px;
                     }
                 }
-                #benefit-container-login-button {
+                .benefit-container-login-button {
                     margin: auto;
                     @include button-ss-dark(
                         $padding: 1vh 1vw,
@@ -669,13 +666,13 @@
                 }
             }
         } // Container 3
-        #feature-container {
+        .feature-container {
             background: $light-background;
             width: 100vw;
             padding: 4vh 0 4vh 0;
             color: black;
             text-align: center;
-            #feature-container-content {
+            .feature-container-content {
                 width: 80vw;
                 margin: auto;
                 font-size: $mobile-font-content;
@@ -685,7 +682,7 @@
                     font-size: $mobile-font-title;
                 }
             }
-            #feature-container-details {
+            .feature-container-details {
                 font-size: $mobile-font-content;
                 font-weight: 300;
                 margin: auto;
@@ -700,23 +697,23 @@
                     font-size: $mobile-font-heading;
                     color: $theme-light-blue;
                 }
-                #feature-container-details-side-content {
+                .feature-container-details-side-content {
                     width: 80vw;
                     padding: 2vh 0;
                 }
-                #feature-container-details-center-content {
+                .feature-container-details-center-content {
                     display: none;
                     width: 80vw;
                 }
             }
         } // Container 4
-        #team-container {
+        .team-container {
             background: $dark-background;
             width: 100vw;
             padding: 4vh 0 4vh 0;
             color: $theme-white;
             text-align: center;
-            #team-container-content {
+            .team-container-content {
                 width: 80vw;
                 font-size: $mobile-font-content;
                 margin: auto;
@@ -725,7 +722,7 @@
                     color: $theme-orange;
                     font-size: $mobile-font-title;
                 }
-                #team-container-details {
+                .team-container-details {
                     font-size: $mobile-font-content;
                     font-weight: 300;
                     margin: auto;
@@ -735,7 +732,7 @@
                     justify-content: center;
                     flex-direction: column;
                     align-items: center;
-                    #team-container-details-content {
+                    .team-container-details-content {
                         width: 80vw;
                         font-weight: 200;
                         padding: 2vh 0;
@@ -759,12 +756,12 @@
                 }
             }
         } // Container 5
-        #contact-container {
+        .contact-container {
             background: $light-background;
             width: 100vw;
             padding: 4vh 0 4vh 0;
             font-size: $mobile-font-content;
-            #contact-container-content {
+            .contact-container-content {
                 width: 80vw;
                 margin: auto;
                 text-align: center;
@@ -773,7 +770,7 @@
                     font-size: $mobile-font-title;
                 }
             }
-            #contact-container-details {
+            .contact-container-details {
                 font-size: $mobile-font-content;
                 display: flex;
                 justify-content: center;
@@ -782,7 +779,7 @@
                 margin: auto;
                 width: 80vw;
                 padding: 1vh 0 0 0;
-                #contact-container-details-form {
+                .contact-container-details-form {
                     order: 2;
                     text-align: left;
                     width: 50vw;
@@ -795,7 +792,7 @@
                         padding-top: 1vh;
                         border: 1px solid $theme-light-blue;
                     }
-                    #submit {
+                    .submit {
                         @include button-ss-light(
                             $padding: 1vh 1vw,
                             $width: 20vw, 
@@ -803,7 +800,7 @@
                         );
                     }
                 }
-                #contact-container-details-detail {
+                .contact-container-details-detail {
                     order: 1;
                     display: flex;
                     justify-content: center;
@@ -818,10 +815,10 @@
                     li {
                         text-decoration: none;
                     }
-                    #left {
+                    .left {
                         text-align: left;
                     }
-                    #right {
+                    .right {
                         text-align: right;
                     }
                     .contact-container-details-detail-left {
