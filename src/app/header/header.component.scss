@@ -46,8 +46,10 @@ section.all-modals {
             justify-content: space-between;
             align-items: center;
             a {
+                @include transition-basic();
                 padding: 0 2vw;
                 font-weight: 600;
+                font-size: 15px;
                 height: 7vh;
                 display: flex;
                 align-items: center;
