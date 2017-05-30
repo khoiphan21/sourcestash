@@ -211,60 +211,60 @@
                 color: white;
                 border: white solid 1px;
                 background: none;
+                &:hover{
+                    color: $theme-blue;
+                    background: white;
+                }
             }
         }
     } // Container 4
     .team-container {
+        font-weight: 300;
         background: $dark-background;
         width: 100vw;
-        // padding: 4vh 0 4vh 0;
-        padding: 34px 0 34px 0;
+        padding: 4vh 0 4vh 0;
         color: $theme-white;
-        text-align: center;
+        display: flex;
+        justify-content: center;
         .team-container-content {
-            // width: 55vw;
-            width: 563px;
-            font-size: 11pt;
-            margin: auto;
-            text-align: center;
+           text-align: left;
+            width: 85vw;
+            font-size: 14pt;
+            hr{
+            }
             .team-container-title {
-                color: $theme-orange;
-                font-size: 20pt;
+                font-size: 25pt;
             }
             .team-container-details {
-                font-size: 10pt;
-                font-weight: 300;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 0;
-                // width: 54vw;
-                width: 553px;
-                // padding: 3vh 0 0 0;
-                padding: 25px 0 0 0;
+                padding: 0 1vw 0 1vw;
                 display: flex;
                 justify-content: space-between;
-                .team-container-details-content {
-                    // width: 16vw;
-                    width: 164px;
-                    font-weight: 200;
+                text-align: left;
+                .team-container-details-content1 {
+                    background: $theme-turquoise;
+                    padding: 5vh 1vw;
+                    width: 26vw;
                 }
-                .team-name {
-                    font-size: 12pt;
-                    color: $theme-orange;
+                .team-container-details-content2 {
+                    background: $theme-blue;
+                    padding: 5vh 1vw;
+                    width: 26vw;
                 }
-                .team-container-largerFont {
+                .team-container-details-content3 {
+                    background: $theme-light-orange;
+                    padding: 5vh 1vw;
+                    width: 26vw;
+                }
+                .team-container-heading{
+                    font-size: 16pt;
+                }
+                .team-container-largetFont {
                     font-size: 11pt;
-                    font-weight: 500;
-                    color: $theme-grey;
+                    width: 15vw;
                 }
-                img {
-                    margin: 0px;
+                img, br {
+                    margin: 0;
                     padding: 0px;
-                }
-                p {
-                    padding: 0px;
-                    // margin-top: 1vh;
-                    margin-top: 10px;
                 }
             }
         }
