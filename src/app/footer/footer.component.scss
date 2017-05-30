@@ -1,6 +1,7 @@
 @import '../sass/variables';
 @import '../sass/mixins';
 div.wrapper {
+    border-top: 1px solid $theme-font-grey;
     @include row-center();
     width: 100vw;
     height: $footer-height;

@@ -41,6 +41,7 @@ section.all-modals {
     .main-container-content {
         @include column-center();
         width: $content-width;
+        margin-bottom: 5vh;
         .main-container-title {
             font-size: 16pt;
             font-weight: bold;
