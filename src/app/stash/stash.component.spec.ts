@@ -8,16 +8,19 @@ import { HttpModule } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
 import { SourceService } from '../source.service';
+import { Component } from '@angular/core';
+import { Stash } from '../classes/stash';
 
 describe('StashComponent', () => {
-  let component: StashComponent;
-  let fixture: ComponentFixture<StashComponent>;
+  let component: StashWrapperComponent;
+  let fixture: ComponentFixture<StashWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         StashComponent,
-        SourcesComponent
+        SourcesComponent,
+        StashWrapperComponent
       ],
       providers: [
         StashService,
@@ -34,7 +37,7 @@ describe('StashComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StashComponent);
+    fixture = TestBed.createComponent(StashWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -43,3 +46,11 @@ describe('StashComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'stash-wrapper',
+  template: '<app-stash [stash]="stash"></app-stash>'
+})
+class StashWrapperComponent {
+  stash: Stash = new Stash('Title', 'Description');
+}
