@@ -14,16 +14,16 @@
     <section class="header-right" *ngIf="!isUserLoggedIn">
       <a routerLink="#">BENEFITS</a><span class="circle"> </span>
       <a routerLink="#">FEATURES</a><span class="circle"> </span>
-      <a routerLink="#">CONTACT US</a><span class="circle"> </span>
+      <a routerLink="/contact">CONTACT US</a><span class="circle"> </span>
       <a routerLink="/login">LOGIN</a>
     </section>
 
     <!--For the logged in version-->
     <section class="header-right" *ngIf="isUserLoggedIn">
       <span class="header-right-profile" *ngIf="currentAccount">Hi, {{currentAccount.firstName}}!</span>
-      <a class="header-right-home" routerLink="/home">My Stashes</a><span class="circle"> </span>
-      <a class="header-right-welcome" routerLink="/welcome">Contact us</a><span class="circle"> </span>
-      <a class="header-right-welcome" routerLink="/welcome" (click)="logout()">Logout</a>
+      <a class="header-right-home" routerLink="/home">MY STASHES</a><span class="circle"> </span>
+      <a class="header-right-welcome" routerLink="/contact">CONTACT US</a><span class="circle"> </span>
+      <a class="header-right-welcome" routerLink="/welcome" (click)="logout()">LOGOUT</a>
       <!--<section class="header-right-dropdown-container">
         <article class="header-right-logout" (click)="toggleProfileDropdown()">
           <img src="./assets/images/profile.png" width="30px" height="30px">
@@ -47,11 +47,17 @@
       <button class="header-mobile-right-btn" (click)="isDropdown = !isDropdown" (click)="isModalShown = !isModalShown">&#9776;</button>
       <section class="header-mobile-right-content" *ngIf="isDropdown">
         <ul>
-          <a routerLink="/login">
-            <li>Log in</li>
+          <a routerLink="#">
+            <li>BENEFITS</li>
           </a>
-          <a routerLink="/welcome">
-            <li>About us</li>
+          <a routerLink="#">
+            <li>FEATURES</li>
+          </a>
+          <a routerLink="/contact">
+            <li>CONTACT US</li>
+          </a>
+          <a routerLink="/login">
+            <li>LOGIN</li>
           </a>
         </ul>
       </section>
@@ -63,16 +69,13 @@
       <section class="header-mobile-right-content" *ngIf="isDropdown">
         <ul>
           <a routerLink="/home">
-            <li>Home</li>
+            <li>MY STASHES</li>
           </a>
-          <a routerLink="/welcome">
-            <li>About us</li>
-          </a>
-          <a routerLink="/profilepage">
-            <li>Profile</li>
+          <a routerLink="/contact">
+            <li>CONTACT US</li>
           </a>
           <a routerLink="/welcome" (click)="logout()">
-            <li>Logout</li>
+            <li>LOGOUT</li>
           </a>
         </ul>
       </section>
