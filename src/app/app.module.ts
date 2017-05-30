@@ -27,6 +27,7 @@ import { PageWelcomeComponent } from './page-welcome/page-welcome.component';
 import { SourceViewComponent } from './source-view/source-view.component';
 import { PageLoginComponent } from './page-login/page-login.component';
 import { PageStashComponent } from './page-stash/page-stash.component';
+import { PageWelcomeNewComponent } from './page-welcome-new/page-welcome-new.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PageStashComponent } from './page-stash/page-stash.component';
     PageWelcomeComponent,
     SourceViewComponent,
     PageLoginComponent,
-    PageStashComponent
+    PageStashComponent,
+    PageWelcomeNewComponent
     ],
   imports: [
     BrowserModule,
