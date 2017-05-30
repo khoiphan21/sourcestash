@@ -136,7 +136,7 @@
             color: white;
             width: 100%;
             text-align: left;
-            background: white;
+            background: rgba(255,255,255,0.9);
             font-size: 14pt;
             .feature-container-title {
                 font-size: 25pt;
@@ -220,10 +220,10 @@
     } // Container 4
     .team-container {
         font-weight: 300;
-        background: $dark-background;
+        background: rgba(255,255,255,0.9);
         width: 100vw;
         padding: 4vh 0 4vh 0;
-        color: $theme-white;
+        color: black;
         display: flex;
         justify-content: center;
         .team-container-content {
@@ -241,16 +241,19 @@
                 justify-content: space-between;
                 text-align: left;
                 .team-container-details-content1 {
+                    color: white;
                     background: $theme-turquoise;
                     padding: 5vh 1vw;
                     width: 26vw;
                 }
                 .team-container-details-content2 {
+                    color: white;
                     background: $theme-blue;
                     padding: 5vh 1vw;
                     width: 26vw;
                 }
                 .team-container-details-content3 {
+                    color: white;
                     background: $theme-light-orange;
                     padding: 5vh 1vw;
                     width: 26vw;
@@ -267,91 +270,6 @@
                     padding: 0px;
                 }
             }
-        }
-    } // Container 5
-    .contact-container {
-        background: $light-background;
-        width: 100vw;
-        // padding: 4vh 0 4vh 0;
-        padding: 35px 0 35px 0;
-        font-size: 11pt;
-        display: flex;
-            justify-content: center;
-            flex-direction: column;
-        .contact-container-content {
-            // width: 65vw;
-            width: 666px;
-            margin: auto;
-            text-align: center;
-            
-            .contact-container-title {
-                color: $theme-light-blue;
-                font-size: 20pt;
-            }
-        }
-        .contact-container-details {
-            font-size: 10pt;
-            display: flex;
-            justify-content: space-between;
-            margin: auto;
-            width: 550px;
-            // padding: 1vh 0 0 0;
-            padding: 10px 0 0 0;
-            .contact-container-details-form {
-                text-align: left;
-                width: 250px;
-                // padding: 0 1vw 0 1vw;
-                padding: 0 10px 0 10px;
-                input[type=text],
-                select {
-                    margin: 0;
-                    width: 225px;
-                    background: $theme-light-blue;
-                    color: $theme-white;
-                    // height: 2vh;
-                    height: 24px;
-                    border: 1px solid $theme-light-blue;
-                }
-                .submit {
-                    transition: 0.3s;
-                    @include button-ss-light();
-                }
-            }
-            .contact-container-details-detail {
-                text-align: center;
-                // width: 23vw;
-                width: 240px;
-                // padding: 0 1vw 0 1vw;
-                padding: 0 10px 0 10px;
-                ul {
-                    list-style-type: none;
-                    padding: 0px;
-                    display: flex;
-                    justify-content: space-between;
-                }
-                li {
-                    text-decoration: none;
-                }
-                .left {
-                    text-align: left;
-                }
-                .right {
-                    text-align: right;
-                }
-                .contact-container-details-detail-left {
-                    float: left;
-                }
-                .contact-container-details-detail-right {
-                    float: right;
-                }
-                img {
-                    margin-top: 3vh;
-                }
-            }
-        }
-        .contact-container-title {
-            font-weight: bold;
-            font-size: 16pt;
         }
     }
 }
