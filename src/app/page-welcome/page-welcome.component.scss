@@ -106,47 +106,111 @@
         }
     } // Container 3
     .feature-container {
-        background: $light-background;
+        font-weight: 300;
         width: 100vw;
-        // padding: 4vh 0 4vh 0;
-        padding: 34px 0 34px 0;
-        color: black;
-        text-align: center;
-        .feature-container-content {
-            // width: 65vw;
-            width: 665px;
-            margin: auto;
-            font-size: 11pt;
-            text-align: center;
+        .feature-container-content1 {
+            color: white;
+            padding: 5vh 7.5vw 0 7.5vw;
+            width: 100%;
+            text-align: left;
+            background: $theme-blue;
+            font-size: 14pt;
             .feature-container-title {
-                color: $theme-light-blue;
-                font-size: 20pt;
+                font-size: 25pt;
             }
         }
-        .feature-container-details {
-            font-size: 10pt;
-            font-weight: 300;
-            margin: auto;
-            // width: 62vw;
-            width: 635px;
-            // padding: 3vh 0 0 0;
-            padding: 25px 0 0 0;
+        .feature-container-details1 {
             display: flex;
+            justify-content: flex-start;
             align-items: center;
-            // margin-bottom: 3vh;
-            margin-bottom: 25px;
-            .feature-container-largerFont {
-                font-size: 11pt;
-                color: $theme-light-blue;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2vh 1vw;
+            width: 85vw;
+            font-weight: 600;
+            img{
+                margin-right: 5vw;
             }
-            .feature-container-details-side-content {
-                // width: 12vw;
-                width: 123px;
-                font-size: 10pt;
+        }
+        .feature-container-content2 {
+            color: white;
+            width: 100%;
+            text-align: left;
+            background: white;
+            font-size: 14pt;
+            .feature-container-title {
+                font-size: 25pt;
             }
-            .feature-container-details-center-content {
-                // width: 38vw;
-                width: 400px;
+        }
+        .feature-container-details2 {
+            color: $theme-light-orange;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4vh 1vw;
+            width: 85vw;
+            font-weight: 600;
+            img{
+                margin-left: 5vw;
+            }
+        }
+        .feature-container-content3 {
+            color: white;
+            width: 100%;
+            text-align: left;
+            background: $theme-blue;
+            font-size: 14pt;
+            .feature-container-title {
+                font-size: 25pt;
+            }
+        }
+        .feature-container-details3 {
+            color: white;
+            text-align: left;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4vh 1vw;
+            width: 85vw;
+            font-weight: 600;
+            img{
+                margin-right: 5vw;
+            }
+        }
+        .feature-container-content4 {
+            color: white;
+            width: 100%;
+            text-align: left;
+            background: $theme-blue;
+            font-size: 14pt;
+            .feature-container-title {
+                font-size: 25pt;
+            }
+        }
+        .feature-container-details4 {
+            color: white;
+            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4vh 1vw;
+            width: 85vw;
+            font-weight: 600;
+            img{
+                margin-right: 5vw;
+            }
+            .feature-container-getstarted{
+                @include button-ss-light($width: 20vw ,$verticalPadding: 1vh, $horizontalPadding: 4vw);
+                color: white;
+                border: white solid 1px;
+                background: none;
             }
         }
     } // Container 4
