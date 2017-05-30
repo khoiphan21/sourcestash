@@ -5,15 +5,13 @@ $theme-dark-grey: #31313d; // rgba(49,49,61,1);
 $theme-grey: #E0E0E7; // rgba(224,224,231,1);
 $theme-white: #ffffff; // rgba(255,255,255,1);
 $theme-blueberry: #576886;
-
-$dark-background: rgba(49,49,61,0.9);
-$light-background: rgba(224,224,231,1);
-$light-background-trans: rgba(224,224,231,0.8);
-
+$dark-background: rgba(49, 49, 61, 0.9);
+$light-background: rgba(224, 224, 231, 1);
+$light-background-trans: rgba(224, 224, 231, 0.8);
 //
 // medium-screen
-$header-content-width: 61vw;
-$header-height: 7vh;
+$header-content-width: 85vw;
+$header-height: 10vh;
 $header-bg: $theme-dark-grey;
 $header-font: $theme-white;
 $header-fontsize: 10pt;
@@ -22,14 +20,11 @@ $main-container-height: 86vh;
 $footer-height: 7vh;
 // medium-screen
 //
-
 //
 // small screen
 $tablet-header-content-width: 80vw;
-
 // small screen
 // 
-
 //
 // mobile-screen
 $mobile-header-content-width: 100vw;
