@@ -3,43 +3,6 @@
 @import '../sass/globalStyles';
 // main container
 $mainContainerHeight: 86vh;
-.login-header {
-    width: 100vw;
-    background: $theme-dark-grey;
-    height: 7vh;
-    display: flex;
-    color: $theme-white;
-    justify-content: center;
-    font-size: 16pt;
-    text-shadow: 3px 5px 10px $theme-light-blue;
-    .login-header-content {
-        width: $header-content-width;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .login-header-left {}
-        .login-header-right {
-            font-size: 10pt;
-            .login-header-right-welcome{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 7vh;
-                padding: 0 2vw;
-                transition: 0.3s;
-                &:hover{    
-                    background: lighten($theme-dark-grey, 10);
-                }
-            }
-        }
-        a {
-            text-decoration: none;
-            text-align: right;
-            color: $theme-white;
-        }
-    }
-}
-
 app-footer {
     position: fixed;
     bottom: 0;
@@ -53,32 +16,32 @@ app-footer {
     .sourcestash-intro-content {
         @include column-center();
         border-radius: 5px;
-        // border: $theme-orange solid 2px;
-        box-shadow: 0px 0px 20px $theme-dark-grey;
         padding: 3vh 3vh;
         margin-top: 10vh;
         width: 40vw;
-        background: $dark-background;
         text-align: center;
+        img.logo {
+            width: 13vw;
+        }
         .sourcestash-intro-content-title {
-            font-size: 14pt;
-            color: $theme-orange;
+            margin: 10px 0 5px 0;
+            font-size: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
         }
         .sourcestash-intro-content-details {
-            margin: 3vh 0;
-            width: 30vw;
-            font-size: 10pt;
+            margin: 0px 0 30px 0;
+            font-size: 23px;
             color: $theme-white;
         }
         .sourcestash-intro-content-button {
-            width: 50%;
-            margin: 3vh 0;
+            width: 250px;
             @include column-center();
             button {
                 @include row-center();
-                @include button-ss-dark( $width: 40vw, $padding: 0, $height: 7vh, $font-size: 8pt);
+                @include button-ss-dark( $width: 40vw, $padding: 0, $height: 50px, $font-size: 8pt);
                 width: 100%;
-                padding: 0 1vw;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
@@ -91,14 +54,15 @@ app-footer {
                     background-color: rgba(255, 255, 255, 0.8);
                 }
                 img {
-                    width: 6vh;
-                    height: 6vh;
+                    width: 40px;
+                    height: 40px;
                     padding: 0;
                     margin: 0;
                 }
                 span {
                     margin: 0;
-                    font-size: 12px;
+                    font-size: 15px;
+                    font-weight: 600;
                 }
             }
         }
