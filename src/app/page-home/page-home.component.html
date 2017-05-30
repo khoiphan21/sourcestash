@@ -11,7 +11,8 @@
   <section class="main-container">
     <section class="main-container-content">
       <article class="main-container-title">
-        My Stashes
+        <span>My Stashes</span>
+        <span (click)="showModal('addStash')">Create a new stash   &#10010;</span>
       </article>
       <section class="main-container-stashes" *ngIf="stashes">
         <section class="main-container-stashes-content" *ngFor="let stash of stashes">
@@ -27,7 +28,6 @@
         </section>
       </section>
       <article class="main-container-createstash">
-        <button class="createstash-btn" (click)="showModal('addStash')">Create Stash</button>
         <button class="createstash-btn-mobile" (click)="showModal('addStash')"><span>&#10010;</span></button>
       </article>
     </section>

@@ -43,6 +43,8 @@ section.all-modals {
         width: $content-width;
         margin-bottom: 5vh;
         .main-container-title {
+            display: flex;
+            justify-content: space-between;
             font-size: 16pt;
             font-weight: bold;
             color: $theme-dark-grey;
@@ -52,6 +54,10 @@ section.all-modals {
             text-transform: uppercase;
             border-bottom: 1px solid $theme-font-dark-grey;
             margin-bottom: 5vh;
+            span:last-child {
+                font-weight: 300;
+                background-color: rgba(0, 0, 0, 0);
+            }
         }
         .main-container-stashes {
             width: 100%;
@@ -65,6 +71,9 @@ section.all-modals {
                     width: 100%;
                 }
             }
+        }
+        .main-container-createstash {
+            display: none;
         }
     }
     .main-container-createstash {
