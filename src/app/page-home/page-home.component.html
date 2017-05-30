@@ -12,7 +12,7 @@
     <section class="main-container-content">
       <article class="main-container-title">
         <span>My Stashes</span>
-        <span (click)="showModal('addStash')">Create a new stash   &#10010;</span>
+        <span class="create-stash" (click)="showModal('addStash')">Create a new stash <span>&#10010;</span></span>
       </article>
       <section class="main-container-stashes" *ngIf="stashes">
         <section class="main-container-stashes-content" *ngFor="let stash of stashes">
