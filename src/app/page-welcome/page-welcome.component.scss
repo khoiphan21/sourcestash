@@ -4,11 +4,8 @@
 
 
 .main-container {
-    z-index: 1;
-    border: $theme-font-grey solid 10px;
     // Container 1
     .video-container {
-        border-bottom: $theme-font-grey solid 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,6 +39,7 @@
                     @include button-ss-dark($width: 11vw);
                     background: $theme-dark-blue;
                     color: $theme-light-orange;
+                    border-color: $theme-light-orange;
                     border-radius: 0;
                     font-weight: bold;
                     &:hover{
@@ -53,12 +51,11 @@
         }
     } // Container 2
     .intro-container {
-        border-bottom: $theme-font-grey solid 10px;
         display: flex;
         justify-content: center;
         background: $theme-white-trans;
         width: 100vw;
-        padding: 34px 0 34px 0;
+        padding: 5vh 0 5vh 0;
         color: black;
         .intro-container-content {
             text-align: left;
