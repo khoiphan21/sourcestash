@@ -1,20 +1,35 @@
 @import '../sass/variables';
 @import '../sass/mixins';
-section.footer {
-    @include column-center();
+div.wrapper {
+    @include row-center();
     width: 100vw;
-    height: 8vh;
-    background: $theme-dark-grey;
-    padding: 1vh 7vw;
     height: $footer-height;
-    p {
-        margin: 0;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        width: 100vw;
-        font-size: 7pt;
+    background: $theme-white;
+    section.footer {
+        @include row-center();
+        width: $content-width;
+        height: $footer-height;
+        justify-content: space-between;
+        &:hover {
+            cursor: pointer;
+        }
+        p {
+            margin: 0;
+            text-align: center;
+            color: $theme-dark-blue;
+            font-size: 15pt;
+        }
+        section.logo {
+            @include row-center();
+            img.logo {
+                height: $logo-height;
+            }
+            span {
+                color: $theme-dark-blue;
+                font-size: 15pt;
+                margin-left: 1vw;
+                font-weight: 700;
+            }
+        }
     }
 }

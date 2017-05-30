@@ -32,7 +32,7 @@ section.all-modals {
             p {
                 @include row-center();
                 img.logo {
-                    height: 6vh;
+                    height: $logo-height;
                 }
                 a {
                     padding: 0 10px;
@@ -50,10 +50,13 @@ section.all-modals {
                 padding: 0 2vw;
                 font-weight: 600;
                 font-size: 15px;
-                height: 7vh;
                 display: flex;
                 align-items: center;
+                text-transform: uppercase;
                 transition: 0.3s;
+                &:last-child {
+                    padding: 0 0 0 2vw;
+                }
                 &:hover {
                     color: $theme-light-orange;
                 }
@@ -64,11 +67,10 @@ section.all-modals {
                 background-color: white;
             }
             .header-right-profile {
-                padding: 0 3vw;
-                height: 7vh;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
+                padding: 0 2.5vw;
+                font-weight: 600;
+                font-size: 15px;
+                color: $theme-white;
             }
             .header-right-dropdown-container {
                 cursor: pointer;
