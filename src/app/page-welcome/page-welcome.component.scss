@@ -4,6 +4,7 @@
 
 
 .main-container {
+    z-index: 1;
     border: $theme-font-grey solid 10px;
     // Container 1
     .video-container {
@@ -52,6 +53,7 @@
         }
     } // Container 2
     .intro-container {
+        border-bottom: $theme-font-grey solid 10px;
         display: flex;
         justify-content: center;
         background: $theme-white-trans;
@@ -70,33 +72,38 @@
                 font-size: 25pt;
             }
             .intro-container-details {
-                font-size: 10pt;
-                font-weight: 300;
-                // width: 51vw
-                width: 522px;
-                // padding: 3vh 0 0 0;
-                padding: 25px 0 0 0;
+                padding: 0 1vw 0 1vw;
                 display: flex;
                 justify-content: space-between;
-                // margin-botto: 3vh
-                margin-bottom: 25px;
-                .intro-container-details-content {
-                    width: 143px;
+                text-align: center;
+                .intro-container-details-content1 {
+                    @include column-center;
+                    background: $theme-turquoise;
+                    padding: 5vh 1vw;
+                    width: 26vw;
+                }
+                .intro-container-details-content2 {
+                    @include column-center;
+                    background: $theme-blue;
+                    padding: 5vh 1vw;
+                    width: 26vw;
+                }
+                .intro-container-details-content3 {
+                    @include column-center;
+                    background: $theme-light-orange;
+                    padding: 5vh 1vw;
+                    width: 26vw;
+                }
+                .intro-container-heading{
+                    font-size: 16pt;
                 }
                 .intro-container-largetFont {
                     font-size: 11pt;
+                    width: 15vw;
                 }
                 img {
-                    // margin-bottom: 3vh;
-                    margin-bottom: 25px;
+                    margin-bottom: 1vh;
                     padding: 0px;
-                }
-            }
-            .intro-container-login-button {
-                transition: 0.3s;
-                @include button-ss-dark();
-                a{
-                    color: white;
                 }
             }
         }
@@ -374,18 +381,6 @@
                     // margin-bottom: 3vh;
                     margin-bottom: 25px;
                     padding: 0px;
-                }
-            }
-            .intro-container-login-button {
-                margin: auto;
-                transition: 0.3s;
-                 @include button-ss-dark(
-                    $padding: 1vh 1vw,
-                    $width: 15vw, 
-                    $font-size: $mobile-font-content
-                );
-                a{
-                    color: white;
                 }
             }
         }
@@ -669,14 +664,6 @@
                         margin: 0px;
                         padding: 0px;
                     }
-                }
-                .intro-container-login-button {
-                    margin: auto;
-                    @include button-ss-dark(
-                        $padding: 1vh 1vw,
-                        $width: 20vw, 
-                        $font-size: $mobile-font-content
-                    );
                 }
             }
         } // Container 3
