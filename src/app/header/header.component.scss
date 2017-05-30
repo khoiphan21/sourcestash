@@ -32,7 +32,7 @@ section.all-modals {
             p {
                 @include row-center();
                 img.logo {
-                    height: 6vh;
+                    height: $logo-height;
                 }
                 a {
                     padding: 0 10px;
@@ -54,6 +54,9 @@ section.all-modals {
                 display: flex;
                 align-items: center;
                 transition: 0.3s;
+                &:last-child {
+                    padding: 0 0 0 2vw;
+                }
                 &:hover {
                     color: $theme-light-orange;
                 }

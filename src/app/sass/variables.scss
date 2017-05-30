@@ -5,8 +5,6 @@ $theme-turquoise: #65babf;
 $theme-blue: #3a5883;
 $theme-font-grey: #333333;
 $theme-font-dark-grey: #666666;
-
-
 // theme color
 $theme-light-blue: #436697; // rgba(67,102,151,1);
 $theme-orange: #FF812A; // rgba(255,129,42,1);
@@ -19,14 +17,16 @@ $light-background: rgba(224, 224, 231, 1);
 $light-background-trans: rgba(224, 224, 231, 0.8);
 //
 // medium-screen
-$header-content-width: 85vw;
+$content-width: 85vw;
+$header-content-width: $content-width;
 $header-height: 10vh;
 $header-bg: $theme-dark-grey;
 $header-font: $theme-white;
 $header-fontsize: 10pt;
 $main-container-bg: $light-background-trans;
 $main-container-height: 86vh;
-$footer-height: 7vh;
+$footer-height: 11vh;
+$logo-height: 6vh;
 // medium-screen
 //
 //
