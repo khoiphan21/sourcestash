@@ -8,6 +8,9 @@ import { AccountService } from './account.service';
 import { Account } from './classes/account';
 import { SERVER } from './classes/SERVER';
 
+export const API_KEY = 'AIzaSyB6MX7fPuCT_z2Onp2UEvv-fDSIWUE-TJM';
+export const CLIENT_ID = '1055581564231-u2ldu55490tvbnvrg6u6806gghati9o7.apps.googleusercontent.com';
+
 /**
  * Google API variables
  */
@@ -53,9 +56,9 @@ export class GoogleApiService {
       gapi.client.init({
         // Initialize the client with API key and People API, and initialize OAuth with an
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
-        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+        apiKey: API_KEY,
         discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
-        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        clientId: CLIENT_ID,
         scope: 'https://www.googleapis.com/auth/plus.me'
       }).then(() => {
       gapi.auth2.getAuthInstance().signOut();
@@ -86,9 +89,9 @@ export class GoogleApiService {
       gapi.client.init({
         // Initialize the client with API key and People API, and initialize OAuth with an
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
-        apiKey: 'AIzaSyD03DZ1SDSOrp6oQaI3tCEFlFxUJqGhjVU',
+        apiKey: API_KEY,
         discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
-        clientId: '205519557302-q4govtrihn5t8ttp0p60q0r93f6fcqmo.apps.googleusercontent.com',
+        clientId: CLIENT_ID,
         scope: 'https://www.googleapis.com/auth/plus.me'
       }).then(() => {
         // Get the Oauth2 Client
@@ -122,8 +125,11 @@ export class GoogleApiService {
     function makeApiCall() {
       // Make an API call to the People API, and print the user's given name.
       gapi.client.people.people.get({
-        resourceName: 'people/me'
+        'resourceName': 'people/me',
+        'requestMask.includeField': 'person.email_addresses,person.names,person.metadata'
       }).then(function (response) {
+        console.log(response.result);
+
         // Now make http calls to the server to log in
         let headers = new Headers({
           'Content-Type': 'application/json'
