@@ -4,8 +4,10 @@
 
 
 .main-container {
+    border: $theme-font-grey solid 10px;
     // Container 1
     .video-container {
+        border-bottom: $theme-font-grey solid 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,55 +18,60 @@
         .bold {
             font-size: 24pt;
             font-weight: bold;
+            margin-bottom: 7vh;
         }
         .ss{
-            font-size: 48pt;
+            font-size: 64pt;
             font-weight: bold;
+            margin-bottom: 5vh;
         }
         .video-container-content {
             display: block;
             width: 85vw;
             font-size: 16pt;
             text-align: center;
-        }
-        .video-container-buttons {
-            margin: auto;
-            display: flex;
-            justify-content: space-around;
-            margin-top: 109px;
-            width: 32vw;
-            text-align: center;
-            font-size: 10pt;
-            .feature {
-                transition: 0.3s;
-                @include button-ss-light();
-            }
-            .contact {
-                transition: 0.3s;
-                @include button-ss-light();
+            .video-container-btn{
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                justify-content: space-around;
+                width: 30vw;
+                margin-top: 5vh;
+                .video-learn, .video-login{
+                    @include button-ss-dark($width: 11vw);
+                    background: $theme-dark-blue;
+                    color: $theme-light-orange;
+                    border-radius: 0;
+                    font-weight: bold;
+                    &:hover{
+                        background: white;
+                        border: none;
+                    }
+                }
             }
         }
     } // Container 2
-    .benefit-container {
-        background: $dark-background;
+    .intro-container {
+        display: flex;
+        justify-content: center;
+        background: $theme-white-trans;
         width: 100vw;
         padding: 34px 0 34px 0;
-        color: $theme-white;
-        text-align: center;
-        .benefit-container-content {
-            // width: 55vw
-            width: 563px;
-            font-size: 11pt;
-            margin: auto;
-            text-align: center;
-            .benefit-container-title {
-                color: $theme-orange;
-                font-size: 20pt;
+        color: black;
+        .intro-container-content {
+            text-align: left;
+            width: 85vw;
+            font-size: 14pt;
+            font-weight: 300;
+            hr{
             }
-            .benefit-container-details {
+            .intro-container-title {
+                font-weight: 300;
+                font-size: 25pt;
+            }
+            .intro-container-details {
                 font-size: 10pt;
                 font-weight: 300;
-                margin: auto;
                 // width: 51vw
                 width: 522px;
                 // padding: 3vh 0 0 0;
@@ -73,10 +80,10 @@
                 justify-content: space-between;
                 // margin-botto: 3vh
                 margin-bottom: 25px;
-                .benefit-container-details-content {
+                .intro-container-details-content {
                     width: 143px;
                 }
-                .benefit-container-largetFont {
+                .intro-container-largetFont {
                     font-size: 11pt;
                 }
                 img {
@@ -85,8 +92,7 @@
                     padding: 0px;
                 }
             }
-            .benefit-container-login-button {
-                margin: auto;
+            .intro-container-login-button {
                 transition: 0.3s;
                 @include button-ss-dark();
                 a{
@@ -330,23 +336,23 @@
             }
         }
     } // Container 2
-    .benefit-container {
+    .intro-container {
         background: $dark-background;
         width: 100vw;
         padding: 34px 0 34px 0;
         color: $theme-white;
         text-align: center;
-        .benefit-container-content {
+        .intro-container-content {
             // width: 55vw
             width: 563px;
             font-size: 11pt;
             margin: auto;
             text-align: center;
-            .benefit-container-title {
+            .intro-container-title {
                 color: $theme-orange;
                 font-size: 20pt;
             }
-            .benefit-container-details {
+            .intro-container-details {
                 font-size: 10pt;
                 font-weight: 300;
                 margin: auto;
@@ -358,10 +364,10 @@
                 justify-content: space-between;
                 // margin-botto: 3vh
                 margin-bottom: 25px;
-                .benefit-container-details-content {
+                .intro-container-details-content {
                     width: 143px;
                 }
-                .benefit-container-largetFont {
+                .intro-container-largetFont {
                     font-size: 11pt;
                 }
                 img {
@@ -370,7 +376,7 @@
                     padding: 0px;
                 }
             }
-            .benefit-container-login-button {
+            .intro-container-login-button {
                 margin: auto;
                 transition: 0.3s;
                  @include button-ss-dark(
@@ -621,23 +627,23 @@
                 }
             }
         } // Container 2
-        .benefit-container {
+        .intro-container {
             background: $dark-background;
             width: 100vw;
             padding: 4vh 0;
             color: $theme-white;
             text-align: center;
-            .benefit-container-content {
+            .intro-container-content {
                 width: 80vw;
                 font-size: $mobile-font-content;
                 margin: auto;
                 text-align: center;
-                .benefit-container-title {
+                .intro-container-title {
                     color: $theme-orange;
                     font-size: $mobile-font-title;
                     font-weight: bold;
                 }
-                .benefit-container-details {
+                .intro-container-details {
                     font-size: $mobile-font-content;
                     font-weight: 300;
                     margin: auto;
@@ -647,7 +653,7 @@
                     justify-content: center;
                     flex-direction: column;
                     margin-bottom: 3vh;
-                    .benefit-container-details-content {
+                    .intro-container-details-content {
                         width: 80vw;
                         margin: auto;
                         display: flex;
@@ -655,7 +661,7 @@
                         flex-direction: column;
                         padding: 2vh 0;
                     }
-                    .benefit-container-largetFont {
+                    .intro-container-largetFont {
                         font-size: $mobile-font-content;
                     }
                     img,
@@ -664,7 +670,7 @@
                         padding: 0px;
                     }
                 }
-                .benefit-container-login-button {
+                .intro-container-login-button {
                     margin: auto;
                     @include button-ss-dark(
                         $padding: 1vh 1vw,
