@@ -12,6 +12,7 @@ div.canvas-wrapper {
         top: 0;
         left: 0;
         z-index: -1000;
+        background: #151523;
     }
     .overlay {
         position: fixed;
@@ -20,7 +21,7 @@ div.canvas-wrapper {
         display: block;
         width: 100vw;
         height: 100vh;
-        background-color: $main-container-bg;
+        
         z-index: -999;
     }
 }

@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
       selector: '.background',
       maxParticles: 150,
       connectParticles: true,
-      color: '#304269',
-      sizeVariations: 2
+      color: '#ffffff',
+      sizeVariations: 4,
     });
   }
 }
