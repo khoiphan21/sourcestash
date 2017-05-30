@@ -184,13 +184,27 @@ section.all-modals {
         color: $header-font;
         text-shadow: 3px 5px 10px $theme-light-blue;
         .header-content {
+            height: 100%;
             width: 100vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
             .header-left {
+                display: flex;
+                flex-direction: row;
                 padding: 0 10vw;
-                font-size: 16pt;
+                font-size: 12pt;
+                p {
+                    @include row-center();
+                    img.logo {
+                        height: $logo-height;
+                    }
+                    a {
+                        padding: 0 10px;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                }
             }
             .header-right {
                 display: none;
