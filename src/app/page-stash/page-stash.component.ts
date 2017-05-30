@@ -326,6 +326,7 @@ export class PageStashComponent implements OnInit {
     context.moveTo(rootSourceX, rootSourceY);
     context.lineWidth = 3;
     context.lineTo(sourceX, sourceY);
+    context.strokeStyle="#436697";
     context.stroke();
   }
 

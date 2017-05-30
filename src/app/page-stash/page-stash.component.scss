@@ -5,6 +5,7 @@
 }
 
 canvas {
+    overflow: hidden;
     position: absolute;
     top: 0;
     z-index: -10;
@@ -35,12 +36,12 @@ div.wrapper {
     position: relative;
     z-index: -1;
     width: 100vw;
-    height: $main-container-height;
+    height: 79.5vh;
     display: flex;
     #left-container {
         position: relative;
         z-index: 1;
-        width: 80vw;
+        width: 75vw;
         height: $main-container-height;
         text-align: center;
         display: block;
@@ -53,8 +54,8 @@ div.wrapper {
             left: 0;
         }
         .source {
-            $width: 17vh;
-            $height: 15vh;
+            $width: 20vh;
+            $height: 18vh;
             position: absolute;
             width: $width;
             height: $height;
@@ -62,13 +63,6 @@ div.wrapper {
             align-items: center;
             z-index: 1;
             justify-content: center;
-            background-image: url("/assets/images/hexagon.png");
-            background-size: $width $height;
-            background-repeat: no-repeat;
-            &:hover{
-                //hovering for source
-                // box-shadow: 0px 0px 20px $theme-dark-grey;
-            }
         }
         .root {
             position: relative; // left: 45% !important;
@@ -77,31 +71,41 @@ div.wrapper {
     }
     .right-container {
         color: $theme-white;
-        width: 20vw;
-        height: 86vh;
+        width: 25vw;
+        height: 75vh;
+        margin-top: 5vh;
         z-index: 2;
         .bold {
-            font-weight: bold;
-            color: $theme-grey;
+            font-weight: 600;
+            color: black;
         }
         .right-container-content {
             display: flex;
+            .right-container-sidebar-line{
+                height: 75vh;
+                width: 1vw;
+                background: $theme-light-orange;
+            }
             .right-container-stash {
+                @include column-center;
                 transition: width 1s;
                 overflow-y: scroll;
-                border: 1px solid $theme-white;
-                width: 17vw; // A list of sources and stashes
-                height: 86vh;
-                background: lighten($theme-dark-grey, 10);
+                width: 21vw; // A list of sources and stashes
+                height: 75vh;
+                background: #cccccc;
                 .right-container-stash-title {
-                    background: $theme-dark-grey;
-                    font-size: 14pt;
+                    text-transform: uppercase;
+                    margin-top: 1vh;
+                    background: white;
+                    width: 95%;
+                    color: black;
+                    font-size: 12pt;
                     height: 5vh;
                     font-weight: bold;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 0 2vw;
+                    padding: 0 1vw;
                     border-bottom: white solid 1px;
                     img {
                         cursor: pointer;
@@ -110,17 +114,13 @@ div.wrapper {
                             cursor: pointer;
                         }
                     }
-                    // span {
-                    //     margin: 10px 20px;
-                    //     &:last-child {
-                    //         padding: 0 5px;
-                    //         margin: 0 20px 0 0;
-                    //         border: 1px solid rgba(0, 0, 0, 0);
-                    //         
-                    //     }
-                    // }
                 }
                 .right-container-stash-details {
+                    font-weight: 300;
+                    color: black;
+                    margin-top: 1vh;
+                    width: 95%;
+                    background: white;
                     height: 35%;
                     article {
                         h2 {
@@ -134,45 +134,57 @@ div.wrapper {
                 }
                 .right-container-stash-chat {
                     height: 55%;
+                    width: 95%;
                     .right-container-stash-chat-title {
-                        background: $theme-dark-grey;
-                        font-size: 14pt;
+                        margin-top: 1vh;
+                        width: 100%;
+                        background: white;
+                        font-size: 12pt;
                         height: 10%;
                         font-weight: bold;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        padding: 0 2vw;
-                        border-bottom: white solid 1px;
-                        border-top: white solid 1px;
+                        padding: 0 1vw;
+                        color: black;
+                        text-transform: uppercase;
                     }
                     .right-container-stash-chatroom {
-                        height: 90%;
+                        margin-top: 1vh;
+                        height: 82%;
                         font-weight: bold;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        background: white;
                     }
                 }
             }
             .right-container-source {
+                @include column-center;
+                justify-content: flex-start;
                 transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
                 border: 1px solid $theme-white;
-                width: 17vw;
-                height: 86vh;
+                width: 21vw;
+                height: 75vh;
                 .right-container-source-title {
-                    background: $theme-dark-grey;
-                    border-bottom: $theme-white solid 1px;
-                    font-size: 14pt;
+                    margin-top: 1vh;
+                    color: black;
+                    background: white;
+                    width: 95%;
+                    font-size: 12pt;
                     height: 5vh;
                     font-weight: bold;
                     display: flex;
-                    padding: 0 2vw;
+                    padding: 0 1vw;
                     align-items: center;
+                    text-transform: uppercase;
                 }
                 .right-container-source-list {
+                    margin-top: 1vh;
+                    width: 95%;
                     .right-container-stash-subheader {
                         display: flex;
                         justify-content: flex-start;
@@ -185,12 +197,12 @@ div.wrapper {
                         height: 1vh;
                         background-color: #fff;
                         border-bottom: 1px solid #ddd;
-                        padding: 0 2vw;
+                        padding: 0 1vw;
                     }
                     .right-container-stash-content {
                         font-size: 10pt;
                         overflow: hidden;
-                        padding: 0 2vw;
+                        padding: 0 1vw;
                         p {
                             margin: 0;
                             padding: 1vh 0;
@@ -203,31 +215,36 @@ div.wrapper {
                 }
             }
             .right-container-collaborate {
+                @include column-center;
+                justify-content: flex-start;
                 transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
                 border: 1px solid $theme-white;
-                width: 17vw;
-                height: 86vh;
+                width: 21vw;
+                height: 75vh;
                 .right-container-collaborate-title {
-                    background: $theme-dark-grey;
+                    margin-top: 1vh;
+                    color: black;
+                    width: 95%;
+                    background: white;
                     border-bottom: $theme-white solid 1px;
-                    font-size: 14pt;
+                    font-size: 12pt;
                     height: 5vh;
                     font-weight: bold;
                     display: flex;
-                    padding: 0 2vw;
+                    padding: 0 1vw;
                     align-items: center;
                 }
             }
             .right-container-sidebar {
-                position: absolute;
                 right: 0;
                 height: 100%;
-                background: $theme-dark-grey;
                 color: $theme-white;
-                border: white solid 1px;
-                .right-container-sidebar-btn {
+                .right-container-sidebar-btn-no {
+                    background: #666666;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
                     cursor: pointer;
                     display: flex;
                     justify-content: center;
@@ -235,10 +252,31 @@ div.wrapper {
                     height: 4vw;
                     width: 4vw;
                     // border-top: 1px solid $theme-white;
-                    border-bottom: 1px solid $theme-white;
+                    border: 1px solid $theme-white;
                     transition: 0.3s;
                     &:hover {
-                        background: lighten($theme-dark-grey, 10);
+                        background: $theme-light-orange;
+                        border-right: none;
+                    }
+                }
+                .right-container-sidebar-btn-yes {
+                    background: $theme-light-orange;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 4vw;
+                    width: 4vw;
+                    // border-top: 1px solid $theme-white;
+                    border: 1px solid $theme-white;
+                    border-right: none;
+                    border-top: none;
+                    transition: 0.3s;
+                    &:hover {
+                        background: $theme-light-orange;
+                        border-right: none;
                     }
                 }
                 .right-container-sidebar-mobile-graph {
@@ -256,249 +294,327 @@ div.wrapper {
     }
 }
 
-//
-// additional style for ts
-.collapse {
-    transition: width 1s;
-    display: none;
+.source-btn{
+    color: black;
+    border: none;
+    background: none;
+    &:hover{
+        color: black;
+    }
+}
+.root{
+    background-image: url("/assets/images/root.png");
+    background-size: 20vh 18vh;
+    background-repeat: no-repeat;
 }
 
-.beginner {}
+.beginner {
+    background-image: url("/assets/images/easy.png");
+    background-size: 20vh 18vh;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+    &:hover{
+        background-image: url("/assets/images/easy-h.png");
+    }
+}
+
+.btn-beginner{
+    
+}
 
 .advanced {
-    // background: red;
+    transition: 0.3s;
+    background-image: url("/assets/images/normal.png");
+    background-size: 20vh 18vh;
+    background-repeat: no-repeat;
+    &:hover{
+        background-image: url("/assets/images/normal-h.png");
+    }
 }
 
-.intermediate {}
+.btn-advanced{
+
+}
+
+.intermediate {
+    transition: 0.3s;
+    background-image: url("/assets/images/hard.png");
+    background-size: 20vh 18vh;
+    background-repeat: no-repeat;
+    &:hover{
+        background-image: url("/assets/images/hard-h.png");
+    }
+}
+
+.btn-intermediate{
+
+}
 
 //
 // tablet screen
 @include media(small-screen) {
     .main-container {
-    overflow: hidden;
-    position: relative;
-    z-index: -1;
-    width: 100vw;
-    height: $main-container-height;
-    display: flex;
-    #left-container {
+        overflow: hidden;
         position: relative;
-        z-index: 1;
-        width: 80vw;
-        height: $main-container-height;
-        text-align: center;
-        display: block;
-        .popups {
-            display: none;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .source {
-            $width: 17vh;
-            $height: 15vh;
-            position: absolute;
-            width: $width;
-            height: $height;
-            display: flex !important;
-            align-items: center;
-            z-index: 1;
-            justify-content: center;
-            background-image: url("/assets/images/hexagon.png");
-            background-size: $width $height;
-            background-repeat: no-repeat;
-            &:hover{
-                //hovering for source
-                // box-shadow: 0px 0px 20px $theme-dark-grey;
-            }
-        }
-        .root {
-            position: relative; // left: 45% !important;
-            // top: 45% !important;
-        }
-    }
-    .right-container {
-        color: $theme-white;
-        width: 20vw;
-        height: 86vh;
-        z-index: 2;
-        .bold {
-            font-weight: bold;
-            color: $theme-grey;
-        }
-        .right-container-content {
+        z-index: -1;
+            width: 100vw;
+            height: 79.5vh;
             display: flex;
-            .right-container-stash {
-                transition: width 1s;
-                overflow-y: scroll;
-                border: 1px solid $theme-white;
-                width: 17vw; // A list of sources and stashes
-                height: 86vh;
-                background: lighten($theme-dark-grey, 10);
-                .right-container-stash-title {
-                    background: $theme-dark-grey;
-                    font-size: 14pt;
-                    height: 5vh;
-                    font-weight: bold;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 0 2vw;
-                    border-bottom: white solid 1px;
-                    img {
-                        cursor: pointer;
-                        &:hover {
-                            border-color: rgba(255, 255, 255, 0.6);
-                            cursor: pointer;
-                        }
-                    }
-                    // span {
-                    //     margin: 10px 20px;
-                    //     &:last-child {
-                    //         padding: 0 5px;
-                    //         margin: 0 20px 0 0;
-                    //         border: 1px solid rgba(0, 0, 0, 0);
-                    //         
-                    //     }
-                    // }
-                }
-                .right-container-stash-details {
-                    height: 35%;
-                    article {
-                        h2 {
-                            font-size: 15px;
-                            margin: 20px;
-                        }
-                        p {
-                            margin: 10px 40px;
-                        }
-                    }
-                }
-                .right-container-stash-chat {
-                    height: 55%;
-                    .right-container-stash-chat-title {
-                        background: $theme-dark-grey;
-                        font-size: 14pt;
-                        height: 10%;
-                        font-weight: bold;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 0 2vw;
-                        border-bottom: white solid 1px;
-                        border-top: white solid 1px;
-                    }
-                    .right-container-stash-chatroom {
-                        height: 90%;
-                        font-weight: bold;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                }
-            }
-            .right-container-source {
-                transition: width 0.3s;
-                overflow-y: scroll;
-                background: lighten($theme-dark-grey, 10);
-                border: 1px solid $theme-white;
-                width: 17vw;
-                height: 86vh;
-                .right-container-source-title {
-                    background: $theme-dark-grey;
-                    border-bottom: $theme-white solid 1px;
-                    font-size: 14pt;
-                    height: 5vh;
-                    font-weight: bold;
-                    display: flex;
-                    padding: 0 2vw;
-                    align-items: center;
-                }
-                .right-container-source-list {
-                    .right-container-stash-subheader {
-                        display: flex;
-                        justify-content: flex-start;
-                        overflow: hidden;
-                        align-items: center;
-                        font-size: 10pt;
-                        color: black;
-                        display: block;
-                        cursor: pointer;
-                        height: 1vh;
-                        background-color: #fff;
-                        border-bottom: 1px solid #ddd;
-                        padding: 0 2vw;
-                    }
-                    .right-container-stash-content {
-                        font-size: 10pt;
-                        overflow: hidden;
-                        padding: 0 2vw;
-                        p {
-                            margin: 0;
-                            padding: 1vh 0;
-                        }
-                        a {
-                            color: white;
-                            text-decoration: underline;
-                        }
-                    }
-                }
-            }
-            .right-container-collaborate {
-                transition: width 0.3s;
-                overflow-y: scroll;
-                background: lighten($theme-dark-grey, 10);
-                border: 1px solid $theme-white;
-                width: 17vw;
-                height: 86vh;
-                .right-container-collaborate-title {
-                    background: $theme-dark-grey;
-                    border-bottom: $theme-white solid 1px;
-                    font-size: 14pt;
-                    height: 5vh;
-                    font-weight: bold;
-                    display: flex;
-                    padding: 0 2vw;
-                    align-items: center;
-                }
-            }
-            .right-container-sidebar {
-                position: absolute;
-                right: 0;
-                height: 100%;
-                background: $theme-dark-grey;
-                color: $theme-white;
-                border: white solid 1px;
-                .right-container-sidebar-btn {
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 4vw;
-                    width: 4vw;
-                    // border-top: 1px solid $theme-white;
-                    border-bottom: 1px solid $theme-white;
-                    transition: 0.3s;
-                    &:hover {
-                        background: lighten($theme-dark-grey, 10);
-                    }
-                }
-                .right-container-sidebar-mobile-graph {
+            #left-container {
+                position: relative;
+                z-index: 1;
+                width: 75vw;
+                height: $main-container-height;
+                text-align: center;
+                display: block;
+                .popups {
                     display: none;
                 }
+                canvas {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .source {
+                    $width: 20vh;
+                    $height: 18vh;
+                    position: absolute;
+                    width: $width;
+                    height: $height;
+                    display: flex !important;
+                    align-items: center;
+                    z-index: 1;
+                    justify-content: center;
+                }
+                .root {
+                    position: relative; // left: 45% !important;
+                    // top: 45% !important;
+                }
             }
-        } // A container containing buttons for creating sources and stashes
-        .bottom {
-            position: absolute;
-            bottom: 1vh;
-            .addSource {
-                background: black;
+            .right-container {
+                color: $theme-white;
+                width: 25vw;
+                height: 75vh;
+                margin-top: 5vh;
+                z-index: 2;
+                .bold {
+                    font-weight: 600;
+                    color: black;
+                }
+                .right-container-content {
+                    display: flex;
+                    .right-container-sidebar-line{
+                        height: 75vh;
+                        width: 1vw;
+                        background: $theme-light-orange;
+                    }
+                    .right-container-stash {
+                        @include column-center;
+                        transition: width 1s;
+                        overflow-y: scroll;
+                        width: 21vw; // A list of sources and stashes
+                        height: 75vh;
+                        background: #cccccc;
+                        .right-container-stash-title {
+                            text-transform: uppercase;
+                            margin-top: 1vh;
+                            background: white;
+                            width: 95%;
+                            color: black;
+                            font-size: 10pt;
+                            height: 5vh;
+                            font-weight: bold;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 0 1vw;
+                            border-bottom: white solid 1px;
+                            img {
+                                cursor: pointer;
+                                &:hover {
+                                    border-color: rgba(255, 255, 255, 0.6);
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        .right-container-stash-details {
+                            font-weight: 300;
+                            color: black;
+                            margin-top: 1vh;
+                            width: 95%;
+                            background: white;
+                            height: 35%;
+                            article {
+                                h2 {
+                                    font-size: 15px;
+                                    margin: 20px;
+                                }
+                                p {
+                                    margin: 10px 40px;
+                                }
+                            }
+                        }
+                        .right-container-stash-chat {
+                            height: 55%;
+                            width: 95%;
+                            .right-container-stash-chat-title {
+                                margin-top: 1vh;
+                                width: 100%;
+                                background: white;
+                                font-size: 10pt;
+                                height: 10%;
+                                font-weight: bold;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding: 0 1vw;
+                                color: black;
+                                text-transform: uppercase;
+                            }
+                            .right-container-stash-chatroom {
+                                margin-top: 1vh;
+                                height: 82%;
+                                font-weight: bold;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background: white;
+                            }
+                        }
+                    }
+                    .right-container-source {
+                        @include column-center;
+                        justify-content: flex-start;
+                        transition: width 0.3s;
+                        overflow-y: scroll;
+                        background: lighten($theme-dark-grey, 10);
+                        border: 1px solid $theme-white;
+                        width: 21vw;
+                        height: 75vh;
+                        .right-container-source-title {
+                            margin-top: 1vh;
+                            color: black;
+                            background: white;
+                            width: 95%;
+                            font-size: 10pt;
+                            height: 5vh;
+                            font-weight: bold;
+                            display: flex;
+                            padding: 0 1vw;
+                            align-items: center;
+                            text-transform: uppercase;
+                        }
+                        .right-container-source-list {
+                            margin-top: 1vh;
+                            width: 95%;
+                            .right-container-stash-subheader {
+                                display: flex;
+                                justify-content: flex-start;
+                                overflow: hidden;
+                                align-items: center;
+                                font-size: 10pt;
+                                color: black;
+                                display: block;
+                                cursor: pointer;
+                                height: 1vh;
+                                background-color: #fff;
+                                border-bottom: 1px solid #ddd;
+                                padding: 0 1vw;
+                            }
+                            .right-container-stash-content {
+                                font-size: 10pt;
+                                overflow: hidden;
+                                padding: 0 1vw;
+                                p {
+                                    margin: 0;
+                                    padding: 1vh 0;
+                                }
+                                a {
+                                    color: white;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                    .right-container-collaborate {
+                        @include column-center;
+                        justify-content: flex-start;
+                        transition: width 0.3s;
+                        overflow-y: scroll;
+                        background: lighten($theme-dark-grey, 10);
+                        border: 1px solid $theme-white;
+                        width: 21vw;
+                        height: 75vh;
+                        .right-container-collaborate-title {
+                            margin-top: 1vh;
+                            color: black;
+                            width: 95%;
+                            background: white;
+                            border-bottom: $theme-white solid 1px;
+                            font-size: 12pt;
+                            height: 5vh;
+                            font-weight: bold;
+                            display: flex;
+                            padding: 0 1vw;
+                            align-items: center;
+                        }
+                    }
+                    .right-container-sidebar {
+                        right: 0;
+                        height: 100%;
+                        color: $theme-white;
+                        .right-container-sidebar-btn-no {
+                            background: #666666;
+                            border-top-left-radius: 10px;
+                            border-bottom-left-radius: 10px;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 4vw;
+                            width: 4vw;
+                            // border-top: 1px solid $theme-white;
+                            border: 1px solid $theme-white;
+                            transition: 0.3s;
+                            &:hover {
+                                background: $theme-light-orange;
+                                border-right: none;
+                            }
+                        }
+                        .right-container-sidebar-btn-yes {
+                            background: $theme-light-orange;
+                            border-top-left-radius: 10px;
+                            border-bottom-left-radius: 10px;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 4vw;
+                            width: 4vw;
+                            // border-top: 1px solid $theme-white;
+                            border: 1px solid $theme-white;
+                            border-right: none;
+                            border-top: none;
+                            transition: 0.3s;
+                            &:hover {
+                                background: $theme-light-orange;
+                                border-right: none;
+                            }
+                        }
+                        .right-container-sidebar-mobile-graph {
+                            display: none;
+                        }
+                    }
+                } // A container containing buttons for creating sources and stashes
+                .bottom {
+                    position: absolute;
+                    bottom: 1vh;
+                    .addSource {
+                        background: black;
+                    }
+                }
             }
         }
-    }
-}
 }
 
 //

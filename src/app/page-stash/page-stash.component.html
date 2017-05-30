@@ -6,37 +6,56 @@
   <section class="all-modals" *ngIf="isModalShown" (click)="hideModal()">
     <section class="content" (click)="$event.stopPropagation()">
       <!--For sources-->
-      <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)" (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
+      <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)"
+        (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
       </app-source-view>
       <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-source-add>
       <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
       <!--For stashes-->
-      <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()" (onClose)="hideModal()"></app-stash-edit>
+      <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()"
+        (onClose)="hideModal()"></app-stash-edit>
     </section>
   </section>
 
   <section class="main-container">
     <section id="left-container">
-      <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}">
+      <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}">
 
-        <button [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
+        <!--[ngClass]="{'btn-beginner': source.difficulty == 'beginner', 'btn-advanced': source.difficulty == 'advanced', 'btn-intermediate':
+        source.difficulty == 'intermediate'}"-->
+        <button class="source-btn"[id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
       </article>
     </section>
 
     <!--For the list containing the stashes and sources-->
     <section class="right-container">
       <section class="right-container-content">
+        <section class="right-container-sidebar">
+          <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')" [ngClass]="{'right-container-sidebar-btn-yes': isStashTabShown == true, 'right-container-sidebar-btn-no': isStashTabShown == false}">
+            <img src="./assets/images/Stash2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-btn" (click)="selectTab('sourceTab')" [ngClass]="{'right-container-sidebar-btn-yes': isSourceTabShown == true, 'right-container-sidebar-btn-no': isSourceTabShown == false}">
+            <img src="./assets/images/Comments2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-btn" (click)="selectTab('collaborateTab')" [ngClass]="{'right-container-sidebar-btn-yes': isCollaboratorTabShown == true, 'right-container-sidebar-btn-no': isCollaboratorTabShown == false}">
+            <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-mobile-graph" (click)="toggleGraphTab()">
+            <img src="./assets/images/graph.png" width="20px" height="20px">
+          </div>
+        </section>
+        <!--for the middle line-->
+        <article class="right-container-sidebar-line">
+        </article>
+        <!--for the content-->
         <section id="right-container-stash" class="right-container-stash" *ngIf="isStashTabShown">
           <article class="right-container-stash-title" *ngIf="stash">
-            <span>Stash</span>
+            <span>{{stash.title}}</span>
             <span (click)="onEditStash()">
                             <img src="./assets/images/Edit2.png" width="30px" height="30px">
                         </span>
           </article>
           <section class="right-container-stash-details">
-            <article class="stash-details-title" *ngIf="stash">
-              <h2><span class="bold">Title:</span><br>{{stash.title}}</h2>
-            </article>
             <article class="stash-details-owner" *ngIf="owner">
               <h2><span class="bold">Owner:</span><br>{{owner.firstname}} {{owner.lastname}}</h2>
             </article>
@@ -68,7 +87,6 @@
                 <collapsible-header class="right-container-stash-subheader">
                   {{source.title}}
                 </collapsible-header>
-                <!--collapsible-body can be multiple using ngFor-->
                 <collapsible-body [expanded]="false" class="right-container-stash-content">
                   <p>Link:<br> <a href={{source.hyperlink}} target="_blank">{{source.hyperlink}}</a></p>
                   <p>Description:<br> {{source.description}}</p>
@@ -84,20 +102,7 @@
           </article>
         </section>
 
-        <section class="right-container-sidebar">
-          <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')">
-            <img src="./assets/images/Stash2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-btn" (click)="selectTab('sourceTab')">
-            <img src="./assets/images/Comments2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-btn" (click)="selectTab('collaborateTab')">
-            <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-mobile-graph" (click)="toggleGraphTab()">
-            <img src="./assets/images/graph.png" width="20px" height="20px">
-          </div>
-        </section>
+
       </section>
     </section>
   </section>
