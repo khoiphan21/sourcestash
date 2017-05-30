@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
       connectParticles: true,
       color: '#ffffff',
       sizeVariations: 4,
+      speed: 0.2,
     });
   }
 }
