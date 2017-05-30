@@ -14,15 +14,12 @@ section.all-modals {
 }
 
 .header {
-    background: $header-bg;
     height: $header-height;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: $header-font;
+    align-items: center; // color: $header-font;
     font-size: $header-fontsize;
-    text-shadow: 3px 5px 10px $theme-light-blue;
     .header-content {
         width: $header-content-width;
         display: flex;
@@ -30,12 +27,20 @@ section.all-modals {
         align-items: center;
         .header-left {
             font-size: 16pt;
+            p {
+                @include row-center();
+                img.logo {
+                    height: 6vh;
+                }
+            }
         }
         .header-right {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .header-right-home, .header-right-login, .header-right-welcome {
+            .header-right-home,
+            .header-right-login,
+            .header-right-welcome {
                 padding: 0 2vw;
                 height: 7vh;
                 display: flex;

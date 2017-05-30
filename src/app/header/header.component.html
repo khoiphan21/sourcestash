@@ -4,9 +4,12 @@
 <section class="header">
   <section class="header-content">
     <section class="header-left">
-      <a routerLink="/home">SourceStash</a>
+      <p>
+        <img class="logo" src="assets/images/icons/logo.png" />
+        <a routerLink="/home">SourceStash</a>
+      </p>
     </section>
-    
+
     <!--For the logged out version-->
     <section class="header-right" *ngIf="!isUserLoggedIn">
       <a class="header-right-login" routerLink="/login">Log in</a>
