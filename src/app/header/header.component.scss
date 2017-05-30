@@ -18,7 +18,9 @@ section.all-modals {
     z-index: 1000;
     display: flex;
     justify-content: center;
-    align-items: center; // color: $header-font;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid white;
     font-size: $header-fontsize;
     .header-content {
         width: $header-content-width;
@@ -45,18 +47,19 @@ section.all-modals {
             align-items: center;
             a {
                 padding: 0 2vw;
+                font-weight: 600;
                 height: 7vh;
                 display: flex;
                 align-items: center;
                 transition: 0.3s;
                 &:hover {
-                    background: lighten($theme-dark-grey, 10);
+                    color: $theme-light-orange;
                 }
             }
             span.circle {
-                width: 3px;
-                height: 3px;
-                background-color: black;
+                width: 5px;
+                height: 5px;
+                background-color: white;
             }
             .header-right-profile {
                 padding: 0 3vw;
