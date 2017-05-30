@@ -32,15 +32,18 @@ section.all-modals {
                 img.logo {
                     height: 6vh;
                 }
+                a {
+                    padding: 0 10px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
             }
         }
         .header-right {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .header-right-home,
-            .header-right-login,
-            .header-right-welcome {
+            a {
                 padding: 0 2vw;
                 height: 7vh;
                 display: flex;
@@ -49,6 +52,11 @@ section.all-modals {
                 &:hover {
                     background: lighten($theme-dark-grey, 10);
                 }
+            }
+            span.circle {
+                width: 3px;
+                height: 3px;
+                background-color: black;
             }
             .header-right-profile {
                 padding: 0 3vw;

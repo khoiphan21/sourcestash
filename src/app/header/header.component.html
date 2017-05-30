@@ -6,14 +6,16 @@
     <section class="header-left">
       <p>
         <img class="logo" src="assets/images/icons/logo.png" />
-        <a routerLink="/home">SourceStash</a>
+        <a routerLink="/home">Source Stash</a>
       </p>
     </section>
 
     <!--For the logged out version-->
     <section class="header-right" *ngIf="!isUserLoggedIn">
-      <a class="header-right-login" routerLink="/login">Log in</a>
-      <a class="header-right-welcome" routerLink="/welcome">About us</a>
+      <a routerLink="#">BENEFITS</a><span class="circle"> </span>
+      <a routerLink="#">FEATURES</a><span class="circle"> </span>
+      <a routerLink="#">CONTACT US</a><span class="circle"> </span>
+      <a routerLink="/login">LOGIN</a>
     </section>
 
     <!--For the logged in version-->
