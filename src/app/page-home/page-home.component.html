@@ -18,14 +18,12 @@
           <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
         </section>
       </section>
+      <article class="main-container-title">
+        Shared With Me
+      </article>
       <section class="main-container-stashes" *ngIf="sharedStashes">
-        <article class="main-container-title">
-          Shared With Me
-        </article>
-        <section class="main-container-stashes">
-          <section class="main-container-stashes-content" *ngFor="let stash of sharedStashes">
-            <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
-          </section>
+        <section class="main-container-stashes-content" *ngFor="let stash of sharedStashes">
+          <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
         </section>
       </section>
       <article class="main-container-createstash">

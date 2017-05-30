@@ -9,6 +9,7 @@ div.wrapper {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: $theme-white;
 }
 
 app-header {
@@ -31,27 +32,33 @@ section.all-modals {
 }
 
 .main-container {
+    @include column-center();
     min-height: 86vh;
-    margin-top: 7vh;
+    margin-top: $header-height;
+    padding-top: 3vh;
     position: relative;
     width: 100vw;
-    .main-container-content{
+    .main-container-content {
         @include column-center();
+        width: $content-width;
         .main-container-title {
-        font-size: 16pt;
-        font-weight: bold;
-        color: $theme-dark-grey;
-        width: 62vw;
-        text-align: left;
-        padding: 2vh 0;
+            font-size: 16pt;
+            font-weight: bold;
+            color: $theme-dark-grey;
+            width: 100%;
+            text-align: left;
+            padding: 1vh 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid $theme-font-dark-grey;
+            margin-bottom: 5vh;
         }
         .main-container-stashes {
-            width: 62vw;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             .main-container-stashes-content {
-                width: 47%;
+                width: 45%;
                 margin-bottom: 5vh;
                 app-stash {
                     width: 100%;
@@ -86,15 +93,15 @@ section.all-modals {
     .main-container {
         width: 100vw;
         overflow-x: hidden;
-        .main-container-content{
+        .main-container-content {
             @include column-center();
             .main-container-title {
-            font-size: 16pt;
-            font-weight: bold;
-            width: 80vw;
-            text-align: left;
-            color: $theme-dark-grey;
-            padding: 2vh 0;
+                font-size: 16pt;
+                font-weight: bold;
+                width: 80vw;
+                text-align: left;
+                color: $theme-dark-grey;
+                padding: 2vh 0;
             }
             .main-container-stashes {
                 width: 80vw;
@@ -110,7 +117,6 @@ section.all-modals {
                 }
             }
         }
-        
         .main-container-createstash {
             position: fixed;
             top: 4vh;
@@ -140,15 +146,15 @@ section.all-modals {
 @include media(mobile-screen) {
     .main-container {
         width: 100vw;
-        .main-container-content{
+        .main-container-content {
             @include column-center();
             .main-container-title {
-            font-size: 16pt;
-            font-weight: bold;
-            color: $theme-dark-grey;
-            width: 80vw;
-            text-align: left;
-            padding: 2vh 0;
+                font-size: 16pt;
+                font-weight: bold;
+                color: $theme-dark-grey;
+                width: 80vw;
+                text-align: left;
+                padding: 2vh 0;
             }
             .main-container-stashes {
                 @include column-center();
@@ -162,7 +168,6 @@ section.all-modals {
                 }
             }
         }
-        
         .main-container-createstash {
             position: fixed;
             right: 2vw;
