@@ -1,7 +1,7 @@
 <section class="all-modals" (click)="hideModal()" *ngIf="isModalShown">
 </section>
 
-<section class="header">
+<section class="header" [class.header-logged-in]="isUserLoggedIn">
   <section class="header-content">
     <section class="header-left">
       <p>

@@ -9,6 +9,7 @@ div.wrapper {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: $theme-white;
 }
 
 app-header {
@@ -35,15 +36,15 @@ section.all-modals {
     margin-top: 7vh;
     position: relative;
     width: 100vw;
-    .main-container-content{
+    .main-container-content {
         @include column-center();
         .main-container-title {
-        font-size: 16pt;
-        font-weight: bold;
-        color: $theme-dark-grey;
-        width: 62vw;
-        text-align: left;
-        padding: 2vh 0;
+            font-size: 16pt;
+            font-weight: bold;
+            color: $theme-dark-grey;
+            width: 62vw;
+            text-align: left;
+            padding: 2vh 0;
         }
         .main-container-stashes {
             width: 62vw;
@@ -86,15 +87,15 @@ section.all-modals {
     .main-container {
         width: 100vw;
         overflow-x: hidden;
-        .main-container-content{
+        .main-container-content {
             @include column-center();
             .main-container-title {
-            font-size: 16pt;
-            font-weight: bold;
-            width: 80vw;
-            text-align: left;
-            color: $theme-dark-grey;
-            padding: 2vh 0;
+                font-size: 16pt;
+                font-weight: bold;
+                width: 80vw;
+                text-align: left;
+                color: $theme-dark-grey;
+                padding: 2vh 0;
             }
             .main-container-stashes {
                 width: 80vw;
@@ -110,7 +111,6 @@ section.all-modals {
                 }
             }
         }
-        
         .main-container-createstash {
             position: fixed;
             top: 4vh;
@@ -140,15 +140,15 @@ section.all-modals {
 @include media(mobile-screen) {
     .main-container {
         width: 100vw;
-        .main-container-content{
+        .main-container-content {
             @include column-center();
             .main-container-title {
-            font-size: 16pt;
-            font-weight: bold;
-            color: $theme-dark-grey;
-            width: 80vw;
-            text-align: left;
-            padding: 2vh 0;
+                font-size: 16pt;
+                font-weight: bold;
+                color: $theme-dark-grey;
+                width: 80vw;
+                text-align: left;
+                padding: 2vh 0;
             }
             .main-container-stashes {
                 @include column-center();
@@ -162,7 +162,6 @@ section.all-modals {
                 }
             }
         }
-        
         .main-container-createstash {
             position: fixed;
             right: 2vw;
