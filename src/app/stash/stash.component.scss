@@ -1,40 +1,40 @@
 @import '../sass/variables';
 @import '../sass/mixins';
-#main-container {
+.main-container {
     overflow: hidden;
-    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
-    padding: 2vh 0;
-    background: $theme-dark-grey;
-    border: solid 2px $theme-light-blue;
     color: $theme-white;
-    box-shadow: 1px 7px 30px $theme-dark-grey;
-    #stash-title {
+    .stash-title {
+        text-transform: uppercase;
+        border-radius: 5px 5px 0 0;
+        width: 50%;
+        background: $theme-light-blue;
         cursor: pointer;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         font-size: 14pt;
         font-weight: bold;
-        color: $theme-orange;
-        padding: 0 0 1vh 0;
+        color: $theme-white;
+        padding: 1vh $stash-side-padding;
     }
-    #stash-sources {
-        padding: 1vh 0;
-    }
-    #stash-rating {
+    .stash-sources {
+        border-radius: 0px 5px 5px 5px;
+        box-shadow: 5px 5px 10px $theme-font-grey;
+        background: $theme-light-blue;
         display: flex;
         justify-content: flex-start;
-        color: $theme-white;
-        padding: 1vh 1vw 0 1vw;
-        .ratescore {
-            padding: 0 1vw;
-        }
+        padding: 4vh $stash-side-padding;
     }
 }
 
 #source {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 //

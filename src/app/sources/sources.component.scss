@@ -1,23 +1,28 @@
 @import '../sass/variables.scss';
 @import '../sass/mixins.scss';
-
-.source{
-    width: 12vh;
+.source {
+    @include transition-basic();
+    width: 18vh;
     height: 12vh;
     padding: 1vh 1vw;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
-    display: flex; 
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
     justify-content: space-around;
     align-items: center;
-    background: $theme-blueberry;
-    box-shadow: 1px 7px 30px $theme-light-blue;
-    color: $theme-white;
-    border: $theme-white solid 1px;
+    background: $theme-white;
+    color: $theme-light-blue;
+    &:hover {
+        background: $theme-turquoise;
+        color: $theme-white;
+        cursor: pointer;
+    }
 }
 
 // 
 // mobile screen
-@include media(mobile-screen){
+@include media(mobile-screen) {
     background: black;
 }
