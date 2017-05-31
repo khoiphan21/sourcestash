@@ -26,13 +26,13 @@
         box-shadow: 5px 5px 10px $theme-font-grey;
         background: $theme-light-blue;
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         padding: 4vh $stash-side-padding;
     }
 }
 
 .source {
-    width: 100%;
     display: flex;
     justify-content: space-between;
 }
