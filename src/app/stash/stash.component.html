@@ -3,7 +3,7 @@
     {{stash.title}}
   </span>
   <article class="stash-sources">
-    <div id="source">
+    <div class="source">
       <app-sources *ngFor="let source of sources; let i = index" [style.display]="i < 3 ? 'block' : 'none'" [source]="source"></app-sources>
     </div>
   </article>
