@@ -2,16 +2,14 @@
 @import '../sass/mixins.scss';
 .source {
     @include transition-basic();
-    width: 18vh;
-    height: 12vh;
+    @include column-center;
+    width: 22vh;
+    height: 16vh;
     padding: 1vh 1vw;
     border-radius: 5px;
     text-align: center;
     font-weight: 600;
     text-transform: uppercase;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     background: $theme-white;
     color: $theme-light-blue;
     &:hover {
