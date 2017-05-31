@@ -5,7 +5,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     height: 100%;
     color: $theme-white;
     .stash-title {
@@ -22,19 +22,14 @@
         padding: 1vh $stash-side-padding;
     }
     .stash-sources {
+        width: 100%;
         border-radius: 0px 5px 5px 5px;
         box-shadow: 5px 5px 10px $theme-font-grey;
         background: $theme-light-blue;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
         padding: 4vh $stash-side-padding;
     }
-}
-
-.source {
-    display: flex;
-    justify-content: space-between;
 }
 
 //
@@ -72,53 +67,41 @@
         padding: 4vh $stash-side-padding;
     }
     }
-
-    .source {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
 }
 
 //
 // mobile screen
 @include media(mobile-screen) {
     .main-container {
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    color: $theme-white;
-    .stash-title {
-        text-transform: uppercase;
-        border-radius: 5px 5px 0 0;
-        width: 50%;
-        background: $theme-light-blue;
-        cursor: pointer;
-        display: flex;
-        justify-content: flex-start;
-        font-size: 12pt;
-        font-weight: bold;
-        color: $theme-white;
-        padding: 1vh $stash-side-padding;
-    }
-    .stash-sources {
-        border-radius: 0px 5px 5px 5px;
-        box-shadow: 5px 5px 10px $theme-font-grey;
-        background: $theme-light-blue;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        flex-direction: row;
-        padding: 4vh $stash-side-padding;
-    }
-    }
-
-    .source {
+        overflow: hidden;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        color: $theme-white;
+        .stash-title {
+            text-transform: uppercase;
+            border-radius: 5px 5px 0 0;
+            width: 50%;
+            background: $theme-light-blue;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            font-size: 12pt;
+            font-weight: bold;
+            color: $theme-white;
+            padding: 1vh $stash-side-padding;
+        }
+        .stash-sources {
+            border-radius: 0px 5px 5px 5px;
+            box-shadow: 5px 5px 10px $theme-font-grey;
+            background: $theme-light-blue;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: row;
+            padding: 4vh $stash-side-padding;
+        }
     }
 }
