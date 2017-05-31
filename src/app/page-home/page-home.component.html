@@ -19,7 +19,7 @@
           <app-stash [stash]="stash" (click)="navigateToStash(stash.stash_id)"></app-stash>
         </section>
       </section>
-      <article class="main-container-title">
+      <article class="main-container-title" *ngIf="sharedStashes.length != 0">
         Shared With Me
       </article>
       <section class="main-container-stashes" *ngIf="sharedStashes">
