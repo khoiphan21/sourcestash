@@ -3,18 +3,23 @@
 <section class="mainContainer">
   <section class="sourcestash-intro-content">
     <img src="assets/images/icons/logo.png" alt="Source Stash Logo" class="logo">
+
     <article class="sourcestash-intro-content-title">
       <span>SOURCE STASH</span>
     </article>
+
     <article class="sourcestash-intro-content-details">
       All your sources in one place.
     </article>
+
     <article class="sourcestash-intro-content-button" *ngIf="isGoogleApiReady">
       <button (click)="loginGoogle()">
           <img src="/assets/images/google.png" width="50px" height="50px"/>
           <span>Sign in with Google</span>
       </button>
     </article>
+
+    <app-loading *ngIf="!isGoogleApiReady"></app-loading>
   </section>
 
 </section>
