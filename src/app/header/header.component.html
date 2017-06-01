@@ -12,9 +12,9 @@
 
     <!--For the logged out version-->
     <section class="header-right" *ngIf="!isUserLoggedIn">
-      <a routerLink="#">BENEFITS</a><span class="circle"> </span>
-      <a routerLink="#">FEATURES</a><span class="circle"> </span>
-      <a routerLink="/contact">CONTACT US</a><span class="circle"> </span>
+      <a routerLink="/welcome" fragment="intro">BENEFITS</a><span class="circle"> </span>
+      <a routerLink="/welcome" fragment="features">FEATURES</a><span class="circle"> </span>
+      <a routerLink="/welcome" fragment="contactus">CONTACT US</a><span class="circle"> </span>
       <a routerLink="/login">LOGIN</a>
     </section>
 

@@ -8,15 +8,15 @@
       <span class="bold">WELCOME TO</span><br>
       <span class="ss">SOURCE STASH</span><br> Where being organised is actually fun.<br>
       <article class="video-container-btn">
-        <div class="video-learn">LEARN MORE</div>
-        <div class="video-login">LOGIN</div>
+        <div class="video-learn" (click)="goTo('intro')">LEARN MORE</div>
+        <div class="video-login" routerLink="/login">LOGIN</div>
       </article>
     </article>
 
   </section>
 
   <!--Container 2-->
-  <section class="intro-container">
+  <section class="intro-container" id="intro">
     <section class="intro-container-content">
       <span class="intro-container-title">WHAT IS SOURCESTASH</span><br>SourceStash is an online platform where you can easily compile all your sources in one place like a hyperlink library
       <hr>
@@ -41,7 +41,7 @@
   </section>
 
   <!--Container 3-->
-  <section class="feature-container">
+  <section class="feature-container" id="features">
     <section class="feature-container-content1">
       <span class="feature-container-title">HOW IT WORKS</span><br>Getting your ideas together has never been easier. In just four simple steps, become an expert in your topic!
       <hr>
@@ -79,7 +79,7 @@
   </section>
 
   <!--Container 4-->
-  <section class="team-container">
+  <section class="team-container" id="team">
     <section class="team-container-content">
       <span class="team-container-title">MEET THE TEAM</span><br>We are dedicated to making your life EASIER by giving you the content you want so don't hesitate to give us feedbacks and suggestions.
       <hr>
@@ -103,7 +103,7 @@
     </section>
   </section>
   <!--Container 5-->
-  <section class="contact-container">
+  <section class="contact-container" id="contactus">
     <section class="contact-container-content">
       <span class="contact-container-title">Submit an enquiry through our supported channels</span>
       <p>
