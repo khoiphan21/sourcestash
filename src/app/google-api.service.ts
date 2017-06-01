@@ -89,7 +89,7 @@ export class GoogleApiService {
     // When signin status changes, this function is called.
     // If the signin status is changed to signedIn, we make an API call.
     if (isSignedIn) {
-      this.makeApiCall();
+      globalGoogleAPIService.makeApiCall();
     }
   }
 
