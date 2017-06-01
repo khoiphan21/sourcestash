@@ -28,13 +28,16 @@ section.all-modals {
         justify-content: space-between;
         align-items: center;
         .header-left {
+            &:hover {
+                cursor: pointer;
+            }
             font-size: 16pt;
             p {
                 @include row-center();
                 img.logo {
                     height: $logo-height;
                 }
-                a {
+                span {
                     padding: 0 10px;
                     text-transform: uppercase;
                     font-weight: 600;
