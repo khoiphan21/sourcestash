@@ -191,12 +191,12 @@ describe('SourceService', () => {
 
   it('should retrieve tags for a source', done => {
     inject([SourceService], (service: SourceService) => {
-      let source_id = '242267';
+      let source_id = '1993942511';
       let mockSource: Source = new Source(
         source_id, '', '', '', '', 0, 0, '', '', '', '', null
       );
       service.getTagsForSource(mockSource).then(newSource => {
-        expect(newSource.tags.length).toBeTruthy();
+        expect(newSource.tags).toBeTruthy();
         done();
       }).catch(error => {
         fail('error should not occur');
