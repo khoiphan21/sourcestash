@@ -32,21 +32,20 @@ section.all-modals {
                 cursor: pointer;
             }
             font-size: 16pt;
-            p {
-                @include row-center();
-                img.logo {
-                    height: $logo-height;
-                }
-                span {
-                    padding: 0 10px;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    color: $header-font;
-                    text-align: center;
-                }
+            @include row-center();
+            img.logo {
+                height: $logo-height;
+            }
+            span {
+                padding: 0 10px;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: $header-font;
+                text-align: center;
             }
         }
         .header-right {
+            font-size: 13pt;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,7 +53,6 @@ section.all-modals {
                 @include transition-basic();
                 padding: 0 2vw;
                 font-weight: 600;
-                font-size: 15px;
                 display: flex;
                 align-items: center;
                 text-transform: uppercase;
@@ -74,7 +72,6 @@ section.all-modals {
             .header-right-profile {
                 padding: 0 2.5vw;
                 font-weight: 600;
-                font-size: 15px;
                 color: $theme-white;
             }
             .header-right-dropdown-container {
@@ -131,34 +128,103 @@ section.all-modals {
 // tablet version
 @include media(small-screen) {
     .header {
-        background: $header-bg;
         height: $header-height;
         z-index: 1000;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: $header-font;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid white;
         font-size: $header-fontsize;
-        text-shadow: 3px 5px 10px $theme-light-blue;
         .header-content {
-            width: $tablet-header-content-width;
+            width: $header-content-width;
             display: flex;
             justify-content: space-between;
             align-items: center;
             .header-left {
+                &:hover {
+                    cursor: pointer;
+                }
                 font-size: 16pt;
+                @include row-center();
+                img.logo {
+                    height: $logo-height;
+                }
+                span {
+                    padding: 0 10px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: $header-font;
+                    text-align: center;
+                }
             }
             .header-right {
-                font-size: 10pt;
-                ul {
-                    margin: 0px;
-                    list-style-type: none;
+                font-size: 11pt;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                a {
+                    @include transition-basic();
+                    padding: 0 2vw;
+                    font-weight: 600;
                     display: flex;
+                    align-items: center;
+                    text-transform: uppercase;
+                    transition: 0.3s;
+                    &:last-child {
+                        padding: 0 0 0 2vw;
+                    }
+                    &:hover {
+                        color: $theme-light-orange;
+                    }
                 }
-                li {
+                span.circle {
+                    width: 5px;
+                    height: 5px;
+                    background-color: white;
+                }
+                .header-right-profile {
+                    padding: 0 2.5vw;
+                    font-weight: 600;
+                    color: $theme-white;
+                }
+                .header-right-dropdown-container {
                     cursor: pointer;
-                    width: 10vw;
-                    text-align: right;
+                    .header-right-logout {
+                        padding: 0 1vw;
+                        height: 7vh;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.3s;
+                        &:focus {
+                            background: lighten($theme-dark-grey, 10);
+                        }
+                        &:hover {
+                            background: lighten($theme-dark-grey, 10);
+                        }
+                    }
+                    .header-right-profile-dropdown {
+                        position: absolute;
+                        background: $theme-dark-grey;
+                        color: $theme-white;
+                        z-index: 101;
+                        cursor: pointer;
+                        ul {
+                            left: -200px;
+                            padding: 0;
+                            margin: 0;
+                            width: 15vw;
+                        }
+                        li {
+                            text-align: right;
+                            border: $theme-white solid 1px;
+                            padding: 2vh 2vw;
+                            transition: 0.3s;
+                            &:hover {
+                                background: lighten($theme-dark-grey, 10);
+                            }
+                        }
+                    }
                 }
             }
             .header-mobile-right {
@@ -166,7 +232,6 @@ section.all-modals {
             }
         }
         a {
-            font-size: 10pt;
             text-decoration: none;
             color: $header-font;
             text-align: center;
@@ -196,21 +261,18 @@ section.all-modals {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 3vw;
             .header-left {
                 display: flex;
                 flex-direction: row;
-                padding: 0 10vw;
                 font-size: 12pt;
-                p {
-                    @include row-center();
-                    img.logo {
-                        height: $logo-height;
-                    }
-                    a {
-                        padding: 0 10px;
-                        text-transform: uppercase;
-                        font-weight: 600;
-                    }
+                img.logo {
+                    height: $logo-height;
+                }
+                a {
+                    padding: 0 10px;
+                    text-transform: uppercase;
+                    font-weight: 600;
                 }
             }
             .header-right {
@@ -234,7 +296,7 @@ section.all-modals {
                 .header-mobile-right-content {
                     text-align: right;
                     position: fixed; // right: -425px;
-                    right: 0px;
+                    right: 3vw;
                     background: $theme-dark-grey;
                     color: $theme-white;
                     z-index: 101;
