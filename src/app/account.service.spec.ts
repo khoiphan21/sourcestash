@@ -18,7 +18,7 @@ describe('AccountService', () => {
     TestBed.configureTestingModule({
       providers: [
         AccountService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: Router, useValue: mockRouter}
       ],
       imports: [

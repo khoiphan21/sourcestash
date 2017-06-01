@@ -29,7 +29,7 @@ describe('PageProfileComponent', () => {
       providers: [
         AccountService,
         StashService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         SourceService,
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],

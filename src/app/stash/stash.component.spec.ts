@@ -26,7 +26,7 @@ describe('StashComponent', () => {
         StashService,
         AccountService,
         SourceService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [

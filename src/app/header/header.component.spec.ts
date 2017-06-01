@@ -15,7 +15,7 @@ describe('HeaderComponent', () => {
       declarations: [ HeaderComponent ],
       providers: [
         AccountService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [

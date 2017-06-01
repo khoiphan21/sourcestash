@@ -27,7 +27,7 @@ describe('StashAddComponent', () => {
       providers: [
         StashService,
         AccountService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: Router, useValue: mockRouter}
       ]
     })

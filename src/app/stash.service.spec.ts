@@ -15,7 +15,7 @@ describe('StashService', () => {
     TestBed.configureTestingModule({
       providers: [
         StashService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         AccountService,
         { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
       ],

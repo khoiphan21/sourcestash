@@ -23,7 +23,7 @@ describe('StashEditComponent', () => {
       providers: [
         StashService,
         AccountService,
-        GoogleApiService,
+        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         CollaboratorService,
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
