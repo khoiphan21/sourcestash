@@ -42,6 +42,14 @@ export class PageLoginComponent implements OnInit {
   }
 
   loginGoogle() {
+    // var popup_window = window.open('', "myWindow", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=400, height=400");
+    // try {
+    //   popup_window.focus();
+    // }
+    // catch (e) {
+    //   alert("Pop-up Blocker is enabled! Please add this site to your exception list.");
+    // }
+
     this.service.loginWithGoogle().then((response: AppResponse) => {
       if (response.success) {
         this.router.navigate(['/home']);

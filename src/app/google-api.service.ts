@@ -61,7 +61,7 @@ export class GoogleApiService {
         clientId: CLIENT_ID,
         scope: 'https://www.googleapis.com/auth/plus.me'
       }).then(() => {
-      gapi.auth2.getAuthInstance().signOut();
+        gapi.auth2.getAuthInstance().signOut();
       });
     }
   }
@@ -107,8 +107,14 @@ export class GoogleApiService {
         if (GoogleAuth.isSignedIn.get()) {
           makeApiCall();
         } else {
+          console.log('opening popup');
           // Call the Authorization server
-          GoogleAuth.signIn();
+          try {
+            GoogleAuth.signIn()
+          }
+          catch (e) {
+            alert("Pop-up Blocker is enabled! Please add this site to your exception list.");
+          }
         }
       })
     }

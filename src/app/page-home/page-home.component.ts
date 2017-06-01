@@ -35,7 +35,13 @@ export class PageHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reloadStashes();
+    if (!this.accountService.checkLoginStatus()) {
+      console.log('should navigate to login')
+      this.router.navigate(['/login']);
+    } else {
+      console.log('user already logged in');
+      this.reloadStashes();
+    }
   }
 
   onSignIn(user) {
@@ -52,7 +58,9 @@ export class PageHomeComponent implements OnInit {
 
       return this.stashService.getAllSharedStashes();
     }).then(sharedStashes => {
-      this.sharedStashes = sharedStashes;
+      if (sharedStashes.length != 0) {
+        this.sharedStashes = sharedStashes;
+      }
     }).catch(error => {
       alert('error received');
       console.log(error);
