@@ -257,11 +257,10 @@ section.all-modals {
         text-shadow: 3px 5px 10px $theme-light-blue;
         .header-content {
             height: 100%;
-            width: 100vw;
+            width: $mobile-header-content-width;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 3vw;
             .header-left {
                 display: flex;
                 flex-direction: row;

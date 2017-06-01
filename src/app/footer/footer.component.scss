@@ -46,21 +46,17 @@ div.wrapper {
         height: $footer-height;
         background: $theme-white;
         section.footer {
-            @include row-center();
-            width: $content-width;
+            display: flex;
+            flex-direction: row;
+            width: $mobile-footer-content-width;
             height: $footer-height;
             justify-content: space-between;
             &:hover {
                 cursor: pointer;
             }
-            p {
-                margin: 0;
-                text-align: center;
-                color: $theme-dark-blue;
-                font-size: 12pt;
-            }
             section.logo {
-                @include row-center();
+                display: flex;
+                flex-direction: row;
                 img.logo {
                     height: $logo-height;
                 }
