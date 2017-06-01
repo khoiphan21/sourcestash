@@ -14,7 +14,6 @@ import { AppResponse } from './classes/response';
 import { JOHN } from './data/mockAccount';
 import { Stash } from './classes/stash';
 
-// import * as gapiFunction from 'google-client-api';
 import { GoogleApiService } from './google-api.service';
 import { Deferred } from './classes/deferred';
 
@@ -32,10 +31,8 @@ export class AccountService {
   private isLoggedIn: boolean;
   // Current user
   private currentUser: Account;
-  // Google Javascript Client Library
-  private gapi: any;
-  // Google OAuth2 Client
-  private GoogleAuth: any;
+  // Variable to check if the gapi client is ready
+  private isGoogleAPIReady: Promise<boolean>;
 
   /**
    * TODO: First check in localstorage to see if there is user information stored 
@@ -46,7 +43,6 @@ export class AccountService {
     private googleApi: GoogleApiService,
     private router: Router
   ) {
-    // TODO check local storage to attempt to log the user in
     this.isLoggedIn = false;
 
     // Check if a user is stored in localStorage
@@ -56,6 +52,8 @@ export class AccountService {
     } else {
       this.router.navigate(['/welcome']);
     }
+
+    this.isGoogleAPIReady = this.googleApi.initialize();
   }
 
 
@@ -219,9 +217,6 @@ export class AccountService {
   }
 
   loginWithGoogle(): Promise<AppResponse> {
-    // To give the api service a handle of this service
-    this.googleApi.registerAccountService(this);
-
     return this.googleApi.login().then(account => {
       this.updateCurrentUser(account);
       this.getUserID(this.currentUser.email).then(id => {
@@ -314,6 +309,15 @@ export class AccountService {
   editUserInformation(id: string, account: Account): Promise<AppResponse> {
 
     return Promise.resolve(new AppResponse(true, 'All good'));
+  }
+
+  /**
+   * Check if the google api service is ready
+   * 
+   * @return a promise of the state of the google api
+   */
+  checkGoogleAPI(): Promise<boolean> {
+    return this.isGoogleAPIReady;
   }
 
   /**
