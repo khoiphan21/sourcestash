@@ -9,6 +9,12 @@ import { CollaboratorService } from '../collaborator.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+let mockRoute = {
+  fragment: {
+    subscribe: function() {}
+  }
+}
+
 describe('PageWelcomeComponent', () => {
   let component: PageWelcomeComponent;
   let fixture: ComponentFixture<PageWelcomeComponent>;
@@ -24,6 +30,7 @@ describe('PageWelcomeComponent', () => {
         AccountService,
         {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         CollaboratorService,
+        {provide: ActivatedRoute, useValue: mockRoute},
         {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       imports: [
