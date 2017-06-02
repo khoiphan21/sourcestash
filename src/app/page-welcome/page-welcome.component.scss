@@ -62,8 +62,14 @@
                     padding: 2vw;
                     padding-right: 7vw;
                     img {
+                        @include transition-basic($speed: 0.2s);
                         width: 15vw;
                         height: 15vw;
+                        filter: grayscale(100%);
+                        &:hover {
+                            cursor: pointer;
+                            filter: none;
+                        }
                     }
                     section.person-description {
                         @include column-left();

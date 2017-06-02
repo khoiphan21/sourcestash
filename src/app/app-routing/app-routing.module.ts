@@ -8,13 +8,11 @@ import { PageProfileComponent } from '../page-profile/page-profile.component';
 import { PageWelcomeComponent } from '../page-welcome/page-welcome.component';
 import { PageLoginComponent } from '../page-login/page-login.component';
 import { PageStashComponent } from '../page-stash/page-stash.component';
-import { PageWelcomeNewComponent } from '../page-welcome-new/page-welcome-new.component';
 import { PageContactComponent } from '../page-contact/page-contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: PageWelcomeComponent},
-  { path: 'welcome-new', component: PageWelcomeNewComponent},
   { path: 'login', component: PageLoginComponent},
   { path: 'home', component: PageHomeComponent },
   { path: 'stashpage/:stashid', component: PageStashComponent},
