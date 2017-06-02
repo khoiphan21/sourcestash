@@ -9,7 +9,7 @@ div.wrapper {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 app-header {
@@ -53,17 +53,17 @@ section.all-modals {
             text-align: left;
             padding: 1vh 0;
             text-transform: uppercase;
-            border-bottom: 1px solid $theme-font-dark-grey;
+            border-bottom: 1px solid $theme-font-light-grey;
             margin-bottom: 5vh;
             span.create-stash {
                 @include transition-basic();
                 padding: 1vh 2vw;
-                border: 1px solid $theme-font-dark-grey;
+                border: 1px solid $theme-font-light-grey;
                 font-weight: 300;
                 background-color: rgba(0, 0, 0, 0);
                 &:hover {
                     cursor: pointer;
-                    background: $theme-font-dark-grey;
+                    background: $theme-font-light-grey;
                     color: $theme-white;
                 }
                 span {
@@ -113,163 +113,163 @@ section.all-modals {
 // tablet screen
 @include media(small-screen) {
     .main-container {
-    @include column-center();
-    min-height: 86vh;
-    margin-top: $header-height;
-    padding-top: 3vh;
-    position: relative;
-    width: 100vw;
-    .main-container-content {
         @include column-center();
-        width: $content-width;
-        margin-bottom: 5vh;
-        .main-container-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            font-size: 16pt;
-            font-weight: bold;
-            color: $theme-dark-grey;
-            width: 100%;
-            text-align: left;
-            padding: 1vh 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid $theme-font-dark-grey;
+        min-height: 86vh;
+        margin-top: $header-height;
+        padding-top: 3vh;
+        position: relative;
+        width: 100vw;
+        .main-container-content {
+            @include column-center();
+            width: $content-width;
             margin-bottom: 5vh;
-            span.create-stash {
-                @include transition-basic();
-                padding: 1vh 2vw;
-                border: 1px solid $theme-font-dark-grey;
-                font-weight: 300;
-                background-color: rgba(0, 0, 0, 0);
-                &:hover {
-                    cursor: pointer;
-                    background: $theme-font-dark-grey;
-                    color: $theme-white;
-                }
-                span {
-                    margin: 0 0 0 1vw;
+            .main-container-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                font-size: 16pt;
+                font-weight: bold;
+                color: $theme-dark-grey;
+                width: 100%;
+                text-align: left;
+                padding: 1vh 0;
+                text-transform: uppercase;
+                border-bottom: 1px solid $theme-font-light-grey;
+                margin-bottom: 5vh;
+                span.create-stash {
+                    @include transition-basic();
+                    padding: 1vh 2vw;
+                    border: 1px solid $theme-font-light-grey;
+                    font-weight: 300;
+                    background-color: rgba(0, 0, 0, 0);
+                    &:hover {
+                        cursor: pointer;
+                        background: $theme-font-light-grey;
+                        color: $theme-white;
+                    }
+                    span {
+                        margin: 0 0 0 1vw;
+                    }
                 }
             }
-        }
-        .main-container-stashes {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            .main-container-stashes-content {
-                width: 45%;
-                margin-bottom: 5vh;
-                app-stash {
-                    width: 100%;
+            .main-container-stashes {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                .main-container-stashes-content {
+                    width: 45%;
+                    margin-bottom: 5vh;
+                    app-stash {
+                        width: 100%;
+                    }
                 }
+            }
+            .main-container-createstash {
+                display: none;
             }
         }
         .main-container-createstash {
-            display: none;
+            position: fixed;
+            top: 9vh;
+            right: 3vw;
+            width: 19vw;
+            display: flex;
+            justify-content: center;
+            height: 15vh;
+            .createstash-btn {
+                @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
+                border: white solid 2px;
+                color: white;
+                background: $theme-light-blue;
+                transition: 0.3s;
+            }
+            .createstash-btn-mobile {
+                display: none;
+            }
         }
     }
-    .main-container-createstash {
-        position: fixed;
-        top: 9vh;
-        right: 3vw;
-        width: 19vw;
-        display: flex;
-        justify-content: center;
-        height: 15vh;
-        .createstash-btn {
-            @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
-            border: white solid 2px;
-            color: white;
-            background: $theme-light-blue;
-            transition: 0.3s;
-        }
-        .createstash-btn-mobile {
-            display: none;
-        }
-    }
-}
 }
 
 //
 // mobile screen
 @include media(mobile-screen) {
     .main-container {
-    @include column-center();
-    min-height: 86vh;
-    margin-top: $header-height;
-    padding-top: 3vh;
-    position: relative;
-    width: 100vw;
-    .main-container-content {
         @include column-center();
-        width: $content-width;
-        margin-bottom: 5vh;
-        .main-container-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            font-size: 16pt;
-            font-weight: bold;
-            color: $theme-dark-grey;
-            width: 100%;
-            text-align: left;
-            padding: 1vh 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid $theme-font-dark-grey;
+        min-height: 86vh;
+        margin-top: $header-height;
+        padding-top: 3vh;
+        position: relative;
+        width: 100vw;
+        .main-container-content {
+            @include column-center();
+            width: $content-width;
             margin-bottom: 5vh;
-            span.create-stash {
-                @include transition-basic();
-                padding: 1vh 2vw;
-                border: 1px solid $theme-font-dark-grey;
-                font-weight: 300;
-                background-color: rgba(0, 0, 0, 0);
-                font-size: 8pt;
-                &:hover {
-                    cursor: pointer;
-                    background: $theme-font-dark-grey;
-                    color: $theme-white;
-                }
-                span {
-                    margin: 0 0 0 1vw;
+            .main-container-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                font-size: 16pt;
+                font-weight: bold;
+                color: $theme-dark-grey;
+                width: 100%;
+                text-align: left;
+                padding: 1vh 0;
+                text-transform: uppercase;
+                border-bottom: 1px solid $theme-font-light-grey;
+                margin-bottom: 5vh;
+                span.create-stash {
+                    @include transition-basic();
+                    padding: 1vh 2vw;
+                    border: 1px solid $theme-font-light-grey;
+                    font-weight: 300;
+                    background-color: rgba(0, 0, 0, 0);
+                    font-size: 8pt;
+                    &:hover {
+                        cursor: pointer;
+                        background: $theme-font-light-grey;
+                        color: $theme-white;
+                    }
+                    span {
+                        margin: 0 0 0 1vw;
+                    }
                 }
             }
-        }
-        .main-container-stashes {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            .main-container-stashes-content {
+            .main-container-stashes {
                 width: 100%;
-                margin-bottom: 5vh;
-                app-stash {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                .main-container-stashes-content {
                     width: 100%;
+                    margin-bottom: 5vh;
+                    app-stash {
+                        width: 100%;
+                    }
                 }
+            }
+            .main-container-createstash {
+                display: none;
             }
         }
         .main-container-createstash {
-            display: none;
+            position: fixed;
+            top: 9vh;
+            right: 3vw;
+            width: 19vw;
+            display: flex;
+            justify-content: center;
+            height: 15vh;
+            .createstash-btn {
+                @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
+                border: white solid 2px;
+                color: white;
+                background: $theme-light-blue;
+                transition: 0.3s;
+            }
+            .createstash-btn-mobile {
+                display: none;
+            }
         }
     }
-    .main-container-createstash {
-        position: fixed;
-        top: 9vh;
-        right: 3vw;
-        width: 19vw;
-        display: flex;
-        justify-content: center;
-        height: 15vh;
-        .createstash-btn {
-            @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
-            border: white solid 2px;
-            color: white;
-            background: $theme-light-blue;
-            transition: 0.3s;
-        }
-        .createstash-btn-mobile {
-            display: none;
-        }
-    }
-}
 }

@@ -12,29 +12,29 @@
         <div class="video-login" routerLink="/login">LOGIN</div>
       </article>
     </article>
-
   </section>
 
-  <!--Container 2-->
-  <section class="intro-container" id="intro">
-    <section class="intro-container-content">
-      <span class="intro-container-title">WHAT IS source stash</span><br>source stash is an online platform where you can easily compile all your sources in one place like a hyperlink library
-      <hr>
-      <section class="intro-container-details">
-        <article class="intro-container-details-content1">
+  <section class="section-container" id="intro">
+    <section class="section-container-content">
+      <span class="section-container-title">what is source stash?</span>
+      <p class="section-container-headline">
+        Source stash is an online platform where you can easily compile all your sources in one place like a hyperlink library!
+      </p>
+      <section class="section-container-details">
+        <article class="section-container-details-content">
           <div><img src="/assets/images/icons/no-more-lists.png" width="100px" height="100px"></div>
-          <span class="intro-container-heading">NO MORE LISTS</span>
-          <span class="intro-container-largetFont">Say goodbye to saving long lists of hyperlinks in coduments that you never get back to</span>
+          <span class="heading">NO MORE LISTS</span>
+          <span class="content">Say goodbye to saving long lists of hyperlinks in coduments that you never get back to.</span>
         </article>
-        <article class="intro-container-details-content2">
+        <article class="section-container-details-content">
           <div><img src="/assets/images/icons/visualisation.png" width="100px" height="100px"></div>
-          <span class="intro-container-heading">SIMPLE VISUALISATION</span>
-          <span class="intro-container-largetFont">Create them, group them, move them. You are in full control</span>
+          <span class="heading">SIMPLE VISUALISATIONs</span>
+          <span class="content">Create them, group them, move them. You are in full control</span>
         </article>
-        <article class="intro-container-details-content3">
+        <article class="section-container-details-content">
           <div><img src="/assets/images/icons/share.png" width="100px" height="100px"></div>
-          <span class="intro-container-heading">SHARE AND COLLABORATE</span>
-          <span class="intro-container-largetFont">Share the knowledge around with others - It's a win win!</span>
+          <span class="heading">SHARE AND COLLABORATE</span>
+          <span class="content">Share the knowledge around with others - It's a win win!</span>
         </article>
       </section>
     </section>
@@ -42,62 +42,77 @@
 
   <!--Container 3-->
   <section class="feature-container" id="features">
-    <section class="feature-container-content1">
-      <span class="feature-container-title">HOW IT WORKS</span><br>Getting your ideas together has never been easier. In just four simple steps, become an expert in your topic!
-      <hr>
-      <!--number 1-->
-      <section class="feature-container-details1">
-        <img src="/assets/images/icons/create-account.png" width="200px" height="200px"> STEP 1<br> CREATE AN ACCOUNT
-      </section>
-    </section>
-    <!--number 2-->
-    <section class="feature-container-content2">
-      <section class="feature-container-details2">
-        STEP 2<br> CREATE YOUR TOPIC STASH
-        <img src="/assets/images/icons/topic-stash.png" width="200px" height="200px">
-      </section>
-    </section>
-    <!--number 3-->
-    <section class="feature-container-content3">
-      <section class="feature-container-details3">
-        <img src="/assets/images/icons/add-source.png" width="200px" height="200px"> STEP 3<br> ADD, LINK, & GROUP SOURCES TOGETHER
-      </section>
-    </section>
-    <!--number 4-->
-    <section class="feature-container-content2">
-      <section class="feature-container-details2">
-        STEP 4<br> BECOME AN EXPERT!
-        <img src="/assets/images/icons/become-expert.png" width="200px" height="200px">
-      </section>
-    </section>
-    <!--number 5-->
-    <section class="feature-container-content4">
-      <section class="feature-container-details4">
-        <button class="feature-container-getstarted" routerLink="/login">GET STARTED</button>
+    <section class="feature-container-content">
+      <span class="section-container-title">HOW IT WORKS</span>
+      <p class="section-container-headline">
+        Getting your ideas together has never been easier. In just four simple steps, become an expert in your topic!
+      </p>
+      <section class="step">
+        <img src="/assets/images/icons/create-account.png" width="200px" height="200px">
+        <p>
+          <span>STEP 1</span>
+          <span class="step">CREATE AN ACCOUNT</span>
+        </p>
       </section>
     </section>
   </section>
+  <section class="feature-container">
+    <section class="feature-container-content">
+      <section class="step">
+        <p><span>Step 2</span><span class="step">create your topic stash</span></p>
+        <img src="/assets/images/icons/topic-stash.png" alt="Create your topic stash">
+      </section>
+    </section>
+  </section>
+  <section class="feature-container">
+    <section class="feature-container-content">
+      <section class="step">
+        <img src="/assets/images/icons/add-source.png" alt="">
+        <p><span>Step 3</span><span class="step">ADD, LINK, & GROUP SOURCES TOGETHER</span></p>
+      </section>
+    </section>
+  </section>
+  <section class="feature-container">
+    <section class="feature-container-content">
+      <section class="step">
+        <p><span>Step 4</span><span class="step">become an expert!</span></p>
+        <img src="/assets/images/icons/become-expert.png" alt="">
+      </section>
+    </section>
+  </section>
+  <!--number 5-->
+  <section class="get-started">
+    <a routerLink="/login">GET STARTED</a>
+  </section>
 
   <!--Container 4-->
-  <section class="team-container" id="team">
-    <section class="team-container-content">
-      <span class="team-container-title">MEET THE TEAM</span><br>We are dedicated to making your life EASIER by giving you the content you want so don't hesitate to give us feedbacks and suggestions.
-      <hr>
-      <section class="team-container-details">
-        <article class="team-container-details-content1">
-          <div><img src="/assets/images/members/khoi-color.png" width="150px" height="150px"></div><br>
-          <span class="team-container-heading">Khoi Phan</span><br>
-          <span class="team-container-largetFont">Full-Stack Developer</span>
+  <section class="section-container" id="team">
+    <section class="section-container-content">
+      <span class="section-container-title">MEET THE TEAM</span>
+      <p class="section-container-headline">
+        We are dedicated to making your life EASIER by giving you the content you want so don't hesitate to give us feedbacks and suggestions.
+      </p>
+      <section class="section-container-details">
+        <article class="section-container-details-content content-team">
+          <img src="/assets/images/members/khoi-color.png" width="150px" height="150px">
+          <section class="person-description">
+            <span class="team-container-heading">Khoi Phan</span>
+            <span class="team-container-largetFont">Full-Stack Developer</span>
+          </section>
         </article>
-        <article class="team-container-details-content2">
-          <div><img src="/assets/images/members/jeremy-color.jpg" width="150px" height="150px"></div><br>
-          <span class="team-container-heading">Jeremy Yung Hau Ng</span><br>
-          <span class="team-container-largetFont">Front-End Developer</span>
+        <article class="section-container-details-content content-team">
+          <img src="/assets/images/members/jeremy-color.jpg" width="150px" height="150px">
+          <section class="person-description">
+            <span class="team-container-heading">Jeremy Yung Hau Ng</span>
+            <span class="team-container-largetFont">Front-End Developer</span>
+          </section>
         </article>
-        <article class="team-container-details-content3">
-          <div><img src="/assets/images/members/hayden-color.jpg" width="150px" height="150px"></div><br>
-          <span class="team-container-heading">Hayden Otto</span><br>
-          <span class="team-container-largetFont">Interface Designer</span>
+        <article class="section-container-details-content content-team">
+          <img src="/assets/images/members/julia-color.jpg" width="150px" height="150px">
+          <section class="person-description">
+            <span class="team-container-heading">Julia Huynh</span>
+            <span class="team-container-largetFont">Interface Designer</span>
+          </section>
         </article>
       </section>
     </section>
@@ -130,7 +145,7 @@
         <p>
           SOURCE STASH
           <p>
-            contact@source stash.io
+            contact@sourcestash.io
             <p>
               <article class="contact-container-details-detail-icons">
                 <img src="/assets/images/icons/fb.png" width="40px" height="40px">

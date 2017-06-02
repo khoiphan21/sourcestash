@@ -7,7 +7,7 @@ body {
 
 div.canvas-wrapper {
     overflow: hidden;
-     width: 98vw;
+    width: 98vw;
     .background {
         position: fixed;
         display: block;
@@ -15,7 +15,6 @@ div.canvas-wrapper {
         left: 0;
         z-index: -1000;
         background: #151523;
-       
     }
     .overlay {
         position: fixed;
@@ -23,7 +22,10 @@ div.canvas-wrapper {
         left: 0;
         display: block;
         height: 100vh;
-        
         z-index: -999;
     }
+}
+
+div.temporary {
+    display: none;
 }
