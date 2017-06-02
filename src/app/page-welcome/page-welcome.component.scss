@@ -76,18 +76,21 @@
                     background: $theme-turquoise;
                     padding: 5vh 1vw;
                     width: 26vw;
+                    color: white;
                 }
                 .intro-container-details-content2 {
                     @include column-center;
                     background: $theme-blue;
                     padding: 5vh 1vw;
                     width: 26vw;
+                    color: white;
                 }
                 .intro-container-details-content3 {
                     @include column-center;
                     background: $theme-light-orange;
                     padding: 5vh 1vw;
                     width: 26vw;
+                    color: white;
                 }
                 .intro-container-heading {
                     font-size: 16pt;

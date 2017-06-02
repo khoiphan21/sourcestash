@@ -45,6 +45,26 @@ div.wrapper {
         height: $main-container-height;
         text-align: center;
         display: block;
+        .left-container-add-source{
+            @include transition-basic();
+            padding: 1vh 1vw;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 3vh;
+            left: 2vw;
+            .left-container-add-source-btn{
+                font-weight: 700;
+                border: none;
+                background: transparent;
+                color: white;
+            }
+            &:hover{
+                background: rgba(102,102,102,0.7);
+            }
+        }
         .popups {
             display: none;
         }
