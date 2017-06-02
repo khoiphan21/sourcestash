@@ -1,11 +1,21 @@
 @import 'sass/variables';
+@import 'sass/mixins';
 html,
 body {
     margin: 0;
     padding: 0;
 }
 
+.router-wrapper {
+    @include media(mobile-screen) {
+        display: none;
+    }
+}
+
 div.canvas-wrapper {
+    @include media(mobile-screen) {
+        display: none;
+    }
     overflow: hidden;
     width: 98vw;
     .background {
@@ -28,4 +38,27 @@ div.canvas-wrapper {
 
 div.temporary {
     display: none;
+    @include media(mobile-screen) {
+        @include column-center();
+        width: 100vw;
+        height: 100vh;
+        padding: 15vh 15vw;
+        background-color: $theme-dark-blue;
+        img {
+            width: 35vw;
+        }
+        p {
+            @include column-center();
+            text-align: center;
+            color: $theme-white;
+            span.headline {
+                font-size: 20pt;
+                text-transform: uppercase;
+                margin: 3vh 0 2vh 0;
+            }
+            span.content {
+                font-size: 10pt;
+            }
+        }
+    }
 }
