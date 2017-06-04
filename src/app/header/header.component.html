@@ -4,8 +4,8 @@
 <section class="header" [class.header-logged-in]="isUserLoggedIn">
   <section class="header-content">
     <section class="header-left" routerLink="/welcome">
-        <img class="logo" src="assets/images/icons/logo.png"/>
-        <span>Source Stash</span>
+      <img class="logo" src="assets/images/icons/logo.png" />
+      <span>Source Stash</span>
     </section>
 
     <!--For the logged out version-->
@@ -19,9 +19,9 @@
     <!--For the logged in version-->
     <section class="header-right" *ngIf="isUserLoggedIn">
       <span class="header-right-profile" *ngIf="currentAccount">Hi, {{currentAccount.firstName}}!</span>
-      <a class="header-right-home" routerLink="/home">MY STASHES</a><span class="circle"> </span>
-      <a class="header-right-welcome" routerLink="/contact">CONTACT US</a><span class="circle"> </span>
-      <a class="header-right-welcome" routerLink="/welcome" (click)="logout()">LOGOUT</a>
+      <a routerLink="/home" routerLinkActive="current-tab">MY STASHES</a><span class="circle"> </span>
+      <a routerLink="/contact" routerLinkActive="current-tab">CONTACT US</a><span class="circle"> </span>
+      <a routerLink="/welcome" (click)="logout()">LOGOUT</a>
       <!--<section class="header-right-dropdown-container">
         <article class="header-right-logout" (click)="toggleProfileDropdown()">
           <img src="./assets/images/profile.png" width="30px" height="30px">

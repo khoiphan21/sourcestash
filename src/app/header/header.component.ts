@@ -15,13 +15,19 @@ export class HeaderComponent implements OnInit {
   isUserLoggedIn: boolean;
   currentAccount: Account;
 
+  // for the current active link
+  isMyStashes: boolean = true;
+  isLogin: boolean = false;
+  isContactUs: boolean = false;
+
+
   constructor(
     private accountService: AccountService
   ) { }
 
   ngOnInit() {
     this.isUserLoggedIn = this.accountService.checkLoginStatus();
-    if(this.isUserLoggedIn == true){
+    if (this.isUserLoggedIn == true) {
       this.currentAccount = this.accountService.getCurrentUser();
     }
   }
@@ -30,7 +36,7 @@ export class HeaderComponent implements OnInit {
     this.accountService.logout();
   }
 
-  toggleProfileDropdown(){
+  toggleProfileDropdown() {
     this.isProfileDropdown = this.isProfileDropdown ? false : true;
   }
 
@@ -39,8 +45,27 @@ export class HeaderComponent implements OnInit {
     this.hideAllModals();
   }
 
-  hideAllModals(){
+  hideAllModals() {
     this.isModalShown = false;
     this.isDropdown = false;
+  }
+
+  activeTab(tabName: string) {
+    if (tabName == "contactUs") {
+      console.log('contact');
+      this.isMyStashes = false;
+      this.isLogin = false;
+      this.isContactUs = true;
+    } else if (tabName == "login") {
+      console.log('login');
+      this.isMyStashes = false;
+      this.isLogin = true;
+      this.isContactUs = false;
+    } else if (tabName == "myStash") {
+      console.log('stash');
+      this.isMyStashes = false;
+      this.isLogin = true;
+      this.isContactUs = false;
+    }
   }
 }

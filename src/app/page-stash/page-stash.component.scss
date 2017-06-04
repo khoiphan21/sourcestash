@@ -36,7 +36,7 @@ div.wrapper {
     position: relative;
     z-index: -1;
     width: 100vw;
-    height: 79.5vh;
+    height: 80vh;
     display: flex;
     #left-container {
         position: relative;
@@ -64,14 +64,6 @@ div.wrapper {
             &:hover{
                 background: rgba(102,102,102,0.7);
             }
-        }
-        .popups {
-            display: none;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
         }
         .source {
             $width: 20vh;
@@ -101,6 +93,7 @@ div.wrapper {
         }
         .right-container-content {
             display: flex;
+            flex-direction: row-reverse;
             .right-container-sidebar-line{
                 height: 75vh;
                 width: 1vw;
@@ -373,12 +366,12 @@ div.wrapper {
 //
 // tablet screen
 @include media(small-screen) {
+    overflow: hidden;
     .main-container {
-        overflow: hidden;
         position: relative;
         z-index: -1;
             width: 100vw;
-            height: 79.5vh;
+            height: 80vh;
             display: flex;
             #left-container {
                 position: relative;
@@ -387,14 +380,6 @@ div.wrapper {
                 height: $main-container-height;
                 text-align: center;
                 display: block;
-                .popups {
-                    display: none;
-                }
-                canvas {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
                 .source {
                     $width: 20vh;
                     $height: 18vh;
@@ -654,14 +639,6 @@ div.wrapper {
         height: $main-container-height;
         text-align: center;
         display: block;
-        .popups {
-            display: none;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
         .source {
             $width: 17vh;
             $height: 15vh;

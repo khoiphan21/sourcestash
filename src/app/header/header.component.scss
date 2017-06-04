@@ -5,12 +5,18 @@ section.all-modals {
     display: none;
     position: fixed;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     @include column-center();
+}
+
+.current-tab{
+    border-bottom: $theme-light-orange solid 2px;
+    height: 10vh;
+    color: $theme-light-orange !important;
 }
 
 .header {
@@ -19,7 +25,7 @@ section.all-modals {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid white;
     font-size: $header-fontsize;
     .header-content {
@@ -52,6 +58,7 @@ section.all-modals {
             a {
                 @include transition-basic();
                 padding: 0 2vw;
+                color: white;
                 font-weight: 600;
                 display: flex;
                 align-items: center;
@@ -67,7 +74,7 @@ section.all-modals {
             span.circle {
                 width: 5px;
                 height: 5px;
-                background-color: white;
+                background: white;
             }
             .header-right-profile {
                 padding: 0 2.5vw;

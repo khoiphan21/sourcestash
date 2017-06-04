@@ -34,23 +34,6 @@
     <!--For the list containing the stashes and sources-->
     <section class="right-container">
       <section class="right-container-content">
-        <section class="right-container-sidebar">
-          <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')" [ngClass]="{'right-container-sidebar-btn-yes': isStashTabShown == true, 'right-container-sidebar-btn-no': isStashTabShown == false}">
-            <img src="./assets/images/Stash2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-btn" (click)="selectTab('sourceTab')" [ngClass]="{'right-container-sidebar-btn-yes': isSourceTabShown == true, 'right-container-sidebar-btn-no': isSourceTabShown == false}">
-            <img src="./assets/images/Comments2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-btn" (click)="selectTab('collaborateTab')" [ngClass]="{'right-container-sidebar-btn-yes': isCollaboratorTabShown == true, 'right-container-sidebar-btn-no': isCollaboratorTabShown == false}">
-            <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
-          </div>
-          <div class="right-container-sidebar-mobile-graph" (click)="toggleGraphTab()">
-            <img src="./assets/images/graph.png" width="20px" height="20px">
-          </div>
-        </section>
-        <!--for the middle line-->
-        <article class="right-container-sidebar-line">
-        </article>
         <!--for the content-->
         <section id="right-container-stash" class="right-container-stash" *ngIf="isStashTabShown">
           <article class="right-container-stash-title" *ngIf="stash">
@@ -105,8 +88,23 @@
             Collaborators
           </article>
         </section>
-
-
+        <!--for the middle line-->
+        <article class="right-container-sidebar-line">
+        </article>
+        <section class="right-container-sidebar">
+          <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')" [ngClass]="{'right-container-sidebar-btn-yes': isStashTabShown == true, 'right-container-sidebar-btn-no': isStashTabShown == false}">
+            <img src="./assets/images/Stash2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-btn" (click)="selectTab('sourceTab')" [ngClass]="{'right-container-sidebar-btn-yes': isSourceTabShown == true, 'right-container-sidebar-btn-no': isSourceTabShown == false}">
+            <img src="./assets/images/Comments2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-btn" (click)="selectTab('collaborateTab')" [ngClass]="{'right-container-sidebar-btn-yes': isCollaboratorTabShown == true, 'right-container-sidebar-btn-no': isCollaboratorTabShown == false}">
+            <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
+          </div>
+          <div class="right-container-sidebar-mobile-graph" (click)="toggleGraphTab()">
+            <img src="./assets/images/graph.png" width="20px" height="20px">
+          </div>
+        </section>
       </section>
     </section>
   </section>
