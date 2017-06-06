@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 // The back-end server
@@ -73,14 +72,14 @@ export class AccountService {
       SERVER + '/signup',
       { account: accountDetails },
       options
-    ).map(response => {
+    ).subscribe(response => {
       deferred.resolve(new AppResponse(true, 'Account creation is successful'));
     }, error => {
       alert(error.text());
       deferred.reject(error.text());
     });
 
-    return deferred.promise
+    return deferred.promise;
   }
 
   /**
@@ -88,14 +87,22 @@ export class AccountService {
    * 
    * @param email - the email of the user to be deleted
    */
-  deleteAccount(email: string) {
+  deleteAccount(email: string): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+
     let options: RequestOptions;
     this.setupHeaderOptions(options);
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/delete/user/' + email,
       options
-    );
+    ).subscribe(response => {
+      deferred.resolve(new AppResponse(true, response.text()));
+    }, error => {
+      deferred.reject(error);
+    });
+    
+    return deferred.promise;
   }
 
   /**
@@ -117,7 +124,7 @@ export class AccountService {
         email: email
       },
       options
-    ).map(response => {
+    ).subscribe(response => {
       let responseObject = response.json();
       if (responseObject.isAvailable) {
         deferred.resolve(new AppResponse(true, 'This email is OK'));
@@ -208,6 +215,8 @@ export class AccountService {
       this.getUserID(email).then(id => {
         this.currentUser.user_id = id;
         deferred.resolve(new AppResponse(true, 'Logged in successfully'));
+      }).catch(error => {
+        deferred.reject(error);
       });
     }, error => {
       console.log(error);

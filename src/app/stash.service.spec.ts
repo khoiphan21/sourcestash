@@ -15,7 +15,7 @@ describe('StashService', () => {
     TestBed.configureTestingModule({
       providers: [
         StashService,
-        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
+        { provide: GoogleApiService, useValue: { initialize: jasmine.createSpy('initialize') } },
         AccountService,
         { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
       ],
@@ -44,32 +44,29 @@ describe('StashService', () => {
       accountService.login(email, password).then(() => {
         // Wait for a few seconds for the app to update user id
         setTimeout(() => {
-          service.createStash(stash).then(
-            (response: AppResponse) => {
-              expect(response.success).toBe(true);
+          service.createStash(stash).then((response: AppResponse) => {
+            expect(response.success).toBe(true);
 
-              // Now attempt to delete the stash
-              service.deleteStash(stash).then(
-                response => done(), // successful
-                error => {
-                  console.log(error);
-                  fail('Error should not occur');
-                  done();
-                }
-              )
-            }, error => {
-              // still attempt to delete the stash anyway
-              fail('Error should not be thrown');
-              service.deleteStash(stash)
-              done();
-            }
-          )
+            // Now attempt to delete the stash
+            service.deleteStash(stash).then(
+              response => done(), // successful
+              error => {
+                console.log(error);
+                fail('Error should not occur');
+                done();
+              }
+            )
+          }).catch(error => {
+            // still attempt to delete the stash anyway
+            fail('Error should not be thrown');
+            service.deleteStash(stash)
+            done();
+          });
         }, 2000)
-      }, error => {
+      }).catch(error => {
         fail('error trying to login');
         done();
-      })
-
+      });
     })();
   });
 
@@ -117,15 +114,13 @@ describe('StashService', () => {
   it('should retrieve the stashes for a user', done => {
     inject([StashService], (service: StashService) => {
       let email = 'john@example.com';
-      service.getAllStashes().then(
-        (stashes: Stash[]) => {
-          expect(stashes).toBeTruthy();
-          done();
-        }, error => {
-          fail('error should not be thrown');
-          done();
-        }
-      );
+      service.getAllStashes().then((stashes: Stash[]) => {
+        expect(stashes).toBeTruthy();
+        done();
+      }).catch(error => {
+        fail('error should not be thrown');
+        done();
+      });
     })();
   });
   it('should return an empty array for a user without a stash', done => {
@@ -134,15 +129,13 @@ describe('StashService', () => {
       let email = 'john4@example.com';
       let password = 'password';
       accountService.login(email, password).then(() => {
-        service.getAllStashes().then(
-          (stashes: Stash[]) => {
-            expect(stashes.length).toBe(0);
-            done();
-          }, error => {
-            fail('error should not be thrown');
-            done();
-          }
-        );
+        service.getAllStashes().then((stashes: Stash[]) => {
+          expect(stashes.length).toBe(0);
+          done();
+        }).catch(error => {
+          fail('error should not be thrown');
+          done();
+        });
       });
     })();
   });
@@ -152,15 +145,13 @@ describe('StashService', () => {
       let email = 'john4@example.com';
       let password = 'password';
       accountService.login(email, password).then(() => {
-        service.getAllSharedStashes().then(
-          (stashes: Stash[]) => {
-            expect(stashes).toBeTruthy();
-            done();
-          }, error => {
-            fail('error should not be thrown');
-            done();
-          }
-        );
+        service.getAllSharedStashes().then((stashes: Stash[]) => {
+          expect(stashes).toBeTruthy();
+          done();
+        }).catch(error => {
+          fail('error should not be thrown');
+          done();
+        });
       });
     })();
   })

@@ -18,8 +18,8 @@ describe('AccountService', () => {
     TestBed.configureTestingModule({
       providers: [
         AccountService,
-        {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
-        {provide: Router, useValue: mockRouter}
+        { provide: GoogleApiService, useValue: { initialize: jasmine.createSpy('initialize') } },
+        { provide: Router, useValue: mockRouter }
       ],
       imports: [
         HttpModule, BrowserModule, FormsModule
@@ -43,44 +43,36 @@ describe('AccountService', () => {
    */
   it('should successfully login if the details are correct', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('john@example.com', 'whatever').then(
-        response => {
-          expect(response.success).toBeTruthy();
-          done();
-        }, error => {
-          fail('login failed');
-          done();
-        }
-      )
+      service.login('john@example.com', 'whatever').then(response => {
+        expect(response.success).toBeTruthy();
+        done();
+      }).catch(error => {
+        fail('login failed');
+        done();
+      });
     })();
   });
 
   it('should throw an error if password is incorrect', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('john@example.com', 'passwordd').then(
-        response => {
-          fail('an error should occur');
-          done();
-        },
-        error => {
-          expect(error).toBeTruthy();
-          done();
-        }
-      )
+      service.login('john@example.com', 'passwordd').then(response => {
+        fail('an error should occur');
+        done();
+      }).catch(error => {
+        expect(error).toBeTruthy();
+        done();
+      });
     })();
   });
   it('should throw an error if the email does not exist', done => {
     inject([AccountService], (service: AccountService) => {
-      service.login('someemailthatdoesnotexist@mail.com', 'pass').then(
-        response => {
-          fail('error should be thrown')
-          done();
-        },
-        error => {
-          expect(error).toBeTruthy();
-          done();
-        }
-      )
+      service.login('someemailthatdoesnotexist@mail.com', 'pass').then(response => {
+        fail('error should be thrown')
+        done();
+      }).catch(error => {
+        expect(error).toBeTruthy();
+        done();
+      });
     })();
   });
 
@@ -95,10 +87,10 @@ describe('AccountService', () => {
       }).then(response => {
         fail('Expected error to occur');
         done();
-      }, error => {
+      }).catch(error => {
         // Should get an error. 
         done();
-      })
+      });
     })();
   });
   it('should successfully create an account with a new email', done => {
@@ -108,22 +100,15 @@ describe('AccountService', () => {
         password: 'password',
         firstName: 'John',
         lastName: 'Doe4'
-      }).then(
-        response => {
-          service.deleteAccount('john5@example.com').subscribe(
-            response => done(),
-            erorr => {
-              fail('should not have an error');
-              done();
-            }
-          );
-        }, error => {
-          service.deleteAccount('john5@example.com').subscribe();
-          fail('error should not occur');
-          done();
-        }
-      );
-      done();
+      }).then(response => {
+        return service.deleteAccount('john5@example.com');
+      }).then(response => {
+        done();
+      }).catch(error => {
+        service.deleteAccount('john5@example.com');
+        fail('error should not occur');
+        done();
+      });
     })();
   })
 
@@ -132,28 +117,26 @@ describe('AccountService', () => {
    */
   it('should return false for an existing email', done => {
     inject([AccountService], (service: AccountService) => {
-      service.checkEmail('john@example.com').then(
-        (response: AppResponse) => {
-          expect(response.success).toBeFalsy();
-          done();
-        }, error => {
-          fail('Error should not occur.');
-          done();
-        }
-      );
+      service.checkEmail('john@example.com').then((response: AppResponse) => {
+        // Should have failed
+        fail('Error should have occurred.');
+        done();
+      }).catch(error => {
+        // Correct
+        done();
+      });
     })();
   });
   it('should return true for an impossible email', done => {
     inject([AccountService], (service: AccountService) => {
-      service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com').then(
-        (response: AppResponse) => {
+      service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com')
+        .then((response: AppResponse) => {
           expect(response.success).toBeTruthy();
           done();
-        }, error => {
+        }).catch(error => {
           fail('Error should not occur.');
           done();
-        }
-      )
+        });
     })();
   });
 
@@ -164,12 +147,12 @@ describe('AccountService', () => {
     inject([AccountService], (service: AccountService) => {
       service.getUserID('john4@example.com').then(id => {
         expect(id).toBe('6876777106');
-        done()
+        done();
       }).catch(error => {
         console.log(error);
         fail('error should not occur');
         done();
-      })
+      });
     })();
   });
 

@@ -31,7 +31,7 @@ export class StashAddComponent implements OnInit {
       .then(response => {
         // Emit event to tell parent to reload the stashes
         this.onCreated.emit();
-      }, error => {
+      }).catch(error => {
         alert('Error trying to create a stash. View Log for more details.');
         console.log(error);
       });
