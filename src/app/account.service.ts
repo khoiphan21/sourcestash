@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 // The back-end server
@@ -63,26 +61,26 @@ export class AccountService {
    * 
    * @param accountDetails the details of the account
    */
-  createAccount(accountDetails: Account): Observable<AppResponse> {
+  createAccount(accountDetails: Account): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+    
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/signup',
       { account: accountDetails },
       options
     ).map(response => {
-      return new AppResponse(true, 'Account creation is successful');
-    }).catch(error => {
+      deferred.resolve(new AppResponse(true, 'Account creation is successful'));
+    }, error => {
       alert(error.text());
-      return Observable.throw('Failed to create account');
+      deferred.reject(error.text());
     });
-  }
 
-  updateAccount(accountDetails: Account): Observable<AppResponse> {
-    return new Observable();
+    return deferred.promise
   }
 
   /**
@@ -105,13 +103,15 @@ export class AccountService {
    * 
    * @param email the email address to be checked
    */
-  checkEmail(email: string): Observable<AppResponse> {
+  checkEmail(email: string): Promise<AppResponse> {
+    let deferred = new Deferred<AppResponse>();
+
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(
+    this.http.post(
       SERVER + '/check-email',
       {
         email: email
@@ -120,13 +120,15 @@ export class AccountService {
     ).map(response => {
       let responseObject = response.json();
       if (responseObject.isAvailable) {
-        return new AppResponse(true, 'This email is OK');
+        deferred.resolve(new AppResponse(true, 'This email is OK'));
       } else {
-        return new AppResponse(false, 'This email is not available');
+        deferred.reject('This email is not available');
       }
-    }).catch(error => {
-      return Observable.throw(error);
-    })
+    }, error => {
+      deferred.reject(error);
+    });
+
+    return deferred.promise;
   }
 
   getCurrentUserID(): string {

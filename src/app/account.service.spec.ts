@@ -92,7 +92,7 @@ describe('AccountService', () => {
       service.createAccount({
         email: 'john@example.com',
         password: 'whatever'
-      }).subscribe(response => {
+      }).then(response => {
         fail('Expected error to occur');
         done();
       }, error => {
@@ -108,7 +108,7 @@ describe('AccountService', () => {
         password: 'password',
         firstName: 'John',
         lastName: 'Doe4'
-      }).subscribe(
+      }).then(
         response => {
           service.deleteAccount('john5@example.com').subscribe(
             response => done(),
@@ -132,7 +132,7 @@ describe('AccountService', () => {
    */
   it('should return false for an existing email', done => {
     inject([AccountService], (service: AccountService) => {
-      service.checkEmail('john@example.com').subscribe(
+      service.checkEmail('john@example.com').then(
         (response: AppResponse) => {
           expect(response.success).toBeFalsy();
           done();
@@ -145,7 +145,7 @@ describe('AccountService', () => {
   });
   it('should return true for an impossible email', done => {
     inject([AccountService], (service: AccountService) => {
-      service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com').subscribe(
+      service.checkEmail('johnblaskdflahalskdfjlamksdf@example.com').then(
         (response: AppResponse) => {
           expect(response.success).toBeTruthy();
           done();
