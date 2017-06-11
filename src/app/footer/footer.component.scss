@@ -40,6 +40,13 @@ div.wrapper {
 // mobile version
 @include media(mobile-screen) {
     div.wrapper {
-        @include row-center();
+        section.footer {
+            display: flex;
+            flex-direction: row;
+            section.logo {
+                display: flex;
+            flex-direction: row;
+            }
+        }
     }
 }

@@ -72,35 +72,14 @@ app-footer {
 // tablet screen
 @include media(small-screen) {
     .mainContainer {
-        display: flex;
-        justify-content: center;
         .sourcestash-intro-content {
             @include column-center();
-            border-radius: 5px;
             padding: 3vh 3vh;
             margin-top: 10vh;
             width: 60vw;
-            text-align: center;
-            img.logo {
-                width: 13vw;
-            }
-            .sourcestash-intro-content-title {
-                margin: 10px 0 5px 0;
-                font-size: 30pt;
-                font-weight: 700;
-                text-transform: uppercase;
-                color: white;
-            }
-            .sourcestash-intro-content-details {
-                margin: 0px 0 30px 0;
-                font-size: 23pt;
-                color: $theme-white;
-            }
             .sourcestash-intro-content-button {
-                width: 250px;
-                @include column-center();
+                width: 30vw;
                 button {
-                    @include row-center();
                     @include button-ss-dark( $width: 40vw, $padding: 0, $height: 50px);
                     width: 100%;
                     display: flex;
@@ -112,19 +91,6 @@ app-footer {
                     border: $theme-grey solid 2px;
                     color: black;
                     font-size: 10pt;
-                    &:hover {
-                        background-color: rgba(255, 255, 255, 0.8);
-                    }
-                    img {
-                        width: 40px;
-                        height: 40px;
-                        padding: 0;
-                        margin: 0;
-                    }
-                    span {
-                        margin: 0;
-                        font-weight: 600;
-                    }
                 }
             }
         }
@@ -135,8 +101,6 @@ app-footer {
 // mobile screen
 @include media(mobile-screen) {
     .mainContainer {
-        display: flex;
-        justify-content: center;
         .sourcestash-intro-content {
             @include column-center();
             border-radius: 5px;
@@ -147,20 +111,11 @@ app-footer {
             img.logo {
                 width: 40vw;
             }
-            .sourcestash-intro-content-title {
-                margin: 10px 0 5px 0;
-                font-size: 30pt;
-                font-weight: 700;
-                text-transform: uppercase;
-                color: white;
-            }
             .sourcestash-intro-content-details {
-                margin: 0px 0 30px 0;
-                font-size: 23pt;
-                color: $theme-white;
+                font-size: 21pt;
             }
             .sourcestash-intro-content-button {
-                width: 250px;
+                width: 45vw;
                 button {   
                     @include button-ss-dark( $width: 40vw, $padding: 0, $height: 50px);
                     width: 100%;
@@ -169,24 +124,10 @@ app-footer {
                     justify-content: space-around;
                     align-items: center;
                     flex-wrap: nowrap;
-                    transition: 0.3s;
                     background: white;
                     border: $theme-grey solid 2px;
                     color: black;
                     font-size: 8pt;
-                    &:hover {
-                        background-color: rgba(255, 255, 255, 0.8);
-                    }
-                    img {
-                        width: 40px;
-                        height: 40px;
-                        padding: 0;
-                        margin: 0;
-                    }
-                    span {
-                        margin: 0;
-                        font-weight: 600;
-                    }
                 }
             }
         }

@@ -81,7 +81,7 @@
                     @include column-center;
                     padding: 0 5vw;
                     width: 25vw;
-                    height: 30vh;
+                    height: 40vh;
                     padding: 2vh 2vw;
                     color: white;
                     &:nth-child(1) {
@@ -310,12 +310,13 @@
                     width: 40vw;
                     .video-learn,
                     .video-login {
-                        @include button-ss-dark($width: 15vw);
+                        @include button-ss-dark($width: 17vw);
                         background: $theme-dark-blue;
                         color: $theme-light-orange;
                         border-color: $theme-light-orange;
                         border-radius: 0;
                         font-weight: bold;
+                        font-size: 10pt;
                         &:hover {
                             background: white;
                             border: none;
@@ -330,7 +331,7 @@
                 align-items: flex-start;
                 .section-container-details {
                     .section-container-details-content {
-                        height: 38vh;
+                        height: 35vh;
                     }
                     .content-team {
                         align-items: flex-start;
