@@ -366,13 +366,14 @@ div.wrapper {
 //
 // tablet screen
 @include media(small-screen) {
-    overflow: hidden;
+    
     .main-container {
         position: relative;
         z-index: -1;
             width: 100vw;
             height: 80vh;
             display: flex;
+            overflow: hidden;
             #left-container {
                 position: relative;
                 z-index: 1;
