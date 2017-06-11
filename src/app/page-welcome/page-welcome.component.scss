@@ -461,19 +461,17 @@
                     }
                 }
                 .contact-container-details-detail {
-                    @include column-center;
-                    width: 40%;
-                    padding: 0 10px 0 10px;
-                    p {
-                        margin: 1vh;
-                    }
                     .contact-container-details-detail-icons {
                         margin-left: auto;
                         margin-right: auto;
                         display: flex;
                         justify-content: space-between;
-                        width: 50%;
+                        width: 70%;
                         margin-top: 2vh;
+                        img{
+                            width: 6vw;
+                            height: 6vw;
+                        }
                     }
                 }
             }
