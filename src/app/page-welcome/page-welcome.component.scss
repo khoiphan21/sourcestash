@@ -81,7 +81,8 @@
                     @include column-center;
                     padding: 0 5vw;
                     width: 25vw;
-                    height: 22vw;
+                    height: 30vh;
+                    padding: 2vh 2vw;
                     color: white;
                     &:nth-child(1) {
                         background: $theme-turquoise;
@@ -213,10 +214,7 @@
         width: 100vw;
         padding: 4vh 0 4vh 0;
         font-size: 12pt;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        @include column-center;
         font-weight: 300;
         .contact-container-content {
             margin-left: auto;
@@ -278,6 +276,11 @@
                 p {
                     margin: 1vh;
                 }
+                .logo{
+                    img{
+                        width: 20vw;
+                    }
+                }
                 .contact-container-details-detail-icons {
                     margin-left: auto;
                     margin-right: auto;
@@ -285,6 +288,10 @@
                     justify-content: space-between;
                     width: 50%;
                     margin-top: 2vh;
+                    img{
+                        width: 4vw;
+                        height: 4vw;
+                    }
                 }
             }
         }
@@ -364,3 +371,111 @@
 
 // 
 // mobile screen
+@include media(mobile-screen){
+    .main-container {
+        // Container 1
+        .video-container {
+            .video-container-content {
+                .video-container-btn {
+                    width: 70vw;
+                    .video-learn,
+                    .video-login {
+                        @include button-ss-dark($width: 30vw);
+                        background: $theme-dark-blue;
+                        color: $theme-light-orange;
+                        border-color: $theme-light-orange;
+                        border-radius: 0;
+                        font-weight: bold;
+                        font-size: 12pt;
+                    }
+                }
+            }
+        }
+        // Container 2, Container 4
+        .section-container {
+            .section-container-content {
+                @include column-center();
+                .section-container-details {
+                    .section-container-details-content {
+                        padding: 2vh 5vw;
+                        width: 80vw;
+                        height: auto;
+                        margin-bottom: 3vh;
+                    }
+                    .content-team {
+                        width: 50vw;
+                        height: auto;
+                        padding: 2vw;
+                        padding-right: 7vw;
+                    }
+                }
+            }
+        }
+        // Container 3
+        .feature-container {
+                &:nth-child(even) {
+                .feature-container-content {
+                    text-align: center;
+                    @include column-center();
+                }
+            }
+            .feature-container-content {
+               @include column-center;
+               text-align: center;
+                section.step {
+                    @include column-center();
+                    p {
+                        @include column-center();
+                    }
+                }
+            }
+        }
+        .get-started {
+            @include column-center();
+        } 
+        // Container 5
+        .contact-container {
+            .contact-container-details {
+                .contact-container-details-form {
+                    input[type=text],
+                    select {
+                        font-size: 8pt;
+                        height: auto;
+                        background-color: rgba(102, 102, 102, 0.9);
+                        color: $theme-white;
+                        padding: 1vh 1vw;
+                    }
+                    .submit {
+                        margin-left: 30%;
+                        @include button-ss-light($width: 30vw);
+                        background: $theme-light-orange;
+                        color: white;
+                        font-size: 10pt;
+                    }
+                    .textarea {
+                        height: 20vh;
+                        font-size: 8pt;
+                        background-color: rgba(102, 102, 102, 0.9);
+                        padding: 1vh 1vw;
+                    }
+                }
+                .contact-container-details-detail {
+                    @include column-center;
+                    width: 40%;
+                    padding: 0 10px 0 10px;
+                    p {
+                        margin: 1vh;
+                    }
+                    .contact-container-details-detail-icons {
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 50%;
+                        margin-top: 2vh;
+                    }
+                }
+            }
+        }
+    }
+}
