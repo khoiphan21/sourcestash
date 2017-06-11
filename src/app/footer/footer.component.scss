@@ -40,33 +40,6 @@ div.wrapper {
 // mobile version
 @include media(mobile-screen) {
     div.wrapper {
-        border-top: 1px solid $theme-font-grey;
         @include row-center();
-        width: 100vw;
-        height: $footer-height;
-        background: $theme-white;
-        section.footer {
-            display: flex;
-            flex-direction: row;
-            width: $mobile-footer-content-width;
-            height: $footer-height;
-            justify-content: space-between;
-            &:hover {
-                cursor: pointer;
-            }
-            section.logo {
-                display: flex;
-                flex-direction: row;
-                img.logo {
-                    height: $logo-height;
-                }
-                span {
-                    color: $theme-dark-blue;
-                    font-size: 15pt;
-                    margin-left: 1vw;
-                    font-weight: 700;
-                }
-            }
-        }
     }
 }
