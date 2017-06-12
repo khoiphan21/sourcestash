@@ -38,6 +38,8 @@ section.all-modals {
     padding-top: 3vh;
     position: relative;
     width: 100vw;
+    display: flex;
+    justify-content: flex-start;
     .main-container-content {
         @include column-center();
         width: $content-width;
@@ -84,109 +86,41 @@ section.all-modals {
                 }
             }
         }
-        .main-container-createstash {
-            display: none;
-        }
     }
-    .main-container-createstash {
-        position: fixed;
-        top: 9vh;
-        right: 3vw;
-        width: 19vw;
-        display: flex;
-        justify-content: center;
-        height: 15vh;
-        .createstash-btn {
-            @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
-            border: white solid 2px;
-            color: white;
-            background: $theme-light-blue;
-            transition: 0.3s;
-        }
-        .createstash-btn-mobile {
-            display: none;
-        }
-    }
+    // .main-container-createstash {
+    //     position: fixed;
+    //     top: 9vh;
+    //     right: 3vw;
+    //     width: 19vw;
+    //     display: flex;
+    //     justify-content: center;
+    //     height: 15vh;
+    //     .createstash-btn {
+    //         @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
+    //         border: white solid 2px;
+    //         color: white;
+    //         background: $theme-light-blue;
+    //         transition: 0.3s;
+    //     }
+    //     .createstash-btn-mobile {
+    //         display: none;
+    //     }
+    // }
 }
 
 //
 // tablet screen
 @include media(small-screen) {
     .main-container {
-        @include column-center();
-        min-height: 86vh;
-        margin-top: $header-height;
-        padding-top: 3vh;
-        position: relative;
-        width: 100vw;
         .main-container-content {
-            @include column-center();
-            width: $content-width;
-            margin-bottom: 5vh;
             .main-container-title {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                font-size: 16pt;
-                font-weight: bold;
-                color: $theme-dark-grey;
-                width: 100%;
-                text-align: left;
-                padding: 1vh 0;
-                text-transform: uppercase;
-                border-bottom: 1px solid $theme-font-light-grey;
-                margin-bottom: 5vh;
                 span.create-stash {
-                    @include transition-basic();
-                    padding: 1vh 2vw;
-                    border: 1px solid $theme-font-light-grey;
-                    font-weight: 300;
-                    background-color: rgba(0, 0, 0, 0);
-                    &:hover {
-                        cursor: pointer;
-                        background: $theme-font-light-grey;
-                        color: $theme-white;
-                    }
-                    span {
-                        margin: 0 0 0 1vw;
-                    }
+                    font-size: 10pt;
                 }
             }
-            .main-container-stashes {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                .main-container-stashes-content {
-                    width: 45%;
-                    margin-bottom: 5vh;
-                    app-stash {
-                        width: 100%;
-                    }
-                }
-            }
-            .main-container-createstash {
-                display: none;
-            }
-        }
-        .main-container-createstash {
-            position: fixed;
-            top: 9vh;
-            right: 3vw;
-            width: 19vw;
-            display: flex;
-            justify-content: center;
-            height: 15vh;
-            .createstash-btn {
-                @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
-                border: white solid 2px;
-                color: white;
-                background: $theme-light-blue;
-                transition: 0.3s;
-            }
-            .createstash-btn-mobile {
-                display: none;
-            }
+            // .main-container-createstash {
+            //     display: none;
+            // }
         }
     }
 }
@@ -195,44 +129,10 @@ section.all-modals {
 // mobile screen
 @include media(mobile-screen) {
     .main-container {
-        @include column-center();
-        min-height: 86vh;
-        margin-top: $header-height;
-        padding-top: 3vh;
-        position: relative;
-        width: 100vw;
         .main-container-content {
-            @include column-center();
-            width: $content-width;
-            margin-bottom: 5vh;
             .main-container-title {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                font-size: 16pt;
-                font-weight: bold;
-                color: $theme-dark-grey;
-                width: 100%;
-                text-align: left;
-                padding: 1vh 0;
-                text-transform: uppercase;
-                border-bottom: 1px solid $theme-font-light-grey;
-                margin-bottom: 5vh;
                 span.create-stash {
-                    @include transition-basic();
-                    padding: 1vh 2vw;
-                    border: 1px solid $theme-font-light-grey;
-                    font-weight: 300;
-                    background-color: rgba(0, 0, 0, 0);
                     font-size: 8pt;
-                    &:hover {
-                        cursor: pointer;
-                        background: $theme-font-light-grey;
-                        color: $theme-white;
-                    }
-                    span {
-                        margin: 0 0 0 1vw;
-                    }
                 }
             }
             .main-container-stashes {
@@ -247,28 +147,6 @@ section.all-modals {
                         width: 100%;
                     }
                 }
-            }
-            .main-container-createstash {
-                display: none;
-            }
-        }
-        .main-container-createstash {
-            position: fixed;
-            top: 9vh;
-            right: 3vw;
-            width: 19vw;
-            display: flex;
-            justify-content: center;
-            height: 15vh;
-            .createstash-btn {
-                @include button-ss-dark( $width: 12vw, $height: 4vw, $horizontalPadding: 0);
-                border: white solid 2px;
-                color: white;
-                background: $theme-light-blue;
-                transition: 0.3s;
-            }
-            .createstash-btn-mobile {
-                display: none;
             }
         }
     }
