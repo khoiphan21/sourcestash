@@ -4,15 +4,13 @@
 
 #main-container {
     color: black;
-    // width: 100vw;
-    // height: 100vh;
     display: flex;
     justify-content: center;
     #main-container-content {
         box-shadow: 1px 7px 30px $theme-dark-grey;
         background: white;
         border-radius: 10px;
-        width: 50vw;
+        width: 40vw;
         #main-container-content-heading {
             @include row-center();
             justify-content: space-between;
@@ -37,6 +35,7 @@
         #main-container-content-form {
             display: flex;
             justify-content: center;
+            flex-direction: column;
             padding: 2vh 2vw;
             font-weight: bold;
             font-size: 10pt;
@@ -46,10 +45,10 @@
                 padding: 1vh 0;
                 height: 2vh;
                 margin-bottom: 10px;
-                width: 45vw;
+                width: 100%;
             }
             .description {
-                width: 45vw;
+                width: 100%;
                 border: darken($theme-grey, 10) solid 2px;
                 background: $theme-grey;
                 font-weight: normal;
@@ -66,139 +65,20 @@
 }
 
 //
-// tablet version
-@include media(small-screen) {
+// mobile version
+@include media(mobile-screen){
     #main-container {
-        color: black;
-        display: flex;
-        justify-content: center;
         #main-container-content {
-            box-shadow: 1px 7px 30px $theme-dark-grey;
-            background: white;
-            border-radius: 10px;
-            width: 70vw;
+            width: 60vw;
             #main-container-content-heading {
-                @include row-center();
-                justify-content: space-between;
-                font-weight: bold;
-                border-top-right-radius: 10px;
-                border-top-left-radius: 10px;
-                background: $theme-dark-grey;
-                color: white;
-                padding: 1vh 2vw;
-                span.heading-title {
-                    text-transform: uppercase;
-                }
-                span:last-child {
-                    @include transition-basic();
-                    font-size: 25px;
-                    &:hover {
-                        color: $theme-light-blue;
-                        cursor: pointer;
-                    }
-                }
-            }
-            #main-container-content-form {
                 display: flex;
-                justify-content: center;
-                padding: 2vh 2vw;
-                font-weight: bold;
-                font-size: 10pt;
-                .title {
-                    border: darken($theme-grey, 10) solid 2px;
-                    background: $theme-grey;
-                    padding: 1vh 0;
-                    height: 2vh;
-                    margin-bottom: 10px;
-                    width: 65vw;
-                }
-                .description {
-                    width: 65vw;
-                    border: darken($theme-grey, 10) solid 2px;
-                    background: $theme-grey;
-                    font-weight: normal;
-                    padding: 1vh 0;
-                    height: 20vh;
-                    margin-bottom: 10px;
-                }
-                #create-source-button {
-                    @include button-ss-light(
-                        $width: 12vw,
-                        $height: 5vh
-                    );
-                    font-size: 8pt;
-                    margin: auto;
-                }
-            }
-        }
-    }
-}
-
-//
-// tablet version
-@include media(mobile-screen) {
-    #main-container {
-        color: black;
-        display: flex;
-        justify-content: center;
-        #main-container-content {
-            box-shadow: 1px 7px 30px $theme-dark-grey;
-            background: white;
-            border-radius: 10px;
-            width: 80vw;
-            #main-container-content-heading {
-                width: 80vw;
-                display: flex; 
-                justify-content: space-between;
-                font-weight: bold;
                 flex-direction: row;
-                border-top-right-radius: 10px;
-                border-top-left-radius: 10px;
-                background: $theme-dark-grey;
-                color: white;
-                padding: 1vh 3vw;
-                span.heading-title {
-                    text-transform: uppercase;
-                }
-                span:last-child {
-                    @include transition-basic();
-                    font-size: 25px;
-                    &:hover {
-                        color: $theme-light-blue;
-                        cursor: pointer;
-                    }
-                }
             }
             #main-container-content-form {
-                display: flex;
-                justify-content: center;
-                padding: 2vh 2vw;
-                font-weight: bold;
-                font-size: 10pt;
-                .title {
-                    border: darken($theme-grey, 10) solid 2px;
-                    background: $theme-grey;
-                    padding: 1vh 0;
-                    height: 2vh;
-                    margin-bottom: 10px;
-                    width: 75vw;
-                }
-                .description {
-                    width: 75vw;
-                    border: darken($theme-grey, 10) solid 2px;
-                    background: $theme-grey;
-                    font-weight: normal;
-                    padding: 1vh 0;
-                    height: 20vh;
-                    margin-bottom: 10px;
-                }
                 #create-source-button {
-                    @include button-ss-light(
-                        $width: 16vw,
-                        $height: 5vh
-                    );
-                    font-size: 8pt;
+                    @include button-ss-light($width: 20vw);
                     margin: auto;
+                    font-size: 6pt;
                 }
             }
         }
