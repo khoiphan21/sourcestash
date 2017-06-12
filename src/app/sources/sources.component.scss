@@ -23,25 +23,9 @@
 // tablet screen
 @include media(small-screen) {
     .source {
-        @include transition-basic();
-        width: 18vh;
+        width: 11vw;
         height: 12vh;
-        padding: 1vh 1vw;
-        border-radius: 5px;
         font-size: 10pt;
-        text-align: center;
-        font-weight: 600;
-        text-transform: uppercase;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: $theme-white;
-        color: $theme-light-blue;
-        &:hover {
-            background: $theme-turquoise;
-            color: $theme-white;
-            cursor: pointer;
-        }
     }
 }
 
@@ -50,24 +34,8 @@
 // mobile screen
 @include media(mobile-screen) {
     .source {
-        @include transition-basic();
         width: 16vh;
         height: 12vh;
-        padding: 1vh 1vw;
-        border-radius: 5px;
-        text-align: center;
         font-size: 8pt;
-        font-weight: 600;
-        text-transform: uppercase;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: $theme-white;
-        color: $theme-light-blue;
-        &:hover {
-            background: $theme-turquoise;
-            color: $theme-white;
-            cursor: pointer;
-        }
     }
 }
