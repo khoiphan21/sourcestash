@@ -331,10 +331,6 @@ div.wrapper {
     }
 }
 
-.btn-beginner{
-    
-}
-
 .advanced {
     transition: 0.3s;
     background-image: url("/assets/images/normal.png");
@@ -343,10 +339,6 @@ div.wrapper {
     &:hover{
         background-image: url("/assets/images/normal-h.png");
     }
-}
-
-.btn-advanced{
-
 }
 
 .intermediate {
@@ -359,14 +351,9 @@ div.wrapper {
     }
 }
 
-.btn-intermediate{
-
-}
-
 //
 // tablet screen
 @include media(small-screen) {
-    
     .main-container {
         position: relative;
         z-index: -1;

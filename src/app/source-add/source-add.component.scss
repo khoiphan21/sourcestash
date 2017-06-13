@@ -103,3 +103,39 @@
         }
     }
 }
+
+// 
+// tablet version
+@include media(small-screen){
+    #main-container {
+        /* Modal Content */
+        #main-container-content {
+            width: 40vw;
+            #create-source-button {
+                @include button-ss-light();
+                margin-bottom: 1vh;
+                font-size: 8pt;
+            }
+        }
+    }
+}
+
+// 
+// mobile version
+@include media(mobile-screen){
+    #main-container {
+        /* Modal Content */
+        #main-container-content {
+            width: 60vw;
+            #main-container-content-heading {
+                display: flex; 
+                flex-direction: row;
+            }
+            #create-source-button {
+                @include button-ss-light($width: 20vw);
+                margin-bottom: 1vh;
+                font-size: 6pt;
+            }
+        }
+    }
+}
