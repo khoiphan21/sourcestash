@@ -17,12 +17,12 @@
     </section>
   </section>
 
+  <article class="left-container-add-source" (click)="onAddSource($event)">
+    <img src="./assets/images/icons/add.png">
+    <button class="left-container-add-source-btn">ADD SOURCE</button>
+  </article>
   <section class="main-container">
     <section id="left-container">
-      <article class="left-container-add-source" (click)="onAddSource($event)">
-        <img src="./assets/images/icons/add.png" width="30px" height="30px">
-        <button class="left-container-add-source-btn">ADD SOURCE</button>
-      </article>
       <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}">
 
         <!--[ngClass]="{'btn-beginner': source.difficulty == 'beginner', 'btn-advanced': source.difficulty == 'advanced', 'btn-intermediate':
@@ -39,7 +39,7 @@
           <article class="right-container-stash-title" *ngIf="stash">
             <span>{{stash.title}}</span>
             <span (click)="onEditStash()">
-                            <img src="./assets/images/Edit2.png" width="30px" height="30px">
+                            <img src="./assets/images/Edit2.png">
                         </span>
           </article>
           <section class="right-container-stash-details">
@@ -93,16 +93,17 @@
         </article>
         <section class="right-container-sidebar">
           <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')" [ngClass]="{'right-container-sidebar-btn-yes': isStashTabShown == true, 'right-container-sidebar-btn-no': isStashTabShown == false}">
-            <img src="./assets/images/Stash2.png" width="30px" height="30px">
+            <img src="./assets/images/Stash2.png">
           </div>
           <div class="right-container-sidebar-btn" (click)="selectTab('sourceTab')" [ngClass]="{'right-container-sidebar-btn-yes': isSourceTabShown == true, 'right-container-sidebar-btn-no': isSourceTabShown == false}">
-            <img src="./assets/images/Comments2.png" width="30px" height="30px">
+            <img src="./assets/images/Comments2.png">
           </div>
           <div class="right-container-sidebar-btn" (click)="selectTab('collaborateTab')" [ngClass]="{'right-container-sidebar-btn-yes': isCollaboratorTabShown == true, 'right-container-sidebar-btn-no': isCollaboratorTabShown == false}">
-            <img src="./assets/images/Collaborator2.png" width="30px" height="30px">
+            <img src="./assets/images/Collaborator2.png">
           </div>
-          <div class="right-container-sidebar-mobile-graph" (click)="toggleGraphTab()">
-            <img src="./assets/images/graph.png" width="20px" height="20px">
+          <div class="right-container-sidebar-mobile-graph" >
+            <!--(click)="toggleGraphTab()"-->
+            <img src="./assets/images/graph.png">
           </div>
         </section>
       </section>

@@ -254,14 +254,14 @@ export class PageStashComponent implements OnInit {
     this.isCollaboratorTabShown = false;
   }
 
-  toggleGraphTab() {
-    this.isGraphTabShown = this.isGraphTabShown ? false : true;
-    if (this.isGraphTabShown == true) {
-      this.isStashTabShown = true;
-    } else {
-      this.hideAllTabs();
-    }
-  }
+  // toggleGraphTab() {
+  //   this.isGraphTabShown = this.isGraphTabShown ? false : true;
+  //   if (this.isGraphTabShown == true) {
+  //     this.isStashTabShown = true;
+  //   } else {
+  //     this.hideAllTabs();
+  //   }
+  // }
 
 
   onAddSource(source: Source) {
