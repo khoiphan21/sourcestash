@@ -9,18 +9,18 @@
       <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)"
         (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
       </app-source-view>
-      <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-add>
-      <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
+      <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onUpdate)="refreshSources()" (onClose)="hideModal()"></app-source-add>
+      <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refreshSources()" (onClose)="hideModal()"></app-source-edit>
       <!--For stashes-->
-      <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()"
+      <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refreshStash()"
         (onClose)="hideModal()"></app-stash-edit>
     </section>
   </section>
 
-  <article class="left-container-add-source" (click)="onAddSource($event)">
+  <!--<article class="left-container-add-source" (click)="onAddSource($event)">
     <img src="./assets/images/icons/add.png">
     <button class="left-container-add-source-btn">ADD SOURCE</button>
-  </article>
+  </article>-->
   <section class="main-container">
     <section id="left-container">
       <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}">
