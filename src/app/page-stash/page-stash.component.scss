@@ -322,14 +322,14 @@ div.wrapper {
         background-image: url("/assets/images/easy.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
-        transition: 0.3s;
+        transition: background-image 0.3s;
         &:hover{
             background-image: url("/assets/images/easy-h.png");
         }
     }
 
     .advanced {
-        transition: 0.3s;
+        transition: background-image 0.3s;
         background-image: url("/assets/images/normal.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
@@ -339,7 +339,7 @@ div.wrapper {
     }
 
     .intermediate {
-        transition: 0.3s;
+        transition: background-image 0.3s;
         background-image: url("/assets/images/hard.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
