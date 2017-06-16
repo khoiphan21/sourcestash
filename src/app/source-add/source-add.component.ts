@@ -32,6 +32,7 @@ export class SourceAddComponent implements OnInit {
   @Input() parentSource: Source;
 
   @Output() onClose = new EventEmitter<boolean>();
+  @Output() onUpdate = new EventEmitter<boolean>();
 
   constructor(
     private sourceService: SourceService
@@ -70,12 +71,15 @@ export class SourceAddComponent implements OnInit {
         this.source.description,
         this.source.difficulty,
         this.source.tags
-      )
+      ).then(() => {
+        // Emit the event to let the parent know the sources need to be updated
+        this.onUpdate.emit();
+        // TODO: show a 'loading icon' here
+        this.closePopup();
+      })
     } else {
       alert('Inputs not valid!');
     }
-
-    this.closePopup();
   }
 
   processTagString(tagString: string): string[] {

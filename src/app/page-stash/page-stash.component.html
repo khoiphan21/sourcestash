@@ -9,7 +9,7 @@
       <app-source-view *ngIf="isViewSourceShown && currentSource" [source]="currentSource" (onAddSource)="onAddSource($event)"
         (onClose)="hideModal()" (onEditSource)="onEditSource($event)">
       </app-source-view>
-      <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onClose)="hideModal()"></app-source-add>
+      <app-source-add *ngIf="isAddSourceShown && currentSource" [parentSource]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-add>
       <app-source-edit *ngIf="isEditSourceShown && currentSource" [source]="currentSource" (onUpdate)="refresh()" (onClose)="hideModal()"></app-source-edit>
       <!--For stashes-->
       <app-stash-edit *ngIf="isEditStashShown && stash" [collaborators]="collaborators" [stash]="stash" (onUpdate)="refresh()"

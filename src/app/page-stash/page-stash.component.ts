@@ -139,14 +139,10 @@ export class PageStashComponent implements OnInit {
     this.sourceService.getSourcesForStash(this.stash_id).then(sources => {
       // Retrieve the sources for the stash
       this.sources = sources;
-      this.resetCanvas();
+      this.changeDetector.detectChanges();
 
-      // Wait a bit before updating source positions and lines
-      // FIX THIS BUG
-      setTimeout(() => {
-        this.refreshCanvas();
-      }, 500)
-    })
+      this.refreshCanvas();
+    });
     // Retrieve the information of the stash from the server
     this.stashService.getStash(this.stash_id).then((stash: Stash) => {
       this.stash = stash;
@@ -167,7 +163,7 @@ export class PageStashComponent implements OnInit {
   refreshCanvas() {
     let elements = document.getElementsByClassName('source');
 
-    if (elements.length != 0) {
+    if (elements.length) {
       this.renderedElements = elements;
 
       let options = {};
@@ -298,7 +294,7 @@ export class PageStashComponent implements OnInit {
 
   updateLines() {
     let elements = document.getElementsByClassName('source');
-    
+
     this.resetCanvas();
 
     _.each(this.sources, (source: Source) => {
@@ -335,7 +331,7 @@ export class PageStashComponent implements OnInit {
     context.moveTo(rootSourceX, rootSourceY);
     context.lineWidth = 3;
     context.lineTo(sourceX, sourceY);
-    context.strokeStyle="#ffffff";
+    context.strokeStyle = "#ffffff";
     context.stroke();
   }
 
