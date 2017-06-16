@@ -14,6 +14,7 @@ import { Stash } from '../classes/stash';
 import { StashService } from '../stash.service';
 import { CollaboratorService } from '../collaborator.service';
 import { AccountService } from '../account.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-page-stash',
@@ -60,6 +61,8 @@ export class PageStashComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.canvas.nativeElement.height = document.body.clientHeight;
+    this.canvas.nativeElement.width = document.body.clientWidth;
     // FOR TESTING PURPOSES
     this.route.params.map(params => {
       this.stash_id = params['stashid'];
@@ -129,7 +132,7 @@ export class PageStashComponent implements OnInit {
     });
 
     // Redraw the lines
-    this.updateLines(elements);
+    this.updateLines();
   }
 
   refresh() {
@@ -191,7 +194,7 @@ export class PageStashComponent implements OnInit {
 
       // DRAW LINES
       // MAKE SURE THE SOURCES ARE RENDERED AND POSITIONS UPDATED FIRST
-      this.updateLines(elements);
+      this.updateLines();
     }
   }
 
@@ -285,11 +288,17 @@ export class PageStashComponent implements OnInit {
   }
 
   resetCanvas() {
-    this.canvas.nativeElement.height = document.body.clientHeight;
-    this.canvas.nativeElement.width = document.body.clientWidth;
+    let context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
+    context.clearRect(
+      0, 0,
+      document.body.clientWidth,
+      document.body.clientHeight
+    )
   }
 
-  updateLines(elements: HTMLCollectionOf<Element>) {
+  updateLines() {
+    let elements = document.getElementsByClassName('source');
+    
     this.resetCanvas();
 
     _.each(this.sources, (source: Source) => {
@@ -416,13 +425,12 @@ export class PageStashComponent implements OnInit {
   setupDraggableOptions(optionObject: any, elements: HTMLCollectionOf<Element>) {
     optionObject.grid = 10;
     optionObject.onDrag = (element, xAbsolute, yAbsolute, event) => {
-      let source = this.findMatchingSource(element, this.sources);
-      let elements = document.getElementsByClassName('source');
-      this.resetCanvas();
-      this.updateLines(elements);
+      this.updateLines();
     }
     optionObject.onDragEnd = (element, xAbsolute, yAbsolute, event) => {
       let elementId = element.id;
+
+      this.updateLines();
 
       let source: Source = this.findMatchingSource(element, this.sources);
       this.updateSourcePosition(source.source_id, xAbsolute, yAbsolute, elements);
@@ -492,8 +500,8 @@ export class PageStashComponent implements OnInit {
         draggable.set(finalX, finalY);
       }
 
-      // at this point the element has been updated - remove the source from
-      // the dictionary
+      // at this point the element has been updated - remove the source
+      // from the dictionary
       delete sourceDictionary[currentSource.source_id];
     }
   }
@@ -506,16 +514,4 @@ export class PageStashComponent implements OnInit {
     });
     this.showModal("viewSource");
   }
-
-  // sourceDifferentiate(){
-  //   _.each(this.sources, (source: Source) =>{
-  //     if(source.difficulty === 'beginner'){
-  //       document.getElementById('sources').setAttribute("class","beginner");
-  //     } else if(source.difficulty === 'advanced'){
-
-  //     } else if(source.difficulty === 'intermediate'){
-
-  //     }
-  //   }); 
-  // }
 }
