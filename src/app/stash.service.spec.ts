@@ -1,4 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
+import * as _ from 'underscore';
 
 import { StashService } from './stash.service';
 import { HttpModule } from '@angular/http';
@@ -9,12 +10,15 @@ import { AppResponse } from './classes/response';
 import { Router } from '@angular/router';
 import { AccountService } from './account.service';
 import { GoogleApiService } from './google-api.service';
+import { SourceService } from './source.service';
+import { Source } from './classes/source';
 
 describe('StashService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         StashService,
+        SourceService,
         { provide: GoogleApiService, useValue: { initialize: jasmine.createSpy('initialize') } },
         AccountService,
         { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
@@ -74,9 +78,9 @@ describe('StashService', () => {
    * Tests for updating a stash
    */
   it('should update a stash successfully', done => {
-    inject([StashService], (service: StashService) => {
-      let stashID = '200039057';
-      let user_id = '2296818568';
+    inject([StashService, SourceService], (service: StashService, sourceService: SourceService) => {
+      let stashID = '2671055';
+      let user_id = '3656220637652272';
       let description: string = '' + (Math.random() * 1000);
       let stash: Stash = {
         stash_id: stashID,
@@ -92,6 +96,22 @@ describe('StashService', () => {
         }
       ).then((stash: Stash) => {
         expect(stash.description).toBe(description);
+
+        // Check to make sure the root source's title is also updated
+        return sourceService.getSourcesForStash(stashID);
+      }).then((sources: Source[]) => {
+        let rootSource: Source;
+        _.each(sources, (source: Source) => {
+          console.log(source.type);
+          if (source.type === 'root') {
+            rootSource = source;
+          }
+        });
+        expect(rootSource.title).toBe(stash.title);
+        done();
+      }).catch(error => {
+        console.log(error);
+        fail('error should not have occurred');
         done();
       });
     })();
