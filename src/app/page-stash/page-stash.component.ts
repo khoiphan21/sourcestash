@@ -136,6 +136,16 @@ export class PageStashComponent implements OnInit {
   }
 
   refresh() {
+    // Refresh the sources
+    this.refreshSources();
+    // Retrieve the information of the stash from the server
+    this.refreshStash();
+  }
+  
+  /**
+   * Call the server to reload all the sources
+   */
+  refreshSources() {
     this.sourceService.getSourcesForStash(this.stash_id).then(sources => {
       // Retrieve the sources for the stash
       this.sources = sources;
@@ -143,7 +153,12 @@ export class PageStashComponent implements OnInit {
 
       this.refreshCanvas();
     });
-    // Retrieve the information of the stash from the server
+  }
+
+  /**
+   * Call the server to retrieve the newest information about the stash
+   */
+  refreshStash() {
     this.stashService.getStash(this.stash_id).then((stash: Stash) => {
       this.stash = stash;
       // Retrieve the details of the owner of the stash
@@ -154,6 +169,13 @@ export class PageStashComponent implements OnInit {
       console.log(error);
     });
     // Retrieve the list of collaborators for the stash
+    this.refreshCollaborators();
+  }
+
+  /**
+   * Call the server to retrieve the collaborators information
+   */
+  refreshCollaborators() {
     this.collaboratorService.getAllCollaborators(this.stash_id).then(accounts => {
       delete this.collaborators;
       this.collaborators = accounts;
