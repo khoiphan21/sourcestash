@@ -5,12 +5,8 @@
         </article>
         <article id="main-container-content-form">
             <form>
-                <label for="title">Title</label>
-                <input class="title" [(ngModel)]="stashTitle" type="text" name="title">
-                <label for="description">Description</label>
-                <textarea class="description" [(ngModel)]="stashDescription" name="description"></textarea>
-
-                <button id="create-source-button" (click)="addStash()">Create</button>
+                <input class="title" [(ngModel)]="stashTitle" type="text" name="title" placeholder="TITLE">
+                <button id="create-source-button" (click)="addStash()">ADD STASH</button>
             </form>
         </article>
     </section>

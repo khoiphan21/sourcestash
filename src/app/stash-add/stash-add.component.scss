@@ -6,20 +6,18 @@
     color: black;
     display: flex;
     justify-content: center;
+    font-weight: 300;
     #main-container-content {
         box-shadow: 1px 7px 30px $theme-dark-grey;
         background: white;
-        border-radius: 10px;
-        width: 40vw;
+        width: 37vw;
         #main-container-content-heading {
             @include row-center();
             justify-content: space-between;
-            font-weight: bold;
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
-            background: $theme-dark-grey;
+            background: $theme-light-orange;
             color: white;
-            padding: 1vh 2vw;
+            font-size: 16pt;
+            padding: 2vh 2vw;
             span.heading-title {
                 text-transform: uppercase;
             }
@@ -36,29 +34,43 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            background: rgba(255,255,255,0.9);
             padding: 2vh 2vw;
-            font-weight: bold;
-            font-size: 10pt;
-            .title {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
-                padding: 1vh 0;
-                height: 2vh;
-                margin-bottom: 10px;
-                width: 100%;
+            input[type=text],
+            select {
+                @include column-center();
+                border: lighten($theme-font-light-grey, 30) solid 2px;
+                background: white;
+                padding: 1vh 1vw;
+                text-align: left;
+                height: 3.5vh;
+                margin-top: 2vh;
+                color: $theme-font-light-grey;
+                width: 92%;
+                font-size: 12pt;
             }
-            .description {
-                width: 100%;
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
-                font-weight: normal;
-                padding: 1vh 0;
-                height: 20vh;
-                margin-bottom: 10px;
+            input:focus {
+                border: $theme-light-orange solid 2px;
             }
             #create-source-button {
-                @include button-ss-light();
+                @include button-ss-orange($width: 11vw);
                 margin: auto;
+                font-weight: 300;
+                font-size: 12pt;
+            }
+        }
+    }
+}
+
+//
+// tablet version
+@include media(small-screen){
+    #main-container {
+        #main-container-content {
+            #main-container-content-form {
+                #create-source-button {
+                    @include button-ss-orange($width: 15vw);
+                }
             }
         }
     }
@@ -73,10 +85,11 @@
             #main-container-content-heading {
                 display: flex;
                 flex-direction: row;
+                font-size: 12pt;
             }
             #main-container-content-form {
                 #create-source-button {
-                    @include button-ss-light($width: 20vw);
+                    @include button-ss-orange($width: 20vw);
                     margin: auto;
                     font-size: 6pt;
                 }
