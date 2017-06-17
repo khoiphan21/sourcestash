@@ -7,11 +7,9 @@
     /* Modal Content */
     #main-container-content {
         @include column-center;
-        border-radius: 10px;
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        background-color: $theme-white;
-        height: auto;
-        border: 1px solid #888;
+        background: rgba(255,255,255,0.9);
+        border: 1px solid $theme-font-light-grey;
         width: 25vw;
         ul {
             margin: 0px;
@@ -20,19 +18,20 @@
         }
         li {
             font-size: 10pt;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         #main-container-content-heading {
             width: 100%;
             @include row-center();
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: bold;
             flex-direction: row;
             color: $theme-white;
-            background: $theme-dark-grey;
+            background: $theme-light-orange;
             padding: 1vh 2vw;
             .heading {
                 font-size: 12pt;
@@ -64,18 +63,48 @@
             }
         }
         #main-container-content-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
             width: 100%;
+            height: auto;
             padding: 1vh 2vw;
             .form-title-bold {
-                font-weight: bold;
                 font-size: 12pt;
-                color: black;
+                font-weight: 600;
+                color: $theme-dark-grey;
+            }
+            .form-block-1{
+                padding: 1vh 1vw;
+                min-height: 5.5vh;
+                color: $theme-font-grey;
+                width: 21vw;
+                font-size: 12pt;
+                margin-bottom: 2vh;
+            }
+            .form-block-2{
+                padding: 0 1vw;
+                min-height: 4vh;
+                color: $theme-font-grey;
+                width: 21vw;
+                font-size: 12pt;
+                margin-bottom: 2vh;
+            }
+            .form-block-3{
+                padding: 1vh 1vw;
+                min-height: 20vh;
+                margin-bottom: 10px;
+                color: $theme-font-grey;
+                width: 21vw;
+                font-size: 12pt;
             }
         }
         #create-source-button {
-            @include button-ss-light(
-                $width: 11vw
-            );
+            @include button-ss-orange($width: 11vw);
+            margin: auto;
+            font-weight: 300;
+            font-size: 12pt;
             margin-bottom: 1vh;
         }
     }
