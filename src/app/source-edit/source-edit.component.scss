@@ -5,12 +5,10 @@
 #main-container {
     /* Modal Content */
     #main-container-content {
+        background: rgba(255,255,255,0.9);
         @include column-center;
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        border-radius: 10px;
-        height: auto;
-        background: $theme-white;
-        border: 1px solid #888;
+        border: 1px solid $theme-font-light-grey;
         width: 25vw;
         ul {
             margin: 0px;
@@ -23,11 +21,8 @@
         #main-container-content-heading {
             @include row-center();
             width: 100%;
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
             justify-content: space-between;
-            font-weight: bold;
-            background: $theme-dark-grey;
+            background: $theme-light-orange;
             color: $theme-white;
             padding: 1vh 2vw;
             .heading {
@@ -45,60 +40,50 @@
         #main-container-content-detail {
             width: 100%;
             padding: 1vh 2vw;
-            .form-title-bold {
-                font-weight: bold;
-                font-size: 10pt;
-                color: black;
+            input[type=text],
+            select {
+                @include column-center();
+                border: $theme-font-light-grey solid 2px;
+                background: white;
+                padding: 1vh 1vw;
+                text-align: left;
+                height: 2.5vh;
+                color: $theme-font-grey;
+                width: 92%;
+                font-size: 12pt;
+            }
+            input:focus {
+                border: $theme-light-orange solid 2px;
+            }
+            label {
+                font-size: 12pt;
+                font-weight: 600;
+                color: $theme-dark-grey;
             }
             select {
                 display: block;
             }
-            .title {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
-                padding: 1vh 0;
-                height: 2vh;
-                margin-bottom: 10px;
-            }
             .difficulty {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
-                height: 4vh;
-                border-radius: 0px;
-                margin-bottom: 10px;
-            }
-            .tags {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
                 height: 4vh;
                 border-radius: 0px;
                 margin-bottom: 10px;
             }
             .description {
-                border: darken($theme-grey, 10) solid 2px;
-                background: $theme-grey;
+                border: $theme-font-light-grey solid 2px;
+                width: 103%;
                 padding: 1vh 0;
                 height: 20vh;
                 margin-bottom: 10px;
+                background: white;
+                font-size: 12pt;
             }
         }
         #create-source-button {
-            @include button-ss-light();
+            @include button-ss-orange($width: 11vw);
+            margin: auto;
+            font-weight: 300;
+            font-size: 12pt;
             margin-bottom: 1vh;
-            // margin: auto;
-            // border: darken($theme-grey, 10) solid 2px;
-            // background: $theme-grey;
-            // margin-bottom: 1vh;
-            // font-weight: bold;
-            // font-size: 10pt;
-            // width: 9vw;
-            // text-align: center;
-            // padding: 2vh 0;
-            // @include transition-basic();
-            // &:hover {
-            //     background: darken($theme-grey, 10);
-            //     border: $theme-grey solid 2px;
-            // }
         }
     }
 }

@@ -9,8 +9,8 @@
     font-weight: 300;
     #main-container-content {
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        background: white;
         width: 37vw;
+        background: rgba(255,255,255,0.9);
         #main-container-content-heading {
             @include row-center();
             justify-content: space-between;
@@ -34,7 +34,6 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            background: rgba(255,255,255,0.9);
             padding: 2vh 2vw;
             input[type=text],
             select {

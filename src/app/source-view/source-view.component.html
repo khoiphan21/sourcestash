@@ -10,19 +10,19 @@
     <section id="main-container-content-detail">
       <ul>
         <li>
-          <span class="form-title-bold">Title:<br></span><span>{{source.title}}</span>
+          <span class="form-title-bold">Title:</span><span class="form-block-1">{{source.title}}</span>
         </li>
         <li *ngIf="source.type != 'root'">
-          <span class="form-title-bold">Hyperlink:<br></span><span>{{source.hyperlink}}</span>
+          <span class="form-title-bold">Hyperlink:</span><span class="form-block-1">{{source.hyperlink}}</span>
         </li>
         <li *ngIf="source.type != 'root'">
-          <span class="form-title-bold">Difficulty:<br></span> <span>Intermediate </span>
+          <span class="form-title-bold">Difficulty:</span> <span class="form-block-2">Intermediate </span>
         </li>
         <li *ngIf="source.type != 'root'">
-          <span class="form-title-bold">Tags:<br></span> <span>{{tagString}}</span>
+          <span class="form-title-bold">Tags:</span> <span class="form-block-1">{{tagString}}</span>
         </li>
         <li>
-          <span class="form-title-bold">Description: <br></span> <span>{{source.description}}</span>
+          <span class="form-title-bold">Description:</span> <span class="form-block-3">{{source.description}}</span>
         </li>
       </ul>
     </section>

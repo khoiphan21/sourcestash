@@ -8,9 +8,8 @@
     #main-container-content {
         @include column-center;
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        border-radius: 10px;
         height: auto;
-        background: $theme-white;
+        background: rgba(255,255,255,0.9);
         border: 1px solid #888;
         width: 25vw;
         ul {
@@ -24,8 +23,6 @@
         #main-container-content-heading {
             width: 100%;
             @include row-center();
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
             justify-content: space-between;
             font-weight: bold;
             background: $theme-light-orange;
@@ -57,7 +54,6 @@
                 color: $theme-font-grey;
                 width: 92%;
                 font-size: 12pt;
-                font-weight: bold;
             }
             input:focus {
                 border: $theme-light-orange solid 2px;

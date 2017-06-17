@@ -10,7 +10,7 @@
     font-weight: 300;
     #main-container-content {
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        background: white;
+        background: rgba(255,255,255,0.9);
         width: 35vw;
         #main-container-content-heading {
             @include row-center();
