@@ -13,7 +13,7 @@
           <span class="form-title-bold">Title:</span><span class="form-block-1">{{source.title}}</span>
         </li>
         <li *ngIf="source.type != 'root'">
-          <span class="form-title-bold">Hyperlink:</span><span class="form-block-1">{{source.hyperlink}}</span>
+          <span class="form-title-bold">Hyperlink:</span><span class="form-block-1"><a [href]="source.hyperlink" target="_blank">{{source.hyperlink}}</a></span>
         </li>
         <li *ngIf="source.type != 'root'">
           <span class="form-title-bold">Difficulty:</span> <span class="form-block-2">Intermediate </span>
