@@ -67,7 +67,7 @@ div.wrapper {
     #left-container {
         position: relative;
         z-index: 1;
-        width: 75vw;
+        width: 70vw;
         height: $main-container-height;
         text-align: center;
         display: block;
@@ -87,7 +87,7 @@ div.wrapper {
     }
     .right-container {
         color: $theme-white;
-        width: 25vw;
+        width: 30vw;
         height: 70vh;
         margin-top: 5vh;
         z-index: 2;
@@ -107,7 +107,7 @@ div.wrapper {
                 @include column-center;
                 transition: width 1s;
                 overflow-y: scroll;
-                width: 21vw; // A list of sources and stashes
+                width: 26vw; // A list of sources and stashes
                 height: 70vh;
                 background: #cccccc;
                 .right-container-stash-title {
@@ -184,7 +184,7 @@ div.wrapper {
                 transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
-                width: 21vw;
+                width: 26vw;
                 height: 70vh;
                 .right-container-source-title {
                     margin-top: 1vh;
@@ -236,7 +236,7 @@ div.wrapper {
                 transition: width 0.3s;
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
-                width: 21vw;
+                width: 26vw;
                 height: 70vh;
                 .right-container-collaborate-title {
                     margin-top: 1vh;

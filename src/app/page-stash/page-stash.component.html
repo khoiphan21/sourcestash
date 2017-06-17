@@ -89,7 +89,7 @@
           </article>
         </section>
         <!--for the middle line-->
-        <article class="right-container-sidebar-line">
+        <article class="right-container-sidebar-line" *ngIf="isStashTabShown || isCollaboratorTabShown || isSourceTabShown">
         </article>
         <section class="right-container-sidebar">
           <div class="right-container-sidebar-btn" (click)="selectTab('stashTab')" [ngClass]="{'right-container-sidebar-btn-yes': isStashTabShown == true, 'right-container-sidebar-btn-no': isStashTabShown == false}">
