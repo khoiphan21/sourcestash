@@ -69,6 +69,20 @@ export class SourceEditComponent implements OnInit {
     });
   }
 
+  deleteSource() {
+    this.sourceService.deleteSource(this.source.source_id).then(response => {
+      if (response.success) {
+        this.onUpdate.emit();
+        this.closePopup();
+      } else {
+        alert('Failed to delete source');
+      }
+    }).catch (error => {
+      console.log(error);
+      alert('Failed to delete source');
+    })
+  }
+
   processTagString(tagString: string): string[] {
     let tags: string[] = [];
 

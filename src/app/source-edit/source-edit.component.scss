@@ -78,12 +78,36 @@
                 font-size: 12pt;
             }
         }
-        #create-source-button {
-            @include button-ss-orange($width: 11vw);
-            margin: auto;
-            font-weight: 300;
-            font-size: 12pt;
+        div.buttons {
+            @include row-center();
+            width: 100%;
+            position: relative;
             margin-bottom: 1vh;
+            #create-source-button {
+                @include button-ss-orange($width: 11vw);
+                margin: auto;
+                font-weight: 300;
+                font-size: 12pt;
+            }
+            div.delete {
+                @include column-center();
+                height: 100%;
+                position: absolute;
+                right: 1.5vw;
+                img {
+                    width: 5vh;
+                    padding: 0.5vh;
+                    height: 5vh;
+                    border-radius: 50%;
+                    border: 1px solid $transparent;
+                    transition: border-color 0.3s;
+                    &:hover {
+                        transition: border-color 0.3s;
+                        border: 1px solid black;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }
