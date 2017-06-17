@@ -88,7 +88,7 @@ div.wrapper {
     .right-container {
         color: $theme-white;
         width: 25vw;
-        height: 75vh;
+        height: 70vh;
         margin-top: 5vh;
         z-index: 2;
         .bold {
@@ -99,8 +99,8 @@ div.wrapper {
             display: flex;
             flex-direction: row-reverse;
             .right-container-sidebar-line{
-                height: 75vh;
-                width: 1vw;
+                height: 70vh;
+                width: 0.5vw;
                 background: $theme-light-orange;
             }
             .right-container-stash {
@@ -108,7 +108,7 @@ div.wrapper {
                 transition: width 1s;
                 overflow-y: scroll;
                 width: 21vw; // A list of sources and stashes
-                height: 75vh;
+                height: 70vh;
                 background: #cccccc;
                 .right-container-stash-title {
                     text-transform: uppercase;
@@ -185,7 +185,7 @@ div.wrapper {
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
                 width: 21vw;
-                height: 75vh;
+                height: 70vh;
                 .right-container-source-title {
                     margin-top: 1vh;
                     color: black;
@@ -237,7 +237,7 @@ div.wrapper {
                 overflow-y: scroll;
                 background: lighten($theme-dark-grey, 10);
                 width: 21vw;
-                height: 75vh;
+                height: 70vh;
                 .right-container-collaborate-title {
                     margin-top: 1vh;
                     color: black;
@@ -264,9 +264,7 @@ div.wrapper {
                     justify-content: center;
                     align-items: center;
                     height: 4vw;
-                    width: 4vw;
-                    // border-top: 1px solid $theme-white;
-                    border: 1px solid $theme-white;
+                    width: 3.5vw;
                     transition: 0.3s;
                     &:hover {
                         background: $theme-light-orange;
@@ -282,11 +280,7 @@ div.wrapper {
                     justify-content: center;
                     align-items: center;
                     height: 4vw;
-                    width: 4vw;
-                    // border-top: 1px solid $theme-white;
-                    border: 1px solid $theme-white;
-                    border-right: none;
-                    border-top: none;
+                    width: 3.5vw;
                     transition: 0.3s;
                     &:hover {
                         background: $theme-light-orange;
@@ -297,7 +291,7 @@ div.wrapper {
                     display: none;
                 }
                 img{
-                    width: 4vh;
+                    width: 3.5vh;
                     height: 4vh;
                 }
             }

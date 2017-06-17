@@ -39,13 +39,13 @@
             input[type=text],
             select {
                 @include column-center();
-                border: lighten($theme-font-light-grey, 30) solid 2px;
+                border: $theme-font-light-grey solid 2px;
                 background: white;
                 padding: 1vh 1vw;
                 text-align: left;
                 height: 3.5vh;
                 margin-top: 2vh;
-                color: $theme-font-light-grey;
+                color: $theme-font-grey;
                 width: 92%;
                 font-size: 12pt;
             }
