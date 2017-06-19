@@ -32,7 +32,7 @@ div.wrapper {
 }
 
 // the add source button on the top left section
-.left-container-add-source{
+.left-container-add-source {
     @include transition-basic();
     padding: 1vh 1vw;
     border-radius: 5px;
@@ -42,16 +42,16 @@ div.wrapper {
     position: absolute;
     top: 12vh;
     left: 2vw;
-    .left-container-add-source-btn{
+    .left-container-add-source-btn {
         font-weight: 700;
         border: none;
         background: transparent;
         color: white;
     }
-    &:hover{
-        background: rgba(102,102,102,0.7);
+    &:hover {
+        background: rgba(102, 102, 102, 0.7);
     }
-    img{
+    img {
         width: 4vh;
         height: 4vh;
     }
@@ -67,7 +67,7 @@ div.wrapper {
     #left-container {
         position: relative;
         z-index: 1;
-        width: 70vw;
+        width: 100vw;
         height: $main-container-height;
         text-align: center;
         display: block;
@@ -79,10 +79,16 @@ div.wrapper {
             align-items: center;
             z-index: 1;
             justify-content: center;
+            &:hover {
+                cursor: pointer;
+            }
         }
         .root {
-            position: relative; // left: 45% !important;
-            // top: 45% !important;
+            position: relative;
+        }
+        &:hover {
+            cursor: grab;
+            cursor: -webkit-grab;
         }
     }
     .right-container {
@@ -98,7 +104,7 @@ div.wrapper {
         .right-container-content {
             display: flex;
             flex-direction: row-reverse;
-            .right-container-sidebar-line{
+            .right-container-sidebar-line {
                 height: 70vh;
                 width: 0.5vw;
                 background: $theme-light-orange;
@@ -290,54 +296,50 @@ div.wrapper {
                 .right-container-sidebar-mobile-graph {
                     display: none;
                 }
-                img{
+                img {
                     width: 3.5vh;
                     height: 4vh;
                 }
             }
         }
-    }
-    // ngClasses for differentiating the sources
-    .source-btn{
+    } // ngClasses for differentiating the sources
+    .source-btn {
         color: black;
         border: none;
         background: none;
-        &:hover{
+        &:hover {
             color: black;
         }
     }
-    .root{
+    .root {
         background-image: url("/assets/images/root.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
     }
-
     .beginner {
         background-image: url("/assets/images/easy.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
         transition: background-image 0.3s;
-        &:hover{
+        &:hover {
             background-image: url("/assets/images/easy-h.png");
         }
     }
-
     .advanced {
         transition: background-image 0.3s;
         background-image: url("/assets/images/normal.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
-        &:hover{
+        &:hover {
             background-image: url("/assets/images/normal-h.png");
         }
     }
-
     .intermediate {
         transition: background-image 0.3s;
         background-image: url("/assets/images/hard.png");
         background-size: 20vh 18vh;
         background-repeat: no-repeat;
-        &:hover{
+        &:hover {
             background-image: url("/assets/images/hard-h.png");
         }
     }
@@ -346,10 +348,10 @@ div.wrapper {
 //
 // tablet screen
 @include media(small-screen) {
-    .left-container-add-source{
+    .left-container-add-source {
         top: 12vh;
         left: 2vw;
-        .left-container-add-source-btn{
+        .left-container-add-source-btn {
             font-size: 10pt;
         }
     }
@@ -400,21 +402,17 @@ div.wrapper {
                         font-size: 11pt;
                     }
                 }
-            } 
-        }
-        // ngClasses for differentiating the sources
-        .root{
+            }
+        } // ngClasses for differentiating the sources
+        .root {
             background-size: 18vh 16vh;
         }
-
         .beginner {
             background-size: 18vh 16vh;
         }
-
         .advanced {
             background-size: 18vh 16vh;
         }
-
         .intermediate {
             background-size: 18vh 16vh;
         }
@@ -424,9 +422,8 @@ div.wrapper {
 //
 // mobile screen
 @include media(mobile-screen) {
-    .left-container-add-source{
-        display: none;
-        // padding: 1vh 1vw;
+    .left-container-add-source {
+        display: none; // padding: 1vh 1vw;
         // border-radius: 5px;
         // display: flex;
         // justify-content: center;
@@ -483,15 +480,14 @@ div.wrapper {
                 flex-direction: column;
                 height: 100%;
                 overflow: hidden;
-                .right-container-sidebar-line{
+                .right-container-sidebar-line {
                     display: none;
                 }
                 .right-container-stash {
                     order: 2;
-                    width: 100%; 
+                    width: 100%;
                     height: 100%;
-                    background: #151523;
-                    // background: #cccccc;
+                    background: #151523; // background: #cccccc;
                     .right-container-stash-title {
                         img {
                             width: 4vh;
@@ -501,17 +497,15 @@ div.wrapper {
                 }
                 .right-container-source {
                     order: 2;
-                    width: 100%; 
+                    width: 100%;
                     height: 100%;
-                    background: #151523;
-                    // background: #cccccc;
+                    background: #151523; // background: #cccccc;
                 }
                 .right-container-collaborate {
                     order: 2;
-                    width: 100%; 
+                    width: 100%;
                     height: 100%;
-                    background: #151523;
-                    // background: #cccccc;
+                    background: #151523; // background: #cccccc;
                 }
                 .right-container-sidebar {
                     order: 1;
@@ -543,12 +537,12 @@ div.wrapper {
                         border: none;
                         border-right: white solid 1px;
                         @include column-center;
-                        img{
+                        img {
                             width: 4vh;
                             height: 4vh;
                         }
                     }
-                    img{
+                    img {
                         width: 6vh;
                         height: 6vh;
                     }

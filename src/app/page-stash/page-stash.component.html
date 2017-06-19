@@ -22,12 +22,12 @@
     <button class="left-container-add-source-btn">ADD SOURCE</button>
   </article>-->
   <section class="main-container">
-    <section id="left-container">
-      <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}">
+    <section id="left-container" (mousedown)="handleMousedown($event)" (mousemove)="handleMousemove($event)" (mouseup)="handleMouseup($event)">
+      <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}" (mousedown)="$event.stopPropagation()" (click)="selectCurrentSource(source.source_id)">
 
         <!--[ngClass]="{'btn-beginner': source.difficulty == 'beginner', 'btn-advanced': source.difficulty == 'advanced', 'btn-intermediate':
         source.difficulty == 'intermediate'}"-->
-        <button class="source-btn" [id]="source.source_id" (click)="selectCurrentSource(source.source_id)">{{source.title}}</button>
+        <div class="source-btn" [id]="source.source_id">{{source.title}}</div>
       </article>
     </section>
 

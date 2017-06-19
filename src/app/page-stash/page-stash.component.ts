@@ -22,7 +22,14 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./page-stash.component.scss'],
 })
 export class PageStashComponent implements OnInit {
+  /**
+   * CONSTANTS
+   */
+  private LEFT_MOUSE_BUTTON = 0;
+  private MIDDLE_MOUSE_BUTTON = 1;
+  private RIGHT_MOUSE_BUTTON = 2;
 
+  // Main model of the stash
   sources: Source[];
   stash_id: string;
 
@@ -34,6 +41,12 @@ export class PageStashComponent implements OnInit {
   currentSource: Source;
 
   renderedElements: any;
+
+  // Variables to control user mouse events: [X, Y]
+  startingMousedownCoords: number[] = [];
+  currentCoords: number[] = [];
+  isMousedown: boolean = false;
+  isLeftMouseDown: boolean = false;
 
   // Variables to control modal items display
   isModalShown: boolean = false;
@@ -99,25 +112,73 @@ export class PageStashComponent implements OnInit {
     }
   }
 
-  moveSource(direction: string) {
+  @HostListener('window:mouseup', ['$event'])
+  mouseUp(event: MouseEvent) {
+    this.isMousedown = false;
+    this.isLeftMouseDown = false;
+    document.body.style.cursor = 'auto';
+  }
+
+
+  handleMousedown(event: MouseEvent) {
+    if (event.button === this.LEFT_MOUSE_BUTTON) {
+      this.startingMousedownCoords = [event.x, event.y];
+      this.isLeftMouseDown = true;
+      event.stopPropagation();
+      event.preventDefault();
+    }
+    this.isMousedown = true;
+  }
+
+  handleMouseup(event: MouseEvent) {
+    this.isMousedown = false;
+    this.isLeftMouseDown = false;
+
+    // Reset the coordinates
+    this.startingMousedownCoords = [0, 0];
+  }
+
+  handleMousemove(event: MouseEvent) {
+    // How many px the mouse should move per px panned
+    let scaleRate: number = 80;
+    // Static area (in px) where no movement will occur
+    let staticArea: number = 20; // Means 40x40
+    if (this.isLeftMouseDown && this.isMousedown) {
+      let deltaX = event.x - this.startingMousedownCoords[0];
+      let deltaY = event.y - this.startingMousedownCoords[1];
+      // Start panning based on direction of mouse
+      if (deltaX > staticArea || deltaY > staticArea || deltaX < -staticArea || deltaY < -staticArea) {
+
+        // Prevent jerky movement
+        this.moveSource('DYNAMIC', deltaX / scaleRate, deltaY / scaleRate); // MAGIC 100!
+      }
+    }
+  }
+
+  moveSource(direction: string, xrate?: number, yrate?: number) {
     let elements = document.getElementsByClassName('source');
     let rect, xChange = 0, yChange = 0, newX, newY;
 
-    let panningRate = 10; // px
+    let panningRateX = xrate ? xrate : 10; // px
+    let panningRateY = yrate ? yrate : 10; // px
 
     // Determine what values to change
     switch (direction) {
       case 'UP':
-        yChange = -panningRate;
+        yChange = -panningRateY;
         break;
       case 'DOWN':
-        yChange = +panningRate;
+        yChange = +panningRateY;
         break;
       case 'LEFT':
-        xChange = -panningRate;
+        xChange = -panningRateX;
         break;
       case 'RIGHT':
-        xChange = +panningRate;
+        xChange = +panningRateX;
+        break;
+      case 'DYNAMIC':
+        xChange = panningRateX;
+        yChange = panningRateY;
         break;
     }
 
@@ -141,7 +202,7 @@ export class PageStashComponent implements OnInit {
     // Retrieve the information of the stash from the server
     this.refreshStash();
   }
-  
+
   /**
    * Call the server to reload all the sources
    */
@@ -523,7 +584,6 @@ export class PageStashComponent implements OnInit {
       delete sourceDictionary[currentSource.source_id];
     }
   }
-
   selectCurrentSource(source_id: string) {
     _.each(this.sources, (source: Source) => {
       if (source.source_id == source_id) {
