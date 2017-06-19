@@ -37,7 +37,7 @@ describe('SourceService', () => {
 
         // If length if more than 0, check tags
         if (sources.length > 0) {
-          expect(sources[0].tags.length).toBeTruthy();
+          expect(sources[0].tags).toBeTruthy();
         }
         
         done();
@@ -191,7 +191,7 @@ describe('SourceService', () => {
 
   it('should retrieve tags for a source', done => {
     inject([SourceService], (service: SourceService) => {
-      let source_id = '1993942511';
+      let source_id = '0500ab10-906a-8202-0870-9806cd37fa60';
       let mockSource: Source = new Source(
         source_id, '', '', '', '', 0, 0, '', '', '', '', null
       );
