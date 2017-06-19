@@ -22,7 +22,7 @@
     <button class="left-container-add-source-btn">ADD SOURCE</button>
   </article>-->
   <section class="main-container">
-    <section id="left-container" (mousedown)="handleMousedown($event)" (mousemove)="handleMousemove($event)" (mouseup)="handleMouseup($event)">
+    <section id="left-container" (mousedown)="prepareToPan($event)" (mousemove)="startPanning($event)">
       <article *ngFor="let source of sources; let last = last" [id]="source.source_id" class="source" [ngClass]="{'root': source.type == 'root','beginner': source.difficulty == 'beginner', 'advanced': source.difficulty == 'advanced', 'intermediate': source.difficulty == 'intermediate'}" (mousedown)="$event.stopPropagation()" (click)="selectCurrentSource(source.source_id)">
 
         <!--[ngClass]="{'btn-beginner': source.difficulty == 'beginner', 'btn-advanced': source.difficulty == 'advanced', 'btn-intermediate':

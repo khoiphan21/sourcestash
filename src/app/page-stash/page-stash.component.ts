@@ -117,10 +117,12 @@ export class PageStashComponent implements OnInit {
     this.isMousedown = false;
     this.isLeftMouseDown = false;
     document.body.style.cursor = 'auto';
+
+    // Reset the coordinates
+    this.startingMousedownCoords = [0, 0];
   }
 
-
-  handleMousedown(event: MouseEvent) {
+  prepareToPan(event: MouseEvent) {
     if (event.button === this.LEFT_MOUSE_BUTTON) {
       this.startingMousedownCoords = [event.x, event.y];
       this.isLeftMouseDown = true;
@@ -130,19 +132,12 @@ export class PageStashComponent implements OnInit {
     this.isMousedown = true;
   }
 
-  handleMouseup(event: MouseEvent) {
-    this.isMousedown = false;
-    this.isLeftMouseDown = false;
-
-    // Reset the coordinates
-    this.startingMousedownCoords = [0, 0];
-  }
-
-  handleMousemove(event: MouseEvent) {
+  startPanning(event: MouseEvent) {
     // How many px the mouse should move per px panned
     let scaleRate: number = 80;
     // Static area (in px) where no movement will occur
     let staticArea: number = 20; // Means 40x40
+
     if (this.isLeftMouseDown && this.isMousedown) {
       let deltaX = event.x - this.startingMousedownCoords[0];
       let deltaY = event.y - this.startingMousedownCoords[1];
@@ -150,8 +145,10 @@ export class PageStashComponent implements OnInit {
       if (deltaX > staticArea || deltaY > staticArea || deltaX < -staticArea || deltaY < -staticArea) {
 
         // Prevent jerky movement
-        this.moveSource('DYNAMIC', deltaX / scaleRate, deltaY / scaleRate); // MAGIC 100!
+        this.moveSource('DYNAMIC', deltaX / scaleRate, deltaY / scaleRate);
       }
+      event.preventDefault();
+      event.stopPropagation();
     }
   }
 
