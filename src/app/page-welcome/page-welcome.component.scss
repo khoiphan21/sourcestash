@@ -376,18 +376,28 @@
     .main-container {
         // Container 1
         .video-container {
+            .bold {
+                font-size: 20pt;
+                font-weight: bold;
+                margin-bottom: 7vh;
+            }
+            .ss {
+                font-size: 56pt;
+                font-weight: bold;
+                margin-bottom: 5vh;
+            }
             .video-container-content {
                 .video-container-btn {
-                    width: 70vw;
+                    width: 80vw;
                     .video-learn,
                     .video-login {
-                        @include button-ss-dark($width: 30vw);
+                        @include button-ss-dark($width: 35vw);
                         background: $theme-dark-blue;
                         color: $theme-light-orange;
                         border-color: $theme-light-orange;
                         border-radius: 0;
                         font-weight: bold;
-                        font-size: 12pt;
+                        font-size: 10pt;
                     }
                 }
             }
@@ -404,7 +414,7 @@
                         margin-bottom: 3vh;
                     }
                     .content-team {
-                        width: 50vw;
+                        width: 85vw;
                         height: auto;
                         padding: 2vw;
                         padding-right: 7vw;
@@ -461,6 +471,9 @@
                     }
                 }
                 .contact-container-details-detail {
+                    span{
+                        font-size: 10pt;
+                    }
                     .contact-container-details-detail-icons {
                         margin-left: auto;
                         margin-right: auto;
