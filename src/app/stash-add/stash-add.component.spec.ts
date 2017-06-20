@@ -8,6 +8,7 @@ import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
 
 import { StashAddComponent } from './stash-add.component';
+import { AutofocusDirective } from '../directives/autofocus.directive';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
@@ -19,7 +20,10 @@ describe('StashAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StashAddComponent ],
+      declarations: [
+        StashAddComponent,
+        AutofocusDirective
+      ],
       imports: [
         FormsModule,
         HttpModule

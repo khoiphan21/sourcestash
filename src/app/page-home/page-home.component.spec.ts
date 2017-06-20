@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { SourceAddComponent } from '../source-add/source-add.component';
 import { StashAddComponent } from '../stash-add/stash-add.component';
 import { SourceViewComponent } from '../source-view/source-view.component';
+import { AutofocusDirective } from '../directives/autofocus.directive';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
@@ -34,7 +35,8 @@ describe('PageHomeComponent', () => {
         StashAddComponent,
         SourceAddComponent,
         SourceViewComponent,
-        FooterComponent
+        FooterComponent,
+        AutofocusDirective
       ],
       providers: [
         StashService,

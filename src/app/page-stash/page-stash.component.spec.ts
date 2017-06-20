@@ -18,6 +18,7 @@ import { SourceAddComponent } from '../source-add/source-add.component';
 import { StashAddComponent } from '../stash-add/stash-add.component';
 import { SourceViewComponent } from '../source-view/source-view.component';
 import { CollaboratorService } from '../collaborator.service';
+import { AutofocusDirective } from '../directives/autofocus.directive';
 
 let mockRoute = {
   params: {
@@ -45,7 +46,8 @@ describe('PageStashComponent', () => {
         FooterComponent,
         SourceEditComponent,
         StashEditComponent,
-        HeaderComponent
+        HeaderComponent,
+        AutofocusDirective
       ], 
       providers: [
         SourceService,

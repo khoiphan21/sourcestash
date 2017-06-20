@@ -191,7 +191,7 @@ describe('SourceService', () => {
 
   it('should retrieve tags for a source', done => {
     inject([SourceService], (service: SourceService) => {
-      let source_id = '0500ab10-906a-8202-0870-9806cd37fa60';
+      let source_id = '1bb112ca-8394-668e-7009-9f59740a73a6';
       let mockSource: Source = new Source(
         source_id, '', '', '', '', 0, 0, '', '', '', '', null
       );
