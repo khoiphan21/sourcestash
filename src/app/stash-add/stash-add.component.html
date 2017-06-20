@@ -5,7 +5,7 @@
         </article>
         <article id="main-container-content-form">
             <form>
-                <input class="title" [(ngModel)]="stashTitle" type="text" name="title" placeholder="TITLE">
+                <input class="title" [(ngModel)]="stashTitle" type="text" name="title" placeholder="TITLE" [appAutofocus]="true">
                 <button id="create-source-button" (click)="addStash()">ADD STASH</button>
             </form>
         </article>

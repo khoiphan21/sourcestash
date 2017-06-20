@@ -75,7 +75,6 @@ export class PageHomeComponent implements OnInit {
     this.hideAllModals();
   }
   showModal(modalType: string) {
-    console.log('showing modal: ' + modalType)
     this.isModalShown = true;
     this.hideAllModals();
     // Then selectively show the modals

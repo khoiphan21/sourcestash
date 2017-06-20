@@ -29,6 +29,7 @@ import { PageLoginComponent } from './page-login/page-login.component';
 import { PageStashComponent } from './page-stash/page-stash.component';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { LoadingComponent } from './loading/loading.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { LoadingComponent } from './loading/loading.component';
     PageLoginComponent,
     PageStashComponent,
     PageContactComponent,
-    LoadingComponent
+    LoadingComponent,
+    AutofocusDirective
     ],
   imports: [
     BrowserModule,

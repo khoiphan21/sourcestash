@@ -40,8 +40,11 @@ export class StashService {
     let updatedStash = stash;
     updatedStash.author_id = userID;
 
+    // Update description if empty
+    if (stash.description == null) updatedStash.description = '';
+    
     // Check for null arguments
-    if (this.checkForNull([updatedStash.author_id, updatedStash.title, updatedStash.description])) {
+    if (this.checkForNull([updatedStash.author_id, updatedStash.title])) {
       return Promise.reject('Null arguments received.');
     }
 
