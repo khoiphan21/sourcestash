@@ -25,7 +25,7 @@
     .source {
         width: 11vw;
         height: 12vh;
-        font-size: 10pt;
+        font-size: 9pt;
     }
 }
 
@@ -34,7 +34,7 @@
 // mobile screen
 @include media(mobile-screen) {
     .source {
-        width: 16vh;
+        width: 13vh;
         height: 12vh;
         font-size: 8pt;
     }

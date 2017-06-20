@@ -29,9 +29,11 @@
         border-radius: 0px 5px 5px 5px;
         box-shadow: 5px 5px 10px $theme-font-grey;
         background: $theme-light-blue;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 22vh 22vh 22vh;
+        grid-column-gap: 3vh;
         padding: 4vh $stash-side-padding;
+        justify-items: center;
     }
 }
 
@@ -43,6 +45,12 @@
             width: 45%;
             font-size: 8pt;
         }
+        .stash-sources {
+            display: grid;
+            grid-template-columns: 11vw 11vw 11vw;
+            grid-column-gap: 2vh;
+            padding: 4vh $stash-side-padding;
+        }
     }
 }
 
@@ -52,10 +60,12 @@
     .main-container {
         .stash-title {
             width: 45%;
-            font-size: 11pt;
+            font-size: 9pt;
         }
         .stash-sources {
-            padding: 4vh 2vw;
+            display: grid;
+            grid-template-columns: 16vh 16vh 16vh;
+            padding: 4vh $stash-side-padding;
         }
     }
 }
