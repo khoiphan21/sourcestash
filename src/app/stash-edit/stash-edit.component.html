@@ -1,33 +1,34 @@
 <section id="main-container" *ngIf="stash">
-    <section id="main-container-content">
-        <article id="main-container-content-heading">
-            <span class="heading-title">Edit stash</span><span (click)="closePopup()">&times;</span>
-        </article>
-        <article id="main-container-content-form">
-            <form>
-                <label for="title">Title</label>
-                <input class="title" [(ngModel)]="stash.title" type="text" name="title">
+  <section id="main-container-content">
+    <article id="main-container-content-heading">
+      <span class="heading-title">Edit stash</span><span (click)="closePopup()">&times;</span>
+    </article>
+    <article id="main-container-content-form">
+      <form>
+        <label for="title">Title</label>
+        <input class="title" [(ngModel)]="stash.title" type="text" name="title">
 
-                <!--<label for="description">Description</label>
-                <textarea class="description" [(ngModel)]="stash.description" name="description"></textarea>-->
+        <section id="collaborators" *ngIf="collaborators">
+          <label for="collaborators">Collaborators ({{collaborators.length}})</label>
+          <article class="collaborator-list">
+            <p class="collaborator" *ngFor="let user of collaborators; let i = index;">
+              {{user.firstname}} {{user.lastname}}
+              <span class="delete" (click)="removeCollaborator(user)">&times;</span>
+              <span class="comma">{{i != (collaborators.length - 1) ? ', ' : ''}} </span>
+            </p>
+          </article>
+          <article class="input">
+            <input type="text" class="add-collaborator" [(ngModel)]="collaboratorEmail" name="collaboratorEmail" placeholder="email@example.com">
+            <button class="add-collaborator-action" (click)="addCollaborator()">Add</button>
+          </article>
+        </section>
 
-                <section id="collaborators" *ngIf="collaborators">
-                    <label for="collaborators">Collaborators ({{collaborators.length}})</label>
-                    <article class="collaborator-list">
-                        <p class="collaborator" *ngFor="let user of collaborators; let i = index;">
-                            {{user.firstname}} {{user.lastname}}
-                            <span class="delete" (click)="removeCollaborator(user)">&times;</span>
-                            <span class="comma">{{i != (collaborators.length - 1) ? ', ' : ''}} </span>
-                        </p>
-                    </article>
-                    <article class="input">
-                        <input type="text" class="add-collaborator" [(ngModel)]="collaboratorEmail" name="collaboratorEmail" placeholder="email@example.com">
-                        <button class="add-collaborator-action" (click)="addCollaborator()">Add</button>
-                    </article>
-                </section>
+        <div class="buttons">
+          <button id="create-source-button" (click)="editStash()">Save</button>
+          <div class="delete"><img src="assets/images/icons/delete_forever.png" (click)="deleteStash()" /></div>
+        </div>
 
-                <button id="create-source-button" (click)="editStash()">Save</button>
-            </form>
-        </article>
-    </section>
+      </form>
+    </article>
+  </section>
 </section>

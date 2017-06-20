@@ -1,11 +1,13 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
+import * as _ from 'underscore';
+
 import { StashService } from '../stash.service';
 import { Stash } from '../classes/stash';
 import { Account } from '../classes/account';
 import { CollaboratorService } from '../collaborator.service';
 import { AccountService } from '../account.service';
-
-import * as _ from 'underscore';
 
 @Component({
   selector: 'app-stash-edit',
@@ -29,7 +31,8 @@ export class StashEditComponent implements OnInit {
   constructor(
     private stashService: StashService,
     private accountService: AccountService,
-    private collaboratorService: CollaboratorService
+    private collaboratorService: CollaboratorService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,6 +58,15 @@ export class StashEditComponent implements OnInit {
 
     // Close the popup
     this.closePopup();
+  }
+
+  deleteStash() {
+    this.stashService.deleteStash(this.stash).then(response => {
+      this.router.navigate(['/home'])
+    }).catch(error => {
+      alert('Error Received in trying to delete the stash.')
+      console.log(error);
+    })
   }
 
   addCollaborator() {

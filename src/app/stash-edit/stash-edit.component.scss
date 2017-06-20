@@ -1,7 +1,6 @@
 @import '../sass/variables';
 @import '../sass/mixins';
 @import '../sass/globalStyles.scss';
-
 #main-container {
     color: black; // width: 100vw;
     // height: 100vh;
@@ -10,7 +9,7 @@
     font-weight: 300;
     #main-container-content {
         box-shadow: 1px 7px 30px $theme-dark-grey;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255, 255, 255, 0.9);
         width: 35vw;
         #main-container-content-heading {
             @include row-center();
@@ -36,8 +35,34 @@
             padding: 2vh 2vw;
             font-size: 10pt;
             align-items: flex-start;
-            form{
+            form {
+                position: relative;
                 width: 100%;
+                div.buttons {
+                    @include row-center();
+                    justify-content: space-between;
+                    height: 100%;
+                    button {
+                        margin: 0;
+                    }
+                    div.delete {
+                        @include column-center();
+                        img {
+                            height: 5vh;
+                            width: 5vh;
+                            padding: 0.5vh;
+                            border-radius: 50%;
+                            border: 1px solid $transparent;
+                            transition: border-color 0.3s;
+                            &:hover {
+                                cursor: pointer;
+                                transition: border-color 0.3s;
+                                border: 1px solid black;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
             }
             input[type=text],
             select {
@@ -123,7 +148,7 @@ label {
     color: $theme-dark-grey;
 }
 
-#create-source-button{
+#create-source-button {
     @include button-ss-orange($width: 7vw, $height: 42px);
     margin: auto; // border: darken($dark-background, 10) solid 2px;
     margin-bottom: 1vh;
@@ -136,7 +161,7 @@ label {
 
 //
 // small version
-@include media(small-screen){
+@include media(small-screen) {
     #main-container {
         #main-container-content {
             width: 50vw;
@@ -155,8 +180,8 @@ label {
             }
         }
     }
-    #create-source-button{
-    @include button-ss-orange($width: 11vw, $height: 42px);
+    #create-source-button {
+        @include button-ss-orange($width: 11vw, $height: 42px);
         margin: auto; // border: darken($dark-background, 10) solid 2px;
         margin-bottom: 1vh;
         margin-left: 0;
@@ -169,7 +194,7 @@ label {
 
 //
 // mobile version
-@include media(mobile-screen){
+@include media(mobile-screen) {
     #main-container {
         #main-container-content {
             width: 80vw;
@@ -191,8 +216,8 @@ label {
             }
         }
     }
-    #create-source-button{
-    @include button-ss-orange($width: 20vw, $height: 42px);
+    #create-source-button {
+        @include button-ss-orange($width: 20vw, $height: 42px);
         margin: auto; // border: darken($dark-background, 10) solid 2px;
         margin-bottom: 1vh;
         margin-left: 0;
