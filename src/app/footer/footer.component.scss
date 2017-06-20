@@ -45,7 +45,10 @@ div.wrapper {
             flex-direction: row;
             section.logo {
                 display: flex;
-            flex-direction: row;
+                flex-direction: row;
+                span{
+                    font-size: 10pt;
+                }
             }
         }
     }
