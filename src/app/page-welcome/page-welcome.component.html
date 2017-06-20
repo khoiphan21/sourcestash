@@ -9,7 +9,7 @@
       <span class="ss">SOURCE STASH</span><br> Where being organised is actually fun.<br>
       <article class="video-container-btn">
         <div class="video-learn" (click)="goTo('intro')">LEARN MORE</div>
-        <div class="video-login" routerLink="/login">LOGIN</div>
+        <div class="video-login" routerLink="/login" *ngIf="!isUserLoggedIn">LOGIN</div>
       </article>
     </article>
   </section>

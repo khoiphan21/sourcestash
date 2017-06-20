@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-page-welcome',
@@ -7,10 +8,12 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./page-welcome.component.scss']
 })
 export class PageWelcomeComponent implements OnInit {
+  private isUserLoggedIn: boolean = false;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
@@ -21,7 +24,8 @@ export class PageWelcomeComponent implements OnInit {
           element.scrollIntoView();
         }
       }
-    })
+    });
+    this.isUserLoggedIn = this.accountService.checkLoginStatus();
   }
 
   goTo(anchor: string) {
