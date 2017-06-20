@@ -31,13 +31,12 @@ export class StashAddComponent implements OnInit {
       .then(response => {
         // Emit event to tell parent to reload the stashes
         this.onCreated.emit();
+        this.closePopup();
       }).catch(error => {
+        this.closePopup();
         alert('Error trying to create a stash. View Log for more details.');
         console.log(error);
       });
-
-    // Close the popup
-    this.closePopup();
   }
 
 }

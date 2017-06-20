@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
 import * as _ from 'underscore';
@@ -30,7 +30,8 @@ export class PageHomeComponent implements OnInit {
   constructor(
     private stashService: StashService,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private changeDetector: ChangeDetectorRef 
   ) {
   }
 
@@ -61,6 +62,9 @@ export class PageHomeComponent implements OnInit {
       if (sharedStashes.length != 0) {
         this.sharedStashes = sharedStashes;
       }
+      // reload the view
+      console.log('should detect changes')
+      this.changeDetector.detectChanges();
     }).catch(error => {
       alert('error received');
       console.log(error);
