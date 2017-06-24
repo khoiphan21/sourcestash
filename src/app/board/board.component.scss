@@ -7,9 +7,41 @@
     width: 250px;
     height: 170px;
     background: $theme-yellow;
-    @include column-center();
     font-size: 30pt;
-    padding: 1vh 0;
     font-size: 16pt;
     text-transform: uppercase;
+    padding: 20px 20px;
+    .close {
+        @include row-center();
+        cursor: pointer;
+        position: relative;
+        width: 35px;
+        height: 35px;
+        left: 214px;
+        top: -36px;
+        font-size: 20pt;
+        border-radius: 50px;
+        border: darken($theme-light-orange, 10) solid 2px;
+        color: darken($theme-light-orange, 10);
+        @include transition-basic();
+        background: black;
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+    .main-container-content {
+        margin-top: -37px;
+        width: 210px;
+        .title {
+            height: 50px;
+        }
+        .image {
+            height: 80px;
+            display: flex;
+            justify-content: flex-end;
+            img {
+                height: 80px;
+            }
+        }
+    }
 }
