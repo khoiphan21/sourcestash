@@ -9,7 +9,7 @@
     </section>
     <section class="mid-container">
         <section class="mid-container-boards">
-            <app-board></app-board>
+            <app-card></app-card>
             <section class="create-container">
                 <section class="create-card" (click)="switchTo('form')" *ngIf="isCreateShown">
                     <span class="plus">&#10010;</span>
@@ -18,7 +18,7 @@
                 <section class="create-form" *ngIf="isFormShown">
                     <div class="close" (click)="switchTo('create')">&#10006;</div>
                     <form>
-                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="CARD NAME" [appAutofocus]="true">
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="CARD NAME" [appAutofocus]="true" size="20">
                         <button id="create-source-button" (click)="switchTo('create')" (click)="addStash()">CREATE</button>
                     </form>
                 </section>

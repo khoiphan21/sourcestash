@@ -34,6 +34,7 @@ import { PageDashboardComponent } from './page-dashboard/page-dashboard.componen
 import { BoardComponent } from './board/board.component';
 import { BoardAddComponent } from './board-add/board-add.component';
 import { PageBoardComponent } from './page-board/page-board.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PageBoardComponent } from './page-board/page-board.component';
     PageDashboardComponent,
     BoardComponent,
     BoardAddComponent,
-    PageBoardComponent
+    PageBoardComponent,
+    CardComponent
     ],
   imports: [
     BrowserModule,

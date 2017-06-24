@@ -1,0 +1,31 @@
+<section class="main-container">
+    <section class="main-container-content">
+        <article class="title">
+            <span>Hitler</span><span *ngIf="isEditShown">&#10000;</span>
+        </article>
+        <section class="list">
+
+            <section class="add-link-container">
+                <div class="add-link" (click)="switchTo('form')" *ngIf="isCreateShown">Add Link</div>
+                <section class="add-link-form" *ngIf="isFormShown">
+                    <form>
+                        <input class="title" [(ngModel)]="linkTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" size="20">
+                        <input class="title" [(ngModel)]="urls" type="text" name="title" placeholder="URL" [appAutofocus]="true">
+                        <div class="buttons">
+                            <button id="create-source-button" (click)="switchTo('create')">Save</button>
+                            <!--<button id="create-source-button" (click)="switchTo('create')" (click)="addStash()">Save</button>-->
+                            <button id="create-source-button" (click)="switchTo('create')">Cancel</button>
+                        </div>
+                    </form>
+                </section>
+            </section>
+
+            <section class="url-list">
+                <ul>
+                    <li>Testing 1</li>
+                    <li>Testing 2</li>
+                </ul>
+            </section>
+        </section>
+    </section>
+</section>

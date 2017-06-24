@@ -30,17 +30,20 @@
         }
     }
     .main-container-content {
-        margin-top: -37px;
+        // margin-top: -37px;
         width: 210px;
         .title {
-            height: 50px;
+            display: flex;
+            align-items: center;
+            height: 30px;
         }
         .image {
-            height: 80px;
+            height: 100px;
             display: flex;
+            align-items: flex-end;
             justify-content: flex-end;
             img {
-                height: 80px;
+                height: 100px;
             }
         }
     }
