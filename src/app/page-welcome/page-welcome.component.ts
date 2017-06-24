@@ -8,7 +8,7 @@ import { AccountService } from '../account.service';
   styleUrls: ['./page-welcome.component.scss']
 })
 export class PageWelcomeComponent implements OnInit {
-  private isUserLoggedIn: boolean = false;
+  isUserLoggedIn: boolean = false;
 
   constructor(
     private router: Router,
