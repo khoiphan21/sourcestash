@@ -30,6 +30,11 @@ import { PageStashComponent } from './page-stash/page-stash.component';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { LoadingComponent } from './loading/loading.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
+import { BoardComponent } from './board/board.component';
+import { BoardAddComponent } from './board-add/board-add.component';
+import { PageBoardComponent } from './page-board/page-board.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,12 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     PageStashComponent,
     PageContactComponent,
     LoadingComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    PageDashboardComponent,
+    BoardComponent,
+    BoardAddComponent,
+    PageBoardComponent,
+    CardComponent
     ],
   imports: [
     BrowserModule,

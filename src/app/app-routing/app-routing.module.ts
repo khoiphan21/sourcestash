@@ -9,6 +9,8 @@ import { PageWelcomeComponent } from '../page-welcome/page-welcome.component';
 import { PageLoginComponent } from '../page-login/page-login.component';
 import { PageStashComponent } from '../page-stash/page-stash.component';
 import { PageContactComponent } from '../page-contact/page-contact.component';
+import { PageDashboardComponent } from '../page-dashboard/page-dashboard.component';
+import { PageBoardComponent } from '../page-board/page-board.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'home', component: PageHomeComponent },
   { path: 'stashpage/:stashid', component: PageStashComponent},
   { path: 'profilepage', component: PageProfileComponent},
-  { path: 'contact', component: PageContactComponent}
+  { path: 'contact', component: PageContactComponent},
+  { path: 'dashboard', component: PageDashboardComponent},
+  { path: 'boardpage', component: PageBoardComponent}
 ]
 
 @NgModule({

@@ -1,5 +1,9 @@
 @import '../sass/variables';
 @import '../sass/mixins';
+* {
+    box-sizing: border-box;
+}
+
 div.wrapper {
     border-top: 1px solid $theme-font-grey;
     @include row-center();
@@ -35,7 +39,6 @@ div.wrapper {
     }
 }
 
-
 //
 // mobile version
 @include media(mobile-screen) {
@@ -46,7 +49,7 @@ div.wrapper {
             section.logo {
                 display: flex;
                 flex-direction: row;
-                span{
+                span {
                     font-size: 10pt;
                 }
             }

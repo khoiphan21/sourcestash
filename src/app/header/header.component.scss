@@ -13,13 +13,14 @@ section.all-modals {
     @include column-center();
 }
 
-.current-tab{
+.current-tab {
     border-bottom: $theme-light-orange solid 2px;
     height: 10vh;
     color: $theme-light-orange !important;
 }
 
 .header {
+    box-sizing: border-box;
     height: $header-height;
     z-index: 1000;
     @include column-center;
