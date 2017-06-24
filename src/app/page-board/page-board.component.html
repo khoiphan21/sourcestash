@@ -1,0 +1,33 @@
+<section class="main-container">
+    <section class="top-container">
+        <article class="back" routerLink="/dashboard">
+            back
+        </article>
+        <article class="title">
+            History
+        </article>
+    </section>
+    <section class="mid-container">
+        <section class="mid-container-boards">
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <section class="create-container">
+                <section class="create-card" (click)="switchTo('form')" *ngIf="isCreateShown">
+                    <span class="plus">&#10010;</span>
+                    <span class="larger-font">Create Card</span>
+                </section>
+                <section class="create-form" *ngIf="isFormShown" (click)="switchTo('create')">
+                    <div class="close" (click)="switchTo('create')">&#10006;</div>
+                    <form>
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="CARD NAME" [appAutofocus]="true">
+                        <button id="create-source-button" (click)="addStash()">CREATE</button>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
