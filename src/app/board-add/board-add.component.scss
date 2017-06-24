@@ -1,0 +1,62 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+@import '../sass/globalStyles';
+#main-container {
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    #main-container-content {
+        box-shadow: 1px 7px 30px $theme-dark-grey;
+        width: 37vw;
+        background: rgba(255, 255, 255, 0.9);
+        #main-container-content-heading {
+            @include row-center();
+            justify-content: space-between;
+            background: $theme-light-orange;
+            color: white;
+            font-size: 16pt;
+            padding: 2vh 2vw;
+            span.heading-title {
+                text-transform: uppercase;
+            }
+            span:last-child {
+                @include transition-basic();
+                font-size: 25px;
+                &:hover {
+                    color: $theme-light-blue;
+                    cursor: pointer;
+                }
+            }
+        }
+        #main-container-content-form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2vh 2vw;
+            input[type=text],
+            select {
+                @include column-center();
+                border: $theme-font-light-grey solid 2px;
+                background: white;
+                padding: 1vh 1vw;
+                text-align: left;
+                height: 3.5vh;
+                margin-top: 2vh;
+                color: $theme-font-grey;
+                width: 92%;
+                font-size: 12pt;
+            }
+            input:focus {
+                border: $theme-light-orange solid 2px;
+            }
+            #create-source-button {
+                @include button-ss-orange($width: 11vw);
+                margin: auto;
+                font-weight: 300;
+                font-size: 12pt;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<section class="all-modals" [style.display]="isModalShown ? 'flex' : 'none'" (click)="hideModal()">
+    <section class="content" (click)="$event.stopPropagation()">
+        <app-board-add *ngIf="isAddBoardShown" (onClose)="hideModal()"></app-board-add>
+    </section>
+</section>
+
+<section class="main-container">
+    <section class="top-container">
+        <article class="title">
+            dashboard
+        </article>
+        <article class="edit">
+            edit
+        </article>
+    </section>
+    <section class="mid-container">
+        <section class="mid-container-boards">
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <app-board></app-board>
+            <section class="create-board" (click)="showModal('addBoard')">
+                <span class="plus">&#10010;</span>
+                <span class="larger-font">Create Board</span>
+            </section>
+        </section>
+    </section>
+</section>
+
+<!--<app-footer></app-footer>-->

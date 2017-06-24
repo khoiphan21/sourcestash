@@ -1,0 +1,15 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+@import '../sass/globalStyles';
+.main-container {
+    color: black;
+    box-shadow: 2px 4px 10px black;
+    width: 250px;
+    height: 170px;
+    background: $theme-yellow;
+    @include column-center();
+    font-size: 30pt;
+    padding: 1vh 0;
+    font-size: 16pt;
+    text-transform: uppercase;
+}
