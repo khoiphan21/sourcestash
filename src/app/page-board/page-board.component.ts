@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as Draggable from 'draggable';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-page-board',
@@ -13,8 +15,15 @@ export class PageBoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // let element: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
+    // let options = {
+    //   grid: 10,
+    //   setCursor: true,
+    //   onDrag:
+    // };
+    // new Draggable(element, options);
   }
-
+  
   switchTo(page: string) {
     if (page == 'form') {
       this.isCreateShown = false;
