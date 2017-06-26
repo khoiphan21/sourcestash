@@ -14,6 +14,7 @@ import { SourcesComponent } from './sources/sources.component';
 import { AccountService } from './account.service';
 import { StashService } from './stash.service';
 import { SourceService } from './source.service';
+import { CardService } from './card.service';
 import { GoogleApiService } from './google-api.service';
 import { FooterComponent } from './footer/footer.component';
 import { SourceEditComponent } from './source-edit/source-edit.component';
@@ -77,7 +78,8 @@ import { CardComponent } from './card/card.component';
     StashService,
     SourceService,
     GoogleApiService,
-    CollaboratorService
+    CollaboratorService,
+    CardService
   ],
   bootstrap: [AppComponent]
 })
