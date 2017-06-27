@@ -85,7 +85,7 @@ describe('CardService', () => {
                         expect(databaseCard.title).toBe(cardCopy.title);
                     }
                 });
-                return service.deleteSource(cardCopy.card_id);
+                return service.deleteCard(cardCopy.card_id);
             }).then((response: AppResponse) => {
                 expect(response.success).toBeTruthy();
                 done();
