@@ -42,7 +42,7 @@ section.all-modals {
             @include transition-basic();
             border-radius: 5px;
             color: $theme-dark-blue;
-            padding: 0.5vh 1.5vw;
+            padding: 0.3vh 1.2vw;
             border: 1px solid $theme-dark-blue;
             &:hover {
                 cursor: pointer;
@@ -61,29 +61,75 @@ section.all-modals {
         .mid-container-boards {
             display: grid;
             grid-template-columns: 250px 250px 250px 250px;
-            grid-template-rows: 170px;
+            grid-template-rows: 140px;
             grid-column-gap: 74px;
             grid-row-gap: 50px;
         }
         .create-board {
             cursor: pointer;
             width: 250px;
-            height: 170px;
+            height: 140px;
             background: $theme-font-light-grey;
             color: $theme-font-grey;
-            @include transition-basic();
             @include column-center();
-            .plus {
-                font-size: 30pt;
-                padding: 1vh 0;
+            .create-button {
+                width: 250px;
+                height: 140px;
+                @include transition-basic();
+                @include column-center();
+                .plus {
+                    font-size: 30pt;
+                    padding: 1vh 0;
+                }
+                .larger-font {
+                    font-size: 16pt;
+                    text-transform: uppercase;
+                }
+                &:hover {
+                    opacity: 0.9;
+                    box-shadow: 2px 4px 10px black;
+                }
             }
-            .larger-font {
-                font-size: 16pt;
-                text-transform: uppercase;
-            }
-            &:hover {
-                opacity: 0.9;
-                box-shadow: 2px 4px 10px black;
+            .create-form {
+                input[type=text],
+                select {
+                    box-sizing: border-box;
+                    @include column-center();
+                    background: white;
+                    padding: 0.5vh 1vw;
+                    text-align: left;
+                    height: 30px;
+                    color: $theme-font-grey;
+                    width: 210px;
+                    font-size: 12pt;
+                    margin-bottom: 2.5px;
+                }
+                .buttons {
+                    margin-top: 40px;
+                    display: flex;
+                    flex-direction: row;
+                    font-weight: 300;
+                    font-size: 10pt;
+                    #create-source-button-save {
+                        @include button-cb-normal($width: 70px, $height: 30px);
+                        padding: 0;
+                        @include row-center();
+                        background: #13CE66;
+                        margin-right: 5px;
+                        &:hover {
+                            background: #13CE66;
+                        }
+                    }
+                    #create-source-button-cancel {
+                        @include button-cb-normal($width: 70px, $height: 30px);
+                        padding: 0;
+                        @include row-center();
+                        background: red;
+                        &:hover {
+                            background: red;
+                        }
+                    }
+                }
             }
         }
     }

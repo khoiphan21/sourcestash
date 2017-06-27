@@ -43,3 +43,16 @@
         padding: $verticalPadding $horizontalPadding;
     }
 }
+
+@mixin button-cb-normal($width: 10vw, $height: auto, $verticalPadding: 1.5vh, $horizontalPadding: 2vw, $padding: none, $font-size: 1vw) {
+    @include button( $width: $width, $height: $height, $verticalPadding: $verticalPadding, $horizontalPadding: $horizontalPadding, $padding: $padding, $background: black, $box-shadow: none, $color: white, $border-radius: 5px, $transition: 0.3s, $font-size: $font-size, $border: 0px solid black);
+    // &:hover {
+    //     background: lighten(white, 5);
+    // }
+    @if $padding !=none {
+        padding: $padding;
+    }
+    @else {
+        padding: $verticalPadding $horizontalPadding;
+    }
+}
