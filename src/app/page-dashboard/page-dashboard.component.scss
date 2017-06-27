@@ -43,7 +43,6 @@ section.all-modals {
             border-radius: 5px;
             color: $theme-dark-blue;
             padding: 0.3vh 1.2vw;
-            border: 1px solid $theme-dark-blue;
             &:hover {
                 cursor: pointer;
                 background: $theme-turquoise;
@@ -99,7 +98,7 @@ section.all-modals {
                     background: white;
                     padding: 0.5vh 1vw;
                     text-align: left;
-                    height: 30px;
+                    height: 27px;
                     color: $theme-font-grey;
                     width: 210px;
                     font-size: 12pt;
@@ -112,7 +111,7 @@ section.all-modals {
                     font-weight: 300;
                     font-size: 10pt;
                     #create-source-button-save {
-                        @include button-cb-normal($width: 70px, $height: 30px);
+                        @include button-cb-normal($width: 70px, $height: 27px);
                         padding: 0;
                         @include row-center();
                         background: #13CE66;

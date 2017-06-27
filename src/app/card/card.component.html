@@ -9,12 +9,11 @@
                 <div class="add-link" (click)="switchTo('form')" *ngIf="isCreateShown">Add Link</div>
                 <section class="add-link-form" *ngIf="isFormShown">
                     <form>
-                        <input class="title" [(ngModel)]="linkTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" size="20">
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME (OPTIONAL)" [appAutofocus]="true" maxlength="18">
                         <input class="title" [(ngModel)]="urls" type="text" name="title" placeholder="URL" [appAutofocus]="true">
                         <div class="buttons">
-                            <button id="create-source-button" (click)="switchTo('create')">Save</button>
-                            <!--<button id="create-source-button" (click)="switchTo('create')" (click)="addStash()">Save</button>-->
-                            <button id="create-source-button" (click)="switchTo('create')">Cancel</button>
+                            <button id="create-source-button-save" (click)="switchTo('create')">Save</button>
+                            <div id="cross" (click)="switchTo('create')">&#10005;</div>
                         </div>
                     </form>
                 </section>

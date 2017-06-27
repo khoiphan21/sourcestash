@@ -1,10 +1,12 @@
 <section class="main-container">
     <section class="top-container">
-        <article class="back" routerLink="/dashboard">
-            back
-        </article>
-        <article class="title">
-            History
+        <article class="top-container-content">
+            <article class="back" routerLink="/dashboard">
+                <span>&#10094;</span><span>Back</span>
+            </article>
+            <article class="title">
+                History
+            </article>
         </article>
     </section>
     <section class="mid-container">
@@ -21,7 +23,7 @@
                         <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
                         <div class="buttons">
                             <button id="create-source-button-save" (click)="switchTo('create')">Save</button>
-                            <button id="create-source-button-cancel" (click)="switchTo('create')">Cancel</button>
+                            <div id="cross" (click)="switchTo('create')">&#10005;</div>
                         </div>
                     </form>
                 </section>
