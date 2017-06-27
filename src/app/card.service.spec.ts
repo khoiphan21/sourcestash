@@ -34,18 +34,65 @@ describe('CardService', () => {
     
 
     /**
-     * 
      * Test for retrieving all the cards for a certain board
-     * 
     */
     it('should successfully retrieve all sources for the test board', done => {
         inject([CardService], (service: CardService) => {
             service.getCardForBoard('id').then((cards:Card[]) =>{ 
                 // If the cards.legth fits the requirement
                 expect(cards.length).toBeTruthy();
-                // If the length 
+
+                done();
+            }).catch(error => {
+                fail('error should not be thrown');
+                done();
             })
-        })
-    })        
+        })();
+    // set timeout
+    }, 10000);        
     
+    /**
+     * Test for updating cards
+    */
+
+    it('should update a card correctly', done => {
+        inject([CardService], (service: CardService) => {
+            let board_id = 'id';
+            let card = new Card('card_id', board_id, 'title', 0, 0);
+            // setup the copy card
+            let cardCopy = new Card('card_id', board_id,'changed_title', // changed
+                100, // changed
+                100 // changed
+                )
+            // Add a card first
+            service.addNewCard(card.board_id, card.title, card.x_location, card.y_location).then(databaseCard => {
+                card.card_id = databaseCard.card_id;
+                cardCopy.card_id = databaseCard.card_id;
+
+                expect(databaseCard).toBeTruthy();
+
+            // Try to update the card
+            return service.updateCard(cardCopy);
+            }).then((response: AppResponse) => {
+                expect(response.success).toBeTruthy();
+
+            // Retrieve the card and check details
+            return service.getCardForBoard(board_id)
+            }).then((cards: Card[]) => {
+                _.each(cards, (databaseCard: Card) => {
+                    if (databaseCard.card_id === cardCopy.card_id) {
+                        // NOT SURE IF THIS IS RIGHT OR WRONG
+                        expect(databaseCard.title).toBe(cardCopy.title);
+                    }
+                });
+                return service.deleteSource(cardCopy.card_id);
+            }).then((response: AppResponse) => {
+                expect(response.success).toBeTruthy();
+                done();
+            }).catch(error => {
+                fail(new AppResponse(false, 'error should not have occured', error));
+                done();
+            })
+        })();
+    }, 10000);
 }); 

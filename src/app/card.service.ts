@@ -145,7 +145,7 @@ export class CardService {
   /**
   * @param card_id - the card which is going to be delete
   */
-  deleteSource(card_id: string): Promise<AppResponse> {
+  deleteCard(card_id: string): Promise<AppResponse> {
     // Check for null args
     if(this.checkForNull([card_id])) {
       return Promise.reject('Null arguments received');
