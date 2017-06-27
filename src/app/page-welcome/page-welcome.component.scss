@@ -276,8 +276,8 @@
                 p {
                     margin: 1vh;
                 }
-                .logo{
-                    img{
+                .logo {
+                    img {
                         width: 20vw;
                     }
                 }
@@ -288,7 +288,7 @@
                     justify-content: space-between;
                     width: 50%;
                     margin-top: 2vh;
-                    img{
+                    img {
                         width: 4vw;
                         height: 4vw;
                     }
@@ -372,7 +372,7 @@
 
 // 
 // mobile screen
-@include media(mobile-screen){
+@include media(mobile-screen) {
     .main-container {
         // Container 1
         .video-container {
@@ -424,15 +424,15 @@
         }
         // Container 3
         .feature-container {
-                &:nth-child(even) {
+            &:nth-child(even) {
                 .feature-container-content {
                     text-align: center;
                     @include column-center();
                 }
             }
             .feature-container-content {
-               @include column-center;
-               text-align: center;
+                @include column-center;
+                text-align: center;
                 section.step {
                     @include column-center();
                     p {
@@ -443,7 +443,7 @@
         }
         .get-started {
             @include column-center();
-        } 
+        }
         // Container 5
         .contact-container {
             .contact-container-details {
@@ -471,7 +471,7 @@
                     }
                 }
                 .contact-container-details-detail {
-                    span{
+                    span {
                         font-size: 10pt;
                     }
                     .contact-container-details-detail-icons {
@@ -481,7 +481,7 @@
                         justify-content: space-between;
                         width: 70%;
                         margin-top: 2vh;
-                        img{
+                        img {
                             width: 6vw;
                             height: 6vw;
                         }
