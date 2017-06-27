@@ -16,10 +16,13 @@
                     <span class="larger-font">Create Card</span>
                 </section>
                 <section class="create-form" *ngIf="isFormShown">
-                    <div class="close" (click)="switchTo('create')">&#10006;</div>
+                    <!--<div class="close" (click)="switchTo('create')">&#10006;</div>-->
                     <form>
-                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="CARD NAME" [appAutofocus]="true" size="20">
-                        <button id="create-source-button" (click)="switchTo('create')" (click)="addStash()">CREATE</button>
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
+                        <div class="buttons">
+                            <button id="create-source-button-save" (click)="switchTo('create')">Save</button>
+                            <button id="create-source-button-cancel" (click)="switchTo('create')">Cancel</button>
+                        </div>
                     </form>
                 </section>
             </section>

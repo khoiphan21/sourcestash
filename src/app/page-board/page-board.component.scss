@@ -46,17 +46,19 @@
         .mid-container-boards {
             display: grid;
             grid-template-columns: 250px 250px 250px 250px;
-            grid-template-rows: 170px;
+            grid-template-rows: min-content 100px;
+            grid-template-rows: max-content 300px;
             grid-column-gap: 50px;
             grid-row-gap: 50px;
             justify-items: center;
         }
         .create-container {
+            cursor: pointer;
+            color: $theme-font-grey;
             .create-card {
-                cursor: pointer;
+                background: $theme-font-light-grey;
                 width: 250px;
-                height: 170px;
-                background: $theme-yellow;
+                height: 100px;
                 @include transition-basic();
                 @include column-center();
                 .plus {
@@ -69,13 +71,14 @@
                 }
                 &:hover {
                     opacity: 0.9;
+                    box-shadow: 2px 4px 10px black;
                 }
             }
             .create-form {
                 width: 250px;
-                background: $theme-yellow;
-                height: 130px;
-                padding: 20px 20px;
+                height: 100px;
+                @include column-center();
+                background: darken($theme-font-light-grey, 30);
                 .close {
                     @include row-center();
                     cursor: pointer;
@@ -96,25 +99,43 @@
                 }
                 input[type=text],
                 select {
+                    border-radius: 5px;
                     box-sizing: border-box;
                     @include column-center();
-                    border: black solid 2px;
                     background: white;
-                    padding: 1vh 1vw;
+                    padding: 0.5vh 1vw;
                     text-align: left;
-                    height: 35px;
+                    height: 30px;
                     color: $theme-font-grey;
                     width: 210px;
                     font-size: 12pt;
-                    margin-top: -27px;
+                    margin-bottom: 2.5px;
                 }
-                input:focus {
-                    border: black solid 2px;
-                }
-                #create-source-button {
-                    @include button-ss-light($width: 80px, $height: 35px);
+                .buttons {
+                    margin-top: 5px;
+                    display: flex;
+                    flex-direction: row;
                     font-weight: 300;
                     font-size: 10pt;
+                    #create-source-button-save {
+                        @include button-cb-normal($width: 70px, $height: 30px);
+                        padding: 0;
+                        @include row-center();
+                        background: #13CE66;
+                        margin-right: 5px;
+                        &:hover {
+                            background: #13CE66;
+                        }
+                    }
+                    #create-source-button-cancel {
+                        @include button-cb-normal($width: 70px, $height: 30px);
+                        padding: 0;
+                        @include row-center();
+                        background: red;
+                        &:hover {
+                            background: red;
+                        }
+                    }
                 }
             }
         }

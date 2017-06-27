@@ -29,7 +29,7 @@
                 </section>
                 <section class="create-form" *ngIf="isFormShown">
                     <form>
-                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" size="20">
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
                         <div class="buttons">
                             <button id="create-source-button-save" (click)="switchPage('create')">Save</button>
                             <button id="create-source-button-cancel" (click)="switchPage('create')">Cancel</button>

@@ -67,12 +67,9 @@ section.all-modals {
         }
         .create-board {
             cursor: pointer;
-            width: 250px;
-            height: 140px;
-            background: $theme-font-light-grey;
             color: $theme-font-grey;
-            @include column-center();
             .create-button {
+                background: $theme-font-light-grey;
                 width: 250px;
                 height: 140px;
                 @include transition-basic();
@@ -91,6 +88,10 @@ section.all-modals {
                 }
             }
             .create-form {
+                width: 250px;
+                height: 140px;
+                @include column-center();
+                background: darken($theme-font-light-grey, 30);
                 input[type=text],
                 select {
                     box-sizing: border-box;
