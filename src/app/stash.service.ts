@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw'; // needed for the 'throw' operator to work
 
 import { Stash } from './classes/stash';
-import { ANGULAR2 } from './data/mockStash';
 import { AppResponse } from './classes/response';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SERVER } from './classes/SERVER';

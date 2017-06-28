@@ -36,6 +36,7 @@ import { BoardComponent } from './board/board.component';
 import { BoardAddComponent } from './board-add/board-add.component';
 import { PageBoardComponent } from './page-board/page-board.component';
 import { CardComponent } from './card/card.component';
+import { BoardService } from './board.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { CardComponent } from './card/card.component';
     SourceService,
     GoogleApiService,
     CollaboratorService,
-    CardService
+    CardService,
+    BoardService
   ],
   bootstrap: [AppComponent]
 })
