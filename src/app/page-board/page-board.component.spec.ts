@@ -11,6 +11,7 @@ import { GoogleApiService } from '../google-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CardService } from '../card.service';
 import { HttpModule } from '@angular/http';
+import { BoardService } from '../board.service';
 
 let mockRoute = {
   params: {
@@ -36,6 +37,7 @@ describe('PageBoardComponent', () => {
         AutofocusDirective
         ], providers: [
           CardService,
+          BoardService,
           AccountService,
         {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: ActivatedRoute, useValue: mockRoute},
