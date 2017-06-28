@@ -1,17 +1,16 @@
 /**
- * The class representing the model for a card.
- * 
+ * The class representing the model for a board.
  */
 export class Board {
     owner_id: string;
     board_id: string;
     title: string;
     constructor(
-        id: string,
+        owner_id: string,
         board_id: string,
         title: string
     ) {
-        this.owner_id = id;
+        this.owner_id = owner_id;
         this.board_id = board_id;
         this.title = title;
     }
