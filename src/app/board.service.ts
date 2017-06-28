@@ -77,6 +77,7 @@ export class BoardService {
     ).subscribe(response => {
       deferred.resolve(new AppResponse(true, 'Board successfully deleted'));
     }, error => {
+      console.log(error);
       deferred.reject('Unable to delete a board');
     });
 
