@@ -48,7 +48,28 @@ export class BoardService {
   }
 
   getAllBoards(user_id: string): Promise<Board[]> {
-    return Promise.reject('Not implemented');    
+    let deferred = new Deferred<Board[]>();
+
+    let options: RequestOptions;
+    Helper.setupHeaderOptions(options);
+
+    if (Helper.checkForNull([user_id])) {
+      return Promise.reject('Error occurred: empty values received.');
+    }
+    
+    this.http.post(
+      SERVER + '/board/all',
+      {owner_id: user_id},
+      options
+    ).subscribe(response => {
+      let boards: Board[] = response.json();
+      deferred.resolve(boards);
+    }, error => {
+      console.log(error);
+      deferred.reject('Unable to update the board');
+    })
+    
+    return deferred.promise;
   }
 
   /**
@@ -57,7 +78,28 @@ export class BoardService {
    * @param board - the new values of the board
    */
   updateBoard(board: Board): Promise<Board> {
-    return Promise.reject('Not implemented');
+    let deferred = new Deferred<Board>();
+
+    let options: RequestOptions;
+    Helper.setupHeaderOptions(options);
+
+    if (Helper.checkForNull([board.board_id, board.owner_id, board.title])) {
+      return Promise.reject('Error occurred: empty values received.');
+    }
+
+    this.http.post(
+      SERVER + '/board/update',
+      {board: board},
+      options
+    ).subscribe(response => {
+      let board: Board = response.json();
+      deferred.resolve(board);
+    }, error => {
+      console.log(error);
+      deferred.reject('Unable to update the board');
+    })
+
+    return deferred.promise;
   }
 
   deleteBoard(board: Board): Promise<AppResponse> {
@@ -67,7 +109,7 @@ export class BoardService {
     Helper.setupHeaderOptions(options);
 
     if (Helper.checkForNull([board.board_id, board.owner_id, board.title])) {
-      return Promise.reject('Error occurred: empty title received.');
+      return Promise.reject('Error occurred: empty values received.');
     }
 
     this.http.post(
