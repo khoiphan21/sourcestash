@@ -58,10 +58,10 @@ describe('CardService', () => {
 
     it('should update a card correctly', done => {
         inject([CardService], (service: CardService) => {
-            let board_id = 'id';
-            let card = new Card('card_id', board_id, 'title', 0, 0);
+            let board_id = '332211';
+            let card = new Card('242267', board_id, 'Indo', 0, 0);
             // setup the copy card
-            let cardCopy = new Card('card_id', board_id,'changed_title', // changed
+            let cardCopy = new Card('242267', board_id,'Greek', // changed
                 100, // changed
                 100 // changed
                 )
