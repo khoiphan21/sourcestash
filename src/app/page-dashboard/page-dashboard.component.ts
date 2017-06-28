@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Board } from '../classes/board';
+import { BoardService } from '../board.service';
+import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-dashboard',
@@ -6,16 +10,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-dashboard.component.scss']
 })
 export class PageDashboardComponent implements OnInit {
-
+  // Models for the UI
+  boards: Board[] = null;
+  sharedBoards: Board[];
+  user_id: string;
   // Variables to control modal items display
   isModalShown: boolean = false;
   isAddBoardShown: boolean = false;
   isCreateShown: boolean = true;
   isFormShown: boolean = false;
 
-  constructor() { }
+  constructor(
+    private boardService: BoardService,
+    private accountService: AccountService,
+    private router: Router,
+    private changeDetector: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
+    if (!this.accountService.checkLoginStatus()){
+      console.log('shuld navigate to login')
+      this.router.navigate(['/login']);
+    } else {
+      console.log('user already logged in');
+      this.user_id = this.accountService.getCurrentUserID();
+      this.reloadBoard(this.user_id);
+    }
+  }
+  
+  navigateToBoard(board_id: string){
+    this.router.navigate(['/boardpage', board_id]);
+  }
+
+  reloadBoard(user_id: string){
+    this.boardService.getAllBoards(user_id).then((boards: Board[]) => {
+      this.boards = boards;
+
+      return this.boardService.getAllBoards(user_id);
+    })
+    /** no collaborators for now */
+    // .then(sharedboards => {
+    //   if (sharedboards.length != 0) {
+    //     this.sharedBoards = sharedboards;
+    //   }
+    //   // reload the view
+    //   console.log('should detect changes')
+    //   this.changeDetector.detectChanges();
+    // })
+    .catch(error => {
+      alert('error received');
+      console.log(error);
+    });
   }
 
   switchPage(name: string){

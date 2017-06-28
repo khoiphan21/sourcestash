@@ -18,8 +18,8 @@
         </article>
     </section>
     <section class="mid-container">
-        <section class="mid-container-boards">
-            <app-board></app-board>
+        <section class="mid-container-boards" *ngFor="let board of boards">
+            <app-board [board]="board" (click)="navigateToBoard(board.board_id)"></app-board>
             <section class="create-board">
                 <section class="create-button" (click)="switchPage('form')" *ngIf="isCreateShown">
                     <span class="plus">&#10010;</span>

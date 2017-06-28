@@ -1,10 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoardComponent } from './board.component';
+import { Component } from '@angular/core';
+import { Board } from '../classes/board';
 
 describe('BoardComponent', () => {
-  let component: BoardComponent;
-  let fixture: ComponentFixture<BoardComponent>;
+  let component: BoardWrapperComponent;
+  let fixture: ComponentFixture<BoardWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,3 +25,11 @@ describe('BoardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'stash-wrapper',
+  template: '<app-board [board]="board"></app-board>'
+})
+class BoardWrapperComponent {
+  board: Board = new Board('owner_id', 'board_id','title');
+}

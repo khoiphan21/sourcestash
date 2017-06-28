@@ -1,8 +1,8 @@
-<section class="main-container" routerLink="/boardpage">
+<section class="main-container" *ngIf="board">
     <!--<div class="close" (click)="switchTo('create')">&#10006;</div>-->
     <section class="main-container-content">
         <article class="title">
-            History
+            {{board.title}}
         </article>
         <article class="image">
             <img src="./assets/images/icons/book.png">

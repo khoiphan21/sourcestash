@@ -61,10 +61,7 @@ describe('CardService', () => {
             let board_id = '332211';
             let card = new Card('242267', board_id, 'Indo', 0, 0);
             // setup the copy card
-            let cardCopy = new Card('242267', board_id,'Greek', // changed
-                100, // changed
-                100 // changed
-                )
+            let cardCopy = new Card('242267', board_id, 'Greek', 50, 70);
             // Add a card first
             service.addNewCard(card.board_id, card.title, card.x_location, card.y_location).then(databaseCard => {
                 card.card_id = databaseCard.card_id;
@@ -81,6 +78,7 @@ describe('CardService', () => {
             return service.getCardForBoard(board_id)
             }).then((cards: Card[]) => {
                 _.each(cards, (databaseCard: Card) => {
+                    console.log(databaseCard.card_id);
                     if (databaseCard.card_id === cardCopy.card_id) {
                         // NOT SURE IF THIS IS RIGHT OR WRONG
                         expect(databaseCard.title).toBe(cardCopy.title);

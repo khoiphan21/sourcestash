@@ -10,6 +10,7 @@ import { AutofocusDirective } from '../directives/autofocus.directive';
 import { AccountService } from '../account.service';
 import { GoogleApiService } from '../google-api.service';
 import { Router } from '@angular/router';
+import { BoardService } from '../board.service';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate')
@@ -29,6 +30,7 @@ describe('PageDashboardComponent', () => {
         AutofocusDirective
       ],
       providers: [
+        BoardService,
         AccountService,
         {provide: GoogleApiService, useValue: {initialize: jasmine.createSpy('initialize')}},
         {provide: Router, useValue: mockRouter}
