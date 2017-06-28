@@ -33,7 +33,6 @@ import { LoadingComponent } from './loading/loading.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 import { BoardComponent } from './board/board.component';
-import { BoardAddComponent } from './board-add/board-add.component';
 import { PageBoardComponent } from './page-board/page-board.component';
 import { CardComponent } from './card/card.component';
 import { BoardService } from './board.service';
@@ -62,7 +61,6 @@ import { BoardService } from './board.service';
     AutofocusDirective,
     PageDashboardComponent,
     BoardComponent,
-    BoardAddComponent,
     PageBoardComponent,
     CardComponent
     ],

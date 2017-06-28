@@ -9,8 +9,9 @@
                 <div class="add-link" (click)="switchTo('form')" *ngIf="isCreateShown">Add Link</div>
                 <section class="add-link-form" *ngIf="isFormShown">
                     <form>
-                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME (OPTIONAL)" [appAutofocus]="true" maxlength="18">
-                        <input class="title" [(ngModel)]="urls" type="text" name="title" placeholder="URL" [appAutofocus]="true">
+                        <input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME (OPTIONAL)" maxlength="18">
+                        <!--<input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME (OPTIONAL)" [appAutofocus]="true" maxlength="18">-->
+                        <!--<input class="title" [(ngModel)]="link.hyperlink" type="text" name="title" placeholder="URL">-->
                         <div class="buttons">
                             <button id="create-source-button-save" (click)="switchTo('create')">Save</button>
                             <div id="cross" (click)="switchTo('create')">&#10005;</div>
