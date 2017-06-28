@@ -34,6 +34,7 @@ describe('BoardService', () => {
       let board = new Board('owner_id', 'board_id', 'Board Title')
       let email = 'john@example.com';
       let password = 'whatever';
+      let board_id: string;
       accountService.login(email, password).then(() => {
         service.createBoard(board).then(createdBoard => {
           expect(createdBoard).toBeTruthy();
@@ -42,7 +43,7 @@ describe('BoardService', () => {
           expect(createdBoard.title).toEqual(board.title);
 
           // Now delete the board
-          return service.deleteBoard(board);
+          return service.deleteBoard(createdBoard);
         }).then((response: AppResponse) => {
           expect(response.success).toBeTruthy();
           done();

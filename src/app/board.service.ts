@@ -61,7 +61,26 @@ export class BoardService {
   }
 
   deleteBoard(board: Board): Promise<AppResponse> {
-    return Promise.reject('Not implemented');
+    let deferred = new Deferred<AppResponse>();
+
+    let options: RequestOptions;
+    Helper.setupHeaderOptions(options);
+
+    if (Helper.checkForNull([board.board_id, board.owner_id, board.title])) {
+      return Promise.reject('Error occurred: empty title received.');
+    }
+
+    this.http.post(
+      SERVER + '/board/delete',
+      {board: board},
+      options
+    ).subscribe(response => {
+      deferred.resolve(new AppResponse(true, 'Board successfully deleted'));
+    }, error => {
+      deferred.reject('Unable to delete a board');
+    });
+
+    return deferred.promise;
   }
 
 }
