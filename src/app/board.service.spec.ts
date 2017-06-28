@@ -57,28 +57,34 @@ describe('BoardService', () => {
   });
 
   it('should update a board correctly', done => {
-    inject([BoardService], (service: BoardService) => {
+    inject([BoardService, AccountService], (service: BoardService, accountService: AccountService) => {
       let board = new Board('owner_id', 'board_id', 'title')
-      service.createBoard(board).then(createdBoard => {
-        // Change the title of the board
-        board.title = 'CHANGED TITLE';
-        // Now update the board
-        return service.updateBoard(board);
-      }).then((updatedBoard: Board) => {
-        expect(updatedBoard).toBeTruthy();
-        expect(updatedBoard.title).toBe(board.title);
-        done();
-      }).catch(error => {
-        console.log(error);
-        fail('Error should not occur');
-        done();
+      let email = 'john@example.com';
+      let password = 'whatever';
+      accountService.login(email, password).then(() => {
+        service.createBoard(board).then(createdBoard => {
+          // Update the id of the board
+          board.board_id = createdBoard.board_id;
+          // Change the title of the board
+          board.title = 'CHANGED TITLE';
+          // Now update the board
+          return service.updateBoard(board);
+        }).then((updatedBoard: Board) => {
+          expect(updatedBoard).toBeTruthy();
+          expect(updatedBoard.title).toBe(board.title);
+          done();
+        }).catch(error => {
+          console.log(error);
+          fail('Error should not occur');
+          done();
+        });
       });
     })();
   });
 
   it('should get all boards for a user', done => {
     inject([BoardService], (service: BoardService) => {
-      let user_id = 'ID';
+      let user_id = '1693158545179';
       service.getAllBoards(user_id).then(boards => {
         expect(boards).toBeTruthy();
         done();
