@@ -22,9 +22,9 @@
                 <section class="create-form" *ngIf="isFormShown">
                     <!--<div class="close" (click)="switchTo('create')">&#10006;</div>-->
                     <form>
-                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
+                        <input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
                         <div class="buttons">
-                            <button id="create-source-button-save" (click)="switchTo('create')">Save</button>
+                            <button id="create-source-button-save" (click)="switchTo('create')" (click)="addCard()">Save</button>
                             <div id="cross" (click)="switchTo('create')">&#10005;</div>
                         </div>
                     </form>

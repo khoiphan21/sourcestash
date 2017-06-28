@@ -35,7 +35,7 @@ export class CardService {
     }
 
     let headers = new Headers({
-      'Content-Type': 'applucation/json'
+      'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
 
@@ -48,7 +48,7 @@ export class CardService {
      */
     this.http.post(
       // url
-      SERVER + '/source/all/' + board_id,
+      SERVER + '/card/all',
       // parameters
       {
         board_id: board_id
@@ -160,7 +160,7 @@ export class CardService {
 
     // Call the server
     this.http.post(
-      SERVER + '/source/delete/' + card_id,
+      SERVER + '/card/delete',
       {
         card_id: card_id
       },

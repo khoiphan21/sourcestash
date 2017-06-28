@@ -99,7 +99,10 @@ export class SourceService {
     }
 
     let deferred = new Deferred<Source>();
-
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
     this.http.post(
       SERVER + '/source/new',
       {
@@ -116,7 +119,8 @@ export class SourceService {
           difficulty: difficulty,
           tags: tags
         }
-      }
+      },
+      options
     ).subscribe(response => {
       if (response.status != 201) {
         deferred.reject('Failed to create a new source');
