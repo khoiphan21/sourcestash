@@ -40,10 +40,11 @@ describe('CardService', () => {
         inject([CardService], (service: CardService) => {
             service.getCardForBoard('id').then((cards:Card[]) =>{ 
                 // If the cards.legth fits the requirement
-                expect(cards.length).toBeTruthy();
+                expect(cards).toBeTruthy();
 
                 done();
             }).catch(error => {
+                console.log(error);
                 fail('error should not be thrown');
                 done();
             })
