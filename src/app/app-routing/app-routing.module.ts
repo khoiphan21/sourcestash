@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'profilepage', component: PageProfileComponent},
   { path: 'contact', component: PageContactComponent},
   { path: 'dashboard', component: PageDashboardComponent},
-  { path: 'boardpage', component: PageBoardComponent}
+  { path: 'boardpage/:boardid', component: PageBoardComponent}
 ]
 
 @NgModule({

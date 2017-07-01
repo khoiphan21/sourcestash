@@ -94,4 +94,56 @@ describe('CardService', () => {
             })
         })();
     }, 10000);
+
+    it('should not be able to update a non-existing source', done => {
+    inject([CardService], (service: CardService) => {
+      let card = new Card(
+        'NON-EXISTENT CARD ID',
+        '332211',
+        'FOOD',
+        0,
+        0
+      );
+      service.updateCard(card).then(response => {
+        fail('error should have occurred');
+        done();
+      }).catch((error: AppResponse) => {
+        expect(error.error.status).toBe(400);
+        done();
+      })
+
+    })();
+  }, 10000);
+
+  it('should successfully add a source and then delete it', done => {
+    inject([CardService], (service: CardService) => {
+      let card_id: string;
+
+      service.addNewCard(
+        '332211',
+        'Food',
+        0,
+        0
+      ).then(card => {
+        expect(card).toBeTruthy();
+        expect(card.card_id).toBeTruthy();
+
+        // Now attempt to delete the card
+        service.deleteCard(card.card_id).then(response => {
+          expect(response.success).toBeTruthy();
+          done();
+        }).catch(error => {
+          fail('Error should not occur when deleting a source');
+          done();
+        });
+      }).catch(error => {
+        console.log(error);
+        fail('error received when trying to add a source');
+        // Still try to delete the source anyway
+        service.deleteCard(card_id);
+        done();
+      })
+
+    })();
+  }, 10000);
 }); 

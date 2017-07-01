@@ -18,8 +18,7 @@
         </article>
     </section>
     <section class="mid-container">
-        <section class="mid-container-boards" *ngFor="let board of boards">
-            <app-board [board]="board" (click)="navigateToBoard(board.board_id)"></app-board>
+        <section class="mid-container-boards">
             <section class="create-board">
                 <section class="create-button" (click)="switchPage('form')" *ngIf="isCreateShown">
                     <span class="plus">&#10010;</span>
@@ -27,14 +26,17 @@
                 </section>
                 <section class="create-form" *ngIf="isFormShown">
                     <form>
-                        <input class="title" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
+                        <input class="title" [(ngModel)]="boardTitle" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
                         <!--<input class="title" [(ngModel)]="link.title" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">-->
                         <div class="buttons">
-                            <button id="create-source-button-save" (click)="switchPage('create')">Save</button>
+                            <button id="create-source-button-save" (click)="switchPage('create')" (click)="addBoard()">Save</button>
                             <button id="create-source-button-cancel" (click)="switchPage('create')">Cancel</button>
                         </div>
                     </form>
                 </section>
+            </section>
+            <section class="mid-container-boards-content" *ngFor="let board of boards">
+                <app-board [board]="board" (click)="navigateToBoard(board.board_id)"></app-board>
             </section>
         </section>
     </section>

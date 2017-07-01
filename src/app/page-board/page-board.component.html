@@ -3,17 +3,17 @@
 <section class="main-container">
     <section class="top-container">
         <article class="top-container-content">
+            <!--<article class="top-container-content" *ngIf="board">-->
             <article class="back" routerLink="/dashboard">
                 <span>&#10094;</span><span>Back</span>
             </article>
-            <article class="title">
-                History
+            <article class="title" *ngIf="board">
+                History {{board.title}}
             </article>
         </article>
     </section>
     <section class="mid-container">
         <section class="mid-container-boards">
-            <app-card class="card"></app-card>
             <section class="create-container">
                 <section class="create-card" (click)="switchTo('form')" *ngIf="isCreateShown">
                     <span class="plus">&#10010;</span>
@@ -29,6 +29,10 @@
                         </div>
                     </form>
                 </section>
+            </section>
+            <section class="mid-container-cards-content" *ngFor="let card of cards">
+                <app-card class="card" [card]="card"></app-card>
+                <!--<app-card class="card" [card]="card" [boardID]= {{board.board_id}}></app-card>-->
             </section>
         </section>
     </section>

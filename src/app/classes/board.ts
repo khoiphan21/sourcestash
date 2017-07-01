@@ -2,8 +2,8 @@
  * The class representing the model for a board.
  */
 export class Board {
-    owner_id: string;
-    board_id: string;
+    owner_id?: string;
+    board_id?: string;
     title: string;
     constructor(
         owner_id: string,

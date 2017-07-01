@@ -19,7 +19,7 @@ export class BoardService {
     private accountService: AccountService
   ) { }
 
-  createBoard(board: Board): Promise<Board> {
+  createBoard(title: string): Promise<Board> {
     let deferred = new Deferred<Board>();
 
     let options: RequestOptions;
@@ -27,19 +27,23 @@ export class BoardService {
 
     // Update the owner_id of the board to be created
     let user_id: string = this.accountService.getCurrentUserID();
-    let updatedBoard = board;
-    updatedBoard.owner_id = user_id;
 
-    if (Helper.checkForNull([updatedBoard.title])) {
+    if (Helper.checkForNull([title])) {
       return Promise.reject('Error occurred: empty title received.');
     }
 
     this.http.post(
       SERVER + '/board/new',
-      {board: updatedBoard},
+      {
+        board: {
+          owner_id: user_id,
+          title: title
+        }
+      },
       options
     ).subscribe(response => {
-      deferred.resolve(response.json());
+      let board: Board = response.json();
+      deferred.resolve(board);
     }, error => {
       deferred.reject('Error creating a board');
     });

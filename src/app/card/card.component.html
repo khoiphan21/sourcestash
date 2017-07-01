@@ -1,7 +1,7 @@
-<section class="main-container">
+<section class="main-container" *ngIf="card">
     <section class="main-container-content">
         <article class="title">
-            <span>Hitler</span><span *ngIf="isEditShown">&#10000;</span>
+            <span>{{card.title}}</span><span *ngIf="isEditShown">&#10000;</span>
         </article>
         <section class="list">
 
@@ -9,7 +9,7 @@
                 <div class="add-link" (click)="switchTo('form')" *ngIf="isCreateShown">Add Link</div>
                 <section class="add-link-form" *ngIf="isFormShown">
                     <form>
-                        <input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME (OPTIONAL)" maxlength="18">
+                        <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" maxlength="18">
                         <!--<input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME (OPTIONAL)" [appAutofocus]="true" maxlength="18">-->
                         <!--<input class="title" [(ngModel)]="link.hyperlink" type="text" name="title" placeholder="URL">-->
                         <div class="buttons">

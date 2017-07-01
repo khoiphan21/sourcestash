@@ -3,6 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BoardComponent } from './board.component';
 import { Component } from '@angular/core';
 import { Board } from '../classes/board';
+import { BoardService } from '../board.service';
+import { GoogleApiService } from '../google-api.service';
+import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 describe('BoardComponent', () => {
   let component: BoardWrapperComponent;
@@ -10,7 +17,18 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
+      declarations: [
+        BoardComponent
+      ],
+      providers: [
+        BoardService,
+        { provide: GoogleApiService, useValue: { initialize: jasmine.createSpy('initialize') } },
+        AccountService,
+        { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } }
+      ],
+      imports: [
+        HttpModule, BrowserModule, FormsModule
+      ]
     })
     .compileComponents();
   }));

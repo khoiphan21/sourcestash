@@ -31,15 +31,15 @@ describe('BoardService', () => {
 
   it('should create a new board and then delete it', done => {
     inject([BoardService, AccountService], (service: BoardService, accountService: AccountService) => {
-      let board = new Board('owner_id', 'board_id', 'Board Title')
+      let board = new Board('owner_id', 'board_id', 'Board Title');
       let email = 'john@example.com';
       let password = 'whatever';
       let board_id: string;
       accountService.login(email, password).then(() => {
-        service.createBoard(board).then(createdBoard => {
+        service.createBoard(board.title).then(createdBoard => {
           expect(createdBoard).toBeTruthy();
           expect(createdBoard.board_id).toBeTruthy();
-          expect(createdBoard.owner_id).toEqual(board.owner_id);
+          // expect(createdBoard.owner_id).toEqual(board.owner_id);
           expect(createdBoard.title).toEqual(board.title);
 
           // Now delete the board
@@ -62,9 +62,11 @@ describe('BoardService', () => {
       let email = 'john@example.com';
       let password = 'whatever';
       accountService.login(email, password).then(() => {
-        service.createBoard(board).then(createdBoard => {
+        service.createBoard(board.title).then(createdBoard => {
           // Update the id of the board
           board.board_id = createdBoard.board_id;
+          // Update the owner id of the board
+          board.owner_id = accountService.getCurrentUserID();
           // Change the title of the board
           board.title = 'CHANGED TITLE';
           // Now update the board
@@ -72,7 +74,12 @@ describe('BoardService', () => {
         }).then((updatedBoard: Board) => {
           expect(updatedBoard).toBeTruthy();
           expect(updatedBoard.title).toBe(board.title);
-          done();
+
+          // Now delete the board
+          return service.deleteBoard(updatedBoard);
+        }).then(() => {
+          // Complete
+          done()
         }).catch(error => {
           console.log(error);
           fail('Error should not occur');

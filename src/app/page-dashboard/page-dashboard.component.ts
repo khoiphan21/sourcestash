@@ -14,6 +14,8 @@ export class PageDashboardComponent implements OnInit {
   boards: Board[] = null;
   sharedBoards: Board[];
   user_id: string;
+  boardTitle: string;
+
   // Variables to control modal items display
   isModalShown: boolean = false;
   isAddBoardShown: boolean = false;
@@ -73,6 +75,16 @@ export class PageDashboardComponent implements OnInit {
     }
   }
   
+  addBoard(){
+    // Make call to API for adding a board
+    this.boardService.createBoard(this.boardTitle).then(response => {
+      this.reloadBoard(this.user_id);
+    }).catch(error => {
+      alert('Error trying to create a board. View Log for more details');
+      console.log(error);
+    });
+  }
+
 
   /**
    * ALL MODAL FUNCTIONS GO HERE
