@@ -36,6 +36,8 @@ import { BoardComponent } from './board/board.component';
 import { PageBoardComponent } from './page-board/page-board.component';
 import { CardComponent } from './card/card.component';
 import { BoardService } from './board.service';
+import { LinkComponent } from './link/link.component';
+import { LinkService } from './link.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { BoardService } from './board.service';
     PageDashboardComponent,
     BoardComponent,
     PageBoardComponent,
-    CardComponent
+    CardComponent,
+    LinkComponent
     ],
   imports: [
     BrowserModule,
@@ -79,7 +82,8 @@ import { BoardService } from './board.service';
     GoogleApiService,
     CollaboratorService,
     CardService,
-    BoardService
+    BoardService,
+    LinkService
   ],
   bootstrap: [AppComponent]
 })
