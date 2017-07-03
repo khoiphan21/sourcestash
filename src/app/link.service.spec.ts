@@ -24,4 +24,22 @@ describe('LinkService', () => {
   it('should ...', inject([LinkService], (service: LinkService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should create a link and then delete it', done => {
+    inject([LinkService], (service: LinkService) => {
+
+    })();
+  })
+
+  it('should update a link successfully', done => {
+    inject([LinkService], (service: LinkService) => {
+
+    })();
+  })
+
+  it('should retrieve all links for a card successfully', done => {
+    inject([LinkService], (service: LinkService) => {
+
+    })();
+  })
 });
