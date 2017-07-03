@@ -6,6 +6,7 @@ import { CardService } from '../card.service';
 import { Card } from '../classes/card';
 import { AccountService } from '../account.service';
 import { Board } from '../classes/board';
+import { BoardService } from '../board.service';
 
 @Component({
   selector: 'app-page-board',
@@ -21,6 +22,7 @@ export class PageBoardComponent implements OnInit {
   // model of the board
   cards: Card[];
   board_id: string;
+  title: string;
 
   // Details of the board
   board: Board;
@@ -35,6 +37,7 @@ export class PageBoardComponent implements OnInit {
   }
 
   constructor(
+    private boardService: BoardService,
     private cardService: CardService,
     private accountService: AccountService,
     private route: ActivatedRoute
@@ -44,8 +47,8 @@ export class PageBoardComponent implements OnInit {
     // for testing purpose
     this.route.params.map(params => {
       this.board_id = params['boardid'];
-
       // Refresh everything
+      this.getTitle();
       this.refresh();
     }).subscribe();
     // let element: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
@@ -107,6 +110,12 @@ export class PageBoardComponent implements OnInit {
     });
   }
 
+  getTitle(){
+    this.boardService.getBoardTitle(this.board_id).then((title: string) => {
+      this.title = title;
+    console.log(this.title);
+    });
+  }
   /**
    * Call the server to retrieve the newest information about the board
    */
