@@ -130,4 +130,27 @@ export class BoardService {
     return deferred.promise;
   }
 
+  getBoardTitle(board_id: string): Promise<string>{
+    let deferred = new Deferred<string>();
+    let options: RequestOptions;
+    Helper.setupHeaderOptions(options);
+
+    if (Helper.checkForNull([board_id])){
+      return Promise.reject('Error occured: empty values received.');
+    }
+
+    this.http.post(
+      SERVER + '/board/gettitle',
+      {board_id: board_id},
+      options
+    ).subscribe(response => {
+      let titleObject = response.json();
+      deferred.resolve(titleObject.title);
+    }, error => {
+      console.log(error);
+      deferred.reject('Unable to get the board title');
+    });
+
+    return deferred.promise;
+  }
 }
