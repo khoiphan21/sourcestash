@@ -36,7 +36,7 @@ describe('CardService', () => {
     /**
      * Test for retrieving all the cards for a certain board
     */
-    it('should successfully retrieve all sources for the test board', done => {
+    it('should successfully retrieve all cards for the test board', done => {
         inject([CardService], (service: CardService) => {
             service.getCardForBoard('id').then((cards:Card[]) =>{ 
                 // If the cards.legth fits the requirement
@@ -55,7 +55,6 @@ describe('CardService', () => {
     /**
      * Test for updating cards
     */
-
     it('should update a card correctly', done => {
         inject([CardService], (service: CardService) => {
             let board_id = '332211';

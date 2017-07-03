@@ -107,8 +107,8 @@ export class CardService {
 }
 
   /**
-  * @param card - the card which is going to be updated
-  */
+   * @param card - the card which is going to be updated
+   */
   updateCard(card: Card): Promise<AppResponse> {
     // Check for mull args
     if (this.checkForNull([card])){
