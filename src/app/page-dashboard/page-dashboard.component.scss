@@ -59,18 +59,18 @@ section.all-modals {
         color: black;
         .mid-container-boards {
             display: grid;
-            grid-template-columns: 250px 250px 250px 250px;
-            grid-template-rows: 140px;
-            grid-column-gap: 74px;
-            grid-row-gap: 50px;
+            grid-template-columns: 17vw 17vw 17vw 17vw;
+            grid-template-rows: 19.5vh;
+            grid-column-gap: 5.5vw;
+            grid-row-gap: 7vh;
         }
         .create-board {
             cursor: pointer;
             color: $theme-font-grey;
             .create-button {
                 background: $theme-font-light-grey;
-                width: 250px;
-                height: 140px;
+                width: 17vw;
+                height: 19.5vh;
                 @include transition-basic();
                 @include column-center();
                 .plus {
@@ -87,8 +87,8 @@ section.all-modals {
                 }
             }
             .create-form {
-                width: 250px;
-                height: 140px;
+                width: 17vw;
+                height: 19.5vh;
                 @include column-center();
                 background: darken($theme-font-light-grey, 30);
                 input[type=text],
@@ -98,11 +98,11 @@ section.all-modals {
                     background: white;
                     padding: 0.5vh 1vw;
                     text-align: left;
-                    height: 27px;
+                    height: 4vh;
                     color: $theme-font-grey;
-                    width: 210px;
+                    width: 15vw;
                     font-size: 12pt;
-                    margin-bottom: 2.5px;
+                    margin-bottom: 0.5vh;
                 }
                 .buttons {
                     margin-top: 40px;
