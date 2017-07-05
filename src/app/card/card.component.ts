@@ -59,7 +59,6 @@ export class CardComponent implements OnInit {
   }
 
   deleteCard() {
-    console.log(this.card.card_id);
     this.cardService.deleteCard(this.card.card_id).then(response => {
       if (response.success) {
         this.onUpdate.emit();

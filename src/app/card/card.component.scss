@@ -3,31 +3,31 @@
 @import '../sass/globalStyles';
 .main-container {
     color: $theme-font-grey;
-    width: 16.5vw;
+    width: 17vw;
     padding: 1vh 1vw;
     background: $theme-font-light-grey;
     font-size: 16pt;
     text-transform: uppercase;
-    .close {
-        @include row-center();
-        cursor: pointer;
-        position: absolute;
-        width: 2vw;
-        height: 2vw;
-        left: 15.5vw;
-        top: -2vh;
-        font-size: 16pt;
-        border-radius: 50px;
-        border: darken($theme-light-orange, 10) solid 2px;
-        color: darken($theme-light-orange, 10);
-        @include transition-basic();
-        background: black;
-        &:hover {
-            box-shadow: 2px 4px 10px black;
-        }
-    }
+    // .close {
+    //     @include row-center();
+    //     cursor: pointer;
+    //     position: absolute;
+    //     width: 2vw;
+    //     height: 2vw;
+    //     left: 15.5vw;
+    //     top: -2vh;
+    //     font-size: 16pt;
+    //     border-radius: 50px;
+    //     border: darken($theme-light-orange, 10) solid 2px;
+    //     color: darken($theme-light-orange, 10);
+    //     @include transition-basic();
+    //     background: black;
+    //     &:hover {
+    //         box-shadow: 2px 4px 10px black;
+    //     }
+    // }
     .main-container-content {
-        width: 14.5vw;
+        width: 15vw;
         margin: 0;
         .title {
             display: flex;
@@ -36,7 +36,7 @@
             font-weight: bold;
             span:nth-child(1) {
                 box-sizing: border-box;
-                width: 13vw;
+                width: 13.5vw;
                 overflow: hidden;
                 font-size: 16pt;
                 // display: none;
@@ -52,10 +52,10 @@
                 @include column-center();
                 background: white;
                 text-align: left;
-                height: 3.5vh;
+                height: 4vh;
                 color: $theme-font-grey;
                 border: none;
-                width: 14.5vw;
+                width: 15vw;
                 font-size: 16pt;
                 padding: 0;
                 margin: 0;
@@ -80,11 +80,11 @@
                         background: white;
                         padding: 0.5vh 1vw;
                         text-align: left;
-                        height: 3.5vh;
+                        height: 4vh;
                         color: $theme-font-grey;
-                        width: 14.5vw;
+                        width: 15vw;
                         font-size: 12pt;
-                        margin-bottom: 3px;
+                        margin-bottom: 0.5vh;
                     }
                 }
             }
@@ -93,7 +93,7 @@
                 font-size: 12pt;
                 ul {
                     padding: 0;
-                    margin: 10px 0 0 0;
+                    margin: 0.5vh 0 0 0;
                 }
                 li {
                     color: darken($theme-font-light-grey, 20);
@@ -101,8 +101,8 @@
                     background: white;
                     padding: 0.5vh 1vw;
                     text-align: left;
-                    height: 27px;
-                    margin-bottom: 4px;
+                    height: 3.5vh;
+                    margin-bottom: 0.5vh;
                     font-size: 12pt;
                 }
             }
@@ -125,17 +125,17 @@
     font-size: 10pt;
     #create-source-button-save {
         cursor: pointer;
-        @include button-cb-normal($width: 70px, $height: 3vh);
+        @include button-cb-normal($width: 5vw, $height: 4vh);
         padding: 0;
         @include row-center();
         background: #13CE66;
-        margin-right: 15px;
+        margin-right: 1.5vw;
         &:hover {
             background: #13CE66;
         }
     }
     #cross {
-        font-size: 3vh;
+        font-size: 4vh;
         cursor: pointer;
     }
 }

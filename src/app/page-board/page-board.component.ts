@@ -97,7 +97,7 @@ export class PageBoardComponent implements OnInit {
   getTitle(){
     this.boardService.getBoardTitle(this.board_id).then((title: string) => {
       this.title = title;
-    console.log(this.title);
+    // console.log(this.title);
     });
   }
   
