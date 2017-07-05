@@ -1,6 +1,5 @@
 /**
  * The class representing the model for a card.
- * 
  */
 export class Card {
     card_id: string;
@@ -8,6 +7,7 @@ export class Card {
     title: string;
     x_location: number;
     y_location: number;
+
     constructor(
         id: string,
         board_id: string,

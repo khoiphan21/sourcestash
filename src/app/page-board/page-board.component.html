@@ -20,7 +20,6 @@
                     <span class="larger-font">Create Card</span>
                 </section>
                 <section class="create-form" *ngIf="isFormShown">
-                    <!--<div class="close" (click)="switchTo('create')">&#10006;</div>-->
                     <form>
                         <input class="title" [(ngModel)]="card.title" type="text" name="title" placeholder="NAME" [appAutofocus]="true" maxlength="18">
                         <div class="buttons">

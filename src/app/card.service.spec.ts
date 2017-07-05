@@ -28,7 +28,7 @@ describe('CardService', () => {
 
     it('It should create a card service.',inject([CardService],
         (service: CardService) => {
-            expect(service).toBeTruthy();        
+            expect(service).toBeTruthy();
         }
     ));
     
@@ -94,7 +94,7 @@ describe('CardService', () => {
         })();
     }, 10000);
 
-    it('should not be able to update a non-existing source', done => {
+    it('should not be able to update a non-existing card', done => {
     inject([CardService], (service: CardService) => {
       let card = new Card(
         'NON-EXISTENT CARD ID',
@@ -114,7 +114,7 @@ describe('CardService', () => {
     })();
   }, 10000);
 
-  it('should successfully add a source and then delete it', done => {
+  it('should successfully add a card and then delete it', done => {
     inject([CardService], (service: CardService) => {
       let card_id: string;
 
@@ -132,12 +132,12 @@ describe('CardService', () => {
           expect(response.success).toBeTruthy();
           done();
         }).catch(error => {
-          fail('Error should not occur when deleting a source');
+          fail('Error should not occur when deleting a card');
           done();
         });
       }).catch(error => {
         console.log(error);
-        fail('error received when trying to add a source');
+        fail('error received when trying to add a card');
         // Still try to delete the source anyway
         service.deleteCard(card_id);
         done();

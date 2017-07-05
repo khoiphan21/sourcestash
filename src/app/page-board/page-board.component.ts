@@ -49,15 +49,8 @@ export class PageBoardComponent implements OnInit {
       this.board_id = params['boardid'];
       // Refresh everything
       this.getTitle();
-      this.refresh();
+      this.refreshCard();
     }).subscribe();
-    // let element: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
-    // let options = {
-    //   grid: 10,
-    //   setCursor: true,
-    //   onDrag:
-    // };
-    // new Draggable(element, options);
   }
 
   switchTo(page: string) {
@@ -77,26 +70,17 @@ export class PageBoardComponent implements OnInit {
     if (isInputValid) {
       // Make a request to the server
       this.cardService.addNewCard(
-        this.card.board_id,
+        this.board_id,
         this.card.title,
         this.card.x_location,
         this.card.y_location,
       ).then(() => {
-        // Emit to update the board
-        // maybe i dont need to emit ? update straight ?
-        // this.onUpdate.emit();
-        this.cardService.getCardForBoard(this.board_id)
+        // Update the board
+        this.refreshCard();
       })
     } else {
       alert('Inputs not valid!');
     }
-  }
-
-  refresh() {
-    // Refresh the sources
-    this.refreshCard();
-    // Retrieve the information of the board from the server
-    // this.refreshBoard();
   }
 
   /**
