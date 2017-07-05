@@ -1,11 +1,21 @@
 <section class="main-container" *ngIf="board">
     <!--<div class="close" (click)="switchTo('create')">&#10006;</div>-->
-    <section class="main-container-content">
-        <article class="title">
+    <section class="main-container-content" (onEdit)="editMode('on')">
+        <article class="title" *ngIf="!isEditShown">
             {{board.title}}
         </article>
-        <article class="image">
+        <section (click)="$event.stopPropagation()">
+            <input *ngIf="isEditShown" class="titleEdit" [(ngModel)]="board.title" type="text" name="title">
+            <section class="buttons" *ngIf="isEditShown">
+                <button id="create-source-button-save" (click)="editMode('off')">Save</button>
+                <div id="cross" (click)="editMode('off')">&#10005;</div>
+            </section>
+            <section class="delete" *ngIf="isEditShown" (click)="deleteBoard()">
+                DELETE Board
+            </section>
+        </section>
+        <!--<article class="image">
             <img src="./assets/images/icons/book.png">
-        </article>
+        </article>-->
     </section>
 </section>

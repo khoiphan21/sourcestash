@@ -63,11 +63,11 @@ export class CardComponent implements OnInit {
       if (response.success) {
         this.onUpdate.emit();
       } else {
-        alert('Failed to delete source');
+        alert('Failed to delete card');
       }
     }).catch(error => {
       console.log(error);
-      alert('Failed to delete source');
+      alert('Failed to delete card');
     })
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Board } from '../classes/board';
 import { BoardService } from '../board.service';
 import { AccountService } from '../account.service';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./page-dashboard.component.scss']
 })
 export class PageDashboardComponent implements OnInit {
+  @Output() onEdit = new EventEmitter<boolean>();
+  
   // Models for the UI
   boards: Board[] = null;
   sharedBoards: Board[];
@@ -65,6 +67,10 @@ export class PageDashboardComponent implements OnInit {
     });
   }
 
+  refresh() {
+    this.reloadBoard(this.user_id);
+  }
+
   switchPage(name: string){
     if (name == 'form') {
       this.isFormShown = true;
@@ -85,6 +91,9 @@ export class PageDashboardComponent implements OnInit {
     });
   }
 
+  editMode(){
+    this.onEdit.emit();
+  }
 
   /**
    * ALL MODAL FUNCTIONS GO HERE

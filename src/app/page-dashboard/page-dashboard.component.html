@@ -13,7 +13,7 @@
         <article class="title">
             All Boards
         </article>
-        <article class="edit">
+        <article class="edit" (click)="editMode()">
             Edit
         </article>
     </section>
@@ -36,7 +36,7 @@
                 </section>
             </section>
             <section class="mid-container-boards-content" *ngFor="let board of boards">
-                <app-board [board]="board" (click)="navigateToBoard(board.board_id)"></app-board>
+                <app-board [board]="board" (click)="navigateToBoard(board.board_id)" (onUpdate)="refresh()"></app-board>
             </section>
         </section>
     </section>
