@@ -31,7 +31,7 @@
                 </section>
             </section>
             <section class="mid-container-cards-content" *ngFor="let card of cards">
-                <app-card class="card" [card]="card"></app-card>
+                <app-card class="card" [card]="card" (onUpdate)="refreshCard()"></app-card>
                 <!--<app-card class="card" [card]="card" [boardID]= {{board.board_id}}></app-card>-->
             </section>
         </section>

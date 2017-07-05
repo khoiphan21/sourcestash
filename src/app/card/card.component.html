@@ -1,12 +1,19 @@
 <section class="main-container" *ngIf="card">
     <section class="main-container-content">
+        <!--<div class="close" *ngIf="!isEditShown" (click)="editMode('off')">&#10006;</div>-->
         <article class="title">
-            <span>{{card.title}}</span><span *ngIf="isEditShown">&#10000;</span>
+            <span *ngIf="isEditShown">{{card.title}}</span>
+            <input *ngIf="!isEditShown" class="titleEdit" [(ngModel)]="card.title" type="text" name="title">
+            <span *ngIf="isEditIconShown" (click)="editMode('on')">&#10000;</span>
         </article>
         <section class="list">
 
             <section class="add-link-container">
-                <div class="add-link" (click)="switchTo('form')" *ngIf="isCreateShown">Add Link</div>
+                <div class="buttons" *ngIf="!isEditShown">
+                    <button id="create-source-button-save" (click)="editMode('off')">Save</button>
+                    <div id="cross" (click)="editMode('off')">&#10005;</div>
+                </div>
+                <div class="add-link" (click)="switchTo('form')" *ngIf="isEditShown">Add Link</div>
                 <section class="add-link-form" *ngIf="isFormShown">
                     <form>
                         <input class="title" [(ngModel)]="cardTitle" type="text" name="title" placeholder="NAME" maxlength="18">
@@ -25,6 +32,9 @@
                     <li>Testing 1</li>
                     <li>Testing 2</li>
                 </ul>
+            </section>
+            <section class="delete" *ngIf="isEditShown" (click)="deleteCard()">
+                DELETE CARD
             </section>
         </section>
     </section>

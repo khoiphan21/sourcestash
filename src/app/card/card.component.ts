@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from '../classes/card';
 import { CardService } from '../card.service';
 
@@ -9,6 +9,8 @@ import { CardService } from '../card.service';
 })
 export class CardComponent implements OnInit {
 
+  @Output() onUpdate = new EventEmitter<boolean>();
+
   @Input()
   card: Card;
   @Input()
@@ -17,6 +19,7 @@ export class CardComponent implements OnInit {
   cardTitle: string;
 
   isCreateShown: boolean = true;
+  isEditIconShown: boolean = true;
   isEditShown: boolean = true;
   isFormShown: boolean = false;
 
@@ -35,13 +38,37 @@ export class CardComponent implements OnInit {
   switchTo(page: string) {
     if (page == 'form') {
       this.isCreateShown = false;
-      this.isEditShown = false;
       this.isFormShown = true;
+      this.isEditIconShown = false;
     } else if (page == 'create') {
       this.isCreateShown = true;
-      this.isEditShown = true;
       this.isFormShown = false;
+      this.isEditIconShown = true;
     }
   }
 
+  editMode(mode: string){
+    if (mode == 'on'){
+        this.isEditShown = false;
+        this.isEditIconShown = false;
+    }
+    if (mode == 'off'){
+        this.isEditShown = true;
+        this.isEditIconShown = true;
+    }
+  }
+
+  deleteCard() {
+    console.log(this.card.card_id);
+    this.cardService.deleteCard(this.card.card_id).then(response => {
+      if (response.success) {
+        this.onUpdate.emit();
+      } else {
+        alert('Failed to delete source');
+      }
+    }).catch(error => {
+      console.log(error);
+      alert('Failed to delete source');
+    })
+  }
 }

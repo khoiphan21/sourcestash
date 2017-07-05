@@ -116,6 +116,7 @@ export class PageBoardComponent implements OnInit {
     console.log(this.title);
     });
   }
+  
   /**
    * Call the server to retrieve the newest information about the board
    */
